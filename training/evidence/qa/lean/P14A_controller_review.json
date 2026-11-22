@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "phase": "P14A",
+  "verdict": "PASS_READY_WAITING_EXACT_HASH_APPROVAL",
+  "reviewed_at": "2026-09-08T01:29:00+08:00",
+  "release_id": "B-LEAN-20260908-R2",
+  "preflight": {"formal_target_matches_P0_145": true, "release_matches_manifest_145": true, "exactly_18_existing_files_change": true, "patch_roundtrip_matches_release": true, "formal_target_write_count": 0},
+  "approval_identity": {
+    "release_manifest_sha256": "6606db913d21e1edec8d5c147c48bb9a61d0fd3e5bf61af3b7b7a464cac1e1b5",
+    "full_release_diff_sha256": "518e021624bc670bf047cd8e75761cdf8bf83686d4bd26b611def1adcbea6097",
+    "integration_plan_sha256": "0b366b02aab3497aae4a4b136f9e634b4eeb719a7e74e6b8d7f41ee3c0c448fb",
+    "approval_card_sha256": "31c4166ff8ca95ff43ff274c02308f49958b63d44267ecd5eb4e597f6970a148"
+  },
+  "formal_target_modified": false,
+  "hard_stop_reason": "Formal publication exact-hash approval is intentionally outside the user's earlier general autonomy grant.",
+  "evidence_refs": ["cumcm-b-skill/p14/target_preflight.json", "cumcm-b-skill/p14/integration_plan.json", "cumcm-b-skill/p14/formal_integration_approval_card.json"]
+}

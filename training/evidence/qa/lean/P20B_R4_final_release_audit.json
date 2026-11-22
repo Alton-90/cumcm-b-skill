@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "audit_id": "P20B-R4-FINAL-RELEASE-AUDIT-001",
+  "status": "PASS_FORMAL_INTEGRATION_COMPLETE",
+  "audited_at": "2026-09-10T14:25:13.8148549+08:00",
+  "release_id": "B-LEAN-20260909-R4",
+  "approved_identity": {
+    "release_manifest_sha256": "5920a376b3495b945663b73a7754d6da486bd1dfc35eb6921f87238365bf66d8",
+    "full_release_diff_sha256": "f642226454d4924949c5adbb7a806dd7939cbd7cf6f4997b5752ef2014e55cf9",
+    "integration_plan_sha256": "7da7c7ea9b99cd0e007adea43f05deedcab384891929db7937a6e862686aac87"
+  },
+  "approval": {
+    "actor": "human",
+    "record": "cumcm-b-skill/p20/formal_integration_approval_record.json",
+    "record_sha256": "a96124ee933f8f8eb230068fd7520044116a623e5f40fa190ce008201785da59"
+  },
+  "execution": {
+    "report": "cumcm-b-skill/p20/formal_integration_execution_report.json",
+    "report_sha256": "b8459839d46772c41910fb2a862db96325e66fde72dd4fdd4fd2746048c8b13d",
+    "target": "github下载的skill",
+    "target_release": "B-LEAN-20260909-R4",
+    "target_file_count": 145,
+    "target_exact_release": true,
+    "changed_file_count": 27,
+    "nine_three_way_skill_mirrors_equal": true,
+    "rollback_used_on_successful_attempt": false
+  },
+  "compatibility_recovery": {
+    "first_attempt_report": "cumcm-b-skill/p20/formal_integration_attempt1_report.json",
+    "first_attempt_report_sha256": "daf6f3eb4a7c0aa40acbd5599e164f199e0e61b40572a494062d45838dac61c7",
+    "first_attempt_target_write_occurred": false,
+    "first_attempt_rollback_exact_R2": true,
+    "cause": "Git for Windows could not stat the Unicode formal-target path during direct apply precheck.",
+    "bounded_resolution": "Apply the same frozen patch in an ASCII temporary tree, verify all 145 staged files against the R4 release manifest, then copy only the 27 approved outputs to the formal target.",
+    "scope_expanded": false
+  },
+  "acceptance": {
+    "R4_behavior": "54/54 PASS",
+    "R3_regression": "56/56 PASS",
+    "quick_validate": "27/27 PASS transferred by exact 145-file release identity; not redundantly rerun",
+    "frozen_2025A_workspace_unchanged": true,
+    "network_access_count": 0,
+    "duplicate_model_or_optimization_runs": 0
+  },
+  "rollback_backup": {
+    "path": "cumcm-b-skill/planning/history/20260910_142422_P20-R4-TARGET-ROLLBACK/backup_manifest.json",
+    "target_file_count": 27,
+    "manifest_sha256": "8ed9297c1c69b7b1ec6d5ef54dd61b33170a5789124d29cc0b6cdddc6a8c1907"
+  },
+  "verdict": "The exact human-approved R4 release is installed in the formal directory, all contracted final checks pass, the holdout freeze remains intact, and no required work remains.",
+  "next_action": "STOP"
+}

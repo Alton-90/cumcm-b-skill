@@ -1,0 +1,248 @@
+{
+  "schema_version": "B_LEAN_PATTERN_GAP_V1",
+  "generated_at": "2026-09-07T15:53:39+08:00",
+  "profile_id": "B_LEAN_20260907_V1",
+  "status": "WAITING_HUMAN",
+  "training_scope": {
+    "years": [2018, 2020, 2021, 2022, 2023, 2024],
+    "problem_contracts": 6,
+    "training_papers": 19,
+    "representative_deep_reads": ["B217", "B125", "B026", "B035", "B311", "B195"],
+    "excluded": ["2019 supplemental expert-only case", "all expert-commentary bulk analysis", "all 2025 material"]
+  },
+  "upstream_scope": {
+    "root": "github下载的skill",
+    "baseline_tree_fingerprint": "613c2b5c21ca3007c3dd2b31ee0a1b49154b3925da3fd3990660fc3093a562c1",
+    "read_only": true,
+    "mirrors": [".claude/skills", ".codex/skills", "plugins/mathmodeling-skills/skills"],
+    "targeted_files_checked_against_p0_baseline": 18,
+    "targeted_baseline_mismatches": 0,
+    "target_preimage_hashes_by_unique_skill": {
+      "problem-parser": "08b2ebc5e1990b94b0667dbdb097eae82016901123c33247a0adf4c4a5848eb6",
+      "workflow-orchestrator": "e21bd791faa435043be6cf11d038acc22c81746d3c3427aa7c9581e0c81121eb",
+      "method-selector": "964bf84e721d455eef541ec7b8918b117dfcc9bbe84a74a1731f2389c792034a",
+      "model-code-analyzer": "6b68d5e1bc786e2e3a1574e6c1cc1af596623f6165ee22083c4dfd9becd723b2",
+      "python-code-reviewer": "5927bebd330bc12c65ed3d049ce27244b8dafb4caa9e05b1b6f6e77a11021f83",
+      "matlab-code-reviewer": "9b6bea5e2d5d6f84bcde032602a66b6a9d76d618501e49b448ac087365c13b4e"
+    },
+    "unique_skill_contracts_inspected": [
+      "workflow-orchestrator",
+      "problem-parser",
+      "problem-classifier",
+      "data-auditor-cleaner",
+      "method-selector",
+      "model-assumptions-builder",
+      "model-code-analyzer",
+      "python-model-code-generator",
+      "python-code-reviewer",
+      "matlab-code-reviewer",
+      "robustness-checker",
+      "result-report-generator",
+      "completeness-auditor",
+      "consistency-auditor",
+      "quality-assurance-auditor"
+    ]
+  },
+  "cross_year_patterns": [
+    {
+      "pattern_id": "PAT-B01",
+      "name": "决策时点、状态与可见信息先于方法选择",
+      "classification": "RECURRING_PATTERN",
+      "support_years": [2018, 2020, 2024],
+      "claim": "动态或分阶段题必须先说明何时决策、当时可观察什么、哪些未来信息不可用以及状态如何更新，否则方法可能产生前视泄漏或错误策略。",
+      "evidence_refs": [
+        {"source_path": "cumcm-b-skill/analysis/lean/b_training_problem_contracts.json", "locator": "$.contracts[?(@.year==2018)].subquestions; $.contracts[?(@.year==2020)].subquestions; $.contracts[?(@.year==2024)].subquestions", "source_role": "derived_artifact"},
+        {"source_path": "cumcm-b-skill/analysis/lean/b_training_source_matrix.json", "locator": "$.rows[?(@.paper in ['B217','B125','B195'])]", "source_role": "derived_artifact"}
+      ]
+    },
+    {
+      "pattern_id": "PAT-B02",
+      "name": "硬可行性、优化目标与报告指标必须分层",
+      "classification": "RECURRING_PATTERN",
+      "support_years": [2022, 2023, 2024],
+      "claim": "存在多指标时，必须区分不可违反的约束、要优化的目标和只需报告的指标；未获人工确认时不能静默加权或用更优目标值掩盖不可行解。",
+      "evidence_refs": [
+        {"source_path": "cumcm-b-skill/analysis/lean/b_training_problem_contracts.json", "locator": "$.contracts[?(@.year in [2022,2023,2024])].global_constraints; $.contracts[?(@.year in [2022,2023,2024])].subquestions", "source_role": "derived_artifact"},
+        {"source_path": "cumcm-b-skill/analysis/lean/b_training_source_matrix.json", "locator": "$.rows[?(@.paper in ['B035','B311','B195'])]", "source_role": "derived_artifact"}
+      ]
+    },
+    {
+      "pattern_id": "PAT-B03",
+      "name": "跨问依赖需要传递具体产物与不确定性",
+      "classification": "RECURRING_PATTERN",
+      "support_years": [2021, 2022, 2023, 2024],
+      "claim": "后续子问题经常消费前问的关系、参数、几何模型或抽检结果；只记录依赖的题号不足以防止使用未完成、已变化或不确定性未传递的上游结果。",
+      "evidence_refs": [
+        {"source_path": "cumcm-b-skill/analysis/lean/b_training_problem_contracts.json", "locator": "$.contracts[?(@.year in [2021,2022,2023,2024])].subquestions[*].dependencies", "source_role": "derived_artifact"},
+        {"source_path": "cumcm-b-skill/analysis/lean/b_training_synthesis.md", "locator": "年度并列", "source_role": "derived_artifact"}
+      ]
+    },
+    {
+      "pattern_id": "PAT-B04",
+      "name": "主方法、可用baseline与风险定向验证分工",
+      "classification": "RECURRING_PATTERN",
+      "support_years": [2018, 2021, 2022, 2023, 2024],
+      "claim": "验证应围绕真实输出、可行性、扰动和不确定性，且作者自报结果不能替代可比较baseline或复现实验。",
+      "evidence_refs": [
+        {"source_path": "cumcm-b-skill/analysis/lean/b_training_synthesis.md", "locator": "跨年模式; 失败模式与护栏", "source_role": "derived_artifact"},
+        {"source_path": "cumcm-b-skill/analysis/lean/b_training_source_matrix.json", "locator": "$.rows[*].validation_robustness", "source_role": "derived_artifact"}
+      ]
+    }
+  ],
+  "gap_items": [
+    {
+      "gap_id": "GAP-B01",
+      "status": "UNDER_SPECIFIED",
+      "pattern_ids": ["PAT-B01"],
+      "current_contract": "problem-parser记录inputs、unknowns_or_decisions、constraints与uncertainty，但JSON契约没有决策顺序、决策时可见信息、禁用未来信息或状态更新字段；method-selector未显式要求用这些边界排除前视方法。",
+      "upstream_evidence_refs": [
+        {"source_path": "github下载的skill/.codex/skills/problem-parser/SKILL.md", "locator": "# Workflow step 3; # JSON Contract", "source_role": "upstream_capability"},
+        {"source_path": "github下载的skill/.codex/skills/method-selector/SKILL.md", "locator": "# Workflow steps 2-5; # Method Card Contract", "source_role": "upstream_capability"}
+      ],
+      "possible_consequence": "全知与部分信息策略被混用、训练/决策时点泄漏、动态策略退化为事后最优路径。",
+      "minimal_direction": "只在适用题型增加decision_context，并让方法筛查拒绝使用决策时不可见的信息。",
+      "regression_risk": "若字段对所有简单题强制展开，会增加无效提问和文档负担；因此必须允许NOT_APPLICABLE。",
+      "observable_acceptance": "部分信息测试题中，任何读取未来信息的候选必须FAIL或CONDITIONAL；静态题不增加选择卡。"
+    },
+    {
+      "gap_id": "GAP-B02",
+      "status": "UNDER_SPECIFIED",
+      "pattern_ids": ["PAT-B02"],
+      "current_contract": "problem-parser分开记录constraints与success_criteria，method-selector要求从hard constraints和human trade-offs出发，reviewer也检查objectives/constraints；但没有一个跨阶段结构明确每个量是hard_constraint、optimization_objective还是report_only，也没有禁止未授权标量化。",
+      "upstream_evidence_refs": [
+        {"source_path": "github下载的skill/.codex/skills/problem-parser/SKILL.md", "locator": "# JSON Contract", "source_role": "upstream_capability"},
+        {"source_path": "github下载的skill/.codex/skills/method-selector/SKILL.md", "locator": "# Workflow steps 1-4; ## Human constraints", "source_role": "upstream_capability"},
+        {"source_path": "github下载的skill/.codex/skills/model-code-analyzer/SKILL.md", "locator": "# Run Summary Contract; # Code Plan Contents", "source_role": "upstream_capability"}
+      ],
+      "possible_consequence": "用更短、更高收益或更低误差的不可行解获胜，或AI静默决定权重、优先级和阈值。",
+      "minimal_direction": "增加objective_contract并贯穿方法卡、代码计划与run summary；先报告约束违反，再比较目标；未决权衡生成一张人工选择卡。",
+      "regression_risk": "与既有success_criteria重复；应保持单一权威字段并让旧工作区兼容迁移。",
+      "observable_acceptance": "多目标测试中不允许未授权加权；不可行解即使目标更优也不能通过output_contract。"
+    },
+    {
+      "gap_id": "GAP-B03",
+      "status": "MISSING_GUARDRAIL",
+      "pattern_ids": ["PAT-B03"],
+      "current_contract": "problem-parser的dependencies仅为题号列表；workflow-orchestrator明确逐Q独立评估，G1-G4没有检查下游Q所需的具体上游产物、版本、状态或不确定性。model-assumptions-builder只在后续识别跨Q假设冲突，不能替代执行前门禁。",
+      "upstream_evidence_refs": [
+        {"source_path": "github下载的skill/.codex/skills/problem-parser/SKILL.md", "locator": "# JSON Contract: dependencies", "source_role": "upstream_capability"},
+        {"source_path": "github下载的skill/.codex/skills/workflow-orchestrator/SKILL.md", "locator": "# Gate Evaluation: Evaluate each Qx independently; G1-G4", "source_role": "upstream_capability"},
+        {"source_path": "github下载的skill/.codex/skills/model-assumptions-builder/SKILL.md", "locator": "# Workflow steps 3-4", "source_role": "upstream_capability"}
+      ],
+      "possible_consequence": "下游代码消费尚未审定或已变更的上游结果，且上游误差、单位或适用域没有进入下游验证。",
+      "minimal_direction": "把适用的dependency记录为上游产物/所需状态/版本或哈希/要传播的不确定性；编排器只对存在真实依赖的Q执行先决门禁。",
+      "regression_risk": "若误把概念性参考当硬依赖，会不必要地串行化独立问题；依赖必须由题面或人工确认。",
+      "observable_acceptance": "依赖型Q在必需上游产物缺失或过期时被阻止，独立Q仍可并行推进。"
+    }
+  ],
+  "already_covered": [
+    {
+      "capability": "附件映射、原始数据只读、字段/单位/缺失和按Q readiness",
+      "status": "ALREADY_COVERED",
+      "evidence_ref": {"source_path": "github下载的skill/.codex/skills/data-auditor-cleaner/SKILL.md", "locator": "# Workflow steps 1-6; # Verification", "source_role": "upstream_capability"}
+    },
+    {
+      "capability": "主候选、真实可用baseline、至多一个条件fallback及人工选法",
+      "status": "ALREADY_COVERED",
+      "evidence_ref": {"source_path": "github下载的skill/.codex/skills/method-selector/SKILL.md", "locator": "# Workflow steps 1-7; # Verification", "source_role": "upstream_capability"}
+    },
+    {
+      "capability": "退化/集中度、敏感性、尺度、可行性与风险定向稳健性",
+      "status": "ALREADY_COVERED",
+      "evidence_ref": {"source_path": "github下载的skill/AGENTS.md", "locator": "# Risk Probe Contract", "source_role": "upstream_capability"}
+    },
+    {
+      "capability": "假设来源、必要性/影响的人类判断及跨Q冲突",
+      "status": "ALREADY_COVERED",
+      "evidence_ref": {"source_path": "github下载的skill/.codex/skills/model-assumptions-builder/SKILL.md", "locator": "# Workflow; # Assumption Fields", "source_role": "upstream_capability"}
+    },
+    {
+      "capability": "lean模式不制造仪式性报告，final才做三层审计",
+      "status": "ALREADY_COVERED",
+      "evidence_ref": {"source_path": "github下载的skill/.codex/skills/workflow-orchestrator/SKILL.md", "locator": "# Rigor Profiles; G6", "source_role": "upstream_capability"}
+    },
+    {
+      "capability": "数值、符号、参数、决策与论文主张的最终一致性和证据冻结",
+      "status": "ALREADY_COVERED",
+      "evidence_ref": {"source_path": "github下载的skill/.codex/skills/consistency-auditor/SKILL.md", "locator": "# Sources of Truth; # Checks", "source_role": "upstream_capability"}
+    }
+  ],
+  "case_specific_no_change": [
+    "2018具体RGV派工原则",
+    "2020某一关卡路线或资源系数",
+    "2021特定化学反应拟合函数",
+    "2022圆形/锥形编队几何技巧",
+    "2023多波束覆盖公式和具体搜索算法",
+    "2024具体抽检阈值或收益参数"
+  ],
+  "proposed_change_bundles": [
+    {
+      "change_id": "CHG-B01",
+      "name": "题意结构与门禁贯通",
+      "status": "EDIT_EXISTING_SKILL",
+      "covers_gaps": ["GAP-B01", "GAP-B02", "GAP-B03"],
+      "unique_skills": ["problem-parser", "method-selector", "workflow-orchestrator"],
+      "target_file_count_with_three_mirrors": 9,
+      "target_paths": [
+        ".claude/skills/problem-parser/SKILL.md",
+        ".codex/skills/problem-parser/SKILL.md",
+        "plugins/mathmodeling-skills/skills/problem-parser/SKILL.md",
+        ".claude/skills/method-selector/SKILL.md",
+        ".codex/skills/method-selector/SKILL.md",
+        "plugins/mathmodeling-skills/skills/method-selector/SKILL.md",
+        ".claude/skills/workflow-orchestrator/SKILL.md",
+        ".codex/skills/workflow-orchestrator/SKILL.md",
+        "plugins/mathmodeling-skills/skills/workflow-orchestrator/SKILL.md"
+      ],
+      "observable_behavior": [
+        "适用题才产生decision_context与objective_contract；简单静态单目标题保持紧凑。",
+        "方法筛查拒绝前视信息和未授权目标加权。",
+        "依赖型下游Q在上游必需产物缺失/过期时停止，独立Q不被阻塞。"
+      ],
+      "implementation_cost": "medium",
+      "priority": "human_to_decide",
+      "dependencies": []
+    },
+    {
+      "change_id": "CHG-B02",
+      "name": "执行与代码审查强制兑现",
+      "status": "EDIT_EXISTING_SKILL",
+      "covers_gaps": ["GAP-B01", "GAP-B02", "GAP-B03"],
+      "unique_skills": ["model-code-analyzer", "python-code-reviewer", "matlab-code-reviewer"],
+      "target_file_count_with_three_mirrors": 9,
+      "target_paths": [
+        ".claude/skills/model-code-analyzer/SKILL.md",
+        ".codex/skills/model-code-analyzer/SKILL.md",
+        "plugins/mathmodeling-skills/skills/model-code-analyzer/SKILL.md",
+        ".claude/skills/python-code-reviewer/SKILL.md",
+        ".codex/skills/python-code-reviewer/SKILL.md",
+        "plugins/mathmodeling-skills/skills/python-code-reviewer/SKILL.md",
+        ".claude/skills/matlab-code-reviewer/SKILL.md",
+        ".codex/skills/matlab-code-reviewer/SKILL.md",
+        "plugins/mathmodeling-skills/skills/matlab-code-reviewer/SKILL.md"
+      ],
+      "observable_behavior": [
+        "代码计划和run summary记录适用的信息边界、目标向量、约束违反及上游产物身份。",
+        "reviewer在前视泄漏、未授权标量化、不可行解或陈旧上游输入时给对应命名检查FAIL。",
+        "现有generator继续遵循model-code-analyzer schema，无需额外修改。"
+      ],
+      "implementation_cost": "medium",
+      "priority": "human_to_decide",
+      "dependencies": ["CHG-B01"]
+    }
+  ],
+  "behavioral_status": "UNVERIFIED",
+  "behavioral_status_reason": "P9只读审计确认文字契约的覆盖与缺口；候选行为必须在P11测试，不能把文本缺失直接声称为已复现故障。",
+  "human_choice": {
+    "decision_id": "P10-B-LEAN-CORE-20260907",
+    "status": "WAITING_HUMAN",
+    "card_path": "cumcm-b-skill/planning/change_choice_card.md"
+  },
+  "evidence_refs": [
+    {"source_path": "cumcm-b-skill/analysis/lean/b_training_problem_contracts.json", "locator": "$.contracts", "source_role": "derived_artifact"},
+    {"source_path": "cumcm-b-skill/analysis/lean/b_training_source_matrix.json", "locator": "$.rows", "source_role": "derived_artifact"},
+    {"source_path": "cumcm-b-skill/analysis/lean/b_training_synthesis.md", "locator": "跨年模式; 失败模式与护栏", "source_role": "derived_artifact"},
+    {"source_path": "cumcm-b-skill/baseline/upstream_architecture.md", "locator": "Skill名称; 多副本与分发架构; 工作流入口关系", "source_role": "upstream_baseline"},
+    {"source_path": "cumcm-b-skill/baseline/upstream_file_manifest.json", "locator": "$.source_tree_fingerprint; $.mirror_comparison; $.entries", "source_role": "upstream_baseline"}
+  ]
+}

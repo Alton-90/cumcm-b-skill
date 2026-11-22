@@ -1,0 +1,19 @@
+{
+  "release": "B-LEAN-20260910-R6",
+  "status": "LOCAL_CANDIDATE_NOT_INSTALLED",
+  "plugin_version": "0.3.0",
+  "schema_version": 2,
+  "schema_count": 17,
+  "runtime_tests_passed": 28,
+  "skill_format_checks_passed": 28,
+  "files_per_skill_tree": 69,
+  "mirrors": "BYTE_IDENTICAL",
+  "standalone_cli_help": "PASS",
+  "old_schema_templates_removed": 5,
+  "limits": [
+    "not a host-enforced security boundary",
+    "semantic truth and human identity not authenticated",
+    "legacy workspaces need explicit migration",
+    "no full contest performance comparison"
+  ]
+}

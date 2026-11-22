@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "contract_id": "P15-2025C-Q4-SPLIT-ROBUSTNESS-001",
+  "predeclared_at": "2026-09-08T15:06:15.9262854+08:00",
+  "reason": "The accepted nested CV meets the aggregate sensitivity target, but one of five outer folds is below 0.90 for each method. Alternate woman-fold assignments are the only unresolved check likely to change the Q4 claim.",
+  "tested_claim": "M4's aggregate sensitivity feasibility and specificity advantage over B4 are not artifacts of the single deterministic woman-fold assignment.",
+  "fixed_seeds": [20250817, 20250829, 20250911, 20250923, 20251007, 20251019, 20251103],
+  "fixed_methods": {"M4_ridge": 0.08, "B4_ridge": 0.02, "outer_folds": 5, "inner_folds": 4, "minimum_sensitivity": 0.90},
+  "no_repeat_checks": ["official GC sensitivity", "doubled ridge penalty", "label-unit audit", "current accepted split"],
+  "status_rules": {
+    "PASS": "all fits converge; M4 meets aggregate sensitivity >=0.90 with specificity >0 and flagged fraction <0.95 in at least 6/7 seeds; M4 specificity exceeds B4 in at least 6/7 paired seeds; median specificity gain exceeds 0.10",
+    "CONDITIONAL": "all fits converge and both feasibility/dominance counts are at least 5/7, but a PASS condition is missed",
+    "FAIL": "any nonconvergence, feasibility count below 5/7, dominance count below 5/7, or nonpositive median specificity gain"
+  },
+  "fallback_rule": "F4 becomes decision-relevant if the result is FAIL; CONDITIONAL requires a bounded claim that explicitly denies a per-split or per-fold 90% guarantee.",
+  "input_sha256": "14827156218bd4f7e4f16db4aa6d9f757c6648379e038ae6c6b58383648614af",
+  "external_comparison_allowed": false
+}

@@ -1,0 +1,25 @@
+{
+  "schema_version":"L1_DISTILLATION_QA_V2",
+  "status":"PASS_WITH_WARNINGS",
+  "scope_checks":{
+    "years_expected":[2018,2020,2021,2022,2023,2024],
+    "years_in_contract":6,
+    "training_papers_expected":19,
+    "training_papers_in_matrix":19,
+    "paper_distribution":{"2018":3,"2020":3,"2021":4,"2022":3,"2023":3,"2024":3},
+    "representative_deep_reads":6,
+    "representatives":["B217","B125","B026","B035","B311","B195"],
+    "all_json_parseable":true,
+    "all_evidence_source_paths_exist":true,
+    "empty_years":[],
+    "empty_required_outputs":[],
+    "subquestion_field_completeness":{"subquestion_count":21,"required_fields":["goal","inputs","unknowns_or_decisions","constraints","required_outputs","success_criteria","dependencies","proposed_relationships","ambiguities"],"missing_fields":[],"fields_allowed_empty":["proposed_relationships","ambiguities","dependencies"],"constraints_empty":[],"required_outputs_empty":[]},
+    "label_completeness":{"SOURCE_FACT":true,"AUTHOR_METHOD":true,"AUTHOR_RESULT":true,"AGENT_SYNTHESIS":true,"UNVERIFIED":true}
+  },
+  "read_allowlist":["allowed official derived texts for 2018/2020/2021/2022/2024","approved 2023 B题.rar members B题.pdf and 附件.xlsx only","19 derived training-paper texts exactly enumerated by source-matrix evidence_refs"],
+  "holdout_checks":{"2025_formal_problem_read":false,"2025_outstanding_paper_read":false,"2025_expert_commentary_read":false,"2025_answer_type_or_derived_content_referenced":false,"holdout_reference_count":0},
+  "warnings":["2020 resource/multi-player formulas are FORMULA_UNREADABLE; no coefficients inferred.","2018 embedded diagrams and 2024 OCR symbols/numbers have recoverability limits.","2021 attachment texts provide workbook structure, not emitted cell values.","2023 temporary extraction read B题.pdf SHA-256 e709e066139ea0a4bb64aa7e56ea097725a1f2b4e5161fc8c7e50c48be079396 and 附件.xlsx SHA-256 5f92dee1af5906869bd7dca45d73b90090bb971d882beb7d8461c6b563eee40a; original B题.rar SHA-256 remained 1dfc6819efedb2d8c349276ef503dd1ceeee7a7ee2e15996b4ced37dc058d374; result1.xlsx/result2.xlsx were not read.","Paper methods/results remain evidence-layered, not independent validation or method selection."],
+  "artifact_paths":["cumcm-b-skill/analysis/lean/b_training_problem_contracts.json","cumcm-b-skill/analysis/lean/b_training_source_matrix.json","cumcm-b-skill/analysis/lean/b_training_synthesis.md","cumcm-b-skill/qa/lean/L1_distillation_qa.json"],
+  "qa_evidence":[{"source_path":"cumcm-b-skill/planning/lean_execution_profile.json","locator":"execution_blocks[L1_P6_P8_DISTILL]; non_negotiable_gates","source_role":"authorized_profile"},{"source_path":"cumcm-b-skill/derived/text/batch_queue.json","locator":"G2_REFERENCE_CLASSIC_PAPERS and G3_OUTSTANDING_PAPERS: 19 non-holdout training papers including JOB-0b7b4ef2352/B125","source_role":"frozen_queue"},{"source_path":"cumcm-b-skill/planning/corpus_manifest.json","locator":"2023 B题.rar membership and source metadata","source_role":"corpus_manifest"}],
+  "final_decision":"PASS_WITH_WARNINGS"
+}

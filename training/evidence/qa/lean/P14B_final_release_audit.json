@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "audit_id": "P14B-FINAL-RELEASE-AUDIT-001",
+  "audit_type": "lean_skill_release_integration",
+  "rigor_profile": "lean",
+  "audited_at": "2026-09-08T08:28:02.2292202+08:00",
+  "verdict": "PASS_FORMAL_RELEASE_COMPLETE",
+  "release_identity": {
+    "release_id": "B-LEAN-20260908-R2",
+    "release_manifest_sha256": "6606db913d21e1edec8d5c147c48bb9a61d0fd3e5bf61af3b7b7a464cac1e1b5",
+    "full_release_diff_sha256": "518e021624bc670bf047cd8e75761cdf8bf83686d4bd26b611def1adcbea6097",
+    "integration_plan_sha256": "0b366b02aab3497aae4a4b136f9e634b4eeb719a7e74e6b8d7f41ee3c0c448fb"
+  },
+  "authorization": {
+    "status": "APPROVED_BY_HUMAN",
+    "decision_id": "P14-FORMAL-INTEGRATION-APPROVAL-001",
+    "approval_record_sha256": "0b951326aff74bf1d470b2192c031eced3ee4edcdc21af17e87ffb43312c4d11"
+  },
+  "independent_terminal_checks": {
+    "formal_target_file_count": 145,
+    "release_manifest_file_count": 145,
+    "formal_target_hash_mismatch_count": 0,
+    "authorized_existing_file_write_count": 18,
+    "added_file_count": 0,
+    "deleted_file_count": 0,
+    "rollback_manifest_sha256": "6f53d4544de7ceb795e524690a9eb37af23638488040dc4b733412431e2e1b0e",
+    "rollback_storage_prefix": "target/",
+    "rollback_payload_file_count": 18,
+    "rollback_hash_mismatch_count": 0,
+    "rollback_paths_equal_authorized_paths": true,
+    "three_way_mirror_groups_passed": 6,
+    "three_way_mirror_groups_total": 6,
+    "quick_validate_passed": 18,
+    "quick_validate_total": 18,
+    "behavior_fixture_assertions_passed": 36,
+    "behavior_fixture_assertions_total": 36,
+    "behavior_model_execution": "NOT_RUN: structured contract fixtures only"
+  },
+  "execution_evidence": {
+    "execution_report_status": "PASS_FORMAL_INTEGRATION_COMPLETE",
+    "execution_report_sha256": "917eff8a7a128efa7bcf952984f96660253aacbc88401e498a8c7680e85c4d39",
+    "git_apply_check": "PASS",
+    "git_apply": "PASS",
+    "rollback_used": false
+  },
+  "full_submission_qa": {
+    "status": "NOT_RUN_PRECONDITIONS_NOT_APPLICABLE",
+    "reason": "quality-assurance-auditor final submission QA requires submission profile, per-subquestion G5 completion, and prior consistency/completeness audits. This artifact is a lean reusable Skill release, not a contest-paper submission; claiming that audit would be semantically invalid. The scoped release-integration audit above is the applicable terminal check."
+  },
+  "warnings": [
+    {
+      "severity": "NONBLOCKING",
+      "code": "FORMAL_TARGET_HAS_NO_GIT_METADATA",
+      "detail": "The formal target is not a Git repository, so git status cannot be used. Exact SHA-256 comparison of all 145 files against the frozen release manifest is used as the integrity authority."
+    },
+    {
+      "severity": "NONBLOCKING",
+      "code": "ROLLBACK_PATH_PREFIX_EXPLICIT",
+      "detail": "backup_manifest.json paths are relative to the rollback package's target/ directory, not to the package root; all 18 payload hashes were independently verified with that prefix."
+    }
+  ],
+  "usage_reset_credit_consumed": false,
+  "evidence_refs": [
+    "cumcm-b-skill/p14/formal_integration_approval_record.json",
+    "cumcm-b-skill/p14/formal_integration_execution_report.json",
+    "cumcm-b-skill/p14/formal_target_behavior_test_results.json",
+    "cumcm-b-skill/p14/integration_plan.json",
+    "cumcm-b-skill/releases/B-LEAN-20260908-R2/release_manifest.json",
+    "cumcm-b-skill/planning/history/20260908_082313_P14B-TARGET-ROLLBACK/backup_manifest.json"
+  ]
+}

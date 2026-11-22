@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "review_id": "P12A-CONTROLLER-20260907-182147",
+  "reviewed_at": "2026-09-07T18:21:47+08:00",
+  "phase": "P12A",
+  "release_id": "B-LEAN-20260907-R1",
+  "verdict": "PASS_AT_WAITING_HUMAN",
+  "accepted_scope": "Problem parsing, subquestion classification, read-only attachment audit, and the first genuine human choice card.",
+  "not_accepted_as": "BLIND_RUN_COMPLETE",
+  "terminal_state": {
+    "status": "WAITING_HUMAN",
+    "blind_run_completion": "NOT_COMPLETE_WAITING_HUMAN",
+    "decision_id": "FRAMING-2025B-001",
+    "decision_status": "PENDING_HUMAN",
+    "current_workflow_gate": "G1_PROBLEM_FRAMED_WAITING_HUMAN_FRAMING"
+  },
+  "independent_checks": {
+    "machine_outputs": {
+      "json_files": 14,
+      "json_parse_errors": 0,
+      "jsonl_files": 1,
+      "jsonl_parse_errors": 0
+    },
+    "candidate_freeze": {
+      "expected_files": 145,
+      "actual_files": 145,
+      "hash_mismatches": 0,
+      "candidate_manifest_sha256": "a436a4f2a62eb4218e235d50a073f962bf65de589e14f3ac654502291b028eea",
+      "candidate_manifest_hash_match": true
+    },
+    "official_input_freeze": {
+      "files": 5,
+      "hash_or_size_mismatches": 0
+    },
+    "formal_target_integrity": {
+      "baseline_files": 145,
+      "actual_files": 145,
+      "hash_mismatches": 0,
+      "baseline_tree_fingerprint": "613c2b5c21ca3007c3dd2b31ee0a1b49154b3925da3fd3990660fc3093a562c1"
+    },
+    "access_control": {
+      "access_log_rows": 64,
+      "non_allow_rows": 0,
+      "deny_body_access_rows": 0,
+      "answer_holdout_accessed": false
+    },
+    "choice_card": {
+      "decision_id_matches_state": true,
+      "mutually_exclusive_option_ids": ["A", "B", "C", "D"],
+      "ai_recommendation_is_null": true,
+      "stop_after_emit": true,
+      "genuine_materiality": "The official input states wavelength/carrier dependence of refractive index but supplies no function, parameter, or carrier concentration; the policy changes identifiability and the defensible output form."
+    },
+    "scope_stop": {
+      "method_directory_absent": true,
+      "results_directory_absent": true,
+      "P12B_started": false
+    },
+    "visual_source_check": {
+      "rendered_pdf_pages_reviewed": 2,
+      "problem_statements_and_attachment_mapping_legible": true
+    }
+  },
+  "warnings": [
+    "The executor's first filename-only lookup was accidentally drive-rooted and returned permission errors; it was immediately corrected, and the prospective log plus independent review found no DENY body access.",
+    "An append-only pre-correction log row described the P12A slice as complete; terminal machine state and verification were corrected to NOT_COMPLETE_WAITING_HUMAN without deleting history.",
+    "A2 contains 262 reflectance readings above 100 percent (maximum 102.7393552); this remains an unresolved future method/data-quality risk and was not silently clipped."
+  ],
+  "next_action": "Wait for the user's explicit answer to FRAMING-2025B-001. Append that answer verbatim to the blind workspace decision ledger before starting only the next authorized P12B gate. Do not access B060, B157, or the locked expert commentary.",
+  "evidence_refs": [
+    {
+      "source_path": "cumcm-b-skill/tests/holdout/2025B/B-LEAN-20260907-R1/test_state.json",
+      "locator": "$.status; $.blind_run_completion; $.decision_id; $.decision_status",
+      "source_role": "blind_test_terminal_state"
+    },
+    {
+      "source_path": "cumcm-b-skill/tests/holdout/2025B/B-LEAN-20260907-R1/verification_report.json",
+      "locator": "$.candidate; $.official_inputs; $.access_control; $.state_consistency_checks; $.blind_run_complete",
+      "source_role": "executor_verification"
+    },
+    {
+      "source_path": "cumcm-b-skill/tests/holdout/2025B/B-LEAN-20260907-R1/access_log.jsonl",
+      "locator": "64 prospective entries through CLOSURE_REVERIFICATION_SET",
+      "source_role": "prospective_access_log"
+    },
+    {
+      "source_path": "cumcm-b-skill/tests/holdout/2025B/B-LEAN-20260907-R1/contest_workspace/planning/first_human_choice_card.json",
+      "locator": "$.choice_card",
+      "source_role": "pending_human_decision"
+    },
+    {
+      "source_path": "cumcm-b-skill/planning/history/20260907_182147_P12A-WAITING-HUMAN-BEFORE/backup_manifest.json",
+      "locator": "$.files",
+      "source_role": "versioned_before_state"
+    }
+  ]
+}

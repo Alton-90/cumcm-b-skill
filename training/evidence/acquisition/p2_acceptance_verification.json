@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "record_type": "P2_HUMAN_ACCEPTANCE_VERIFICATION",
+  "generated_at": "2026-09-04T20:06:07.6668333+08:00",
+  "decision_id": "P2A-ACCEPT-557133fe-f15d-4371-971c-627792e2e0e9",
+  "verdict": "PASSED",
+  "change_impact": "CANONICAL",
+  "artifact_verification": {
+    "path": "cumcm-b-skill/acquisition/staging/SRC-b4fce6295e11/page_071.jpeg",
+    "approved_sha256": "3564b53ca41681200dc3136a3815dd76faa75463b87c6f6fda592dfece413961",
+    "actual_sha256": "3564b53ca41681200dc3136a3815dd76faa75463b87c6f6fda592dfece413961",
+    "match": true,
+    "still_in_staging": true,
+    "moved": false
+  },
+  "provenance_verification": {
+    "path": "cumcm-b-skill/acquisition/staging/SRC-b4fce6295e11/page_071.provenance.json",
+    "file_sha256": "f3f22ecacf1d5d27dbcfbdea096059cb28d5b946739c7ddb5d7bc373aef21227",
+    "json_parseable": true,
+    "issue_id_matches": true,
+    "source_id_matches": true,
+    "page_matches": true,
+    "source_url_matches": true,
+    "sha256_matches": true,
+    "validation_result_matches": true
+  },
+  "ledger_verification": {
+    "path": "cumcm-b-skill/acquisition/acceptance_ledger.jsonl",
+    "sha256": "917bfb949d548e8037a9f7ff8fa55ed4529153cf9699af2e5d2763327806f380",
+    "jsonl_parseable": true,
+    "nonblank_record_count": 1,
+    "decision_record_found": true,
+    "exact_human_decision_matches": true,
+    "artifact_and_provenance_traceable": true
+  },
+  "version_backups": {
+    "directory": "cumcm-b-skill/planning/history/20260904_200237_P2-ACCEPT",
+    "corpus_manifest": {
+      "before_sha256": "de55fcfd7af3ceea467098c4d0b8f871d341d7131df5357e551e2eb39f50b258",
+      "backup_sha256": "de55fcfd7af3ceea467098c4d0b8f871d341d7131df5357e551e2eb39f50b258",
+      "match": true,
+      "after_sha256": "096945f5851479d333f3001443c28ceba491603b8c653c9b9abc6d09ef3f96db"
+    },
+    "workflow_manifest": {
+      "before_sha256": "0726d379d56c26e2738fcf36fafc87881b1fc3b99616a3ab2ac9ecc11c5abd6e",
+      "backup_sha256": "0726d379d56c26e2738fcf36fafc87881b1fc3b99616a3ab2ac9ecc11c5abd6e",
+      "match": true,
+      "after_sha256": "e182281678481956e1195ff7aa9b1aeed03f39f206da04fece1723205d54a5bd"
+    }
+  },
+  "corpus_manifest_verification": {
+    "issue_status": "RESOLVED_BY_ACCEPTED_STAGING_ARTIFACT",
+    "effective_derived_input_status": "COMPLETE_WITH_ACCEPTED_STAGING_OVERLAY",
+    "original_completeness_status": "OBSERVED_SEQUENCE_HAS_GAPS",
+    "original_observed_pages_unchanged": true,
+    "original_page_sequence_count": 74,
+    "page_071_added_to_original_sequence": false,
+    "original_corpus_modified": false
+  },
+  "workflow_manifest_verification": {
+    "P2_status": "complete",
+    "human_acceptance_status": "ACCEPTED",
+    "P3_status": "pending",
+    "P4_through_P14_statuses_unchanged": true,
+    "P4_through_P14_status": "pending"
+  },
+  "protected_directories": {
+    "verification_method": "SHA-256 over sorted metadata-only lines. Directories: D|relative_path|mtime_utc_ticks|attributes. Files: F|relative_path|length|mtime_utc_ticks|attributes. Protected file contents, including holdouts, were not opened for this check.",
+    "CUMCM_B题skill训练宝": {
+      "directory_count_before": 86,
+      "directory_count_after": 86,
+      "file_count_before": 1504,
+      "file_count_after": 1504,
+      "digest_before": "ab511631588e1e35d93fbe5ccb0ad342d56b03cdc4aa3fdcbf68310616d3b926",
+      "digest_after": "ab511631588e1e35d93fbe5ccb0ad342d56b03cdc4aa3fdcbf68310616d3b926",
+      "comparison": "identical"
+    },
+    "github下载的skill": {
+      "directory_count_before": 116,
+      "directory_count_after": 116,
+      "file_count_before": 145,
+      "file_count_after": 145,
+      "digest_before": "cce892e0240a9fc2c94a821e5c2b065e82ac18031bbc83ae905f0e762b3f51ca",
+      "digest_after": "cce892e0240a9fc2c94a821e5c2b065e82ac18031bbc83ae905f0e762b3f51ca",
+      "comparison": "identical"
+    }
+  },
+  "scope_compliance": {
+    "P3_started": false,
+    "pdf_generated": false,
+    "artifact_copied_to_original_corpus": false,
+    "artifact_moved_from_staging": false,
+    "holdout_content_accessed": false,
+    "target_repository_modified": false
+  },
+  "evidence_refs": [
+    {
+      "source_path": "cumcm-b-skill/acquisition/staging/SRC-b4fce6295e11/page_071.jpeg",
+      "locator": "recomputed SHA-256 3564b53ca41681200dc3136a3815dd76faa75463b87c6f6fda592dfece413961",
+      "source_role": "derived_artifact",
+      "supports": "The accepted artifact exists in staging and exactly matches the approved hash."
+    },
+    {
+      "source_path": "cumcm-b-skill/acquisition/staging/SRC-b4fce6295e11/page_071.provenance.json",
+      "locator": "$.issue_id; $.source_id; $.page; $.source_url; $.sha256; $.validation_result; file SHA-256 f3f22ecacf1d5d27dbcfbdea096059cb28d5b946739c7ddb5d7bc373aef21227",
+      "source_role": "derived_artifact",
+      "supports": "Every required provenance field matches the human-approved artifact and prior validation result."
+    },
+    {
+      "source_path": "cumcm-b-skill/acquisition/acceptance_ledger.jsonl",
+      "locator": "decision_id=P2A-ACCEPT-557133fe-f15d-4371-971c-627792e2e0e9; SHA-256 917bfb949d548e8037a9f7ff8fa55ed4529153cf9699af2e5d2763327806f380",
+      "source_role": "derived_artifact",
+      "supports": "The exact human ACCEPT decision is parseable and traces to the artifact and provenance with STAGING_OVERLAY_ONLY scope."
+    },
+    {
+      "source_path": "cumcm-b-skill/planning/history/20260904_200237_P2-ACCEPT/corpus_manifest.json and workflow_manifest.json",
+      "locator": "SHA-256 de55fcfd7af3ceea467098c4d0b8f871d341d7131df5357e551e2eb39f50b258 and 0726d379d56c26e2738fcf36fafc87881b1fc3b99616a3ab2ac9ecc11c5abd6e",
+      "source_role": "derived_artifact",
+      "supports": "Both pre-update manifest versions were preserved without byte changes."
+    },
+    {
+      "source_path": "cumcm-b-skill/planning/corpus_manifest.json",
+      "locator": "$.sources[?(@.source_id=='SRC-b4fce6295e11')].effective_derived_input_status; $.unresolved_issues[?(@.issue_id=='P1-U001')].resolution",
+      "source_role": "derived_artifact",
+      "supports": "The original missing-page fact is preserved separately from the accepted staging-overlay input status."
+    },
+    {
+      "source_path": "cumcm-b-skill/planning/workflow_manifest.json",
+      "locator": "$.phases.P2.human_acceptance; $.phases.P3.status; $.phases.P4 through $.phases.P14",
+      "source_role": "derived_artifact",
+      "supports": "P2 records ACCEPTED, P3 remains pending, and all later phases retain their prior states."
+    },
+    {
+      "source_path": "CUMCM_B题skill训练宝 and github下载的skill",
+      "locator": "before/after recursive metadata-only counts and digests recorded in $.protected_directories",
+      "source_role": "agent_inference",
+      "supports": "The protected directory trees are unchanged under the declared metadata-only verification method, without opening holdout file contents."
+    }
+  ]
+}

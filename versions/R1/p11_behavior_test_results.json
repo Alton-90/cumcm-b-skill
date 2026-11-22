@@ -1,0 +1,145 @@
+{
+  "suite": "P11 contract behavior",
+  "model_execution": "NOT_RUN: structured contract fixtures only",
+  "results": [
+    {
+      "id": "BT-01",
+      "status": "PASS",
+      "detail": "FAIL"
+    },
+    {
+      "id": "BT-02",
+      "status": "PASS",
+      "detail": "PASSED"
+    },
+    {
+      "id": "BT-03",
+      "status": "PASS",
+      "detail": [
+        "FAIL",
+        "FAIL"
+      ]
+    },
+    {
+      "id": "BT-04-downstream",
+      "status": "PASS",
+      "detail": "BLOCKED"
+    },
+    {
+      "id": "BT-04-independent",
+      "status": "PASS",
+      "detail": "PASS"
+    },
+    {
+      "id": "BT-05-lookahead",
+      "status": "PASS",
+      "detail": "FAIL"
+    },
+    {
+      "id": "BT-05-scalarization",
+      "status": "PASS",
+      "detail": "FAIL"
+    },
+    {
+      "id": "BT-05-infeasible",
+      "status": "PASS",
+      "detail": "FAIL"
+    },
+    {
+      "id": "BT-06-lookahead",
+      "status": "PASS",
+      "detail": "FAIL"
+    },
+    {
+      "id": "BT-06-scalarization",
+      "status": "PASS",
+      "detail": "FAIL"
+    },
+    {
+      "id": "BT-06-infeasible",
+      "status": "PASS",
+      "detail": "FAIL"
+    },
+    {
+      "id": "BT-06-runtime",
+      "status": "PASS",
+      "detail": "NOT_RUN"
+    },
+    {
+      "id": "BT-07",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-01-skill:problem-parser:# Workflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-01-skill:method-selector:# Workflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-02-skill:problem-parser:# Workflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-02-skill:python-code-reviewer:# Review Schema",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-03-skill:problem-parser:# JSON Contract",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-03-skill:method-selector:# Workflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-03-skill:python-code-reviewer:# Workflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-04-skill:workflow-orchestrator:# Gate Evaluation",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-04-skill:workflow-orchestrator:# Gate Evaluation",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-05-skill:python-code-reviewer:# Rules",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-06-skill:matlab-code-reviewer:# Workflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-06-skill:matlab-code-reviewer:# Verification",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-07-skill:model-code-analyzer:# Rules",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-07-skill:model-code-analyzer:# Run Summary Contract",
+      "status": "PASS",
+      "detail": true
+    }
+  ],
+  "overall": "PASS"
+}

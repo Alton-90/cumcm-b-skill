@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "test_id": "2025C-R2-BLIND-001",
+  "status": "FROZEN_BLIND_COMPLETE",
+  "test_kind": "sealed_forward_blind_evaluation",
+  "created_at": "2026-09-08T08:46:30+08:00",
+  "execution_profile": {
+    "interaction_mode": "learning",
+    "rigor_profile": "lean",
+    "quality_priority": true
+  },
+  "write_root": "cumcm-b-skill/tests/holdout/2025C/B-LEAN-20260908-R2/",
+  "baseline": {
+    "release_id": "B-LEAN-20260908-R2",
+    "repo": "cumcm-b-skill/releases/B-LEAN-20260908-R2/repo",
+    "release_manifest": "cumcm-b-skill/releases/B-LEAN-20260908-R2/release_manifest.json",
+    "release_manifest_sha256": "6606db913d21e1edec8d5c147c48bb9a61d0fd3e5bf61af3b7b7a464cac1e1b5",
+    "file_count": 145,
+    "hash_mismatch_count_at_start": 0,
+    "immutable": true
+  },
+  "official_inputs": [
+    {
+      "source_id": "SRC-d38facaf8b96",
+      "role": "problem",
+      "path": "CUMCM_B题skill训练宝/赛题/2025/C题/C题.pdf",
+      "size_bytes": 357653,
+      "sha256": "d54400f4bb9920c0d37f15f5b6bc161aa281c4b32c03c063efdeb739716eac08",
+      "prior_content_accessed": false
+    },
+    {
+      "source_id": "SRC-d38facaf8b96",
+      "role": "attachment",
+      "path": "CUMCM_B题skill训练宝/赛题/2025/C题/附件.xlsx",
+      "size_bytes": 481734,
+      "sha256": "14827156218bd4f7e4f16db4aa6d9f757c6648379e038ae6c6b58383648614af",
+      "prior_content_accessed": false
+    }
+  ],
+  "allow": [
+    "cumcm-b-skill/releases/B-LEAN-20260908-R2/repo/**",
+    "cumcm-b-skill/releases/B-LEAN-20260908-R2/release_manifest.json",
+    "CUMCM_B题skill训练宝/赛题/2025/C题/C题.pdf",
+    "CUMCM_B题skill训练宝/赛题/2025/C题/附件.xlsx",
+    "cumcm-b-skill/tests/holdout/2025C/B-LEAN-20260908-R2/**"
+  ],
+  "deny": [
+    {
+      "path": "CUMCM_B题skill训练宝/** except the two exact 2025 C official inputs",
+      "scope": "all file bodies"
+    },
+    {
+      "path": "cumcm-b-skill/analysis/**",
+      "scope": "all"
+    },
+    {
+      "path": "cumcm-b-skill/evidence/**",
+      "scope": "all"
+    },
+    {
+      "path": "cumcm-b-skill/references/**",
+      "scope": "all"
+    },
+    {
+      "path": "cumcm-b-skill/planning/project_memory.md",
+      "scope": "all"
+    },
+    {
+      "path": "cumcm-b-skill/tests/holdout/2025B/**",
+      "scope": "all"
+    },
+    {
+      "path": "network",
+      "scope": "all until blind output freeze"
+    }
+  ],
+  "user_preferences": {
+    "source": "current-thread human utterances",
+    "quality_priority": true,
+    "controller_orchestration_delegated": true,
+    "avoid_idle_or_repeated_work": true,
+    "modeling_choice_boundary": "Delegation does not fabricate a human method, interpretation, or claim-scope choice."
+  },
+  "required_checkpoint": {
+    "checkpoint_id": "2025C-G2-WAITING-HUMAN-METHOD",
+    "status": "SATISFIED_BY_Q1_HUMAN_DECISION",
+    "requirements": [
+      "Problem and attachment parsed with locators and unchanged hashes.",
+      "Per-subquestion manifests, data profile, and prospective analysis-domain eligibility are present.",
+      "A compact role-based method screen and applicable risk probes exist.",
+      "The first exact human-owned method decision card is emitted without preselecting a method for the human.",
+      "No executable final model is generated before that decision."
+    ],
+    "stop_after_checkpoint": false
+  },
+  "blind_run_complete": true,
+  "external_comparison_allowed": true,
+  "resolved_framing_decisions": [
+    {
+      "decision_id": "Q2Q3-RELIABILITY-2025C-001",
+      "choice": "B",
+      "record_id": "FRAMING-DEC-001",
+      "decided_at": "2026-09-08T14:00:08.0113099+08:00"
+    },
+    {
+      "decision_id": "Q4-ERROR-TRADEOFF-2025C-001",
+      "choice": "A",
+      "record_id": "FRAMING-DEC-002",
+      "decided_at": "2026-09-08T14:00:08.0113099+08:00"
+    }
+  ],
+  "resolved_method_decisions": [
+    {
+      "decision_id": "Q1-METHOD-2025C-001",
+      "choice": "A",
+      "decided_by": "human"
+    },
+    {
+      "decision_id": "Q2-METHOD-2025C-001",
+      "choice": "A",
+      "main": "M2",
+      "usable_baseline": "B2",
+      "active_fallback": "F2",
+      "decided_by": "controller_under_standing_user_authorization"
+    },
+    {
+      "decision_id": "Q3-METHOD-2025C-001",
+      "choice": "A",
+      "main": "M3",
+      "usable_baseline": "B3",
+      "active_fallback": "F3",
+      "decided_by": "controller_under_standing_user_authorization"
+    },
+    {
+      "decision_id": "Q4-METHOD-2025C-001",
+      "choice": "A",
+      "main": "M4",
+      "usable_baseline": "B4",
+      "conditional_fallback": "F4",
+      "decided_by": "controller_under_standing_user_authorization"
+    }
+  ],
+  "resolved_fallback_decisions": [
+    {
+      "decision_id": "Q4-ROBUSTNESS-FALLBACK-2025C-001",
+      "choice": "A",
+      "fallback": "F4",
+      "decided_by": "human",
+      "decided_at": "2026-09-08T15:35:24.0706745+08:00"
+    }
+  ],
+  "current_decision": {
+    "decision_id": "Q4-ROBUSTNESS-FALLBACK-2025C-001",
+    "status": "DECIDED_HUMAN_A",
+    "selected_option": "A",
+    "choice_card": "contest_workspace/methods/Q4/q4_result_choice_card.json"
+  },
+  "blind_output_freeze": {
+    "frozen_at": "2026-09-08T16:12:04.189605+08:00",
+    "manifest": "blind_output_manifest.json",
+    "manifest_sha256": "613a780af422d9412f69862bc098204d11c2499bf1bf4af6dec6c05b99a28e7a",
+    "content_fingerprint_sha256": "8b78e27a921e0dc456ac9a2077ad788db5d0d60c212ddd0259b2ea9b783f2abd",
+    "material_file_count": 80,
+    "verification_report": "verification_report_final.json",
+    "verification_verdict": "PASS",
+    "workspace_write_after_freeze_allowed": false
+  },
+  "pause_state": {
+    "paused_at": "2026-09-08T09:32:09.9315195+08:00",
+    "requested_by": "human",
+    "current_gate": "G2.5",
+    "decision_id": "Q1-METHOD-2025C-001",
+    "decision_status": "PENDING_HUMAN",
+    "resumed_at": "2026-09-08T10:11:15.6040919+08:00",
+    "checkpoint_verification_status": "PASS_AT_WAITING_HUMAN",
+    "checkpoint_review_path": "cumcm-b-skill/qa/lean/P15_2025C_G2_checkpoint_controller_review.json",
+    "resume_rule": "Run one deterministic checkpoint verification, preserve the holdout lock, then resume from the recorded gate without repeating parsing or probes."
+  }
+}

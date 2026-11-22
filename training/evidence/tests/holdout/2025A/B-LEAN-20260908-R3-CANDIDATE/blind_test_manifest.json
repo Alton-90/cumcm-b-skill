@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "test_id": "2025A-R3-FORWARD-001",
+  "phase": "P18",
+  "status": "SEALED_READY_TO_READ_OFFICIAL_INPUTS",
+  "selected_at": "2026-09-08T17:00:59.4503006+08:00",
+  "selection_basis": "Chosen from title-level corpus metadata only: untouched 2025 A has one official problem and three small spreadsheet attachments, provides structural diversity after 2025 B/C, and avoids the much larger video-heavy alternatives. No A-problem body or answer material was read before this manifest.",
+  "candidate": {
+    "candidate_id": "B-LEAN-20260908-R3-CANDIDATE",
+    "repo_path": "cumcm-b-skill/candidates/B-LEAN-20260908-R3-CANDIDATE",
+    "file_count": 145,
+    "content_fingerprint_sha256": "d5f0bebcd669c8634f5e6c4a45b47053b252a964a15e48ad39ada9b1ef906cd7",
+    "candidate_manifest_path": "cumcm-b-skill/p17/candidate_manifest.json",
+    "candidate_manifest_sha256": "6a6b4725e04cae1bb6627319a23a2b22c792c2639c85b3250b0f13a5b6d7620d",
+    "read_only": true
+  },
+  "official_inputs": [
+    {
+      "source_id": "SRC-8c57a0f07d5c",
+      "relative_path": "CUMCM_B题skill训练宝/赛题/2025/A题/A题.pdf",
+      "size_bytes": 286520,
+      "sha256": "a37f6aad30b16ea09da9cb320ce194b12d3a28874008cf9ff19549f6c6079447",
+      "access": "READ_ONLY_AFTER_MANIFEST"
+    },
+    {
+      "source_id": "SRC-23bdb025389d",
+      "relative_path": "CUMCM_B题skill训练宝/赛题/2025/A题/附件/result1.xlsx",
+      "size_bytes": 10316,
+      "sha256": "af04b16e6a4719628971bcf5a03d230c9da6738e67eebac9276d254fdd4df1a7",
+      "access": "READ_ONLY_AFTER_MANIFEST"
+    },
+    {
+      "source_id": "SRC-23bdb025389d",
+      "relative_path": "CUMCM_B题skill训练宝/赛题/2025/A题/附件/result2.xlsx",
+      "size_bytes": 10438,
+      "sha256": "c681d5e378538f71c77fca199a3ca8303a04dbcfc7bd95f870ae22f01ab69f91",
+      "access": "READ_ONLY_AFTER_MANIFEST"
+    },
+    {
+      "source_id": "SRC-23bdb025389d",
+      "relative_path": "CUMCM_B题skill训练宝/赛题/2025/A题/附件/result3.xlsx",
+      "size_bytes": 9763,
+      "sha256": "b648c82d63e459ba6e6b3711ae79875e373521cd543b45571c4d8ff1ad5ec54a",
+      "access": "READ_ONLY_AFTER_MANIFEST"
+    }
+  ],
+  "allow": [
+    "The exact read-only candidate repo and candidate manifest above",
+    "The four exact official 2025 A inputs above",
+    "Artifacts created under this test root",
+    "Local runtimes and already-installed libraries needed to execute the candidate workflow"
+  ],
+  "deny_until_output_freeze": [
+    "Any 2025 A answer, awarded paper, expert commentary, solution, summary, OCR, or derived analysis",
+    "All other contest-problem bodies and attachments",
+    "Prior 2025 B/C blind result contents except machine identity/boundary facts already recorded by the controller",
+    "Internet or network retrieval",
+    "Formal target github下载的skill/ writes",
+    "Candidate repo mutation"
+  ],
+  "execution_profile": "lean",
+  "required_candidate_specific_observations": [
+    "Whether audited-to-used row/entity reconciliation is emitted whenever tabular rows or repeated entities apply",
+    "Whether any classification operating point, if applicable, is group-safe, evaluation-isolated, robustness-checked, and honest about abstention/coverage"
+  ],
+  "freeze_rule": "Freeze all material contest_workspace output and its hashes before opening any comparison material. If no applicable comparison source exists, record that fact without substituting an unrelated source.",
+  "formal_target_write_authorized": false
+}

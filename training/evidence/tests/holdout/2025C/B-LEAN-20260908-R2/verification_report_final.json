@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "test_id": "2025C-R2-BLIND-001",
+  "verified_at": "2026-09-08T16:12:04.189605+08:00",
+  "blind_output_manifest": "blind_output_manifest.json",
+  "blind_output_manifest_sha256": "613a780af422d9412f69862bc098204d11c2499bf1bf4af6dec6c05b99a28e7a",
+  "blind_output_content_fingerprint_sha256": "8b78e27a921e0dc456ac9a2077ad788db5d0d60c212ddd0259b2ea9b783f2abd",
+  "checks": {
+    "workspace_files_match_frozen_manifest": true,
+    "workspace_fingerprint_recomputes": true,
+    "workspace_json_and_jsonl_parse": true,
+    "release_145_of_145_exact": true,
+    "official_inputs_2_of_2_exact": true,
+    "all_questions_complete_at_lean_G4": true,
+    "human_F4_activation_exact": true,
+    "controller_acceptance_not_mislabeled_human": true,
+    "binary_robustness_failure_preserved": true,
+    "F4_robustness_pass": true,
+    "F4_code_review_passed": true,
+    "deny_body_access_count_zero": true,
+    "network_access_entry_count_zero": true,
+    "external_comparison_was_locked": true
+  },
+  "parse_check": {
+    "files_checked": 48,
+    "jsonl_records_checked": 9,
+    "failures": [],
+    "pass": true
+  },
+  "release_check": {
+    "release_manifest_sha256": "6606db913d21e1edec8d5c147c48bb9a61d0fd3e5bf61af3b7b7a464cac1e1b5",
+    "release_manifest_expected_sha256": "6606db913d21e1edec8d5c147c48bb9a61d0fd3e5bf61af3b7b7a464cac1e1b5",
+    "release_manifest_match": true,
+    "expected_file_count": 145,
+    "actual_file_count": 145,
+    "missing": [],
+    "extra": [],
+    "mismatched": [],
+    "pass": true
+  },
+  "input_checks": [
+    {
+      "path": "CUMCM_B题skill训练宝/赛题/2025/C题/C题.pdf",
+      "expected_sha256": "d54400f4bb9920c0d37f15f5b6bc161aa281c4b32c03c063efdeb739716eac08",
+      "observed_sha256": "d54400f4bb9920c0d37f15f5b6bc161aa281c4b32c03c063efdeb739716eac08",
+      "match": true
+    },
+    {
+      "path": "CUMCM_B题skill训练宝/赛题/2025/C题/附件.xlsx",
+      "expected_sha256": "14827156218bd4f7e4f16db4aa6d9f757c6648379e038ae6c6b58383648614af",
+      "observed_sha256": "14827156218bd4f7e4f16db4aa6d9f757c6648379e038ae6c6b58383648614af",
+      "match": true
+    }
+  ],
+  "verdict": "PASS"
+}

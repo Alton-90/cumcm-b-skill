@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "test_id": "2025A-R3-FORWARD-001",
+  "profile": "lean",
+  "status": "PASSED_WITH_DECLARED_LIMITATIONS",
+  "scope": "One pre-freeze semantic-completeness and selected-output consistency audit; no model rerun",
+  "lean_requirements": {
+    "Q1": {"manifest": "PRESENT", "method_card_or_shared_equivalent": "PRESENT", "decision_ledger": "PRESENT", "risk_probe": "PRESENT", "latest_run_summary": "PRESENT"},
+    "Q2": {"manifest": "PRESENT", "method_card_or_shared_equivalent": "PRESENT", "decision_ledger": "PRESENT", "risk_probe": "PRESENT", "latest_run_summary": "PRESENT"},
+    "Q3": {"manifest": "PRESENT", "method_card_or_shared_equivalent": "PRESENT", "decision_ledger": "PRESENT", "risk_probe": "PRESENT", "latest_run_summary": "PRESENT"},
+    "Q4": {"manifest": "PRESENT", "method_card_or_shared_equivalent": "PRESENT", "decision_ledger": "PRESENT", "risk_probe": "PRESENT", "latest_run_summary": "PRESENT"},
+    "Q5": {"manifest": "PRESENT", "method_card_or_shared_equivalent": "PRESENT", "decision_ledger": "PRESENT", "risk_probe": "PRESENT", "latest_run_summary": "PRESENT"}
+  },
+  "legacy_or_shared_equivalents": {
+    "manifest": ["contest_workspace/planning/parse/problem_parse.json", "test_state.json"],
+    "method": ["contest_workspace/methods/shared/shared_method_screen.md", "contest_workspace/code/shared/shared_code_plan.json"],
+    "decisions": ["contest_workspace/planning/framing_decisions.jsonl", "contest_workspace/methods/shared/shared_method_decisions.jsonl"],
+    "risk_probe": "contest_workspace/methods/shared/probes/risk_probe_summary.json",
+    "run_summaries": [
+      "contest_workspace/results/shared/experiments/round1/q1_f1_conservative.json",
+      "contest_workspace/results/shared/experiments/round1/q2.json",
+      "contest_workspace/results/shared/experiments/round1/q3_round2.json",
+      "contest_workspace/results/shared/experiments/round1/q4.json",
+      "contest_workspace/results/shared/experiments/round1/q5.json",
+      "contest_workspace/results/shared/blind_run_summary.json"
+    ]
+  },
+  "scoped_consistency": {
+    "status": "PASSED",
+    "canonical_source": "contest_workspace/results/shared/blind_run_summary.json",
+    "checks": [
+      "Q3 workbook maps to the frozen M1 three-event result and preserves two explicit zero durations.",
+      "Q4 workbook maps to B1 after the M1 robustness failure and not to the rejected 4.6000 s strategy.",
+      "Q5 workbook maps to truthfully labelled B1; the per-missile union report remains in machine evidence because the template contains only per-event rows.",
+      "All output headings, speeds, coordinates and event durations round to six decimals from the selected strategy payload.",
+      "All three workbooks preserve one Sheet1 template and have zero formula-error matches after readback."
+    ]
+  },
+  "gaps": [],
+  "declared_limitations": [
+    "Q1 complete B duration unresolved; F1 strict lower certificate only.",
+    "Q3 two required events have zero certified contribution.",
+    "Q4 M1 rejected after finer check; B1 selected.",
+    "Q5 M3 duration is zero under aggregation A.",
+    "No global-optimality claim."
+  ],
+  "answer_or_comparison_accessed": false,
+  "network_access_count": 0,
+  "audited_at": "2026-09-09T21:08:19.1496114+08:00"
+}

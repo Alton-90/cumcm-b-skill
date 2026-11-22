@@ -1,0 +1,337 @@
+{
+  "schema_version": 1,
+  "suite": "R4 prospective CHG-B05 and CHG-B06 behavior",
+  "candidate_id": "B-LEAN-20260909-R4-CANDIDATE",
+  "model_execution": "NOT_RUN: deterministic contract fixtures plus exact Skill/package invariants",
+  "assertion_count": 54,
+  "passed": 54,
+  "failed": 0,
+  "overall": "PASS",
+  "results": [
+    {
+      "id": "B05-pass-complete-screen",
+      "observed": "PASS",
+      "expected": "PASS",
+      "status": "PASS"
+    },
+    {
+      "id": "B05-fail-lost-anchor",
+      "observed": "FAIL",
+      "expected": "FAIL",
+      "status": "PASS"
+    },
+    {
+      "id": "B05-fail-zero-exploration",
+      "observed": "FAIL",
+      "expected": "FAIL",
+      "status": "PASS"
+    },
+    {
+      "id": "B05-fail-counts",
+      "observed": "FAIL",
+      "expected": "FAIL",
+      "status": "PASS"
+    },
+    {
+      "id": "B05-fail-standalone-interaction",
+      "observed": "FAIL",
+      "expected": "FAIL",
+      "status": "PASS"
+    },
+    {
+      "id": "B05-fail-prefix-infeasible",
+      "observed": "FAIL",
+      "expected": "FAIL",
+      "status": "PASS"
+    },
+    {
+      "id": "B05-fail-unsupported-sampling",
+      "observed": "FAIL",
+      "expected": "FAIL",
+      "status": "PASS"
+    },
+    {
+      "id": "B05-pass-conservative-certificate",
+      "observed": "PASS",
+      "expected": "PASS",
+      "status": "PASS"
+    },
+    {
+      "id": "B06-pass-evidence-only-freeze",
+      "observed": "PASS_EVIDENCE_ONLY",
+      "expected": "PASS_EVIDENCE_ONLY",
+      "status": "PASS"
+    },
+    {
+      "id": "B06-pass-exact-ready",
+      "observed": "PASS_COMPLETE",
+      "expected": "PASS_COMPLETE",
+      "status": "PASS"
+    },
+    {
+      "id": "B06-fail-obligations",
+      "observed": "FAIL",
+      "expected": "FAIL",
+      "status": "PASS"
+    },
+    {
+      "id": "B06-fail-fingerprint",
+      "observed": "FAIL",
+      "expected": "FAIL",
+      "status": "PASS"
+    },
+    {
+      "id": "B06-fail-stale",
+      "observed": "FAIL",
+      "expected": "FAIL",
+      "status": "PASS"
+    },
+    {
+      "id": "B06-fail-relabel-baseline",
+      "observed": "FAIL",
+      "expected": "FAIL",
+      "status": "PASS"
+    },
+    {
+      "id": "B06-fail-repeat-triage",
+      "observed": "FAIL",
+      "expected": "FAIL",
+      "status": "PASS"
+    },
+    {
+      "id": "TEXT-method-selector-candidate_screening_",
+      "observed": "PRESENT",
+      "expected": "PRESENT",
+      "status": "PASS"
+    },
+    {
+      "id": "TEXT-method-selector-actual composition o",
+      "observed": "PRESENT",
+      "expected": "PRESENT",
+      "status": "PASS"
+    },
+    {
+      "id": "TEXT-method-selector-continuous universal",
+      "observed": "PRESENT",
+      "expected": "PRESENT",
+      "status": "PASS"
+    },
+    {
+      "id": "TEXT-model-code-analyzer-output_obligation_co",
+      "observed": "PRESENT",
+      "expected": "PRESENT",
+      "status": "PASS"
+    },
+    {
+      "id": "TEXT-model-code-analyzer-selected-output fing",
+      "observed": "PRESENT",
+      "expected": "PRESENT",
+      "status": "PASS"
+    },
+    {
+      "id": "TEXT-model-code-analyzer-bounded diagnosis",
+      "observed": "PRESENT",
+      "expected": "PRESENT",
+      "status": "PASS"
+    },
+    {
+      "id": "TEXT-python-model-code-generator-Prefix exhaustion",
+      "observed": "PRESENT",
+      "expected": "PRESENT",
+      "status": "PASS"
+    },
+    {
+      "id": "TEXT-python-model-code-generator-output-obligation",
+      "observed": "PRESENT",
+      "expected": "PRESENT",
+      "status": "PASS"
+    },
+    {
+      "id": "TEXT-python-model-code-generator-composition operator",
+      "observed": "PRESENT",
+      "expected": "PRESENT",
+      "status": "PASS"
+    },
+    {
+      "id": "TEXT-matlab-model-code-generator-proxy-truncated pref",
+      "observed": "PRESENT",
+      "expected": "PRESENT",
+      "status": "PASS"
+    },
+    {
+      "id": "TEXT-matlab-model-code-generator-output-obligation",
+      "observed": "PRESENT",
+      "expected": "PRESENT",
+      "status": "PASS"
+    },
+    {
+      "id": "TEXT-matlab-model-code-generator-joint operator",
+      "observed": "PRESENT",
+      "expected": "PRESENT",
+      "status": "PASS"
+    },
+    {
+      "id": "TEXT-python-code-reviewer-`candidate_screening",
+      "observed": "PRESENT",
+      "expected": "PRESENT",
+      "status": "PASS"
+    },
+    {
+      "id": "TEXT-python-code-reviewer-output-obligation st",
+      "observed": "PRESENT",
+      "expected": "PRESENT",
+      "status": "PASS"
+    },
+    {
+      "id": "TEXT-python-code-reviewer-prefix exhaustion",
+      "observed": "PRESENT",
+      "expected": "PRESENT",
+      "status": "PASS"
+    },
+    {
+      "id": "TEXT-matlab-code-reviewer-`candidate_screening",
+      "observed": "PRESENT",
+      "expected": "PRESENT",
+      "status": "PASS"
+    },
+    {
+      "id": "TEXT-matlab-code-reviewer-output-obligation st",
+      "observed": "PRESENT",
+      "expected": "PRESENT",
+      "status": "PASS"
+    },
+    {
+      "id": "TEXT-matlab-code-reviewer-prefix-based infeasi",
+      "observed": "PRESENT",
+      "expected": "PRESENT",
+      "status": "PASS"
+    },
+    {
+      "id": "TEXT-robustness-checker-selected_output_fing",
+      "observed": "PRESENT",
+      "expected": "PRESENT",
+      "status": "PASS"
+    },
+    {
+      "id": "TEXT-robustness-checker-selection-dependent",
+      "observed": "PRESENT",
+      "expected": "PRESENT",
+      "status": "PASS"
+    },
+    {
+      "id": "TEXT-robustness-checker-evidence freeze",
+      "observed": "PRESENT",
+      "expected": "PRESENT",
+      "status": "PASS"
+    },
+    {
+      "id": "TEXT-result-report-generator-task_completion=fals",
+      "observed": "PRESENT",
+      "expected": "PRESENT",
+      "status": "PASS"
+    },
+    {
+      "id": "TEXT-result-report-generator-selected-output fing",
+      "observed": "PRESENT",
+      "expected": "PRESENT",
+      "status": "PASS"
+    },
+    {
+      "id": "TEXT-result-report-generator-surviving baseline",
+      "observed": "PRESENT",
+      "expected": "PRESENT",
+      "status": "PASS"
+    },
+    {
+      "id": "TEXT-workflow-orchestrator-result_readiness",
+      "observed": "PRESENT",
+      "expected": "PRESENT",
+      "status": "PASS"
+    },
+    {
+      "id": "TEXT-workflow-orchestrator-Keep `evidence_froze",
+      "observed": "PRESENT",
+      "expected": "PRESENT",
+      "status": "PASS"
+    },
+    {
+      "id": "TEXT-workflow-orchestrator-exact selected-outpu",
+      "observed": "PRESENT",
+      "expected": "PRESENT",
+      "status": "PASS"
+    },
+    {
+      "id": "PKG-exact-27-changes",
+      "observed": "PASS",
+      "expected": "PASS",
+      "status": "PASS"
+    },
+    {
+      "id": "PKG-no-added-missing",
+      "observed": "PASS",
+      "expected": "PASS",
+      "status": "PASS"
+    },
+    {
+      "id": "PKG-mirrors-method-selector",
+      "observed": "PASS",
+      "expected": "PASS",
+      "status": "PASS"
+    },
+    {
+      "id": "PKG-mirrors-model-code-analyzer",
+      "observed": "PASS",
+      "expected": "PASS",
+      "status": "PASS"
+    },
+    {
+      "id": "PKG-mirrors-python-model-code-generator",
+      "observed": "PASS",
+      "expected": "PASS",
+      "status": "PASS"
+    },
+    {
+      "id": "PKG-mirrors-matlab-model-code-generator",
+      "observed": "PASS",
+      "expected": "PASS",
+      "status": "PASS"
+    },
+    {
+      "id": "PKG-mirrors-python-code-reviewer",
+      "observed": "PASS",
+      "expected": "PASS",
+      "status": "PASS"
+    },
+    {
+      "id": "PKG-mirrors-matlab-code-reviewer",
+      "observed": "PASS",
+      "expected": "PASS",
+      "status": "PASS"
+    },
+    {
+      "id": "PKG-mirrors-robustness-checker",
+      "observed": "PASS",
+      "expected": "PASS",
+      "status": "PASS"
+    },
+    {
+      "id": "PKG-mirrors-result-report-generator",
+      "observed": "PASS",
+      "expected": "PASS",
+      "status": "PASS"
+    },
+    {
+      "id": "PKG-mirrors-workflow-orchestrator",
+      "observed": "PASS",
+      "expected": "PASS",
+      "status": "PASS"
+    },
+    {
+      "id": "PKG-no-answer-specific-additions",
+      "observed": "PASS",
+      "expected": "PASS",
+      "status": "PASS"
+    }
+  ],
+  "answer_specific_addition_hits": []
+}

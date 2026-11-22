@@ -1,0 +1,60 @@
+{
+  "verified_at": "2026-09-08T00:53:00.448505+08:00",
+  "status": "PASS_BLIND_RUN_COMPLETE",
+  "checks": {
+    "all_json_jsonl_parse": true,
+    "candidate_145_files_match_frozen_manifest": true,
+    "official_inputs_5_of_5_unchanged": true,
+    "deny_body_access_zero": true,
+    "ledger_record_ids_unique": true,
+    "q1_result_decision_exactly_one_decided_record": true,
+    "q1_controller_provenance_not_per_card_human": true,
+    "required_outputs_exist": true,
+    "q1_q2_q3_gates_pass": true,
+    "q3_frozen_input_hashes_match": true
+  },
+  "counts": {
+    "json": 30,
+    "jsonl": 6,
+    "blind_output_files": 49,
+    "access_log_entries": 231
+  },
+  "parse_errors": [],
+  "candidate_mismatches": [],
+  "official_inputs": [
+    {
+      "path": "CUMCM_B题skill训练宝/赛题/2025/B题/B题.pdf",
+      "match": true
+    },
+    {
+      "path": "CUMCM_B题skill训练宝/赛题/2025/B题/附件/附件1.xlsx",
+      "match": true
+    },
+    {
+      "path": "CUMCM_B题skill训练宝/赛题/2025/B题/附件/附件2.xlsx",
+      "match": true
+    },
+    {
+      "path": "CUMCM_B题skill训练宝/赛题/2025/B题/附件/附件3.xlsx",
+      "match": true
+    },
+    {
+      "path": "CUMCM_B题skill训练宝/赛题/2025/B题/附件/附件4.xlsx",
+      "match": true
+    }
+  ],
+  "deny_body_events": [],
+  "duplicate_record_ids": [],
+  "missing_required_outputs": [],
+  "blind_output_manifest_sha256": "b1f796a7567ed0e4cb9e29b04be43eaf0bdb5e946cf1a5b9ccc90866c4ecdffa",
+  "evidence_refs": [
+    "blind_output_manifest.json",
+    "frozen_candidate_manifest.json",
+    "blind_test_manifest.json#official_inputs",
+    "access_log.jsonl",
+    "human_decisions.jsonl",
+    "contest_workspace/planning/manifests/Q1.json",
+    "contest_workspace/planning/manifests/Q2.json",
+    "contest_workspace/planning/manifests/Q3.json"
+  ]
+}

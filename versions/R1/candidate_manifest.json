@@ -1,0 +1,346 @@
+{
+  "release_id": "B-LEAN-20260907-R1",
+  "approved_change_ids": [
+    "CHG-B01",
+    "CHG-B02"
+  ],
+  "baseline_identity": {
+    "stage": "P0-R",
+    "file_count": 145,
+    "tree_fingerprint": "613c2b5c21ca3007c3dd2b31ee0a1b49154b3925da3fd3990660fc3093a562c1"
+  },
+  "pre_target_integrity": {
+    "files": 145,
+    "missing": 0,
+    "hash_mismatches": 0
+  },
+  "post_target_integrity": {
+    "files": 145,
+    "missing": 0,
+    "hash_mismatches": 0
+  },
+  "modified_files": [
+    {
+      "path": ".claude/skills/problem-parser/SKILL.md",
+      "baseline_sha256": "08b2ebc5e1990b94b0667dbdb097eae82016901123c33247a0adf4c4a5848eb6",
+      "candidate_sha256": "364e90e18138f1b21cb3c7582f7945a7728229b737dd82fdc062b6b7ccd61f3b"
+    },
+    {
+      "path": ".claude/skills/method-selector/SKILL.md",
+      "baseline_sha256": "964bf84e721d455eef541ec7b8918b117dfcc9bbe84a74a1731f2389c792034a",
+      "candidate_sha256": "a20ccb644da9e141ab1574d6f4fb1aa7d2ea429cba361ca42022adef9910b27c"
+    },
+    {
+      "path": ".claude/skills/workflow-orchestrator/SKILL.md",
+      "baseline_sha256": "e21bd791faa435043be6cf11d038acc22c81746d3c3427aa7c9581e0c81121eb",
+      "candidate_sha256": "8ee02db6a30a7c8997450e409cb403998ec62fe0608e299eccd9ec8538e7cd8c"
+    },
+    {
+      "path": ".claude/skills/model-code-analyzer/SKILL.md",
+      "baseline_sha256": "6b68d5e1bc786e2e3a1574e6c1cc1af596623f6165ee22083c4dfd9becd723b2",
+      "candidate_sha256": "e76e2cb887ee2e4f54f1106a412aa9fa2d3ca558b8b63f7d78bae660bec131dd"
+    },
+    {
+      "path": ".claude/skills/python-code-reviewer/SKILL.md",
+      "baseline_sha256": "5927bebd330bc12c65ed3d049ce27244b8dafb4caa9e05b1b6f6e77a11021f83",
+      "candidate_sha256": "7c58ef7c797490a8ad9507e33f8955e1e588bdbb54f1fa3b6a29b8b95499b320"
+    },
+    {
+      "path": ".claude/skills/matlab-code-reviewer/SKILL.md",
+      "baseline_sha256": "9b6bea5e2d5d6f84bcde032602a66b6a9d76d618501e49b448ac087365c13b4e",
+      "candidate_sha256": "f4c363fb2141991b725698a6806ce6a42700c00411e49ac1aac46278fcae967d"
+    },
+    {
+      "path": ".codex/skills/problem-parser/SKILL.md",
+      "baseline_sha256": "08b2ebc5e1990b94b0667dbdb097eae82016901123c33247a0adf4c4a5848eb6",
+      "candidate_sha256": "364e90e18138f1b21cb3c7582f7945a7728229b737dd82fdc062b6b7ccd61f3b"
+    },
+    {
+      "path": ".codex/skills/method-selector/SKILL.md",
+      "baseline_sha256": "964bf84e721d455eef541ec7b8918b117dfcc9bbe84a74a1731f2389c792034a",
+      "candidate_sha256": "a20ccb644da9e141ab1574d6f4fb1aa7d2ea429cba361ca42022adef9910b27c"
+    },
+    {
+      "path": ".codex/skills/workflow-orchestrator/SKILL.md",
+      "baseline_sha256": "e21bd791faa435043be6cf11d038acc22c81746d3c3427aa7c9581e0c81121eb",
+      "candidate_sha256": "8ee02db6a30a7c8997450e409cb403998ec62fe0608e299eccd9ec8538e7cd8c"
+    },
+    {
+      "path": ".codex/skills/model-code-analyzer/SKILL.md",
+      "baseline_sha256": "6b68d5e1bc786e2e3a1574e6c1cc1af596623f6165ee22083c4dfd9becd723b2",
+      "candidate_sha256": "e76e2cb887ee2e4f54f1106a412aa9fa2d3ca558b8b63f7d78bae660bec131dd"
+    },
+    {
+      "path": ".codex/skills/python-code-reviewer/SKILL.md",
+      "baseline_sha256": "5927bebd330bc12c65ed3d049ce27244b8dafb4caa9e05b1b6f6e77a11021f83",
+      "candidate_sha256": "7c58ef7c797490a8ad9507e33f8955e1e588bdbb54f1fa3b6a29b8b95499b320"
+    },
+    {
+      "path": ".codex/skills/matlab-code-reviewer/SKILL.md",
+      "baseline_sha256": "9b6bea5e2d5d6f84bcde032602a66b6a9d76d618501e49b448ac087365c13b4e",
+      "candidate_sha256": "f4c363fb2141991b725698a6806ce6a42700c00411e49ac1aac46278fcae967d"
+    },
+    {
+      "path": "plugins/mathmodeling-skills/skills/problem-parser/SKILL.md",
+      "baseline_sha256": "08b2ebc5e1990b94b0667dbdb097eae82016901123c33247a0adf4c4a5848eb6",
+      "candidate_sha256": "364e90e18138f1b21cb3c7582f7945a7728229b737dd82fdc062b6b7ccd61f3b"
+    },
+    {
+      "path": "plugins/mathmodeling-skills/skills/method-selector/SKILL.md",
+      "baseline_sha256": "964bf84e721d455eef541ec7b8918b117dfcc9bbe84a74a1731f2389c792034a",
+      "candidate_sha256": "a20ccb644da9e141ab1574d6f4fb1aa7d2ea429cba361ca42022adef9910b27c"
+    },
+    {
+      "path": "plugins/mathmodeling-skills/skills/workflow-orchestrator/SKILL.md",
+      "baseline_sha256": "e21bd791faa435043be6cf11d038acc22c81746d3c3427aa7c9581e0c81121eb",
+      "candidate_sha256": "8ee02db6a30a7c8997450e409cb403998ec62fe0608e299eccd9ec8538e7cd8c"
+    },
+    {
+      "path": "plugins/mathmodeling-skills/skills/model-code-analyzer/SKILL.md",
+      "baseline_sha256": "6b68d5e1bc786e2e3a1574e6c1cc1af596623f6165ee22083c4dfd9becd723b2",
+      "candidate_sha256": "e76e2cb887ee2e4f54f1106a412aa9fa2d3ca558b8b63f7d78bae660bec131dd"
+    },
+    {
+      "path": "plugins/mathmodeling-skills/skills/python-code-reviewer/SKILL.md",
+      "baseline_sha256": "5927bebd330bc12c65ed3d049ce27244b8dafb4caa9e05b1b6f6e77a11021f83",
+      "candidate_sha256": "7c58ef7c797490a8ad9507e33f8955e1e588bdbb54f1fa3b6a29b8b95499b320"
+    },
+    {
+      "path": "plugins/mathmodeling-skills/skills/matlab-code-reviewer/SKILL.md",
+      "baseline_sha256": "9b6bea5e2d5d6f84bcde032602a66b6a9d76d618501e49b448ac087365c13b4e",
+      "candidate_sha256": "f4c363fb2141991b725698a6806ce6a42700c00411e49ac1aac46278fcae967d"
+    }
+  ],
+  "supporting_candidate_artifacts": [
+    "tests/run_p11_behavior_tests.py",
+    "tests/make_candidate_diff.py",
+    "tests/write_candidate_manifest.py",
+    "p11_behavior_test_results.json",
+    "candidate_diff.patch",
+    "candidate_change_report.md"
+  ],
+  "validation": {
+    "behavior_tests": {
+      "suite": "P11 contract behavior",
+      "model_execution": "NOT_RUN: structured contract fixtures only",
+      "results": [
+        {
+          "id": "BT-01",
+          "status": "PASS",
+          "detail": "FAIL"
+        },
+        {
+          "id": "BT-02",
+          "status": "PASS",
+          "detail": "PASSED"
+        },
+        {
+          "id": "BT-03",
+          "status": "PASS",
+          "detail": [
+            "FAIL",
+            "FAIL"
+          ]
+        },
+        {
+          "id": "BT-04-downstream",
+          "status": "PASS",
+          "detail": "BLOCKED"
+        },
+        {
+          "id": "BT-04-independent",
+          "status": "PASS",
+          "detail": "PASS"
+        },
+        {
+          "id": "BT-05-lookahead",
+          "status": "PASS",
+          "detail": "FAIL"
+        },
+        {
+          "id": "BT-05-scalarization",
+          "status": "PASS",
+          "detail": "FAIL"
+        },
+        {
+          "id": "BT-05-infeasible",
+          "status": "PASS",
+          "detail": "FAIL"
+        },
+        {
+          "id": "BT-06-lookahead",
+          "status": "PASS",
+          "detail": "FAIL"
+        },
+        {
+          "id": "BT-06-scalarization",
+          "status": "PASS",
+          "detail": "FAIL"
+        },
+        {
+          "id": "BT-06-infeasible",
+          "status": "PASS",
+          "detail": "FAIL"
+        },
+        {
+          "id": "BT-06-runtime",
+          "status": "PASS",
+          "detail": "NOT_RUN"
+        },
+        {
+          "id": "BT-07",
+          "status": "PASS",
+          "detail": true
+        },
+        {
+          "id": "BT-01-skill:problem-parser:# Workflow",
+          "status": "PASS",
+          "detail": true
+        },
+        {
+          "id": "BT-01-skill:method-selector:# Workflow",
+          "status": "PASS",
+          "detail": true
+        },
+        {
+          "id": "BT-02-skill:problem-parser:# Workflow",
+          "status": "PASS",
+          "detail": true
+        },
+        {
+          "id": "BT-02-skill:python-code-reviewer:# Review Schema",
+          "status": "PASS",
+          "detail": true
+        },
+        {
+          "id": "BT-03-skill:problem-parser:# JSON Contract",
+          "status": "PASS",
+          "detail": true
+        },
+        {
+          "id": "BT-03-skill:method-selector:# Workflow",
+          "status": "PASS",
+          "detail": true
+        },
+        {
+          "id": "BT-03-skill:python-code-reviewer:# Workflow",
+          "status": "PASS",
+          "detail": true
+        },
+        {
+          "id": "BT-04-skill:workflow-orchestrator:# Gate Evaluation",
+          "status": "PASS",
+          "detail": true
+        },
+        {
+          "id": "BT-04-skill:workflow-orchestrator:# Gate Evaluation",
+          "status": "PASS",
+          "detail": true
+        },
+        {
+          "id": "BT-05-skill:python-code-reviewer:# Rules",
+          "status": "PASS",
+          "detail": true
+        },
+        {
+          "id": "BT-06-skill:matlab-code-reviewer:# Workflow",
+          "status": "PASS",
+          "detail": true
+        },
+        {
+          "id": "BT-06-skill:matlab-code-reviewer:# Verification",
+          "status": "PASS",
+          "detail": true
+        },
+        {
+          "id": "BT-07-skill:model-code-analyzer:# Rules",
+          "status": "PASS",
+          "detail": true
+        },
+        {
+          "id": "BT-07-skill:model-code-analyzer:# Run Summary Contract",
+          "status": "PASS",
+          "detail": true
+        }
+      ],
+      "overall": "PASS"
+    },
+    "behavior_test_skill_evidence_locators": {
+      "BT-01": [
+        "problem-parser#Workflow: future information is forbidden",
+        "method-selector#Workflow: forbidden future information is FAIL"
+      ],
+      "BT-02": [
+        "problem-parser#Workflow: simple static question",
+        "python-code-reviewer#Review Schema: static/no-dependency NOT_APPLICABLE"
+      ],
+      "BT-03": [
+        "problem-parser#JSON Contract: objective_contract roles",
+        "method-selector#Workflow: feasibility before objective comparison",
+        "python-code-reviewer#Workflow: infeasible output fails"
+      ],
+      "BT-04": [
+        "workflow-orchestrator#Gate Evaluation: real cross_question_dependencies",
+        "workflow-orchestrator#Gate Evaluation: no-dependency parallel progress"
+      ],
+      "BT-05": [
+        "python-code-reviewer#Rules: lookahead/scalarization/infeasibility/dependency FAIL"
+      ],
+      "BT-06": [
+        "matlab-code-reviewer#Workflow and #Verification: static checks and parity"
+      ],
+      "BT-07": [
+        "model-code-analyzer#Run Summary Contract and #Rules: shared main/baseline contract"
+      ]
+    },
+    "quick_validate": {
+      "command": "python -X utf8 skill-creator/scripts/quick_validate.py <each affected skill>",
+      "validated_files": 18,
+      "result": "PASS",
+      "note": "Initial default-encoding attempt was NOT_RUN/encoding-limited for 6 Chinese-text files; UTF-8 rerun passed all 18."
+    },
+    "mirror_sha256": {
+      "result": "PASS",
+      "skills": [
+        "problem-parser",
+        "method-selector",
+        "workflow-orchestrator",
+        "model-code-analyzer",
+        "python-code-reviewer",
+        "matlab-code-reviewer"
+      ],
+      "roots": [
+        ".claude/skills",
+        ".codex/skills",
+        "plugins/mathmodeling-skills/skills"
+      ]
+    },
+    "sync_plugin_check": {
+      "command": "bash scripts/sync-plugin.sh --check",
+      "result": "NOT_RUN",
+      "reason": "Windows Bash/WSL could not resolve the candidate Windows path; per-file mirror SHA-256 check passed instead."
+    },
+    "candidate_leakage_scan": {
+      "result": "PASS",
+      "groups": [
+        "prohibited identifiers",
+        "2025 answer-like content",
+        "user-machine absolute paths"
+      ],
+      "hash_ledger_exclusion": "The integrity hash ledger is excluded from identifier-token matching because an arbitrary SHA-256 substring is not source content."
+    },
+    "patch_roundtrip": {
+      "command": "git -c core.autocrlf=false apply --check candidate_diff.patch; git -c core.autocrlf=false apply candidate_diff.patch",
+      "result": "PASS",
+      "fresh_baseline_copy": true,
+      "applied_file_hashes_verified": 18,
+      "hash_mismatches": 0
+    }
+  },
+  "holdout_zero_access_declaration": "No designated holdout, answer-like, expert-review, training-paper, or OCR body was opened for this candidate.",
+  "limitations": [
+    "Behavior verification evaluates structured contract fixtures and explicit rules; it does not claim model execution.",
+    "The upstream sync shell check was not runnable on this Windows Bash/WSL path."
+  ],
+  "candidate_diff_sha256": "7590aadb1ef2019cccc18a8d725b826e2668c25d4312ad871a48c65a193adde9"
+}

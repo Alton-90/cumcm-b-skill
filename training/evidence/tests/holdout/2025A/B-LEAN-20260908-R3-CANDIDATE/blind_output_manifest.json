@@ -1,0 +1,580 @@
+{
+  "schema_version": 1,
+  "test_id": "2025A-R3-FORWARD-001",
+  "candidate_id": "B-LEAN-20260908-R3-CANDIDATE",
+  "status": "FROZEN",
+  "frozen_at": "2026-09-09T21:18:27.737137+08:00",
+  "scope": "All material files under contest_workspace; Python caches and the local node_modules junction are excluded as nonsemantic runtime dependencies.",
+  "material_file_count": 94,
+  "material_files": [
+    {
+      "path": "contest_workspace/code/Q3/reviews/q3_python_review.json",
+      "size_bytes": 2307,
+      "sha256": "1ccca1996a7cbf314825c711a1885021fe7225dad8533a9c14ed9513e302438a"
+    },
+    {
+      "path": "contest_workspace/code/Q4/reviews/q4_python_review.json",
+      "size_bytes": 2516,
+      "sha256": "4fdd1ea03391a584996ab086d416a0197689cb7a15030327776e21590932e406"
+    },
+    {
+      "path": "contest_workspace/code/Q5/reviews/q5_python_review.json",
+      "size_bytes": 2914,
+      "sha256": "f89895e69b59f20951100b5a2020b2076856da57ede15f06a6329ad4c478c583"
+    },
+    {
+      "path": "contest_workspace/code/shared/baseline_grid_probe.py",
+      "size_bytes": 4464,
+      "sha256": "af3d31649c03c34995fb199a8f8cd2277306157e7d77cc29d380c76d8beeb7c0"
+    },
+    {
+      "path": "contest_workspace/code/shared/geometry_risk_probe.py",
+      "size_bytes": 9797,
+      "sha256": "8d5d5353a81dc4630b317d34c5721348189e3f17778b9d67541ed53ff7742b2a"
+    },
+    {
+      "path": "contest_workspace/code/shared/post_freeze_validation.py",
+      "size_bytes": 13976,
+      "sha256": "ffa529186433cd924ea4c65b2f1a730d438dc055db478bac21d19bc28fe31ff0"
+    },
+    {
+      "path": "contest_workspace/code/shared/pre_run_code_review.json",
+      "size_bytes": 2595,
+      "sha256": "94c0ae8b79a356be7c826c64aec181b687066792c864c64c61a51aa70cdeae59"
+    },
+    {
+      "path": "contest_workspace/code/shared/prepare_spreadsheet_payload.py",
+      "size_bytes": 4307,
+      "sha256": "4c04427d30d601bacf9215d0b0522ed7ce0b1289f044d26b0631d36399418271"
+    },
+    {
+      "path": "contest_workspace/code/shared/q1_ambiguity_cell_detail.py",
+      "size_bytes": 1194,
+      "sha256": "b218261905b2163d1c50c145fb5339c2793f6eaa11a52dba2a028514634b3a21"
+    },
+    {
+      "path": "contest_workspace/code/shared/q1_ambiguity_trace.py",
+      "size_bytes": 2026,
+      "sha256": "03a4d1ba2b25e134a431ce5d2faef87bfdbd95cfc439bc585ab4b2c9883e65e9"
+    },
+    {
+      "path": "contest_workspace/code/shared/q1_f1_code_review.json",
+      "size_bytes": 1427,
+      "sha256": "90ec1c16ff5f68f2c3c62eb1e14df18a8a1f891fda7617ffa6f4a09d85c9e78c"
+    },
+    {
+      "path": "contest_workspace/code/shared/q1_f1_conservative.py",
+      "size_bytes": 4622,
+      "sha256": "abda85dbc948ec03ccf544fef8d72fb75b47d12f77039f32e3ccb8f771c43fd4"
+    },
+    {
+      "path": "contest_workspace/code/shared/q1_finer_level_check.py",
+      "size_bytes": 1204,
+      "sha256": "bd39b66895de334d756c33aeef7bec671a18181e29013cbd9621fffeee7378b6"
+    },
+    {
+      "path": "contest_workspace/code/shared/q1_geometry_resolution.py",
+      "size_bytes": 1996,
+      "sha256": "5d7ba716616b249f01e94c734d7bda6439e6f0a94dfd09c39ac360e95576e213"
+    },
+    {
+      "path": "contest_workspace/code/shared/q1_geometry_resolution_r2.py",
+      "size_bytes": 1897,
+      "sha256": "3514be20dd239ed0ad6c8dec2fd8cb2d7c7232224ce2e29acd25d9f272c89b45"
+    },
+    {
+      "path": "contest_workspace/code/shared/q1_geometry_resolution_r3.py",
+      "size_bytes": 1934,
+      "sha256": "93dca39919422c34d9d909fd664a26bf02b2ed437217dfd811523ae8ed1e0024"
+    },
+    {
+      "path": "contest_workspace/code/shared/q2_anchor_recovery.py",
+      "size_bytes": 5777,
+      "sha256": "578b3534eea4d5c5bcde8bf8bb8f5a6d00506072eec9bdc0550cd680b0e6acd5"
+    },
+    {
+      "path": "contest_workspace/code/shared/q2_anchor_recovery_code_review.json",
+      "size_bytes": 1992,
+      "sha256": "d6fd7b2f22a041077627e2cf573cc293ce550ddbc4c1e86eca4b60dfa269d0da"
+    },
+    {
+      "path": "contest_workspace/code/shared/q2_candidate_gate_audit.py",
+      "size_bytes": 8998,
+      "sha256": "3b5c109f8bf8eb009a21ac83eced0514ad4d4ff9aa3335dd754fc608864fc70d"
+    },
+    {
+      "path": "contest_workspace/code/shared/q3_marginal_repair.py",
+      "size_bytes": 9629,
+      "sha256": "835295357460e2a6f9f203238bcec6ba8ba72fa61bb32c86530e9e9e8811cf50"
+    },
+    {
+      "path": "contest_workspace/code/shared/q3_track_recovery.py",
+      "size_bytes": 7094,
+      "sha256": "4ea09c05c0f46a4a539d6a4ab894009847db9de36bea16d4548ac4c56de121d0"
+    },
+    {
+      "path": "contest_workspace/code/shared/q4_failure_triage.py",
+      "size_bytes": 3149,
+      "sha256": "36141aa738b09ea25ca37021984ba2003a55e4ecb69e363528f2a30e169e4ecf"
+    },
+    {
+      "path": "contest_workspace/code/shared/q4_single_run.py",
+      "size_bytes": 9425,
+      "sha256": "48f4f67932f4e69d26bc2f2e50f6f158d753878e6849ceade39dbe0cce0ea2a5"
+    },
+    {
+      "path": "contest_workspace/code/shared/q5_single_run.py",
+      "size_bytes": 11553,
+      "sha256": "e69ccc7c72b7fe5ffe523a4a3ec400ade80710cc8175634bf3c0a1f47631b4e3"
+    },
+    {
+      "path": "contest_workspace/code/shared/run_smoke_workflow.py",
+      "size_bytes": 33245,
+      "sha256": "45111fd9e7e6e433a2b46f2c7583c75a25f2fd28ed312c81ca8d9d5aa5eba17b"
+    },
+    {
+      "path": "contest_workspace/code/shared/run_smoke_workflow_unit_tests.py",
+      "size_bytes": 1063,
+      "sha256": "0eb2010b9555b0d790f53354eaada1bd8e9f67895c05a304bbc0eb4e76e5c11a"
+    },
+    {
+      "path": "contest_workspace/code/shared/shared_code_experiment_contract.md",
+      "size_bytes": 4089,
+      "sha256": "d5157b4b9a44d2f1f5d70e2711b87dd52090f0c47cbbf087a434b69bda00163d"
+    },
+    {
+      "path": "contest_workspace/code/shared/shared_code_plan.json",
+      "size_bytes": 2914,
+      "sha256": "438ee8d0da3a7cf6deabb51cb7f4cb70ea49e71993389a4a4729f25c3237ff89"
+    },
+    {
+      "path": "contest_workspace/code/shared/smoke_engine.py",
+      "size_bytes": 22986,
+      "sha256": "fd31038c380ce9293e56a0218394c599699f27b2eb41e0b49d3dbbea7c52b645"
+    },
+    {
+      "path": "contest_workspace/code/shared/smoke_engine_unit_tests.py",
+      "size_bytes": 4257,
+      "sha256": "a56b32c21fb8c78b80cc695a642b2bc6b21ad2c2946c054e90e2cb06bad052a3"
+    },
+    {
+      "path": "contest_workspace/methods/Q2/probes/baseline_grid_probe.json",
+      "size_bytes": 1069,
+      "sha256": "991c7dcc89aca0f290072e697296d047cddca5ff8cca0edf2fc9de912c2704e9"
+    },
+    {
+      "path": "contest_workspace/methods/Q2/q2_local_coverage_repair.md",
+      "size_bytes": 1415,
+      "sha256": "458bb6206f82a550e75e4bad85cc5d70483b5eae2a92277c12acbcc5610dd4a8"
+    },
+    {
+      "path": "contest_workspace/methods/shared/probes/geometry_risk_probe.json",
+      "size_bytes": 2441,
+      "sha256": "03aea666bd528bc12aeb821485b2e2e34dcd25679ba94000523705a381ff6b84"
+    },
+    {
+      "path": "contest_workspace/methods/shared/probes/geometry_risk_probe_interpretation.md",
+      "size_bytes": 853,
+      "sha256": "ea5bef9d2fa1638171fd6b48b57dc3159c4e81d8c105f72c6da2d319bda3923c"
+    },
+    {
+      "path": "contest_workspace/methods/shared/probes/risk_probe_summary.json",
+      "size_bytes": 4980,
+      "sha256": "6bdd5711aad040840d799fc9319b403c8d3853a00293e4e6c85c987e64b919f4"
+    },
+    {
+      "path": "contest_workspace/methods/shared/shared_method_decisions.jsonl",
+      "size_bytes": 1781,
+      "sha256": "30af554e61724fdaed31c83f839982ed312d70d7e84b5a4fe6c63565cbb1bdbd"
+    },
+    {
+      "path": "contest_workspace/methods/shared/shared_method_screen.md",
+      "size_bytes": 3738,
+      "sha256": "c7e9da0a6ecc02fb88182a5fdc8f6b1488f51c946e915bc28080401936df2faf"
+    },
+    {
+      "path": "contest_workspace/outputs/2025A-R3-FORWARD-001/result1.xlsx",
+      "size_bytes": 4130,
+      "sha256": "b99d83b08d5c04a8d30dc35ce4bdd25aeeb45597aba4d802ae89e6919ace3587"
+    },
+    {
+      "path": "contest_workspace/outputs/2025A-R3-FORWARD-001/result2.xlsx",
+      "size_bytes": 4205,
+      "sha256": "0f483c519895f5bb48917b0acea864c9742dd34183bc3b454004a952c888a015"
+    },
+    {
+      "path": "contest_workspace/outputs/2025A-R3-FORWARD-001/result3.xlsx",
+      "size_bytes": 4814,
+      "sha256": "0634f6cf6d8b1de39b9c165ead2c87728e5686f2061d1f3a580cd5f55b041902"
+    },
+    {
+      "path": "contest_workspace/planning/choice_card_effective_shielding_geometry.md",
+      "size_bytes": 2620,
+      "sha256": "1977b47b9f1ee2c04137ec271ba9747f3805737ed570e159275094b0e2740119"
+    },
+    {
+      "path": "contest_workspace/planning/choice_card_q5_aggregation_scope.md",
+      "size_bytes": 1527,
+      "sha256": "ca38371f725dc1d299e703816f24581a69c7c75ea6f4f9bb30b72027958e9736"
+    },
+    {
+      "path": "contest_workspace/planning/choice_card_shared_method_architecture.md",
+      "size_bytes": 1644,
+      "sha256": "2eb891db05e95d7948dbb2152f2d8136344c0a876dd33427c23f1a2aa9bf5b35"
+    },
+    {
+      "path": "contest_workspace/planning/classification/problem_classification.json",
+      "size_bytes": 1976,
+      "sha256": "4518ec3bcc2532cc665a0e2ce308ad67b030a0c5bc5a02f9d88905bad30bd0ac"
+    },
+    {
+      "path": "contest_workspace/planning/framing_decisions.jsonl",
+      "size_bytes": 1949,
+      "sha256": "2180b6472b86b5fb1905fc98cdb8ac4f3a81a41e954981de27705dfedd036b3e"
+    },
+    {
+      "path": "contest_workspace/planning/model_assumptions.md",
+      "size_bytes": 1251,
+      "sha256": "9293dda4bbb250723767b68113c84e23eb304b1f62807d41859fba7f4fb77bb8"
+    },
+    {
+      "path": "contest_workspace/planning/parse/problem_parse.json",
+      "size_bytes": 7961,
+      "sha256": "85ced85de1695ceaa3a19ef6d09b4644c1be755ce79554693336bf5c1b0b7f1e"
+    },
+    {
+      "path": "contest_workspace/planning/session_config.json",
+      "size_bytes": 221,
+      "sha256": "5c22141f8738a6ebf52347a8e70145e385002bd2af06f8955ba74e4595d6ca63"
+    },
+    {
+      "path": "contest_workspace/planning/symbol_table.md",
+      "size_bytes": 2312,
+      "sha256": "5fa09d27de06fde9f565112644412b4651b19358dccfde1e250338282e77ddd1"
+    },
+    {
+      "path": "contest_workspace/results/shared/blind_run_summary.json",
+      "size_bytes": 3989,
+      "sha256": "6f05b3d78b5a8427142558c35411612f6e1f63bef463b9ecf1929e4b4be2170b"
+    },
+    {
+      "path": "contest_workspace/results/shared/experiments/round1/a_same_strategy_sensitivity.json",
+      "size_bytes": 12309,
+      "sha256": "877057df12b367daeb8d6dd36416db39793c42e3c1d492a000ed1f272fa42ff8"
+    },
+    {
+      "path": "contest_workspace/results/shared/experiments/round1/q1_ambiguity_cell_detail.json",
+      "size_bytes": 517,
+      "sha256": "9a329d78423cd2b84a6504c9b3ca0e5f3b871cfa43e869c15893a853c91b248e"
+    },
+    {
+      "path": "contest_workspace/results/shared/experiments/round1/q1_ambiguity_trace.json",
+      "size_bytes": 771,
+      "sha256": "59189a3da2161078df90c97777698a9a5145de62e54b291ef7414611964209b4"
+    },
+    {
+      "path": "contest_workspace/results/shared/experiments/round1/q1_f1_conservative.json",
+      "size_bytes": 1476,
+      "sha256": "90fdf9177966ade9d6eb260f27f34ad83bb03819a1779d7f28789435dc479cd1"
+    },
+    {
+      "path": "contest_workspace/results/shared/experiments/round1/q1_finer_level_check.json",
+      "size_bytes": 308,
+      "sha256": "666d27cafa18b22e35967fa14de49b28915fda78478a7d199473375009b1bd15"
+    },
+    {
+      "path": "contest_workspace/results/shared/experiments/round1/q1_geometry_resolution.json",
+      "size_bytes": 417,
+      "sha256": "72091c281c6ce5bc873a53c6dec151820f4d0e5dd5611e62a0408b8a606cd82c"
+    },
+    {
+      "path": "contest_workspace/results/shared/experiments/round1/q1_geometry_resolution_r2.json",
+      "size_bytes": 316,
+      "sha256": "af76924827ad1ae0d790b68d3e68347bc88561afbf1a0c857bb46ee59f54f2ac"
+    },
+    {
+      "path": "contest_workspace/results/shared/experiments/round1/q1_geometry_resolution_r3.json",
+      "size_bytes": 344,
+      "sha256": "424d961c60866d7690c9f040b237131e096b44b55e303f33a29a97327ec50300"
+    },
+    {
+      "path": "contest_workspace/results/shared/experiments/round1/q1q2_fallback_required.json",
+      "size_bytes": 206,
+      "sha256": "cd32fe409ca2dd9cc4d9b531e83bec1daae3bc6fb6b5c93fb5360d4b725c6467"
+    },
+    {
+      "path": "contest_workspace/results/shared/experiments/round1/q2.json",
+      "size_bytes": 7287,
+      "sha256": "7efcc15e7156d3a030ca227ebdb0f78e5501b6d9e989f53f9464600c56570637"
+    },
+    {
+      "path": "contest_workspace/results/shared/experiments/round1/q2_anchor_recovery.json",
+      "size_bytes": 7287,
+      "sha256": "7efcc15e7156d3a030ca227ebdb0f78e5501b6d9e989f53f9464600c56570637"
+    },
+    {
+      "path": "contest_workspace/results/shared/experiments/round1/q2_candidate_gate_audit.json",
+      "size_bytes": 44013,
+      "sha256": "f857b8462d26830f4fc8115a5a0c59519d9318b47dcc3c07f338819d3d8208e7"
+    },
+    {
+      "path": "contest_workspace/results/shared/experiments/round1/q2_fallback_required.json",
+      "size_bytes": 195,
+      "sha256": "a1d5797c4386c073668ccc606707c28be96da1e674441d792cc79a065eca8b10"
+    },
+    {
+      "path": "contest_workspace/results/shared/experiments/round1/q3.json",
+      "size_bytes": 10131,
+      "sha256": "7988307bd03719bc22385311b337c090233382d7705d3c21cec006216bdd52ce"
+    },
+    {
+      "path": "contest_workspace/results/shared/experiments/round1/q3_decision_report.md",
+      "size_bytes": 1527,
+      "sha256": "a63268dc3d5993617d4ce7c5e69d81a5a5d3a99dad28fae2354831de3fd624d6"
+    },
+    {
+      "path": "contest_workspace/results/shared/experiments/round1/q3_round2.json",
+      "size_bytes": 12697,
+      "sha256": "49e03e62f44552d7ca157f67ddda783c181ad036a05635823c62d0d8a6db1c69"
+    },
+    {
+      "path": "contest_workspace/results/shared/experiments/round1/q4.json",
+      "size_bytes": 19090,
+      "sha256": "9bc5a9c0ccea7dd87219b894262d6f20403472a4b4249312b4ce7d5eb0e6d0ea"
+    },
+    {
+      "path": "contest_workspace/results/shared/experiments/round1/q5.json",
+      "size_bytes": 61345,
+      "sha256": "aae9b756abca1057a4582c65f4986254b533bc3d8f0141e2a8c0b8a31ad26674"
+    },
+    {
+      "path": "contest_workspace/results/shared/experiments/round1/q5_decision_report.md",
+      "size_bytes": 2132,
+      "sha256": "e8ec4ca5d184413b8b9cc08d0148922e437993bb0a55f4e6b2c04caf999ce09a"
+    },
+    {
+      "path": "contest_workspace/robustness/Q1/q1_robustness_summary.json",
+      "size_bytes": 800,
+      "sha256": "ccf0e2d5a546decfdce94742fddaa12f3764a27fba7ecdbe50b030128933ebf9"
+    },
+    {
+      "path": "contest_workspace/robustness/Q2/q2_robustness_summary.json",
+      "size_bytes": 1681,
+      "sha256": "93557e1fcf3649643e1db8dc31cfd22ee100502ceaa9663366d932d17ce4216d"
+    },
+    {
+      "path": "contest_workspace/robustness/Q3/q3_robustness_summary.json",
+      "size_bytes": 1802,
+      "sha256": "f7897402e3ae796285443201d1dec106c9627a50a50cb8cfe372b339d07062f8"
+    },
+    {
+      "path": "contest_workspace/robustness/Q4/q4_failure_triage.json",
+      "size_bytes": 2603,
+      "sha256": "cd223961e0962f81d4f5d4f07c5ff46b377a94c2d3fef9c6deb0e46dafc32994"
+    },
+    {
+      "path": "contest_workspace/robustness/Q4/q4_failure_triage_plan.json",
+      "size_bytes": 810,
+      "sha256": "a8f0b9092721ac6f6569d24c3d010ebd498280b21299006afcec0bc7e50a3020"
+    },
+    {
+      "path": "contest_workspace/robustness/Q4/q4_postcheck_decision.md",
+      "size_bytes": 1359,
+      "sha256": "8b91dc9feccd60e8cc9b6d458aa223bd909eeb792fcae7da181485aa84890908"
+    },
+    {
+      "path": "contest_workspace/robustness/Q4/q4_robustness_summary.json",
+      "size_bytes": 2446,
+      "sha256": "b1eef7a0da00bbf2a99a32e985b5825b933ad0990ad2b21bb2bba774cfb63dad"
+    },
+    {
+      "path": "contest_workspace/robustness/Q5/q5_robustness_summary.json",
+      "size_bytes": 3216,
+      "sha256": "17a936d986930632a4c6d7334db246032d2f10eefdc5ceb8df280029190a0c1f"
+    },
+    {
+      "path": "contest_workspace/robustness/post_freeze_check_plan.json",
+      "size_bytes": 2507,
+      "sha256": "1facc546b2231e910bf141f6efc6307570ddb44bf11acecef147c19b75602bda"
+    },
+    {
+      "path": "contest_workspace/robustness/post_freeze_validation_summary.json",
+      "size_bytes": 2215,
+      "sha256": "cf46e781bb8e68921e7cc5512f51c7d0cfe4de59137814c17ff4ac6ba38ca816"
+    },
+    {
+      "path": "contest_workspace/spreadsheet_build/build_result_workbooks.mjs",
+      "size_bytes": 6213,
+      "sha256": "1d10f44e5fc1ecab83ebf8eb1f0fbf6fcfb998831879ac16698bfc3105d512a5"
+    },
+    {
+      "path": "contest_workspace/spreadsheet_build/final_previews/result1.png",
+      "size_bytes": 96271,
+      "sha256": "ddef393c18e576279f895194f94c9534001511755b3bddf1f9e52263d3dd3dd8"
+    },
+    {
+      "path": "contest_workspace/spreadsheet_build/final_previews/result2.png",
+      "size_bytes": 96799,
+      "sha256": "b120e9cedaea4cbf36245ea166bb5724d0fbc21319514d742233bb67525118a2"
+    },
+    {
+      "path": "contest_workspace/spreadsheet_build/final_previews/result3.png",
+      "size_bytes": 160641,
+      "sha256": "4b403ea28353b0a0660bca128f3f6922ce790f097714056215e72f490d7060af"
+    },
+    {
+      "path": "contest_workspace/spreadsheet_build/frozen_template_payload.json",
+      "size_bytes": 5748,
+      "sha256": "196cb79409c12d5779394b13fdb47de51f500d855685f10080d2ce9ad1c1a37e"
+    },
+    {
+      "path": "contest_workspace/spreadsheet_build/inspect_templates.mjs",
+      "size_bytes": 1386,
+      "sha256": "58098b835e05ade951712d97b04d50f1934cda45886ba0f6ef6987acba41032d"
+    },
+    {
+      "path": "contest_workspace/spreadsheet_build/inspections/result1.xlsx.inspect.ndjson",
+      "size_bytes": 16221,
+      "sha256": "3a84d10073194ca5eb3c507a24e03cce67642ad64e6b58fbe911f3a644502893"
+    },
+    {
+      "path": "contest_workspace/spreadsheet_build/inspections/result2.xlsx.inspect.ndjson",
+      "size_bytes": 16273,
+      "sha256": "6b3ba76743c38e4a95e86215a543caa3a18ff50b46962515c1abf0a1f9ac10ee"
+    },
+    {
+      "path": "contest_workspace/spreadsheet_build/inspections/result3.xlsx.inspect.ndjson",
+      "size_bytes": 35778,
+      "sha256": "f2974e29823ca76f1c027e1b040b93ae77ba16e688ed7c792c181c7d41ed0f6a"
+    },
+    {
+      "path": "contest_workspace/spreadsheet_build/template_previews/result1.png",
+      "size_bytes": 67120,
+      "sha256": "3b508c947287a551634a864e871ac59b294f3325cf1c40a0065032e8232c2fb9"
+    },
+    {
+      "path": "contest_workspace/spreadsheet_build/template_previews/result2.png",
+      "size_bytes": 66010,
+      "sha256": "a8f28aed87ad30c5b26cf1450d7467242e15f3e7ca5c84ce6aaf7782291b2a47"
+    },
+    {
+      "path": "contest_workspace/spreadsheet_build/template_previews/result3.png",
+      "size_bytes": 106012,
+      "sha256": "01149402575f251b73c79f9695b77cabc88b3de1b033f6e1c7ef521d99f02c62"
+    },
+    {
+      "path": "contest_workspace/spreadsheet_build/workbook_verification.json",
+      "size_bytes": 4943,
+      "sha256": "a5b7cb5bc1c23f921d831955212800d8658e7a8f4e983b9b8529dfc889a44eee"
+    },
+    {
+      "path": "contest_workspace/workspace/data/data_profile.json",
+      "size_bytes": 3302,
+      "sha256": "432459d786c5c3e040e34963a11c00ef511caf08df82228dea84129216ba3152"
+    },
+    {
+      "path": "contest_workspace/workspace/data/data_report.md",
+      "size_bytes": 572,
+      "sha256": "c19b8efee115b51cf3d2026edc1386b661966005c8133b3a2140edb7f7b09a41"
+    }
+  ],
+  "content_fingerprint_sha256": "2ead5e83a44b4e0d10e18179119a2d6fc418ae4de04b2cc32c8d0a8f757a5bf4",
+  "final_workbooks": [
+    {
+      "path": "contest_workspace/outputs/2025A-R3-FORWARD-001/result1.xlsx",
+      "size_bytes": 4130,
+      "sha256": "b99d83b08d5c04a8d30dc35ce4bdd25aeeb45597aba4d802ae89e6919ace3587"
+    },
+    {
+      "path": "contest_workspace/outputs/2025A-R3-FORWARD-001/result2.xlsx",
+      "size_bytes": 4205,
+      "sha256": "0f483c519895f5bb48917b0acea864c9742dd34183bc3b454004a952c888a015"
+    },
+    {
+      "path": "contest_workspace/outputs/2025A-R3-FORWARD-001/result3.xlsx",
+      "size_bytes": 4814,
+      "sha256": "0634f6cf6d8b1de39b9c165ead2c87728e5686f2061d1f3a580cd5f55b041902"
+    }
+  ],
+  "question_states": {
+    "Q1": {
+      "status": "CONDITIONAL_F1_STRICT_LOWER_ONLY",
+      "freeze_allowed": true
+    },
+    "Q2": {
+      "status": "PASS_B_CERTIFIED_FEASIBLE",
+      "freeze_allowed": true
+    },
+    "Q3": {
+      "status": "CONDITIONAL_TWO_ZERO_CONTRIBUTIONS",
+      "freeze_allowed": true
+    },
+    "Q4": {
+      "status": "CONDITIONAL_M1_REJECTED_B1_STABLE_SELECTED",
+      "freeze_allowed": true
+    },
+    "Q5": {
+      "status": "PASS_B_CERTIFIED_WITH_CONCENTRATION_WARNING",
+      "freeze_allowed": true
+    }
+  },
+  "selected_output_methods": {
+    "Q1": "F1_strict_conservative_lower_bound",
+    "Q2": "M1_shared_anchor",
+    "Q3": "M1_conditional_degenerate",
+    "Q4": "B1_stable_substitution",
+    "Q5": "B1_best_observed"
+  },
+  "controller_decision_provenance": {
+    "Q4_selection": "controller_failure_triage_under_standing_user_authorization",
+    "Q5_selection": "controller_under_standing_user_authorization",
+    "controller_records_not_human_replies": true
+  },
+  "candidate_verification": {
+    "candidate_manifest_path": "cumcm-b-skill/p17/candidate_manifest.json",
+    "candidate_manifest_sha256": "6a6b4725e04cae1bb6627319a23a2b22c792c2639c85b3250b0f13a5b6d7620d",
+    "candidate_manifest_expected_sha256": "6a6b4725e04cae1bb6627319a23a2b22c792c2639c85b3250b0f13a5b6d7620d",
+    "candidate_content_fingerprint_sha256": "d5f0bebcd669c8634f5e6c4a45b47053b252a964a15e48ad39ada9b1ef906cd7",
+    "candidate_content_fingerprint_expected_sha256": "d5f0bebcd669c8634f5e6c4a45b47053b252a964a15e48ad39ada9b1ef906cd7",
+    "identity_match": true,
+    "expected_file_count": 145,
+    "actual_file_count": 145,
+    "missing": [],
+    "extra": [],
+    "mismatched": [],
+    "pass": true
+  },
+  "official_input_verification": [
+    {
+      "path": "CUMCM_A题skill训练宝/赛题/2025/A题/A题.pdf",
+      "expected_sha256": "a37f6aad30b16ea09da9cb320ce194b12d3a28874008cf9ff19549f6c6079447",
+      "observed_sha256": "a37f6aad30b16ea09da9cb320ce194b12d3a28874008cf9ff19549f6c6079447",
+      "match": true
+    },
+    {
+      "path": "CUMCM_A题skill训练宝/赛题/2025/A题/附件/result1.xlsx",
+      "expected_sha256": "af04b16e6a4719628971bcf5a03d230c9da6738e67eebac9276d254fdd4df1a7",
+      "observed_sha256": "af04b16e6a4719628971bcf5a03d230c9da6738e67eebac9276d254fdd4df1a7",
+      "match": true
+    },
+    {
+      "path": "CUMCM_A题skill训练宝/赛题/2025/A题/附件/result2.xlsx",
+      "expected_sha256": "c681d5e378538f71c77fca199a3ca8303a04dbcfc7bd95f870ae22f01ab69f91",
+      "observed_sha256": "c681d5e378538f71c77fca199a3ca8303a04dbcfc7bd95f870ae22f01ab69f91",
+      "match": true
+    },
+    {
+      "path": "CUMCM_A题skill训练宝/赛题/2025/A题/附件/result3.xlsx",
+      "expected_sha256": "b648c82d63e459ba6e6b3711ae79875e373521cd543b45571c4d8ff1ad5ec54a",
+      "observed_sha256": "b648c82d63e459ba6e6b3711ae79875e373521cd543b45571c4d8ff1ad5ec54a",
+      "match": true
+    }
+  ],
+  "holdout_boundary_at_freeze": {
+    "deny_body_access_count": 0,
+    "network_access_count": 0,
+    "external_comparison_allowed_before_freeze": false,
+    "answer_or_comparison_content_accessed_before_freeze": false,
+    "formal_target_write_authorized": false
+  }
+}

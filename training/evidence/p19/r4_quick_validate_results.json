@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "candidate_id": "B-LEAN-20260909-R4-CANDIDATE",
+  "validator": "<local-path><identifier>/.codex/skills/.system/skill-creator/scripts/quick_validate.py",
+  "command_contract": "python -X utf8 <validator> <each affected Skill mirror>",
+  "affected_skills": 9,
+  "mirror_roots": 3,
+  "validated": 27,
+  "passed": 27,
+  "failed": 0,
+  "status": "PASS",
+  "completed_at": "2026-09-09T21:43:22.6235883+08:00"
+}

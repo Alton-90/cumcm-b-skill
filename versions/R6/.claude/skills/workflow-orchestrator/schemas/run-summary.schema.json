@@ -1,0 +1,276 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "artifact_type": {
+      "const": "run-summary"
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "extensions": {
+      "type": "object"
+    },
+    "question_id": {
+      "type": "string",
+      "pattern": "^Q[0-9]+(?:[._-][A-Za-z0-9]+)*$"
+    },
+    "round": {
+      "type": "string",
+      "minLength": 1
+    },
+    "approved_decision_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "methods": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "method_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "enum": [
+              "main",
+              "usable_baseline",
+              "conditional_fallback"
+            ]
+          },
+          "status": {
+            "enum": [
+              "success",
+              "failed",
+              "not_run"
+            ]
+          },
+          "language": {
+            "enum": [
+              "python",
+              "matlab"
+            ]
+          },
+          "script": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false
+          },
+          "outputs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              },
+              "required": [
+                "path",
+                "sha256"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1
+          },
+          "metrics_summary": {
+            "type": "object"
+          },
+          "constraint_violations": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "minItems": 0
+          },
+          "execution_time_seconds": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "method_id",
+          "role",
+          "status",
+          "language",
+          "script",
+          "outputs",
+          "metrics_summary",
+          "constraint_violations"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 2
+    },
+    "comparison": {
+      "type": "object",
+      "properties": {
+        "population_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "metric_contract": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "population_id",
+        "metric_contract"
+      ],
+      "additionalProperties": false
+    },
+    "selected_output": {
+      "type": "object",
+      "properties": {
+        "method_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "parameters": {
+          "type": "object"
+        },
+        "composition": {
+          "type": [
+            "array",
+            "object",
+            "string"
+          ]
+        },
+        "evaluator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "resolution": {
+          "type": [
+            "number",
+            "object",
+            "string"
+          ]
+        }
+      },
+      "required": [
+        "method_id",
+        "parameters",
+        "composition",
+        "evaluator",
+        "resolution"
+      ],
+      "additionalProperties": false
+    },
+    "output_obligations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "satisfied": {
+            "type": "boolean"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              },
+              "required": [
+                "path",
+                "sha256"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 0
+          }
+        },
+        "required": [
+          "id",
+          "satisfied",
+          "evidence"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "random_seed": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "environment": {
+      "type": "object"
+    },
+    "contract_evidence": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "artifact_type",
+    "question_id",
+    "round",
+    "approved_decision_id",
+    "methods",
+    "comparison",
+    "selected_output",
+    "output_obligations",
+    "random_seed",
+    "environment",
+    "inputs"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mathmodel:r6:run-summary",
+  "title": "run-summary"
+}

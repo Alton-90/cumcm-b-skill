@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "review_id": "P11-B-LEAN-20260907-R1-CONTROLLER",
+  "reviewed_at": "2026-09-07T17:16:14+08:00",
+  "release_id": "B-LEAN-20260907-R1",
+  "approved_change_ids": ["CHG-B01", "CHG-B02"],
+  "status": "PASS_WITH_WARNINGS",
+  "controller_acceptance": "ACCEPTED_ISOLATED_CANDIDATE",
+  "scope_review": {
+    "target_expected_files": 145,
+    "target_actual_files": 145,
+    "target_missing": 0,
+    "target_extra": 0,
+    "target_hash_mismatches": 0,
+    "candidate_expected_files": 145,
+    "candidate_actual_files": 145,
+    "candidate_missing": 0,
+    "candidate_extra": 0,
+    "approved_modified_files": 18,
+    "actual_modified_files": 18,
+    "unapproved_modified_files": 0,
+    "approved_files_missing_from_diff": 0,
+    "manifest_hash_record_mismatches": 0,
+    "three_way_mirror_mismatches": 0
+  },
+  "semantic_review": {
+    "CHG_B01": "PASS: applicable decision timing and information boundaries, objective-role separation, and typed real dependencies propagate from parsing through screening and orchestration while simple static and independent questions remain compact and parallel.",
+    "CHG_B02": "PASS: code planning and Python/MATLAB review carry and enforce shared information, objective, feasibility, and upstream-artifact contracts for main and baseline.",
+    "case_specific_methods_or_thresholds_added": false,
+    "new_skill_added": false
+  },
+  "controller_reruns": {
+    "behavior_contract_suite": {
+      "command": "python -X utf8 candidates/B-LEAN-20260907-R1/tests/run_p11_behavior_tests.py <temporary-output>",
+      "exit_code": 0,
+      "assertions": 27,
+      "failed_assertions": 0,
+      "result": "PASS",
+      "model_execution": "NOT_RUN"
+    },
+    "quick_validate_unique_skills": {
+      "validated_unique_skills": 6,
+      "exit_code_failures": 0,
+      "result": "PASS",
+      "mirror_equivalence_extends_result_to_files": 18
+    },
+    "patch_roundtrip": {
+      "candidate_diff_sha256": "7590aadb1ef2019cccc18a8d725b826e2668c25d4312ad871a48c65a193adde9",
+      "git_apply_check_exit_code": 0,
+      "git_apply_exit_code": 0,
+      "applied_candidate_hashes_checked": 18,
+      "hash_mismatches": 0,
+      "temporary_copies_removed": true,
+      "result": "PASS"
+    }
+  },
+  "leakage_and_holdout": {
+    "candidate_exact_matches": {
+      "SRC-6005e94c9e67": 0,
+      "SRC-d3220cc480d4": 0,
+      "SRC-11fb6d74f691": 0,
+      "B060": 0,
+      "B157": 0,
+      "user_machine_absolute_paths": 0
+    },
+    "candidate_patch_matches_for_2025_or_training_body_markers": 0,
+    "holdout_content_accessed_by_P11": false,
+    "P12_started": false
+  },
+  "remediation_history": [
+    "Controller rejected the first generated diff because newline handling inserted blank lines between patch lines.",
+    "The final diff was regenerated with Git byte output, then independently check-applied and actually applied with core.autocrlf=false; all 18 resulting hashes matched."
+  ],
+  "warnings": [
+    "Behavior tests use structured contract fixtures and explicit candidate-skill locators; they do not claim live model execution. The true behavior stress test remains P12.",
+    "scripts/sync-plugin.sh --check was NOT_RUN because Windows Bash/WSL could not resolve the candidate path; exact three-way SHA-256 equality passed for all six affected skills.",
+    "An initial default-encoding quick-validation attempt was encoding-limited; the UTF-8 rerun passed all 18 files and the controller independently passed all six unique representatives."
+  ],
+  "release_boundary": {
+    "formal_target_modified": false,
+    "formal_target_write_authorized": false,
+    "candidate_only": true,
+    "P11_may_close": true,
+    "next_phase": "P12",
+    "next_phase_started": false
+  },
+  "artifact_hashes": {
+    "candidate_manifest.json": "a436a4f2a62eb4218e235d50a073f962bf65de589e14f3ac654502291b028eea",
+    "candidate_change_report.md": "1a426485b38051fce6003ddbd39d567f95b8b639476d9d0d604d1c9979d897dd",
+    "candidate_diff.patch": "7590aadb1ef2019cccc18a8d725b826e2668c25d4312ad871a48c65a193adde9",
+    "p11_behavior_test_results.json": "f3f176bb440b6732d57a74666a5874f61de6c03c92641f598eec5ce9c7e02cce",
+    "tests/run_p11_behavior_tests.py": "2c46e17af6bc86760ebd6a6c335885128ff419cca2101f28d0f2fe23828269cb"
+  },
+  "evidence_refs": [
+    {
+      "source_path": "cumcm-b-skill/candidates/B-LEAN-20260907-R1/candidate_manifest.json",
+      "locator": "$.modified_files; $.validation; $.post_target_integrity",
+      "source_role": "candidate_machine_record"
+    },
+    {
+      "source_path": "cumcm-b-skill/candidates/B-LEAN-20260907-R1/candidate_diff.patch",
+      "locator": "18 approved SKILL.md diffs; SHA-256 7590aadb1ef2019cccc18a8d725b826e2668c25d4312ad871a48c65a193adde9",
+      "source_role": "candidate_patch"
+    },
+    {
+      "source_path": "cumcm-b-skill/candidates/B-LEAN-20260907-R1/p11_behavior_test_results.json",
+      "locator": "$.results; $.overall",
+      "source_role": "validation_output"
+    },
+    {
+      "source_path": "cumcm-b-skill/planning/change_decisions.jsonl",
+      "locator": "decision_id=P10-B-LEAN-CORE-20260907",
+      "source_role": "human_decision_ledger"
+    },
+    {
+      "source_path": "cumcm-b-skill/planning/history/20260907_171614_P11-ACCEPTANCE-BEFORE/backup_manifest.json",
+      "locator": "$.files",
+      "source_role": "versioned_before_state"
+    }
+  ]
+}

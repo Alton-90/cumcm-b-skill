@@ -1,0 +1,58 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "artifact_type": {
+      "const": "session"
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "extensions": {
+      "type": "object"
+    },
+    "interaction_mode": {
+      "enum": [
+        "learning",
+        "speed"
+      ]
+    },
+    "rigor_profile": {
+      "enum": [
+        "lean",
+        "submission"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "artifact_type",
+    "interaction_mode",
+    "rigor_profile"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mathmodel:r6:session",
+  "title": "session"
+}

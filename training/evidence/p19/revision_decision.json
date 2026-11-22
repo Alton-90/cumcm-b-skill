@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "decision_id": "P19-REVISION-2025A-001",
+  "status": "DECIDED_CONTROLLER_UNDER_STANDING_USER_AUTHORIZATION",
+  "decided_at": "2026-09-09T21:30:56.6575741+08:00",
+  "decided_by": "controller_under_standing_user_authorization",
+  "not_a_human_per_item_reply": true,
+  "blind_output_manifest": {
+    "path": "cumcm-b-skill/tests/holdout/2025A/B-LEAN-20260908-R3-CANDIDATE/blind_output_manifest.json",
+    "sha256": "0b159efb05e212ca0a390409527030bd7f35f276fd27f1a40f92eedb2ba50b11",
+    "content_fingerprint_sha256": "2ead5e83a44b4e0d10e18179119a2d6fc418ae4de04b2cc32c8d0a8f757a5bf4"
+  },
+  "external_comparison": "cumcm-b-skill/p19/external_comparison_and_failure_triage.md",
+  "approved_change_bundles": [
+    {
+      "change_id": "CHG-B05",
+      "title": "Feasibility- and interaction-preserving candidate screening",
+      "scope": [
+        "method-selector",
+        "model-code-analyzer",
+        "python-model-code-generator",
+        "matlab-model-code-generator",
+        "python-code-reviewer",
+        "matlab-code-reviewer",
+        "workflow-orchestrator"
+      ],
+      "acceptance": "Proxy screening cannot erase all feasible or interaction-relevant candidates without a bounded coverage diagnosis; continuous universal constraints require a defensible certificate."
+    },
+    {
+      "change_id": "CHG-B06",
+      "title": "Exact selected-output readiness before export or final freeze",
+      "scope": [
+        "model-code-analyzer",
+        "python-code-reviewer",
+        "matlab-code-reviewer",
+        "robustness-checker",
+        "result-report-generator",
+        "workflow-orchestrator"
+      ],
+      "acceptance": "Completion/export requires stability evidence for the exact selected output; evidence freeze remains distinct from task completion and selection changes invalidate dependent artifacts."
+    }
+  ],
+  "maximum_change_bundles": 2,
+  "formal_target_write_authorized": false,
+  "next_action": "Create an R4 candidate from the immutable R3 candidate, implement only CHG-B05 and CHG-B06 across the affected mirrors, and run compact prospective behavior tests."
+}

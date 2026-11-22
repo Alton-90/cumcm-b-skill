@@ -1,0 +1,567 @@
+{
+  "schema_version": 1,
+  "record_type": "P3_VISUAL_REVIEW",
+  "reviewed_at": "2026-09-05T09:56:29.161253+08:00",
+  "status": "PASS",
+  "source_count": 22,
+  "review_scope": "Conversion quality only; no OCR, text extraction, paper-method analysis, or modeling conclusions.",
+  "sources": [
+    {
+      "source_id": "SRC-c2223b8c2dd7",
+      "reviewed_pdf_pages": [
+        1,
+        21,
+        41
+      ],
+      "contact_sheets": [
+        "cumcm-b-skill/qa/p3/contact_sheets/SRC-c2223b8c2dd7_review_01.png"
+      ],
+      "status": "PASS",
+      "observations": "Required first/middle/last and all mechanically flagged pages were visually checked for successful rendering, orientation, aspect-ratio preservation, cropping, stretching, and obvious unreadability; no defect attributable to PDF conversion was observed. Source-image limitations remain source limitations.",
+      "content_or_method_analysis_performed": false,
+      "evidence_refs": [
+        {
+          "source_path": "cumcm-b-skill/qa/p3/contact_sheets/SRC-c2223b8c2dd7_review_01.png",
+          "locator": "rendered QA contact-sheet cells labelled by PDF page",
+          "source_role": "agent_inference",
+          "supports": "Supports the visual conversion-QA result for the listed PDF pages; it does not support paper-content or modeling conclusions."
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-b4fce6295e11",
+      "output_pdf": "cumcm-b-skill/derived/pdf/SRC-b4fce6295e11_v2.pdf",
+      "reviewed_pdf_pages": [
+        1,
+        35,
+        69,
+        70
+      ],
+      "contact_sheets": [
+        "cumcm-b-skill/qa/p3r/SRC-b4fce6295e11_v2_visual_review.png"
+      ],
+      "status": "PASS",
+      "derivative_status": "CURRENT",
+      "observations": "Pages 1, 35, 69, and 70 were visually checked for orientation, readability, cropping, stretching, black borders, and successful rendering; no conversion defect was observed. Page 70 is the closing 谢谢大家 slide. No paper-method analysis was performed.",
+      "content_or_method_analysis_performed": false,
+      "superseded_visual_reviews": [
+        {
+          "source_id": "SRC-b4fce6295e11",
+          "reviewed_pdf_pages": [
+            1,
+            38,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75
+          ],
+          "contact_sheets": [
+            "cumcm-b-skill/qa/p3/contact_sheets/SRC-b4fce6295e11_review_01.png"
+          ],
+          "status": "PASS",
+          "observations": "Required first/middle/last and all mechanically flagged pages were visually checked for successful rendering, orientation, aspect-ratio preservation, cropping, stretching, and obvious unreadability; no defect attributable to PDF conversion was observed. Source-image limitations remain source limitations.",
+          "content_or_method_analysis_performed": false,
+          "evidence_refs": [
+            {
+              "source_path": "cumcm-b-skill/qa/p3/contact_sheets/SRC-b4fce6295e11_review_01.png",
+              "locator": "rendered QA contact-sheet cells labelled by PDF page",
+              "source_role": "agent_inference",
+              "supports": "Supports the visual conversion-QA result for the listed PDF pages; it does not support paper-content or modeling conclusions."
+            }
+          ],
+          "derivative_status": "SUPERSEDED_NONBODY_CONTAMINATION",
+          "superseded_by_decision_id": "P3R-CORRECT-92bca105-b2c1-4b98-be7c-eeeb9ec94a64"
+        }
+      ],
+      "evidence_refs": [
+        {
+          "source_path": "cumcm-b-skill/qa/p3r/SRC-b4fce6295e11_v2_visual_review.png",
+          "locator": "cells for PDF pages 1, 35, 69, and 70",
+          "source_role": "agent_inference",
+          "supports": "Supports the required page-scoped visual conversion-QA pass for the current v2 derivative."
+        },
+        {
+          "source_path": "cumcm-b-skill/qa/p3r/p3r_2019_v2_qa.json",
+          "locator": "$.v2_qa.per_page_render_checks",
+          "source_role": "agent_inference",
+          "supports": "Supports full-render and source-to-output mapping integrity for all 70 pages."
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-c1a180d84907",
+      "reviewed_pdf_pages": [
+        1,
+        9,
+        18
+      ],
+      "contact_sheets": [
+        "cumcm-b-skill/qa/p3/contact_sheets/SRC-c1a180d84907_review_01.png"
+      ],
+      "status": "PASS",
+      "observations": "Required first/middle/last and all mechanically flagged pages were visually checked for successful rendering, orientation, aspect-ratio preservation, cropping, stretching, and obvious unreadability; no defect attributable to PDF conversion was observed. Source-image limitations remain source limitations.",
+      "content_or_method_analysis_performed": false,
+      "evidence_refs": [
+        {
+          "source_path": "cumcm-b-skill/qa/p3/contact_sheets/SRC-c1a180d84907_review_01.png",
+          "locator": "rendered QA contact-sheet cells labelled by PDF page",
+          "source_role": "agent_inference",
+          "supports": "Supports the visual conversion-QA result for the listed PDF pages; it does not support paper-content or modeling conclusions."
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-a141969616ab",
+      "reviewed_pdf_pages": [
+        1,
+        26,
+        52
+      ],
+      "contact_sheets": [
+        "cumcm-b-skill/qa/p3/contact_sheets/SRC-a141969616ab_review_01.png"
+      ],
+      "status": "PASS",
+      "observations": "Required first/middle/last and all mechanically flagged pages were visually checked for successful rendering, orientation, aspect-ratio preservation, cropping, stretching, and obvious unreadability; no defect attributable to PDF conversion was observed. Source-image limitations remain source limitations.",
+      "content_or_method_analysis_performed": false,
+      "evidence_refs": [
+        {
+          "source_path": "cumcm-b-skill/qa/p3/contact_sheets/SRC-a141969616ab_review_01.png",
+          "locator": "rendered QA contact-sheet cells labelled by PDF page",
+          "source_role": "agent_inference",
+          "supports": "Supports the visual conversion-QA result for the listed PDF pages; it does not support paper-content or modeling conclusions."
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-ae17dc2a53df",
+      "reviewed_pdf_pages": [
+        1,
+        39,
+        78
+      ],
+      "contact_sheets": [
+        "cumcm-b-skill/qa/p3/contact_sheets/SRC-ae17dc2a53df_review_01.png"
+      ],
+      "status": "PASS",
+      "observations": "Required first/middle/last and all mechanically flagged pages were visually checked for successful rendering, orientation, aspect-ratio preservation, cropping, stretching, and obvious unreadability; no defect attributable to PDF conversion was observed. Source-image limitations remain source limitations.",
+      "content_or_method_analysis_performed": false,
+      "evidence_refs": [
+        {
+          "source_path": "cumcm-b-skill/qa/p3/contact_sheets/SRC-ae17dc2a53df_review_01.png",
+          "locator": "rendered QA contact-sheet cells labelled by PDF page",
+          "source_role": "agent_inference",
+          "supports": "Supports the visual conversion-QA result for the listed PDF pages; it does not support paper-content or modeling conclusions."
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-34b786442a51",
+      "reviewed_pdf_pages": [
+        1,
+        36,
+        72
+      ],
+      "contact_sheets": [
+        "cumcm-b-skill/qa/p3/contact_sheets/SRC-34b786442a51_review_01.png"
+      ],
+      "status": "PASS",
+      "observations": "Required first/middle/last and all mechanically flagged pages were visually checked for successful rendering, orientation, aspect-ratio preservation, cropping, stretching, and obvious unreadability; no defect attributable to PDF conversion was observed. Source-image limitations remain source limitations.",
+      "content_or_method_analysis_performed": false,
+      "evidence_refs": [
+        {
+          "source_path": "cumcm-b-skill/qa/p3/contact_sheets/SRC-34b786442a51_review_01.png",
+          "locator": "rendered QA contact-sheet cells labelled by PDF page",
+          "source_role": "agent_inference",
+          "supports": "Supports the visual conversion-QA result for the listed PDF pages; it does not support paper-content or modeling conclusions."
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-e5cd698ad88f",
+      "reviewed_pdf_pages": [
+        1,
+        23,
+        45
+      ],
+      "contact_sheets": [
+        "cumcm-b-skill/qa/p3/contact_sheets/SRC-e5cd698ad88f_review_01.png"
+      ],
+      "status": "PASS",
+      "observations": "Required first/middle/last and all mechanically flagged pages were visually checked for successful rendering, orientation, aspect-ratio preservation, cropping, stretching, and obvious unreadability; no defect attributable to PDF conversion was observed. Source-image limitations remain source limitations.",
+      "content_or_method_analysis_performed": false,
+      "evidence_refs": [
+        {
+          "source_path": "cumcm-b-skill/qa/p3/contact_sheets/SRC-e5cd698ad88f_review_01.png",
+          "locator": "rendered QA contact-sheet cells labelled by PDF page",
+          "source_role": "agent_inference",
+          "supports": "Supports the visual conversion-QA result for the listed PDF pages; it does not support paper-content or modeling conclusions."
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-8f01c87998ac",
+      "reviewed_pdf_pages": [
+        1,
+        13,
+        26
+      ],
+      "contact_sheets": [
+        "cumcm-b-skill/qa/p3/contact_sheets/SRC-8f01c87998ac_review_01.png"
+      ],
+      "status": "PASS",
+      "observations": "Required first/middle/last and all mechanically flagged pages were visually checked for successful rendering, orientation, aspect-ratio preservation, cropping, stretching, and obvious unreadability; no defect attributable to PDF conversion was observed. Source-image limitations remain source limitations.",
+      "content_or_method_analysis_performed": false,
+      "evidence_refs": [
+        {
+          "source_path": "cumcm-b-skill/qa/p3/contact_sheets/SRC-8f01c87998ac_review_01.png",
+          "locator": "rendered QA contact-sheet cells labelled by PDF page",
+          "source_role": "agent_inference",
+          "supports": "Supports the visual conversion-QA result for the listed PDF pages; it does not support paper-content or modeling conclusions."
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-50e9cdc8922a",
+      "reviewed_pdf_pages": [
+        1,
+        30,
+        59
+      ],
+      "contact_sheets": [
+        "cumcm-b-skill/qa/p3/contact_sheets/SRC-50e9cdc8922a_review_01.png"
+      ],
+      "status": "PASS",
+      "observations": "Required first/middle/last and all mechanically flagged pages were visually checked for successful rendering, orientation, aspect-ratio preservation, cropping, stretching, and obvious unreadability; no defect attributable to PDF conversion was observed. Source-image limitations remain source limitations.",
+      "content_or_method_analysis_performed": false,
+      "evidence_refs": [
+        {
+          "source_path": "cumcm-b-skill/qa/p3/contact_sheets/SRC-50e9cdc8922a_review_01.png",
+          "locator": "rendered QA contact-sheet cells labelled by PDF page",
+          "source_role": "agent_inference",
+          "supports": "Supports the visual conversion-QA result for the listed PDF pages; it does not support paper-content or modeling conclusions."
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-f9723b6fec3b",
+      "reviewed_pdf_pages": [
+        1,
+        14,
+        28
+      ],
+      "contact_sheets": [
+        "cumcm-b-skill/qa/p3/contact_sheets/SRC-f9723b6fec3b_review_01.png"
+      ],
+      "status": "PASS",
+      "observations": "Required first/middle/last and all mechanically flagged pages were visually checked for successful rendering, orientation, aspect-ratio preservation, cropping, stretching, and obvious unreadability; no defect attributable to PDF conversion was observed. Source-image limitations remain source limitations.",
+      "content_or_method_analysis_performed": false,
+      "evidence_refs": [
+        {
+          "source_path": "cumcm-b-skill/qa/p3/contact_sheets/SRC-f9723b6fec3b_review_01.png",
+          "locator": "rendered QA contact-sheet cells labelled by PDF page",
+          "source_role": "agent_inference",
+          "supports": "Supports the visual conversion-QA result for the listed PDF pages; it does not support paper-content or modeling conclusions."
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-f7da546613ae",
+      "reviewed_pdf_pages": [
+        1,
+        21,
+        42
+      ],
+      "contact_sheets": [
+        "cumcm-b-skill/qa/p3/contact_sheets/SRC-f7da546613ae_review_01.png"
+      ],
+      "status": "PASS",
+      "observations": "Required first/middle/last and all mechanically flagged pages were visually checked for successful rendering, orientation, aspect-ratio preservation, cropping, stretching, and obvious unreadability; no defect attributable to PDF conversion was observed. Source-image limitations remain source limitations.",
+      "content_or_method_analysis_performed": false,
+      "evidence_refs": [
+        {
+          "source_path": "cumcm-b-skill/qa/p3/contact_sheets/SRC-f7da546613ae_review_01.png",
+          "locator": "rendered QA contact-sheet cells labelled by PDF page",
+          "source_role": "agent_inference",
+          "supports": "Supports the visual conversion-QA result for the listed PDF pages; it does not support paper-content or modeling conclusions."
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-ff5379123217",
+      "reviewed_pdf_pages": [
+        1,
+        21,
+        41
+      ],
+      "contact_sheets": [
+        "cumcm-b-skill/qa/p3/contact_sheets/SRC-ff5379123217_review_01.png"
+      ],
+      "status": "PASS",
+      "observations": "Required first/middle/last and all mechanically flagged pages were visually checked for successful rendering, orientation, aspect-ratio preservation, cropping, stretching, and obvious unreadability; no defect attributable to PDF conversion was observed. Source-image limitations remain source limitations.",
+      "content_or_method_analysis_performed": false,
+      "evidence_refs": [
+        {
+          "source_path": "cumcm-b-skill/qa/p3/contact_sheets/SRC-ff5379123217_review_01.png",
+          "locator": "rendered QA contact-sheet cells labelled by PDF page",
+          "source_role": "agent_inference",
+          "supports": "Supports the visual conversion-QA result for the listed PDF pages; it does not support paper-content or modeling conclusions."
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-4b50124526fd",
+      "reviewed_pdf_pages": [
+        1,
+        16,
+        32
+      ],
+      "contact_sheets": [
+        "cumcm-b-skill/qa/p3/contact_sheets/SRC-4b50124526fd_review_01.png"
+      ],
+      "status": "PASS",
+      "observations": "Required first/middle/last and all mechanically flagged pages were visually checked for successful rendering, orientation, aspect-ratio preservation, cropping, stretching, and obvious unreadability; no defect attributable to PDF conversion was observed. Source-image limitations remain source limitations.",
+      "content_or_method_analysis_performed": false,
+      "evidence_refs": [
+        {
+          "source_path": "cumcm-b-skill/qa/p3/contact_sheets/SRC-4b50124526fd_review_01.png",
+          "locator": "rendered QA contact-sheet cells labelled by PDF page",
+          "source_role": "agent_inference",
+          "supports": "Supports the visual conversion-QA result for the listed PDF pages; it does not support paper-content or modeling conclusions."
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-2dd18aef554f",
+      "reviewed_pdf_pages": [
+        1,
+        26,
+        51
+      ],
+      "contact_sheets": [
+        "cumcm-b-skill/qa/p3/contact_sheets/SRC-2dd18aef554f_review_01.png"
+      ],
+      "status": "PASS",
+      "observations": "Required first/middle/last and all mechanically flagged pages were visually checked for successful rendering, orientation, aspect-ratio preservation, cropping, stretching, and obvious unreadability; no defect attributable to PDF conversion was observed. Source-image limitations remain source limitations.",
+      "content_or_method_analysis_performed": false,
+      "evidence_refs": [
+        {
+          "source_path": "cumcm-b-skill/qa/p3/contact_sheets/SRC-2dd18aef554f_review_01.png",
+          "locator": "rendered QA contact-sheet cells labelled by PDF page",
+          "source_role": "agent_inference",
+          "supports": "Supports the visual conversion-QA result for the listed PDF pages; it does not support paper-content or modeling conclusions."
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-9656ff12349e",
+      "reviewed_pdf_pages": [
+        1,
+        17,
+        34
+      ],
+      "contact_sheets": [
+        "cumcm-b-skill/qa/p3/contact_sheets/SRC-9656ff12349e_review_01.png"
+      ],
+      "status": "PASS",
+      "observations": "Required first/middle/last and all mechanically flagged pages were visually checked for successful rendering, orientation, aspect-ratio preservation, cropping, stretching, and obvious unreadability; no defect attributable to PDF conversion was observed. Source-image limitations remain source limitations.",
+      "content_or_method_analysis_performed": false,
+      "evidence_refs": [
+        {
+          "source_path": "cumcm-b-skill/qa/p3/contact_sheets/SRC-9656ff12349e_review_01.png",
+          "locator": "rendered QA contact-sheet cells labelled by PDF page",
+          "source_role": "agent_inference",
+          "supports": "Supports the visual conversion-QA result for the listed PDF pages; it does not support paper-content or modeling conclusions."
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-922010858ece",
+      "reviewed_pdf_pages": [
+        1,
+        25,
+        50
+      ],
+      "contact_sheets": [
+        "cumcm-b-skill/qa/p3/contact_sheets/SRC-922010858ece_review_01.png"
+      ],
+      "status": "PASS",
+      "observations": "Required first/middle/last and all mechanically flagged pages were visually checked for successful rendering, orientation, aspect-ratio preservation, cropping, stretching, and obvious unreadability; no defect attributable to PDF conversion was observed. Source-image limitations remain source limitations.",
+      "content_or_method_analysis_performed": false,
+      "evidence_refs": [
+        {
+          "source_path": "cumcm-b-skill/qa/p3/contact_sheets/SRC-922010858ece_review_01.png",
+          "locator": "rendered QA contact-sheet cells labelled by PDF page",
+          "source_role": "agent_inference",
+          "supports": "Supports the visual conversion-QA result for the listed PDF pages; it does not support paper-content or modeling conclusions."
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-1d7cb75ebd96",
+      "reviewed_pdf_pages": [
+        1,
+        19,
+        37
+      ],
+      "contact_sheets": [
+        "cumcm-b-skill/qa/p3/contact_sheets/SRC-1d7cb75ebd96_review_01.png"
+      ],
+      "status": "PASS",
+      "observations": "Required first/middle/last and all mechanically flagged pages were visually checked for successful rendering, orientation, aspect-ratio preservation, cropping, stretching, and obvious unreadability; no defect attributable to PDF conversion was observed. Source-image limitations remain source limitations.",
+      "content_or_method_analysis_performed": false,
+      "evidence_refs": [
+        {
+          "source_path": "cumcm-b-skill/qa/p3/contact_sheets/SRC-1d7cb75ebd96_review_01.png",
+          "locator": "rendered QA contact-sheet cells labelled by PDF page",
+          "source_role": "agent_inference",
+          "supports": "Supports the visual conversion-QA result for the listed PDF pages; it does not support paper-content or modeling conclusions."
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-3c9be1dbd3e5",
+      "reviewed_pdf_pages": [
+        1,
+        35,
+        70
+      ],
+      "contact_sheets": [
+        "cumcm-b-skill/qa/p3/contact_sheets/SRC-3c9be1dbd3e5_review_01.png"
+      ],
+      "status": "PASS",
+      "observations": "Required first/middle/last and all mechanically flagged pages were visually checked for successful rendering, orientation, aspect-ratio preservation, cropping, stretching, and obvious unreadability; no defect attributable to PDF conversion was observed. Source-image limitations remain source limitations.",
+      "content_or_method_analysis_performed": false,
+      "evidence_refs": [
+        {
+          "source_path": "cumcm-b-skill/qa/p3/contact_sheets/SRC-3c9be1dbd3e5_review_01.png",
+          "locator": "rendered QA contact-sheet cells labelled by PDF page",
+          "source_role": "agent_inference",
+          "supports": "Supports the visual conversion-QA result for the listed PDF pages; it does not support paper-content or modeling conclusions."
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-cff1bf003d2c",
+      "reviewed_pdf_pages": [
+        1,
+        14,
+        28
+      ],
+      "contact_sheets": [
+        "cumcm-b-skill/qa/p3/contact_sheets/SRC-cff1bf003d2c_review_01.png"
+      ],
+      "status": "PASS",
+      "observations": "Required first/middle/last and all mechanically flagged pages were visually checked for successful rendering, orientation, aspect-ratio preservation, cropping, stretching, and obvious unreadability; no defect attributable to PDF conversion was observed. Source-image limitations remain source limitations.",
+      "content_or_method_analysis_performed": false,
+      "evidence_refs": [
+        {
+          "source_path": "cumcm-b-skill/qa/p3/contact_sheets/SRC-cff1bf003d2c_review_01.png",
+          "locator": "rendered QA contact-sheet cells labelled by PDF page",
+          "source_role": "agent_inference",
+          "supports": "Supports the visual conversion-QA result for the listed PDF pages; it does not support paper-content or modeling conclusions."
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-62bd4f9cc941",
+      "reviewed_pdf_pages": [
+        1,
+        25,
+        50
+      ],
+      "contact_sheets": [
+        "cumcm-b-skill/qa/p3/contact_sheets/SRC-62bd4f9cc941_review_01.png"
+      ],
+      "status": "PASS",
+      "observations": "Required first/middle/last and all mechanically flagged pages were visually checked for successful rendering, orientation, aspect-ratio preservation, cropping, stretching, and obvious unreadability; no defect attributable to PDF conversion was observed. Source-image limitations remain source limitations.",
+      "content_or_method_analysis_performed": false,
+      "evidence_refs": [
+        {
+          "source_path": "cumcm-b-skill/qa/p3/contact_sheets/SRC-62bd4f9cc941_review_01.png",
+          "locator": "rendered QA contact-sheet cells labelled by PDF page",
+          "source_role": "agent_inference",
+          "supports": "Supports the visual conversion-QA result for the listed PDF pages; it does not support paper-content or modeling conclusions."
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-4831a3b18bb7",
+      "reviewed_pdf_pages": [
+        1,
+        50,
+        100
+      ],
+      "contact_sheets": [
+        "cumcm-b-skill/qa/p3/contact_sheets/SRC-4831a3b18bb7_review_01.png"
+      ],
+      "status": "PASS",
+      "observations": "Required first/middle/last and all mechanically flagged pages were visually checked for successful rendering, orientation, aspect-ratio preservation, cropping, stretching, and obvious unreadability; no defect attributable to PDF conversion was observed. Source-image limitations remain source limitations.",
+      "content_or_method_analysis_performed": false,
+      "evidence_refs": [
+        {
+          "source_path": "cumcm-b-skill/qa/p3/contact_sheets/SRC-4831a3b18bb7_review_01.png",
+          "locator": "rendered QA contact-sheet cells labelled by PDF page",
+          "source_role": "agent_inference",
+          "supports": "Supports the visual conversion-QA result for the listed PDF pages; it does not support paper-content or modeling conclusions."
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-c205cb3c4bfc",
+      "reviewed_pdf_pages": [
+        1,
+        17,
+        34
+      ],
+      "contact_sheets": [
+        "cumcm-b-skill/qa/p3/contact_sheets/SRC-c205cb3c4bfc_review_01.png"
+      ],
+      "status": "PASS",
+      "observations": "Required first/middle/last and all mechanically flagged pages were visually checked for successful rendering, orientation, aspect-ratio preservation, cropping, stretching, and obvious unreadability; no defect attributable to PDF conversion was observed. Source-image limitations remain source limitations.",
+      "content_or_method_analysis_performed": false,
+      "evidence_refs": [
+        {
+          "source_path": "cumcm-b-skill/qa/p3/contact_sheets/SRC-c205cb3c4bfc_review_01.png",
+          "locator": "rendered QA contact-sheet cells labelled by PDF page",
+          "source_role": "agent_inference",
+          "supports": "Supports the visual conversion-QA result for the listed PDF pages; it does not support paper-content or modeling conclusions."
+        }
+      ]
+    }
+  ],
+  "evidence_refs": [
+    {
+      "source_path": "cumcm-b-skill/qa/p3/p3_qa_results.json",
+      "locator": "$.sources[*].required_visual_review_pdf_pages; $.sources[*].contact_sheets",
+      "source_role": "derived_artifact",
+      "supports": "Defines the first/middle/last and risk-triggered pages included in visual review for every derivative."
+    },
+    {
+      "source_path": "cumcm-b-skill/qa/p3/p3_visual_review.json",
+      "locator": "$.sources[*].status; $.sources[*].reviewed_pdf_pages",
+      "source_role": "agent_inference",
+      "supports": "Records the page-scoped visual conversion-QA verdict for all 22 sources."
+    }
+  ],
+  "revision": {
+    "phase": "P3-R",
+    "decision_id": "P3R-CORRECT-92bca105-b2c1-4b98-be7c-eeeb9ec94a64",
+    "only_source_revised": "SRC-b4fce6295e11",
+    "evidence_refs": [
+      {
+        "source_path": "cumcm-b-skill/qa/p3r/SRC-b4fce6295e11_v2_visual_review.png",
+        "locator": "cells for PDF pages 1, 35, 69, and 70",
+        "source_role": "agent_inference",
+        "supports": "Supports the required page-scoped visual conversion-QA pass for the current v2 derivative."
+      },
+      {
+        "source_path": "cumcm-b-skill/qa/p3r/p3r_2019_v2_qa.json",
+        "locator": "$.v2_qa.per_page_render_checks",
+        "source_role": "agent_inference",
+        "supports": "Supports full-render and source-to-output mapping integrity for all 70 pages."
+      }
+    ]
+  }
+}

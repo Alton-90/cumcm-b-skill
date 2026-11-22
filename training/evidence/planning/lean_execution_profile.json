@@ -1,0 +1,138 @@
+{
+  "profile_id": "B_LEAN_20260907_V1",
+  "status": "active",
+  "authorized_at": "2026-09-07T15:03:25+08:00",
+  "authorization_basis": "用户要求砍掉没有必要的流程，把有限额度集中到B题成品质量。",
+  "precedence": "本配置取代旧P6-P14提示词中的逐年逐份执行粒度、重复双格式产物、固定模型和常规重复独立验收要求；不取代证据可追溯、2025 holdout隔离、人工判断门控、候选隔离、真实盲测和精确回接批准等安全边界。",
+  "priority_order": [
+    "B",
+    "C",
+    "A"
+  ],
+  "active_scope": "在B题形成可运行、可测试、可回接的闭环前，C题和A题暂停。",
+  "non_negotiable_gates": [
+    "2025答案型论文、专家评议及其派生内容在P12盲测冻结前保持HOLDOUT_LOCKED。",
+    "跨年结论必须能回指已验收来源；正式重复模式至少由两个独立年份支持。",
+    "模型、假设、权重、阈值和最终解释等实质判断继续由用户决定。",
+    "github下载的skill在P14B精确哈希批准前保持只读。",
+    "候选版本必须隔离构建并通过与改动范围相称的行为测试。",
+    "至少完成一次使用未见2025正式题面与附件的真实盲测，再解封外部答案型材料。",
+    "最终回接仍需release_id、manifest哈希和patch哈希的逐值书面批准。"
+  ],
+  "removed_or_merged_work": [
+    {
+      "legacy_work": "P6逐年、每年JSON和Markdown双份问题契约",
+      "lean_replacement": "2018、2020-2024六个训练年份一次完成到一个结构化JSON；2025不进入训练。"
+    },
+    {
+      "legacy_work": "P7为每个来源各做JSON和Markdown长证据卡",
+      "lean_replacement": "一个来源证据矩阵覆盖全部19篇训练论文的关键章节；每年只选一个代表案例做深读，其他来源做定向章节核验。"
+    },
+    {
+      "legacy_work": "P7专家评议全量分支与2019补充案例",
+      "lean_replacement": "默认取消；只有跨年关键主张存在实质冲突且论文证据不能解决时才按需读取。"
+    },
+    {
+      "legacy_work": "P8逐年分别生成案例卡",
+      "lean_replacement": "六年案例在一个综合文件中并列呈现，保留年度差异和证据定位。"
+    },
+    {
+      "legacy_work": "每个小步骤均执行者、独立验收者、整改者三段链",
+      "lean_replacement": "常规步骤采用一次机器校验加总控风险抽查；仅holdout、候选发布和回接边界保留独立高强度复核。"
+    },
+    {
+      "legacy_work": "同一内容的多份人读报告、重复哈希和状态说明",
+      "lean_replacement": "每阶段只保留一个权威机器产物和至多一个必要的人读/选择卡。"
+    }
+  ],
+  "execution_blocks": [
+    {
+      "block_id": "L1_P6_P8_DISTILL",
+      "purpose": "最小知识蒸馏",
+      "outputs": [
+        "cumcm-b-skill/analysis/lean/b_training_problem_contracts.json",
+        "cumcm-b-skill/analysis/lean/b_training_source_matrix.json",
+        "cumcm-b-skill/analysis/lean/b_training_synthesis.md",
+        "cumcm-b-skill/qa/lean/L1_distillation_qa.json"
+      ],
+      "acceptance": [
+        "覆盖2018、2020-2024正式题面及19篇训练论文，且不读取2025答案型holdout。",
+        "六个年份的问题输出、数据角色、约束和子问题依赖均可追溯。",
+        "每年一个代表案例经过深读，其余论文至少核验摘要/方法/验证或结论等相关章节。",
+        "事实、作者做法、作者结果和跨年归纳严格分层。",
+        "缺失或OCR不确定性显式记录，不猜补。"
+      ]
+    },
+    {
+      "block_id": "L2_P9_P10_DECIDE",
+      "purpose": "跨年模式、上游差距和最小变更决定",
+      "outputs": [
+        "cumcm-b-skill/analysis/pattern_gap_map.json",
+        "cumcm-b-skill/planning/behavior_test_plan.md",
+        "cumcm-b-skill/planning/change_choice_card.md"
+      ],
+      "acceptance": [
+        "只保留至少两个年份支持且会改变新题行为的模式。",
+        "先确认现有仓库已覆盖能力，避免重复造Skill。",
+        "变更建议不超过三个紧凑bundle，每个都有可观察行为测试。",
+        "在用户明确批准前不进入P11。"
+      ]
+    },
+    {
+      "block_id": "L3_P11_BUILD",
+      "purpose": "隔离候选实现",
+      "acceptance": [
+        "只实施获批bundle。",
+        "仅测试受影响Skill、镜像和相关脚本，不做全仓库无差别重验。",
+        "候选不含训练正文、2025答案型内容或本机绝对路径。"
+      ]
+    },
+    {
+      "block_id": "L4_P12_BLIND",
+      "purpose": "2025真实未见题盲测",
+      "acceptance": [
+        "使用冻结候选和2025正式题面/附件。",
+        "通过必要的人类判断门控完成一个可复现实战闭环。",
+        "在结果冻结前零访问2025答案型holdout。"
+      ]
+    },
+    {
+      "block_id": "L5_P13_P14_RELEASE",
+      "purpose": "轻量外部对照、必要修复、发布与回接",
+      "acceptance": [
+        "P13只修证据错误、缺失护栏或阻塞性流程摩擦；可选增强默认不做。",
+        "最多一轮获批修复；若没有阻塞性问题，直接进入发布审计。",
+        "P14保留精确哈希批准和可恢复备份。"
+      ]
+    }
+  ],
+  "task_policy": {
+    "max_concurrent_auxiliary_tasks": 1,
+    "open_auxiliary_task_only_for": [
+      "长时间知识蒸馏",
+      "候选实现",
+      "必须隔离的2025盲测"
+    ],
+    "root_handles": [
+      "状态判断",
+      "小修正",
+      "选择卡",
+      "普通一致性检查",
+      "最终接纳"
+    ],
+    "reuse_same_task_within_block": true,
+    "stop_when_done": true,
+    "reasoning_policy": "总控和P9/P10/P12关键门控使用高强度；机械抽取、格式整理和常规测试使用中等或较低强度。"
+  },
+  "budget_guardrail": {
+    "basis": "制定时账户7日窗口约剩47个百分点；为软上限，不是使用量保证。",
+    "distillation_L1": 7,
+    "pattern_and_choice_L2": 5,
+    "candidate_L3": 8,
+    "blind_test_L4": 10,
+    "external_compare_and_release_L5": 5,
+    "integration": 3,
+    "reserve": 9,
+    "stop_rule": "任一阶段超过软预算时，先停止扩展性产物与可选增强，不牺牲holdout、可复现性、人工门控和最终验证。"
+  }
+}

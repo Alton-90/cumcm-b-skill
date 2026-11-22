@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "iteration_id": "ITER-20260908-MULTI-HOLDOUT-01",
+  "status": "IN_PROGRESS_P18",
+  "started_at": "2026-09-08T08:46:30+08:00",
+  "paused_at": "2026-09-08T09:32:09.9315195+08:00",
+  "authorization": {
+    "actor": "human",
+    "interpreted_scope": "Authorize the controller to start further isolated blind evaluations and make orchestration decisions. This does not convert controller-authored modeling choices into human choices and does not authorize formal release integration without a new exact-hash approval."
+  },
+  "baseline_release": {
+    "release_id": "B-LEAN-20260908-R2",
+    "release_manifest": "cumcm-b-skill/releases/B-LEAN-20260908-R2/release_manifest.json",
+    "release_manifest_sha256": "6606db913d21e1edec8d5c147c48bb9a61d0fd3e5bf61af3b7b7a464cac1e1b5",
+    "repo_file_count": 145,
+    "repo_hash_mismatch_count_at_start": 0
+  },
+  "strategy": "validation_driven_minimal_revision",
+  "ordered_blocks": [
+    {
+      "block_id": "P15_2025C_BLIND",
+      "status": "COMPLETE_FROZEN_PASS",
+      "purpose": "Test the R2 workflow on an untouched, structurally different official problem before seeing any comparison material.",
+      "stop_rule": "Freeze the blind output before any external comparison. Stop at a genuinely human-owned method or claim decision unless the user supplies that exact decision."
+    },
+    {
+      "block_id": "P16_FAILURE_TRIAGE",
+      "status": "COMPLETE",
+      "purpose": "Separate task-specific difficulty from a reproducible Skill contract failure; reject cosmetic or one-off changes."
+    },
+    {
+      "block_id": "P17_MINIMAL_CANDIDATE",
+      "status": "COMPLETE_FROZEN_PASS",
+      "purpose": "Implement at most two compact change bundles supported by blind evidence, with observable behavior tests."
+    },
+    {
+      "block_id": "P18_FORWARD_RETEST_AND_RELEASE",
+      "status": "IN_PROGRESS",
+      "purpose": "Retest on an independent untouched problem, audit the candidate, and stop at a new exact-hash formal-integration gate."
+    }
+  ],
+  "change_acceptance_rule": {
+    "all_required": [
+      "The failure changes a modeling decision or makes a legal output impossible, misleading, or unreproducible.",
+      "The failure is attributable to a missing or defective reusable Skill contract rather than merely to the problem being difficult.",
+      "A prospective behavior test can distinguish the corrected behavior from the current release.",
+      "The correction contains no answer-specific number, method mandate, or post-hoc threshold."
+    ],
+    "bundle_limit": 2,
+    "no_gap_outcome": "If no generalizable blocking gap is found, record NO_CHANGE and proceed to the next untouched blind test."
+  },
+  "efficiency_metrics": {
+    "capture": [
+      "wall_clock_minutes",
+      "controller_turn_count",
+      "human_owned_gate_count",
+      "model_execution_count",
+      "failed_or_repeated_execution_count",
+      "artifact_count",
+      "deny_body_access_count"
+    ],
+    "objective": "Increase real-task coverage while reducing avoidable gates, repeated executions, and evidence duplication without weakening holdout or reproducibility boundaries."
+  },
+  "non_negotiable_boundaries": [
+    "Only the exact official inputs named by a blind-test manifest may be read before its output freeze.",
+    "No answer, commentary, prior solution, development synthesis, or earlier blind-test conclusion enters the isolated executor context.",
+    "Controller decisions are labelled as controller decisions and never rewritten as human method or claim choices.",
+    "Formal target integration remains gated by release id plus exact release-manifest, full-diff, and integration-plan hashes.",
+    "Stop immediately when the iteration reaches its gate or when evidence supports NO_CHANGE."
+  ]
+}

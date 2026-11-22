@@ -1,0 +1,177 @@
+{
+  "verified_at": "2026-09-08T00:17:54.787741+08:00",
+  "json_file_count": 24,
+  "jsonl_file_count": 4,
+  "json_parse_errors": [],
+  "all_json_jsonl_parse": true,
+  "candidate": {
+    "expected_file_count": 145,
+    "actual_file_count": 145,
+    "file_count_match": true,
+    "mismatch_count": 0,
+    "mismatches": [],
+    "unchanged": true,
+    "machine_manifest_sha256_match": true,
+    "declared_hash_entry_count": 18,
+    "declared_hashes_all_match": true
+  },
+  "official_inputs": {
+    "results": [
+      {
+        "path": "CUMCM_B题skill训练宝/赛题/2025/B题/B题.pdf",
+        "expected_sha256": "b0b2ce649282c2d7063af3c30ac9c0d931512dc86014d3147bc765d8f1c8cf87",
+        "actual_sha256": "b0b2ce649282c2d7063af3c30ac9c0d931512dc86014d3147bc765d8f1c8cf87",
+        "expected_size_bytes": 277238,
+        "actual_size_bytes": 277238,
+        "match": true
+      },
+      {
+        "path": "CUMCM_B题skill训练宝/赛题/2025/B题/附件/附件1.xlsx",
+        "expected_sha256": "b42f8bdabe7497951284cd044386c3cdf9d349b5e8ef4baaa0336e65ff84c67b",
+        "actual_sha256": "b42f8bdabe7497951284cd044386c3cdf9d349b5e8ef4baaa0336e65ff84c67b",
+        "expected_size_bytes": 187625,
+        "actual_size_bytes": 187625,
+        "match": true
+      },
+      {
+        "path": "CUMCM_B题skill训练宝/赛题/2025/B题/附件/附件2.xlsx",
+        "expected_sha256": "24b3113e80d5ec5458ba4f447df9ed185578481e8b0081bdf0673689505e49d0",
+        "actual_sha256": "24b3113e80d5ec5458ba4f447df9ed185578481e8b0081bdf0673689505e49d0",
+        "expected_size_bytes": 186957,
+        "actual_size_bytes": 186957,
+        "match": true
+      },
+      {
+        "path": "CUMCM_B题skill训练宝/赛题/2025/B题/附件/附件3.xlsx",
+        "expected_sha256": "79e9f66a00409f1d1130d9f4f3d76b4d5e5a1ccd3ac2d24dc0af8ecc583d0ec8",
+        "actual_sha256": "79e9f66a00409f1d1130d9f4f3d76b4d5e5a1ccd3ac2d24dc0af8ecc583d0ec8",
+        "expected_size_bytes": 189278,
+        "actual_size_bytes": 189278,
+        "match": true
+      },
+      {
+        "path": "CUMCM_B题skill训练宝/赛题/2025/B题/附件/附件4.xlsx",
+        "expected_sha256": "9cf1400404c4560958da06685beb8c2e1e4df5918a6e13863663a54440ba12e3",
+        "actual_sha256": "9cf1400404c4560958da06685beb8c2e1e4df5918a6e13863663a54440ba12e3",
+        "expected_size_bytes": 189423,
+        "actual_size_bytes": 189423,
+        "match": true
+      }
+    ],
+    "all_unchanged": true
+  },
+  "access_control": {
+    "access_log_entry_count_before_report": 198,
+    "deny_body_access_count": 0,
+    "deny_body_events": [],
+    "deny_zero_access": true,
+    "metadata_separation_confirmed": true
+  },
+  "evidence_contract_checks": {
+    "parse_top_level": true,
+    "parse_each_subquestion": true,
+    "classification_each_subquestion": true,
+    "data_profile_top_level": true,
+    "data_profile_each_unresolved_risk": true,
+    "first_choice_card_evidence": true,
+    "second_choice_card_evidence": true,
+    "method_choice_card_evidence": true,
+    "phase_contract_card_evidence": true,
+    "current_choice_card_evidence": true,
+    "identifiability_evidence": true,
+    "risk_probe_evidence": true,
+    "run_summary_evidence": true,
+    "python_review_evidence": true,
+    "workflow_manifests": true
+  },
+  "all_evidence_contract_checks_pass": true,
+  "decision_contract_checks": {
+    "first_blind_ledger_exact_utterance": true,
+    "first_canonical_ledger_exact_utterance": true,
+    "second_blind_ledger_exact_utterance": true,
+    "second_canonical_ledger_exact_utterance": true,
+    "first_blind_choice_b": true,
+    "first_canonical_choice_b": true,
+    "second_blind_choice_c": true,
+    "second_canonical_choice_c": true,
+    "third_blind_ledger_exact_utterance": true,
+    "q1_method_ledger_exact_utterance": true,
+    "third_choice_a_human_owned": true,
+    "fourth_blind_ledger_exact_utterance": true,
+    "q1_phase_ledger_exact_utterance": true,
+    "fourth_choice_b_human_owned": true,
+    "real_competition_c_nonbinding": true,
+    "no_scope_expansion": true,
+    "ledgers_cross_reference": true,
+    "q1_decisions_not_written_to_framing_ledger": true,
+    "one_record_per_authorized_decision_per_ledger": true
+  },
+  "all_decision_contract_checks_pass": true,
+  "state_consistency_checks": {
+    "runtime_model_gpt_5_6_sol": true,
+    "test_state_waiting_human": true,
+    "test_state_not_complete": true,
+    "blind_manifest_not_complete": true,
+    "blind_run_complete_false": true,
+    "decision_pending_human": true,
+    "authorized_first_card_resolved_b": true,
+    "authorized_second_card_resolved_c": true,
+    "authorized_method_card_resolved_a": true,
+    "authorized_phase_card_resolved_b": true,
+    "decision_ids_match": true,
+    "authorized_gate_recorded_once": true,
+    "identifiability_preserved": true,
+    "g3_passed_with_warnings_waiting_g4": true,
+    "diagnostic_resolution_limit": true,
+    "approved_code_and_run_exist": true,
+    "main_baseline_executed_and_reviewed": true,
+    "nonconvergence_disclosed": true,
+    "f1_triggered_waiting_human": true,
+    "reproducible_metrics_hash": true,
+    "no_final_freeze_or_paper": true,
+    "no_blind_run_complete_literal_in_state_fields": true
+  },
+  "all_state_consistency_checks_pass": true,
+  "runtime_model": {
+    "expected": "gpt-5.6-sol",
+    "actual": "gpt-5.6-sol",
+    "match": true
+  },
+  "authorized_decisions": [
+    {
+      "decision_id": "FRAMING-2025B-001",
+      "choice": "B"
+    },
+    {
+      "decision_id": "FRAMING-2025B-002",
+      "choice": "C"
+    },
+    {
+      "decision_id": "Q1-METHOD-2025B-001",
+      "choice": "A"
+    },
+    {
+      "decision_id": "Q1-PHASE-CONTRACT-2025B-001",
+      "choice": "B"
+    }
+  ],
+  "decision": {
+    "decision_id": "Q1-RESULT-STABILITY-2025B-001",
+    "status": "PENDING_HUMAN",
+    "stop_after_emit": true
+  },
+  "blind_run_complete": false,
+  "closure_state": "NOT_COMPLETE_WAITING_HUMAN",
+  "overall_pass_at_waiting_human_stop": true,
+  "evidence_refs": [
+    "frozen_candidate_manifest.json",
+    "blind_test_manifest.json#official_inputs",
+    "access_log.jsonl",
+    "human_decisions.jsonl#P12B-HD-004",
+    "contest_workspace/methods/Q1/q1_decisions.jsonl#Q1-PHASE-CONTRACT-2025B-001",
+    "contest_workspace/methods/Q1/probes/probe_metrics.json#paired_angle_resolution_check",
+    "contest_workspace/results/Q1/experiments/round1/run_summary.json",
+    "contest_workspace/code/Q1/reviews/q1_python_review.json",
+    "contest_workspace/methods/Q1/q1_result_stability_choice_card.json"
+  ]
+}

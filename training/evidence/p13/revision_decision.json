@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "decision_id": "P13-REVISION-2025B-001",
+  "status": "DECIDED",
+  "actor": "controller_under_general_user_authorization",
+  "decision_origin": "controller_decision_under_general_user_authorization_not_human_per_card_response",
+  "choice": "ONE_GENERAL_ANALYSIS_DOMAIN_ELIGIBILITY_GUARDRAIL",
+  "authorization_source_quote": "我要睡觉了，你一定要注意质量和token消耗的平衡，好钢花在刀刃上，所有的决定你尽量自己解决，我先睡觉了。一定不要空转，控制好模型和思考强度，一定要在消耗完前完成这个skill",
+  "technical_reason": "The blind run disclosed invalid/non-periodic measurements but still let the whole spectrum enter a structure-dependent fit. Unsealed papers and expert commentary independently use/require eligible-band selection. The repair is workflow-general and blocks a demonstrated failure without importing answer-specific values.",
+  "rejected_changes": ["2025-specific wavenumber bands", "reference-paper thickness values", "material coefficients", "forcing a binary multi-beam conclusion"],
+  "evidence_refs": ["p13/external_comparison.md", "tests/holdout/2025B/B-LEAN-20260907-R1/blind_evaluation.md"],
+  "decided_at": "2026-09-08T01:08:00+08:00"
+}

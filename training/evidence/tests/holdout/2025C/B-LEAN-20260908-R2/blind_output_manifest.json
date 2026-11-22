@@ -1,0 +1,491 @@
+{
+  "schema_version": 1,
+  "test_id": "2025C-R2-BLIND-001",
+  "release_id": "B-LEAN-20260908-R2",
+  "status": "FROZEN",
+  "frozen_at": "2026-09-08T16:12:03.386596+08:00",
+  "scope": "All material files under contest_workspace; Python caches are excluded as nonsemantic runtime by-products.",
+  "material_file_count": 80,
+  "material_files": [
+    {
+      "path": "contest_workspace/code/Q1/q1_code_plan.md",
+      "size_bytes": 3982,
+      "sha256": "cbd5605444e3d846150110d2494fb471ee7a425db6d3cf477cb79340b42cae40"
+    },
+    {
+      "path": "contest_workspace/code/Q1/reviews/q1_python_review.json",
+      "size_bytes": 4987,
+      "sha256": "d743de16b4c97eb24e75a9faf43ce5dd582c02da8b9541f1ceeda2ad23f28cd1"
+    },
+    {
+      "path": "contest_workspace/code/Q1/run_q1_models.py",
+      "size_bytes": 21051,
+      "sha256": "502fd2ab78d736e0647fe24d6759484820cfab315c049bad0997c6a6c0cdb51d"
+    },
+    {
+      "path": "contest_workspace/code/Q2/q2_code_plan.md",
+      "size_bytes": 2570,
+      "sha256": "a06d88a2df0dc368f3097fbe4f4f83ae61efae150f2765ef9d619ac1d3b25c22"
+    },
+    {
+      "path": "contest_workspace/code/Q2/reviews/q2_python_review.json",
+      "size_bytes": 3031,
+      "sha256": "cd56d883181880f842a043f5140d8f5f4d1510520216316258415a69d12f9b61"
+    },
+    {
+      "path": "contest_workspace/code/Q3/q3_code_plan.md",
+      "size_bytes": 2406,
+      "sha256": "4c7ec4cdf41e69e5255a556d64556943f37afd4ffd7415ace04606c4dd62e695"
+    },
+    {
+      "path": "contest_workspace/code/Q3/reviews/q3_python_review.json",
+      "size_bytes": 2892,
+      "sha256": "eb5a04a91bb7bb4f70c42d396d3b10f2d4fec41e491e1cc83982658c534a52e7"
+    },
+    {
+      "path": "contest_workspace/code/Q4/q4_code_plan.md",
+      "size_bytes": 3374,
+      "sha256": "3ad694c0b7141ff5673ba12dac2115114c9b5bd98c5dbe69aab8f3161cc3f5bb"
+    },
+    {
+      "path": "contest_workspace/code/Q4/q4_round1_code_plan.md",
+      "size_bytes": 2290,
+      "sha256": "fd572aab5770a03e4c02f0b6cf333e88a762f699a1778796c31fbaf62bec6582"
+    },
+    {
+      "path": "contest_workspace/code/Q4/reviews/q4_f4_python_review.json",
+      "size_bytes": 5300,
+      "sha256": "32dd6d95d83e3809000956266be3234e75ae16cd21a918ced9f33742cda199dc"
+    },
+    {
+      "path": "contest_workspace/code/Q4/reviews/q4_python_review.json",
+      "size_bytes": 3070,
+      "sha256": "cb8ae1b0cb63e0c106f0131b16b984e744fec1e1fb223752ed1fdcdcbfc11e4c"
+    },
+    {
+      "path": "contest_workspace/code/Q4/run_q4_f4.py",
+      "size_bytes": 19256,
+      "sha256": "096920fd6c44501c94e85c28924363c82388e1754ab03befa681cc384c40b40f"
+    },
+    {
+      "path": "contest_workspace/code/run_q2_q3_q4.py",
+      "size_bytes": 15266,
+      "sha256": "c5836467538cd309a4b24f643e6e116bb5b9f00ec6985c83491869af02f15b8d"
+    },
+    {
+      "path": "contest_workspace/methods/Q1/probes/probe_metrics.json",
+      "size_bytes": 5639,
+      "sha256": "bec15badaf9b565e3b6bd35dcac9d5a7381b181f491908e2615dfc3b0babd062"
+    },
+    {
+      "path": "contest_workspace/methods/Q1/probes/risk_probe_summary.json",
+      "size_bytes": 3795,
+      "sha256": "3ec3c38f72987e52c79fb29490fcaa7d3447ccba47af482c2900610799c767b2"
+    },
+    {
+      "path": "contest_workspace/methods/Q1/probes/run_q1_screening_probe.py",
+      "size_bytes": 8553,
+      "sha256": "919caf7f943c139ceb8672bbc819644dcf3e73c82077e2d078d0a29a081986c1"
+    },
+    {
+      "path": "contest_workspace/methods/Q1/q1_decisions.jsonl",
+      "size_bytes": 1293,
+      "sha256": "520dd960e542ab607c277ff17f8f160c9b8bbfbf57ad4fefedb2a02bf4453e02"
+    },
+    {
+      "path": "contest_workspace/methods/Q1/q1_method_card.md",
+      "size_bytes": 4048,
+      "sha256": "9ba5ad311a152c376cc1350234a98a06856706d40d27377f36187a547b0ddee3"
+    },
+    {
+      "path": "contest_workspace/methods/Q1/q1_method_choice_card.json",
+      "size_bytes": 1537,
+      "sha256": "53ba76d9c7304870e36c62320575195093ba8dde0b3f48ece28301d9924da841"
+    },
+    {
+      "path": "contest_workspace/methods/Q1/q1_result_choice_card.json",
+      "size_bytes": 2022,
+      "sha256": "a074b36cbc229d904c1558ca10ed80894b4656318e33ee1c6e2a0c23e5c36534"
+    },
+    {
+      "path": "contest_workspace/methods/Q2/probes/risk_probe_summary.json",
+      "size_bytes": 7011,
+      "sha256": "938a82a263ffe171c7fcad08fa11ef173f42ce8fe5d5c2f46c0269a8e4708923"
+    },
+    {
+      "path": "contest_workspace/methods/Q2/q2_decisions.jsonl",
+      "size_bytes": 914,
+      "sha256": "b666c981f83cb29d9555f8fc9fe02f914d2dcd798efde4d32f906abf4e82f383"
+    },
+    {
+      "path": "contest_workspace/methods/Q2/q2_method_card.md",
+      "size_bytes": 2245,
+      "sha256": "c7248512a5ac0c9656ffa61cd153de2a7182dd8a02672c0f2e0c794c06e3f2c8"
+    },
+    {
+      "path": "contest_workspace/methods/Q2/q2_method_choice_card.json",
+      "size_bytes": 1581,
+      "sha256": "30c48b33f1eb1580a3eb951695cc019cc561e1e587b4bc57ccd4a198acba9c22"
+    },
+    {
+      "path": "contest_workspace/methods/Q3/probes/risk_probe_summary.json",
+      "size_bytes": 8873,
+      "sha256": "6467363a226e0fcda250d8ac56d769e9eb1ed8dcf8227706f78a2bce0fc614c7"
+    },
+    {
+      "path": "contest_workspace/methods/Q3/q3_decisions.jsonl",
+      "size_bytes": 1008,
+      "sha256": "60bf18e0dbe775863d821b31670692eb016a1551fdc3b79cdf7dbd7f1893093f"
+    },
+    {
+      "path": "contest_workspace/methods/Q3/q3_method_card.md",
+      "size_bytes": 2226,
+      "sha256": "6885935e6f1215fb3778a91bca01f4c99c405f3d4279cd6a7608cfe8ae0463f3"
+    },
+    {
+      "path": "contest_workspace/methods/Q3/q3_method_choice_card.json",
+      "size_bytes": 1699,
+      "sha256": "c1143c394c72982246baf82b62fbaf505e583678014dedde732db8d533a71c43"
+    },
+    {
+      "path": "contest_workspace/methods/Q4/probes/risk_probe_summary.json",
+      "size_bytes": 5274,
+      "sha256": "bf61337c83769bc99d79500ab8f928efda6122ee140a7544de54c5b878b27d97"
+    },
+    {
+      "path": "contest_workspace/methods/Q4/q4_decisions.jsonl",
+      "size_bytes": 3262,
+      "sha256": "d6124794fd4576960d97214a84b796b835bf921e8128b25ea250fa150d69ac99"
+    },
+    {
+      "path": "contest_workspace/methods/Q4/q4_method_card.md",
+      "size_bytes": 2540,
+      "sha256": "1afcefd7654746fdc2bfb23f9d9d226821388d6b70f6034f50aa782c2d33a06e"
+    },
+    {
+      "path": "contest_workspace/methods/Q4/q4_method_choice_card.json",
+      "size_bytes": 1588,
+      "sha256": "4dbefa2b19153951194bb078a6ab1b80b66bb130e3e481fc636aa8a217c02523"
+    },
+    {
+      "path": "contest_workspace/methods/Q4/q4_result_choice_card.json",
+      "size_bytes": 1429,
+      "sha256": "b955ed2248f6d4f3cf96879c8ff61d00b01a3a8e6d8e31308518bf67a48f1c51"
+    },
+    {
+      "path": "contest_workspace/methods/shared/probes/joint_probe_metrics.json",
+      "size_bytes": 48484,
+      "sha256": "8c13136ffedcc453b25ee891cc0a4603c51486a1487c4df87525faa26b0411d8"
+    },
+    {
+      "path": "contest_workspace/methods/shared/probes/run_q2_q3_q4_screening_probe.py",
+      "size_bytes": 55965,
+      "sha256": "2d1ca28b99b8b207a0330c3769cb8daf1f9c8f21a764f3f5979aa9237a44c655"
+    },
+    {
+      "path": "contest_workspace/planning/classification/problem_classification.json",
+      "size_bytes": 2157,
+      "sha256": "21e3bd0fdc663889740e10b6816af97f9816cd7837da99b3f0a96a8b58ca6b3e"
+    },
+    {
+      "path": "contest_workspace/planning/framing/q2_q4_joint_choice_card.json",
+      "size_bytes": 2623,
+      "sha256": "9f6d161992dd53583c2e6e6a784f6d58113e6add49bef75452c480eca534dae6"
+    },
+    {
+      "path": "contest_workspace/planning/framing_decisions.jsonl",
+      "size_bytes": 1142,
+      "sha256": "db39520929b9099e01cf2bef1ab343cb571607df40b0916cf873857d0fcf9884"
+    },
+    {
+      "path": "contest_workspace/planning/manifests/Q1.json",
+      "size_bytes": 1500,
+      "sha256": "7f3c1737c03c640a5c779350f5989991b48f89b3771aa13ea8fe15c27a4c0682"
+    },
+    {
+      "path": "contest_workspace/planning/manifests/Q2.json",
+      "size_bytes": 1878,
+      "sha256": "4e1fb23134024016b74b45c33451c7bad1262c728a92a41e86933bf4d6330183"
+    },
+    {
+      "path": "contest_workspace/planning/manifests/Q3.json",
+      "size_bytes": 2016,
+      "sha256": "dbfe0ccdf83ffc7c475c33142e4364046bd35da6bb04d7d4ac656ac4097de035"
+    },
+    {
+      "path": "contest_workspace/planning/manifests/Q4.json",
+      "size_bytes": 3101,
+      "sha256": "c31498e967d856e769d0cddd7de58970f121949cef4833263f45c28fe268e268"
+    },
+    {
+      "path": "contest_workspace/planning/model_assumptions.md",
+      "size_bytes": 1147,
+      "sha256": "e19f1fb9387148c6b39c780836b302874218e948c90bf8b65498484f8ec21fd9"
+    },
+    {
+      "path": "contest_workspace/planning/parse/problem_parse.json",
+      "size_bytes": 14124,
+      "sha256": "fb28a80f34409e1292b1dd402ad96fae3c836a31c60fbec27416190dcb5056f0"
+    },
+    {
+      "path": "contest_workspace/planning/parse/problem_text_by_page.json",
+      "size_bytes": 6355,
+      "sha256": "ad788fe41bc01fadb05f346d3daa4a54a76279d9520ee587192c378c2ef28d98"
+    },
+    {
+      "path": "contest_workspace/planning/session_config.json",
+      "size_bytes": 127,
+      "sha256": "274230ac2c5452dfdb18788161c4a5e555dca353fd8808dfa39ab0d1511ca43e"
+    },
+    {
+      "path": "contest_workspace/planning/symbol_table.md",
+      "size_bytes": 834,
+      "sha256": "e94947424863edfbffa7eece93eda72035ce37e0db55773fc6f440a43c341c61"
+    },
+    {
+      "path": "contest_workspace/results/Q1/experiments/round1/logs/q1_run_failure.log",
+      "size_bytes": 968,
+      "sha256": "4e1703970fd45d3ecf5391d49a4c7b1d45684c5dd847c9f123e2a439b9dea69d"
+    },
+    {
+      "path": "contest_workspace/results/Q1/experiments/round1/metrics/q1_metrics.json",
+      "size_bytes": 15947,
+      "sha256": "a6acaa05b424c07c04356dfad9c37e142a904e81014291b228d759758e3d7bf4"
+    },
+    {
+      "path": "contest_workspace/results/Q1/experiments/round1/q1_decision_report.md",
+      "size_bytes": 2406,
+      "sha256": "9807b13139dce65310a2a447a83e950bf3c7989493829899c08fe85814dea329"
+    },
+    {
+      "path": "contest_workspace/results/Q1/experiments/round1/run_summary.json",
+      "size_bytes": 19162,
+      "sha256": "51407f23f54a79c8435134e96920c7aebbaf5aece559a1dbff268ecf95d3650f"
+    },
+    {
+      "path": "contest_workspace/results/Q1/experiments/round1/tables/q1_coefficients.csv",
+      "size_bytes": 3649,
+      "sha256": "6dcccbd8b090a651a0b147568836dd10591474b19bc53408ee0abcded0ab2286"
+    },
+    {
+      "path": "contest_workspace/results/Q1/experiments/round1/tables/q1_prediction_grid.csv",
+      "size_bytes": 3662,
+      "sha256": "24de35dfa05137d0fae209571ef3a2fa5e86cedc9689ac1afd8008b3eb03d2e4"
+    },
+    {
+      "path": "contest_workspace/results/Q2/experiments/round1/metrics/q2_metrics.json",
+      "size_bytes": 17608,
+      "sha256": "5eb704a661ff79360d05204b7e5a3cf14ea50199f2de4f137be3c64902b36d0c"
+    },
+    {
+      "path": "contest_workspace/results/Q2/experiments/round1/q2_decision_report.md",
+      "size_bytes": 1020,
+      "sha256": "67ac6e821c2a9605ebf1f49dd7546b833805d24020589c14db6346c899f9b7da"
+    },
+    {
+      "path": "contest_workspace/results/Q2/experiments/round1/run_summary.json",
+      "size_bytes": 3309,
+      "sha256": "a2422777019ba938a5ed9504189ea7f9ca5da90c05100f9dc9cdc790bda6c204"
+    },
+    {
+      "path": "contest_workspace/results/Q2/experiments/round1/tables/q2_timing_policy.csv",
+      "size_bytes": 810,
+      "sha256": "9726cb0a50c4f38422a4a7050b14145563aba746d49c3e0d2a38ca1dcaa7155b"
+    },
+    {
+      "path": "contest_workspace/results/Q3/experiments/round1/metrics/q3_metrics.json",
+      "size_bytes": 18922,
+      "sha256": "573915924ca9049535bb6feaddee37fddfb672fad5894c525790d25b7ab45b7f"
+    },
+    {
+      "path": "contest_workspace/results/Q3/experiments/round1/q3_decision_report.md",
+      "size_bytes": 1129,
+      "sha256": "843e0a914ace5595fb2810cb54eed51fd2276449337099c2c1b44e8eccd3b11e"
+    },
+    {
+      "path": "contest_workspace/results/Q3/experiments/round1/run_summary.json",
+      "size_bytes": 3334,
+      "sha256": "d47d70626c762e74331c8356259b7de52ee57cf96748d4d0b5b47c44359e330d"
+    },
+    {
+      "path": "contest_workspace/results/Q3/experiments/round1/tables/q3_timing_policy.csv",
+      "size_bytes": 934,
+      "sha256": "86f2721dabe5f23ece397283c58eca9dff38e028db3cbcbbc14d2aabd915646c"
+    },
+    {
+      "path": "contest_workspace/results/Q4/experiments/round1/metrics/q4_metrics.json",
+      "size_bytes": 16121,
+      "sha256": "c732720f39aed876262fd5263a8c0c811245fbc7428c398af6efd8c966c3eba3"
+    },
+    {
+      "path": "contest_workspace/results/Q4/experiments/round1/q4_decision_report.md",
+      "size_bytes": 1344,
+      "sha256": "15eb633958b918a5ddac5389c5ad1b5abb9660ef304df7d0d91fe67e1ce9a09e"
+    },
+    {
+      "path": "contest_workspace/results/Q4/experiments/round1/run_summary.json",
+      "size_bytes": 4333,
+      "sha256": "46b8d1fa4c44ff2a43fa290021addcd49efb760ef4b8bdd93ec6806441f7f734"
+    },
+    {
+      "path": "contest_workspace/results/Q4/experiments/round1/tables/q4_model_comparison.csv",
+      "size_bytes": 717,
+      "sha256": "bdc4c449fd8c6f09f507f0ee058ea2bc279f44a9d0f158da584e9e039d2d32f4"
+    },
+    {
+      "path": "contest_workspace/results/Q4/experiments/round2/metrics/q4_f4_metrics.json",
+      "size_bytes": 68981,
+      "sha256": "7cc5f76db695ff36cd674fdaea01a7a9c77cb7ac3bd916c4e2423c41d25e9816"
+    },
+    {
+      "path": "contest_workspace/results/Q4/experiments/round2/q4_decision_report.md",
+      "size_bytes": 3098,
+      "sha256": "8d11b9bdd0de431152a617cc4e9622c9df5603e6335c727a8a25debb66203c19"
+    },
+    {
+      "path": "contest_workspace/results/Q4/experiments/round2/run_summary.json",
+      "size_bytes": 6319,
+      "sha256": "4e894e407ccda82677f2b31a6df5e2e164f42a82578fc21ba01a5834e13fbd5b"
+    },
+    {
+      "path": "contest_workspace/results/Q4/experiments/round2/tables/q4_f4_model_comparison.csv",
+      "size_bytes": 994,
+      "sha256": "420b982c1fb2b12a08379cc5f7853b84bb453a654d834a9f223108a3597e5455"
+    },
+    {
+      "path": "contest_workspace/results/Q4/experiments/round2/tables/q4_f4_outer_folds.csv",
+      "size_bytes": 6675,
+      "sha256": "9ea4c59e5002b16d3597f6ea6cade32a29e63cabb9469b79759380a8f00b15fd"
+    },
+    {
+      "path": "contest_workspace/robustness/Q1/q1_robustness_summary.json",
+      "size_bytes": 7863,
+      "sha256": "7c83d88c4a2fe911ff2b9e48617c9d145e48b6b9ecdee0d28958af754332d608"
+    },
+    {
+      "path": "contest_workspace/robustness/Q1/run_q1_subject_robustness.py",
+      "size_bytes": 9347,
+      "sha256": "8d2410b09e18bc00a78e693ef1af81ce144ca6873e00834dd7efe546c3daae38"
+    },
+    {
+      "path": "contest_workspace/robustness/Q2/q2_robustness_summary.json",
+      "size_bytes": 1578,
+      "sha256": "e483daf6a97f18783eecfcbb0a9fb3bfae0e072231f7e5db4158296277c2f2b8"
+    },
+    {
+      "path": "contest_workspace/robustness/Q3/q3_robustness_summary.json",
+      "size_bytes": 1660,
+      "sha256": "171a392e863db8abb8d19cac6d2750f2cf009938ee8e18a59362b48696514ea5"
+    },
+    {
+      "path": "contest_workspace/robustness/Q4/q4_f4_robustness_summary.json",
+      "size_bytes": 16817,
+      "sha256": "145247eea3a33d9fa754e43850d2f1b13ecf9eec01819bbc227157e1a219e817"
+    },
+    {
+      "path": "contest_workspace/robustness/Q4/q4_robustness_summary.json",
+      "size_bytes": 6732,
+      "sha256": "8e56d3733d477589a345daf0c7516a482a467f13b6f31b0c0ed690a43293c2d0"
+    },
+    {
+      "path": "contest_workspace/robustness/Q4/run_q4_f4_robustness.py",
+      "size_bytes": 9837,
+      "sha256": "85243bc27d8ad3abfe89797ec73561c80aa158952c503dc27fa1d5a48027526e"
+    },
+    {
+      "path": "contest_workspace/robustness/Q4/run_q4_split_robustness.py",
+      "size_bytes": 5812,
+      "sha256": "a5b24617e306b52710b788cbe6b0bf0d251751e4f471aec4ab4c516ecce69bef"
+    },
+    {
+      "path": "contest_workspace/workspace/data/attachment_structure_profile.json",
+      "size_bytes": 10135,
+      "sha256": "c2931b4296fac4af60bfec689dde1d0ccd6e0d2c0e444f7fab43f398cd96464e"
+    },
+    {
+      "path": "contest_workspace/workspace/data/data_profile.json",
+      "size_bytes": 3031,
+      "sha256": "49e69e22df0ae8996b5cdda377845ab33df873c9c6708ecb8e161edf050bd75f"
+    }
+  ],
+  "content_fingerprint_sha256": "8b78e27a921e0dc456ac9a2077ad788db5d0d60c212ddd0259b2ea9b783f2abd",
+  "question_states": {
+    "Q1": {
+      "current_gate": "G4",
+      "status": "complete_lean_directional_claim_locked",
+      "blockers": [],
+      "freeze_allowed": true
+    },
+    "Q2": {
+      "current_gate": "G4",
+      "status": "complete_lean_uncertainty_bounded_timing_locked",
+      "blockers": [],
+      "freeze_allowed": true
+    },
+    "Q3": {
+      "current_gate": "G4",
+      "status": "complete_lean_gated_bmi_branch_uncertainty_locked",
+      "blockers": [],
+      "freeze_allowed": true
+    },
+    "Q4": {
+      "current_gate": "G4",
+      "status": "complete_lean_f4_triage_locked",
+      "blockers": [],
+      "freeze_allowed": true
+    }
+  },
+  "decision_provenance": {
+    "human_F4_activation_record": "contest_workspace/methods/Q4/q4_decisions.jsonl#record_id=Q4-DEC-002",
+    "controller_pass_application_record": "contest_workspace/methods/Q4/q4_decisions.jsonl#record_id=Q4-DEC-003",
+    "controller_record_not_human": true
+  },
+  "controller_contracts": [
+    {
+      "path": "cumcm-b-skill/qa/lean/P15_2025C_Q1_robustness_contract.json",
+      "size_bytes": 2060,
+      "sha256": "34d363ed189d18f5507b46b4bdf79575c9ff702b043a2953b8bdd8b406869a9c"
+    },
+    {
+      "path": "cumcm-b-skill/qa/lean/P15_2025C_Q4_split_robustness_contract.json",
+      "size_bytes": 1679,
+      "sha256": "1fef42f4370fa625262991a0066a0cbcdfdd1804e059ed60f68420872d46fe0a"
+    },
+    {
+      "path": "cumcm-b-skill/qa/lean/P15_2025C_Q4_F4_robustness_contract.json",
+      "size_bytes": 3827,
+      "sha256": "bb825740f4d820ed55d616f83393048b7124e55786e3d929aeb9cf6224e28850"
+    }
+  ],
+  "baseline_release_verification": {
+    "release_manifest_sha256": "6606db913d21e1edec8d5c147c48bb9a61d0fd3e5bf61af3b7b7a464cac1e1b5",
+    "release_manifest_expected_sha256": "6606db913d21e1edec8d5c147c48bb9a61d0fd3e5bf61af3b7b7a464cac1e1b5",
+    "release_manifest_match": true,
+    "expected_file_count": 145,
+    "actual_file_count": 145,
+    "missing": [],
+    "extra": [],
+    "mismatched": [],
+    "pass": true
+  },
+  "official_input_verification": [
+    {
+      "path": "CUMCM_B题skill训练宝/赛题/2025/C题/C题.pdf",
+      "expected_sha256": "d54400f4bb9920c0d37f15f5b6bc161aa281c4b32c03c063efdeb739716eac08",
+      "observed_sha256": "d54400f4bb9920c0d37f15f5b6bc161aa281c4b32c03c063efdeb739716eac08",
+      "match": true
+    },
+    {
+      "path": "CUMCM_B题skill训练宝/赛题/2025/C题/附件.xlsx",
+      "expected_sha256": "14827156218bd4f7e4f16db4aa6d9f757c6648379e038ae6c6b58383648614af",
+      "observed_sha256": "14827156218bd4f7e4f16db4aa6d9f757c6648379e038ae6c6b58383648614af",
+      "match": true
+    }
+  ],
+  "holdout_boundary_at_freeze": {
+    "deny_body_access_count": 0,
+    "network_access_entry_count": 0,
+    "external_comparison_allowed_before_freeze": false,
+    "answer_or_comparison_content_accessed_before_freeze": false
+  }
+}

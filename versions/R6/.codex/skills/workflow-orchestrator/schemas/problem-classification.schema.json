@@ -1,0 +1,135 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "artifact_type": {
+      "const": "problem-classification"
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "extensions": {
+      "type": "object"
+    },
+    "subquestions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^Q[0-9]+(?:[._-][A-Za-z0-9]+)*$"
+          },
+          "primary_type": {
+            "enum": [
+              "evaluation",
+              "prediction",
+              "optimization",
+              "mechanism",
+              "classification-clustering",
+              "graph-routing",
+              "simulation",
+              "data-analysis",
+              "hybrid"
+            ]
+          },
+          "secondary_type": {
+            "anyOf": [
+              {
+                "enum": [
+                  "evaluation",
+                  "prediction",
+                  "optimization",
+                  "mechanism",
+                  "classification-clustering",
+                  "graph-routing",
+                  "simulation",
+                  "data-analysis",
+                  "hybrid"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "confidence": {
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "required_validation": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "framing_decision_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "risks": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          }
+        },
+        "required": [
+          "id",
+          "primary_type",
+          "evidence",
+          "required_validation"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "artifact_type",
+    "subquestions"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mathmodel:r6:problem-classification",
+  "title": "problem-classification"
+}

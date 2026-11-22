@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-09-07T20:09:34+08:00",
+  "phase": "P12B-R3",
+  "release_id": "B-LEAN-20260907-R1",
+  "verdict": "PASS_AT_WAITING_HUMAN",
+  "controller_review_status": "ACCEPTED_G2_5_AND_PREIMPLEMENTATION_STOP",
+  "resolved_decision": {
+    "decision_id": "Q1-METHOD-2025B-001",
+    "choice": "A",
+    "approved_roles": {
+      "main": "M1",
+      "usable_baseline": "B1",
+      "conditional_fallback": "F1"
+    },
+    "ledger_checks": {
+      "blind_audit_record": "P12B-HD-003",
+      "q1_canonical_record": "Q1-DEC-001",
+      "exact_utterance_match": true,
+      "append_only_preserved": true,
+      "not_written_to_global_framing_ledger": true
+    }
+  },
+  "gate_review": {
+    "G2": "PASS",
+    "G2_5": "PASS",
+    "G3": "BLOCKED_BEFORE_CODE",
+    "stop_is_required": true,
+    "reason": "The approved method roles do not determine the reflectance-to-phase observation convention, interface-phase treatment, admissible branch domain, or two-angle loss aggregation. These choices can materially change branch count, profile isolation, and thickness interpretation."
+  },
+  "artifact_review": {
+    "blocked_code_contract_present": true,
+    "executable_model_code_present": false,
+    "model_run_summary_present": false,
+    "final_model_or_result_freeze_present": false,
+    "choice_card_present": true,
+    "choice_card_options_mutually_exclusive": true,
+    "choice_card_has_hidden_ai_choice": false,
+    "diagnostic_resolution_limit_preserved": true
+  },
+  "independent_checks": {
+    "json_files": 20,
+    "jsonl_files": 4,
+    "all_json_jsonl_parse": true,
+    "candidate_files_expected": 145,
+    "candidate_files_actual": 145,
+    "candidate_hash_mismatches": 0,
+    "declared_candidate_hashes_match": "18/18",
+    "official_inputs_unchanged": "5/5",
+    "deny_body_access_count": 0,
+    "formal_target_write_authorized": false,
+    "blind_run_complete": false
+  },
+  "current_human_gate": {
+    "decision_id": "Q1-PHASE-CONTRACT-2025B-001",
+    "status": "PENDING_HUMAN",
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  "warnings": [
+    "The code-plan path exists only as an explicit BLOCKED BEFORE CODE contract; it is not executable code.",
+    "No numerical thickness result is currently authorized or available."
+  ],
+  "evidence_refs": [
+    "cumcm-b-skill/tests/holdout/2025B/B-LEAN-20260907-R1/verification_report.json",
+    "cumcm-b-skill/tests/holdout/2025B/B-LEAN-20260907-R1/human_decisions.jsonl#P12B-HD-003",
+    "cumcm-b-skill/tests/holdout/2025B/B-LEAN-20260907-R1/contest_workspace/methods/Q1/q1_decisions.jsonl#Q1-METHOD-2025B-001",
+    "cumcm-b-skill/tests/holdout/2025B/B-LEAN-20260907-R1/contest_workspace/planning/manifests/Q1.json",
+    "cumcm-b-skill/tests/holdout/2025B/B-LEAN-20260907-R1/contest_workspace/code/Q1/q1_code_plan.md",
+    "cumcm-b-skill/tests/holdout/2025B/B-LEAN-20260907-R1/contest_workspace/methods/Q1/q1_phase_contract_choice_card.json"
+  ]
+}

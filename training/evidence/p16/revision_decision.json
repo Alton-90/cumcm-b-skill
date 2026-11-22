@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "phase": "P16",
+  "decision_id": "P16-REVISION-2025C-001",
+  "status": "APPROVED_FOR_CANDIDATE_IMPLEMENTATION",
+  "decided_by": "controller_under_standing_user_authorization",
+  "authorization": {
+    "interpretation": "The controller may select evidence-separated reusable repairs. This is not represented as a human reply to either change bundle and does not authorize formal-target integration."
+  },
+  "baseline_release": "B-LEAN-20260908-R2",
+  "frozen_blind_evidence": {
+    "test_id": "2025C-R2-BLIND-001",
+    "blind_output_manifest_sha256": "613a780af422d9412f69862bc098204d11c2499bf1bf4af6dec6c05b99a28e7a",
+    "content_fingerprint_sha256": "8b78e27a921e0dc456ac9a2077ad788db5d0d60c212ddd0259b2ea9b783f2abd",
+    "workspace_immutable": true
+  },
+  "external_comparison": {
+    "status": "NO_APPLICABLE_REFERENCE_SOURCE",
+    "applicable_answer_source_count": 0,
+    "basis": "The curated corpus has the official 2025 C problem and attachment but no applicable 2025 C answer or expert commentary; available 2025 B materials are out of scope and were not used to score the frozen C result."
+  },
+  "change_acceptance_rule": {
+    "all_four_satisfied_required": true,
+    "bundle_limit": 2
+  },
+  "approved_bundles": [
+    {
+      "change_id": "CHG-B03",
+      "title": "Input-population reconciliation gate",
+      "blind_failure_ref": "tests/holdout/2025C/B-LEAN-20260908-R2/contest_workspace/code/Q1/reviews/q1_python_review.json#Q1-PY-002",
+      "decision_relevance": "Prevents silent parser/filter loss from reaching model fitting or being presented as a successful comparable run.",
+      "reusable_contract_gap": "R2 has no mandatory audited-to-used row/entity reconciliation with authorized exclusion reasons and main/baseline population parity.",
+      "prospective_behavior_test": {
+        "fail": "Audited input loses observations or entities without reconciled, prospectively authorized reasons, or main and baseline populations differ without approved semantics.",
+        "pass": "Audited, parsed, excluded, eligible and used row/entity counts reconcile exactly and any intentional population difference is declared by the approved method contract."
+      },
+      "answer_specific_content": false,
+      "candidate_skill_ids": [
+        "model-code-analyzer",
+        "python-model-code-generator",
+        "matlab-model-code-generator",
+        "python-code-reviewer",
+        "matlab-code-reviewer",
+        "workflow-orchestrator"
+      ]
+    },
+    {
+      "change_id": "CHG-B04",
+      "title": "Hard operating-constraint and abstention/triage guardrail",
+      "blind_failure_refs": [
+        "tests/holdout/2025C/B-LEAN-20260908-R2/contest_workspace/robustness/Q4/q4_robustness_summary.json",
+        "tests/holdout/2025C/B-LEAN-20260908-R2/contest_workspace/robustness/Q4/q4_f4_robustness_summary.json"
+      ],
+      "decision_relevance": "Prevents a classification operating claim from surviving unstable split evidence or ambiguous abstention accounting.",
+      "reusable_contract_gap": "R2 does not explicitly require nested group-safe threshold calibration, cross-split rechecking of a hard operating constraint, identical main/baseline action semantics, and visible abstention coverage.",
+      "prospective_behavior_test": {
+        "fail": "Threshold selection reads outer-test labels, repeated entities cross partitions, abstentions count as negatives, deferral is hidden, or main/baseline action contracts differ.",
+        "pass": "Threshold calibration is nested and group-safe, the supplied operating constraint is checked under predeclared perturbations, and identical action/metric semantics expose coverage and deferral."
+      },
+      "answer_specific_content": false,
+      "candidate_skill_ids": [
+        "method-selector",
+        "model-code-analyzer",
+        "python-code-reviewer",
+        "matlab-code-reviewer",
+        "robustness-checker",
+        "result-report-generator",
+        "workflow-orchestrator"
+      ]
+    }
+  ],
+  "bundle_count": 2,
+  "rejected_answer_specific_changes": true,
+  "formal_target_write_authorized": false,
+  "next_phase": "P17"
+}

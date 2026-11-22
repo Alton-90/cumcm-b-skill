@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "contract_id": "P15-2025C-Q1-G3-ACCEPTANCE-001",
+  "fixed_before_executor_result": true,
+  "created_at": "2026-09-08T10:21:32.8016943+08:00",
+  "test_id": "2025C-R2-BLIND-001",
+  "question_id": "Q1",
+  "approved_decision": {
+    "decision_id": "Q1-METHOD-2025C-001",
+    "record_id": "Q1-DEC-001",
+    "choice": "A",
+    "main": "M1",
+    "usable_baseline": "B1"
+  },
+  "hard_pass_conditions": {
+    "scope_and_isolation": [
+      "Only M1 and B1 are implemented; dormant fallback code is absent.",
+      "The raw workbook is opened read-only and its SHA-256 remains frozen.",
+      "All generated code and results remain under the declared blind-test root.",
+      "Denied-body and network access counts remain zero."
+    ],
+    "input_and_domain_contract": [
+      "B, J, K, P and V are mapped to woman, gestational week, BMI, GC and Y concentration with the declared units.",
+      "Primary and official-GC sensitivity masks are fixed before fitting and are identical for M1 and B1 within each domain.",
+      "No row-wise train/test or resampling split is used; every resample keeps a woman's rows together.",
+      "Included and excluded row and woman counts are saved."
+    ],
+    "method_and_inference": [
+      "B1 and M1 design matrices match q1_code_plan.md, including the conditional primary-domain GC indicator only in M1.",
+      "CR1 woman-clustered covariance is computed without treating rows as independent.",
+      "At least 999 cluster-bootstrap resamples succeed per method/domain, or the run is explicitly non-successful.",
+      "Bootstrap intervals are primary uncertainty evidence; normal-approximate clustered p-values are labelled secondary.",
+      "R-squared and RMSE are labelled descriptive and no causal or clinical recommendation is claimed."
+    ],
+    "outputs_and_reproducibility": [
+      "The planned script, two tables, metrics JSON and run_summary.json exist, are nonempty and mutually consistent.",
+      "run_summary.json records seed, environment, inputs, outputs, warnings, analysis-domain evidence, degeneracy and fallback state.",
+      "A controller rerun reproduces all deterministic formal output contents after excluding runtime timestamps and durations.",
+      "The five named Python review checks pass; any required failure blocks G3."
+    ]
+  },
+  "fallback_trigger_rule": "F1_nonparametric_rescreen is observed but not implemented if rank, bootstrap completion, domain-direction, degeneracy or material-instability conditions in q1_code_plan.md fire.",
+  "verdicts": {
+    "PASS_G3": "All hard conditions pass and warnings do not change method legality.",
+    "PASS_WITH_WARNINGS_G3": "All hard conditions pass but limitations materially constrain interpretation and must enter the result card.",
+    "FAIL_G3": "Any required named check, identity, isolation, domain, clustering, bootstrap or output condition fails."
+  },
+  "efficiency_rule": "Run the implementation once and one controller reproducibility rerun only; do not repeat successful computations or create decorative artifacts.",
+  "evidence_refs": [
+    "cumcm-b-skill/tests/holdout/2025C/B-LEAN-20260908-R2/contest_workspace/code/Q1/q1_code_plan.md",
+    "cumcm-b-skill/tests/holdout/2025C/B-LEAN-20260908-R2/contest_workspace/methods/Q1/q1_decisions.jsonl",
+    "cumcm-b-skill/tests/holdout/2025C/B-LEAN-20260908-R2/contest_workspace/methods/Q1/probes/risk_probe_summary.json"
+  ]
+}

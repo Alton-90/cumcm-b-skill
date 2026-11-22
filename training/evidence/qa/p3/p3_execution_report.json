@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "record_type": "P3_EXECUTION_REPORT",
+  "completed_at": "2026-09-05T09:56:29.161253+08:00",
+  "status": "COMPLETE",
+  "completed": [
+    "Corrected SRC-b4fce6295e11 document-body boundary to source pages 1-70 by human-approved derivation",
+    "Retained the authentic page-071 staging artifact as AUXILIARY_WEB_THUMBNAIL with body use superseded",
+    "Retained the 75-page PDF as SUPERSEDED_NONBODY_CONTAMINATION",
+    "Created and fully validated the 70-page v2 current derivative",
+    "Reverified hashes and page counts for the other 21 unchanged PDFs",
+    "Created the missing Markdown PDF QA report"
+  ],
+  "missing": [],
+  "blockers": [],
+  "source_count": 22,
+  "total_pdf_pages": 1058,
+  "produced_files": [
+    "cumcm-b-skill/derived/pdf/SRC-b4fce6295e11_v2.pdf",
+    "cumcm-b-skill/derived/pdf/p3_input_plan.json",
+    "cumcm-b-skill/derived/pdf/pdf_manifest.json",
+    "cumcm-b-skill/qa/p3/p3_qa_results.json",
+    "cumcm-b-skill/qa/p3/p3_visual_review.json",
+    "cumcm-b-skill/derived/pdf/pdf_qa_report.md",
+    "cumcm-b-skill/qa/p3r/p3r_boundary_evidence.json",
+    "cumcm-b-skill/qa/p3r/p3r_generation.json",
+    "cumcm-b-skill/qa/p3r/p3r_2019_v2_qa.json",
+    "cumcm-b-skill/qa/p3r/SRC-b4fce6295e11_v2_visual_review.png",
+    "cumcm-b-skill/scripts/p3_revise_2019_boundary.py"
+  ],
+  "next_step": "P4 remains pending and requires separate authorization.",
+  "evidence_refs": [
+    {
+      "source_path": "cumcm-b-skill/derived/pdf/pdf_manifest.json",
+      "locator": "$.source_count=22; $.total_pdf_pages=1058; $.sources[*]",
+      "source_role": "derived_artifact",
+      "supports": "Identifies all current and superseded derivatives and their verified hashes/page counts."
+    },
+    {
+      "source_path": "cumcm-b-skill/qa/p3r/p3r_2019_v2_qa.json",
+      "locator": "$.unchanged_pdf_reverification.status=PASS; $.v2_qa.mechanical_qa_status=PASS",
+      "source_role": "agent_inference",
+      "supports": "Supports 21 unchanged-output reverifications and full QA of the 70-page v2 output."
+    },
+    {
+      "source_path": "cumcm-b-skill/qa/p3r/p3r_boundary_evidence.json",
+      "locator": "$.classification_basis=human_approved_derivation",
+      "source_role": "agent_inference",
+      "supports": "Supports the corrected boundary without asserting an official total page count."
+    }
+  ],
+  "revision_phase": "P3-R",
+  "decision_id": "P3R-CORRECT-92bca105-b2c1-4b98-be7c-eeeb9ec94a64",
+  "current_pdf_count": 22,
+  "physical_pdf_file_count": 23,
+  "current_total_pdf_pages": 1058,
+  "source_completeness": "UNVERIFIED",
+  "official_declared_total_pages": "UNVERIFIED",
+  "protected_directories_verification": {
+    "CUMCM_B题skill训练宝": {
+      "before": {
+        "root": "CUMCM_B题skill训练宝",
+        "method": "SHA-256 of sorted names and stat metadata only; protected file contents were not opened or hashed",
+        "directory_count": 86,
+        "file_count": 1504,
+        "digest": "67426148d029d52f8a9f633ee4e07cde732bfd3135bc370545c336a561ebfae1"
+      },
+      "after": {
+        "root": "CUMCM_B题skill训练宝",
+        "method": "SHA-256 of sorted names and stat metadata only; protected file contents were not opened or hashed",
+        "directory_count": 86,
+        "file_count": 1504,
+        "digest": "67426148d029d52f8a9f633ee4e07cde732bfd3135bc370545c336a561ebfae1"
+      },
+      "comparison": "identical"
+    },
+    "github下载的skill": {
+      "before": {
+        "root": "github下载的skill",
+        "method": "SHA-256 of sorted names and stat metadata only; protected file contents were not opened or hashed",
+        "directory_count": 116,
+        "file_count": 145,
+        "digest": "9f15a0a96cba9880f66e23d7ddbd24eb73e5bee4bb4da6dd9746dbaf317b77f8"
+      },
+      "after": {
+        "root": "github下载的skill",
+        "method": "SHA-256 of sorted names and stat metadata only; protected file contents were not opened or hashed",
+        "directory_count": 116,
+        "file_count": 145,
+        "digest": "9f15a0a96cba9880f66e23d7ddbd24eb73e5bee4bb4da6dd9746dbaf317b77f8"
+      },
+      "comparison": "identical"
+    }
+  },
+  "holdout_content_accessed": false,
+  "text_extraction_performed": false
+}

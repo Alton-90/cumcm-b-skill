@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0",
+  "record_type": "P5_FINAL_CLOSEOUT_INDEPENDENT_READ_ONLY_AUDIT_R2",
+  "audited_at": "2026-09-07T14:55:53.4805996+08:00",
+  "project_root": "<local-path>",
+  "status": "PASS_WITH_WARNINGS",
+  "resolved_blockers": [
+    {
+      "id": "EVIDENCE-REFS-P5B13-BATCH",
+      "status": "RESOLVED",
+      "verification": "P5B-13 batch has top-level evidence_refs=12; every entry has source_path, locator, source_role, supports, and every listed path exists."
+    },
+    {
+      "id": "EVIDENCE-REFS-P5B13-MEMORY",
+      "status": "RESOLVED",
+      "verification": "The P5B-13/P5 closeout section explicitly lists batch, machine, visual, formal R3 launcher, replay R3 launcher, and this write-before history path; all exist."
+    }
+  ],
+  "regression_checks": {
+    "manifests": {
+      "text_completed_ids": 35,
+      "workflow_completed_ids": 35,
+      "batch_aggregated_ids": 35,
+      "unique_ids_and_all_three_sets_equal": true,
+      "completed_groups_equal": true,
+      "JOB-b7aa3d474332_in_P5B06_text_workflow": true
+    },
+    "phase_boundary": {
+      "P5_status": "complete",
+      "next_group": null,
+      "P6_to_P14": "pending"
+    },
+    "queue": {
+      "status": "FROZEN",
+      "sha256": "0f27f4a1b9d13a5268a566b430c0a30e8da4d0cf097a917deb95e22e90b96b74",
+      "sha_match": true
+    },
+    "holdouts": {
+      "locked_count": 3,
+      "all_queue_status_excluded_holdout_locked": true,
+      "all_content_accessed_false": true
+    },
+    "P5B13_status_switches": {
+      "batch": "COMPLETE / PASS_WITH_WARNINGS / ACCEPTED",
+      "machine": "PASS_WITH_WARNINGS",
+      "visual": "PASS_WITH_WARNINGS",
+      "visual_controller_may_close": true,
+      "queue_modified": false,
+      "holdout_content_accessed": false,
+      "R3_replay_runner_exactly_once": true,
+      "P6_to_P14": "pending",
+      "three_jobs_formal_replay_pass_counters_zero_normalized_match": true,
+      "twelve_sample_pngs_exist_and_sha_match": true
+    },
+    "all_core_regression_checks_passed": true
+  },
+  "backup_reverification": {
+    "manifest": "planning/history/20260907_143500_P5-EVIDENCE-REFS-FIX-BEFORE/backup_manifest.json",
+    "all_three_size_sha_matches": true,
+    "files": [
+      {
+        "relative_path": "qa/p5/batches/P5B-13_2024_outstanding_papers.json",
+        "size_bytes": 5900,
+        "sha256": "7a2a6cfce74bf1b3f9c7a6155d9f4bcf78a6f85ef318cbba2f7888b36d297482"
+      },
+      {
+        "relative_path": "planning/project_memory.md",
+        "size_bytes": 52469,
+        "sha256": "fb234e0c2b91abc736292e76b15bfba66c42bb5abac8abe62acf2a01a41344cb"
+      },
+      {
+        "relative_path": "qa/p5/independent/P5_final_closeout_audit.json",
+        "size_bytes": 7669,
+        "sha256": "39a51f7edc2dd3065f7a2132ece3f1e7bd577abea53dba928d17bd4439f55f82"
+      }
+    ],
+    "old_blocked_audit_preserved": true,
+    "old_blocked_audit_status": "BLOCKED"
+  },
+  "warnings": [
+    "P5B-13 R3 replay runtime differs from the old formal runtime; the accepted runtime-difference warning is retained.",
+    "B159 page 37 is retained as a source-faithful intentional blank trailing-page warning.",
+    "Formal/replay acceptance is normalized Markdown body equality after excluding generated_at; no character-by-character OCR accuracy claim is made."
+  ],
+  "scope_compliance": {
+    "read_only_audit": true,
+    "only_new_output": "qa/p5/independent/P5_final_closeout_audit_r2.json",
+    "old_blocked_audit_not_overwritten": true,
+    "extractor_or_ocr_started": false,
+    "P6_or_later_phase_started": false,
+    "audit_stopped_after_output": true
+  },
+  "controller_may_accept_p5_complete": true
+}

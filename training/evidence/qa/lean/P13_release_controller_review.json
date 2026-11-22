@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "phase": "P13",
+  "release_id": "B-LEAN-20260908-R2",
+  "verdict": "PASS_RELEASE_AUDIT",
+  "completed_at": "2026-09-08T01:18:00+08:00",
+  "external_comparison": "One generalizable blocking gap found: no prospective eligibility contract for structure-dependent analysis domains.",
+  "revision_count": 1,
+  "revision_scope": "Six previously modified skills across three mirrors; no 2025-specific band, answer, coefficient, or thickness value.",
+  "integrity": {"release_files": 145, "changed_files_from_parent": 18, "added": 0, "missing": 0, "mirror_groups_equal": 6, "behavior_assertions": 36, "behavior_status": "PASS", "quick_validate": "18/18 PASS", "answer_specific_leakage_hits": 0},
+  "release_manifest": {"path": "cumcm-b-skill/releases/B-LEAN-20260908-R2/release_manifest.json", "sha256": "6606db913d21e1edec8d5c147c48bb9a61d0fd3e5bf61af3b7b7a464cac1e1b5"},
+  "p13_revision_patch": {"path": "cumcm-b-skill/releases/B-LEAN-20260908-R2/p13_revision.patch", "sha256": "ee40b37cd36f29f26630c08f3c22c80ed5f7dfa31ce4945c929c35b2e60bf826"},
+  "formal_target_modified": false,
+  "next_action": "P14A exact target integration plan and approval card"
+}

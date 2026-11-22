@@ -1,0 +1,874 @@
+{
+  "release_id": "B-LEAN-20260907-R1",
+  "generated_at": "2026-09-07T17:47:03.268791+08:00",
+  "candidate_repo": "<local-path>",
+  "file_count": 145,
+  "expected_file_count": 145,
+  "file_count_match": true,
+  "machine_manifest": "<local-path>",
+  "machine_manifest_sha256_expected": "a436a4f2a62eb4218e235d50a073f962bf65de589e14f3ac654502291b028eea",
+  "machine_manifest_sha256_actual": "a436a4f2a62eb4218e235d50a073f962bf65de589e14f3ac654502291b028eea",
+  "machine_manifest_sha256_match": true,
+  "declared_file_hash_comparisons": [
+    {
+      "relative_path": ".claude/skills/problem-parser/SKILL.md",
+      "declared_sha256": "364e90e18138f1b21cb3c7582f7945a7728229b737dd82fdc062b6b7ccd61f3b",
+      "actual_sha256": "364e90e18138f1b21cb3c7582f7945a7728229b737dd82fdc062b6b7ccd61f3b",
+      "match": true,
+      "manifest_locator": "$.modified_files[0]"
+    },
+    {
+      "relative_path": ".claude/skills/method-selector/SKILL.md",
+      "declared_sha256": "a20ccb644da9e141ab1574d6f4fb1aa7d2ea429cba361ca42022adef9910b27c",
+      "actual_sha256": "a20ccb644da9e141ab1574d6f4fb1aa7d2ea429cba361ca42022adef9910b27c",
+      "match": true,
+      "manifest_locator": "$.modified_files[1]"
+    },
+    {
+      "relative_path": ".claude/skills/workflow-orchestrator/SKILL.md",
+      "declared_sha256": "8ee02db6a30a7c8997450e409cb403998ec62fe0608e299eccd9ec8538e7cd8c",
+      "actual_sha256": "8ee02db6a30a7c8997450e409cb403998ec62fe0608e299eccd9ec8538e7cd8c",
+      "match": true,
+      "manifest_locator": "$.modified_files[2]"
+    },
+    {
+      "relative_path": ".claude/skills/model-code-analyzer/SKILL.md",
+      "declared_sha256": "e76e2cb887ee2e4f54f1106a412aa9fa2d3ca558b8b63f7d78bae660bec131dd",
+      "actual_sha256": "e76e2cb887ee2e4f54f1106a412aa9fa2d3ca558b8b63f7d78bae660bec131dd",
+      "match": true,
+      "manifest_locator": "$.modified_files[3]"
+    },
+    {
+      "relative_path": ".claude/skills/python-code-reviewer/SKILL.md",
+      "declared_sha256": "7c58ef7c797490a8ad9507e33f8955e1e588bdbb54f1fa3b6a29b8b95499b320",
+      "actual_sha256": "7c58ef7c797490a8ad9507e33f8955e1e588bdbb54f1fa3b6a29b8b95499b320",
+      "match": true,
+      "manifest_locator": "$.modified_files[4]"
+    },
+    {
+      "relative_path": ".claude/skills/matlab-code-reviewer/SKILL.md",
+      "declared_sha256": "f4c363fb2141991b725698a6806ce6a42700c00411e49ac1aac46278fcae967d",
+      "actual_sha256": "f4c363fb2141991b725698a6806ce6a42700c00411e49ac1aac46278fcae967d",
+      "match": true,
+      "manifest_locator": "$.modified_files[5]"
+    },
+    {
+      "relative_path": ".codex/skills/problem-parser/SKILL.md",
+      "declared_sha256": "364e90e18138f1b21cb3c7582f7945a7728229b737dd82fdc062b6b7ccd61f3b",
+      "actual_sha256": "364e90e18138f1b21cb3c7582f7945a7728229b737dd82fdc062b6b7ccd61f3b",
+      "match": true,
+      "manifest_locator": "$.modified_files[6]"
+    },
+    {
+      "relative_path": ".codex/skills/method-selector/SKILL.md",
+      "declared_sha256": "a20ccb644da9e141ab1574d6f4fb1aa7d2ea429cba361ca42022adef9910b27c",
+      "actual_sha256": "a20ccb644da9e141ab1574d6f4fb1aa7d2ea429cba361ca42022adef9910b27c",
+      "match": true,
+      "manifest_locator": "$.modified_files[7]"
+    },
+    {
+      "relative_path": ".codex/skills/workflow-orchestrator/SKILL.md",
+      "declared_sha256": "8ee02db6a30a7c8997450e409cb403998ec62fe0608e299eccd9ec8538e7cd8c",
+      "actual_sha256": "8ee02db6a30a7c8997450e409cb403998ec62fe0608e299eccd9ec8538e7cd8c",
+      "match": true,
+      "manifest_locator": "$.modified_files[8]"
+    },
+    {
+      "relative_path": ".codex/skills/model-code-analyzer/SKILL.md",
+      "declared_sha256": "e76e2cb887ee2e4f54f1106a412aa9fa2d3ca558b8b63f7d78bae660bec131dd",
+      "actual_sha256": "e76e2cb887ee2e4f54f1106a412aa9fa2d3ca558b8b63f7d78bae660bec131dd",
+      "match": true,
+      "manifest_locator": "$.modified_files[9]"
+    },
+    {
+      "relative_path": ".codex/skills/python-code-reviewer/SKILL.md",
+      "declared_sha256": "7c58ef7c797490a8ad9507e33f8955e1e588bdbb54f1fa3b6a29b8b95499b320",
+      "actual_sha256": "7c58ef7c797490a8ad9507e33f8955e1e588bdbb54f1fa3b6a29b8b95499b320",
+      "match": true,
+      "manifest_locator": "$.modified_files[10]"
+    },
+    {
+      "relative_path": ".codex/skills/matlab-code-reviewer/SKILL.md",
+      "declared_sha256": "f4c363fb2141991b725698a6806ce6a42700c00411e49ac1aac46278fcae967d",
+      "actual_sha256": "f4c363fb2141991b725698a6806ce6a42700c00411e49ac1aac46278fcae967d",
+      "match": true,
+      "manifest_locator": "$.modified_files[11]"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/problem-parser/SKILL.md",
+      "declared_sha256": "364e90e18138f1b21cb3c7582f7945a7728229b737dd82fdc062b6b7ccd61f3b",
+      "actual_sha256": "364e90e18138f1b21cb3c7582f7945a7728229b737dd82fdc062b6b7ccd61f3b",
+      "match": true,
+      "manifest_locator": "$.modified_files[12]"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/method-selector/SKILL.md",
+      "declared_sha256": "a20ccb644da9e141ab1574d6f4fb1aa7d2ea429cba361ca42022adef9910b27c",
+      "actual_sha256": "a20ccb644da9e141ab1574d6f4fb1aa7d2ea429cba361ca42022adef9910b27c",
+      "match": true,
+      "manifest_locator": "$.modified_files[13]"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/workflow-orchestrator/SKILL.md",
+      "declared_sha256": "8ee02db6a30a7c8997450e409cb403998ec62fe0608e299eccd9ec8538e7cd8c",
+      "actual_sha256": "8ee02db6a30a7c8997450e409cb403998ec62fe0608e299eccd9ec8538e7cd8c",
+      "match": true,
+      "manifest_locator": "$.modified_files[14]"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/model-code-analyzer/SKILL.md",
+      "declared_sha256": "e76e2cb887ee2e4f54f1106a412aa9fa2d3ca558b8b63f7d78bae660bec131dd",
+      "actual_sha256": "e76e2cb887ee2e4f54f1106a412aa9fa2d3ca558b8b63f7d78bae660bec131dd",
+      "match": true,
+      "manifest_locator": "$.modified_files[15]"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/python-code-reviewer/SKILL.md",
+      "declared_sha256": "7c58ef7c797490a8ad9507e33f8955e1e588bdbb54f1fa3b6a29b8b95499b320",
+      "actual_sha256": "7c58ef7c797490a8ad9507e33f8955e1e588bdbb54f1fa3b6a29b8b95499b320",
+      "match": true,
+      "manifest_locator": "$.modified_files[16]"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/matlab-code-reviewer/SKILL.md",
+      "declared_sha256": "f4c363fb2141991b725698a6806ce6a42700c00411e49ac1aac46278fcae967d",
+      "actual_sha256": "f4c363fb2141991b725698a6806ce6a42700c00411e49ac1aac46278fcae967d",
+      "match": true,
+      "manifest_locator": "$.modified_files[17]"
+    }
+  ],
+  "declared_hash_entry_count": 18,
+  "declared_hashes_all_match": true,
+  "files": [
+    {
+      "relative_path": ".agents/plugins/marketplace.json",
+      "size_bytes": 403,
+      "sha256": "451b0269c0304389caf783f463185314148c5871d415e67bf588a3b85386b6b9"
+    },
+    {
+      "relative_path": ".claude-plugin/marketplace.json",
+      "size_bytes": 813,
+      "sha256": "c37135f7438ac875fce7418a5d4a542b22cd7adc8010bc936b18b38b6f53140a"
+    },
+    {
+      "relative_path": ".claude/settings.json",
+      "size_bytes": 1141,
+      "sha256": "4ab9058495733a021989482472169a7c51435dd27f54e79086f1a2ff4ec794b0"
+    },
+    {
+      "relative_path": ".claude/skills/code-reviewer/SKILL.md",
+      "size_bytes": 1089,
+      "sha256": "70662c010202e456401894058c1a407f6153b248b1a600dbd0ef5f9956b0e5c6"
+    },
+    {
+      "relative_path": ".claude/skills/completeness-auditor/SKILL.md",
+      "size_bytes": 2131,
+      "sha256": "033750f932d25247651258c25d9dd2840012aa62b05996fad1d58cd52a168807"
+    },
+    {
+      "relative_path": ".claude/skills/consistency-auditor/SKILL.md",
+      "size_bytes": 2265,
+      "sha256": "37f7e528822b1c468288ade5961edd0f436f5bff0545a891641ee0b051b6b3fc"
+    },
+    {
+      "relative_path": ".claude/skills/data-auditor-cleaner/SKILL.md",
+      "size_bytes": 4219,
+      "sha256": "541f1f22556069a81f8a983d60d6f10dcab4f259be38b4114da54d85a66ac749"
+    },
+    {
+      "relative_path": ".claude/skills/decision-prompt-builder/SKILL.md",
+      "size_bytes": 3570,
+      "sha256": "94c2b80edd3c2fc50eb0ad130f5dfd1a4e7ca71007bf922ff50c3e224a437c1c"
+    },
+    {
+      "relative_path": ".claude/skills/figure-table-planner/SKILL.md",
+      "size_bytes": 2492,
+      "sha256": "ea1dead8d5d448364a5ae6f0179668fb2a40f5a8178a7ffd9a223d1750d3b372"
+    },
+    {
+      "relative_path": ".claude/skills/final-method-explainer/SKILL.md",
+      "size_bytes": 2103,
+      "sha256": "04fe1af554ac6fb0db226622e7b75527c8fb53f528790be9e6db19c615edaca6"
+    },
+    {
+      "relative_path": ".claude/skills/math-figure-generator/SKILL.md",
+      "size_bytes": 2339,
+      "sha256": "75864b61cd4f03247b6b69305262f316b225f3ea559c7f30d32ff3c44296e35e"
+    },
+    {
+      "relative_path": ".claude/skills/math-figure-generator/references/chart-patterns.md",
+      "size_bytes": 17448,
+      "sha256": "184237f83440e8eb9637c5eb6ef1b0f1ef2c57882622c3afb59394b6669e1372"
+    },
+    {
+      "relative_path": ".claude/skills/math-figure-generator/references/color-systems.md",
+      "size_bytes": 4764,
+      "sha256": "55f77eff4ee7f5823fb777d226b201d609c85270a165d54fd4001598669f78f5"
+    },
+    {
+      "relative_path": ".claude/skills/math-figure-generator/references/layout-guide.md",
+      "size_bytes": 7137,
+      "sha256": "7924b89c02cf7cfc0994d0fc20927c42cd2a40b7d4e967df324efa5a25504177"
+    },
+    {
+      "relative_path": ".claude/skills/math-figure-generator/references/render-check.md",
+      "size_bytes": 730,
+      "sha256": "099c950ff5388471fb3c69899d0a5a13a89743800b7a814eeafe2aa9c8767af8"
+    },
+    {
+      "relative_path": ".claude/skills/matlab-code-reviewer/SKILL.md",
+      "size_bytes": 2806,
+      "sha256": "f4c363fb2141991b725698a6806ce6a42700c00411e49ac1aac46278fcae967d"
+    },
+    {
+      "relative_path": ".claude/skills/matlab-model-code-generator/SKILL.md",
+      "size_bytes": 2786,
+      "sha256": "b756cf931b992a2b3068a7bead61190121d45a1c9cd71030b0c2565d5155bf81"
+    },
+    {
+      "relative_path": ".claude/skills/method-selector/SKILL.md",
+      "size_bytes": 7683,
+      "sha256": "a20ccb644da9e141ab1574d6f4fb1aa7d2ea429cba361ca42022adef9910b27c"
+    },
+    {
+      "relative_path": ".claude/skills/method-selector/references/method-family-guide.md",
+      "size_bytes": 2209,
+      "sha256": "5d1e503d1b60a0a8cc8828b01d8b5778f47ccef0b9da3c72cb4a97fc58cb94c6"
+    },
+    {
+      "relative_path": ".claude/skills/method-selector/references/risk-probe-contract.md",
+      "size_bytes": 3070,
+      "sha256": "8e40dc5e359c61755334f3199da373f117521fef7562d13473b418f181221f97"
+    },
+    {
+      "relative_path": ".claude/skills/model-assumptions-builder/SKILL.md",
+      "size_bytes": 1987,
+      "sha256": "59ca7b43eef3b7c1fc1b56392bde48e9ba3531789302ff618c5a67144125aede"
+    },
+    {
+      "relative_path": ".claude/skills/model-code-analyzer/SKILL.md",
+      "size_bytes": 4655,
+      "sha256": "e76e2cb887ee2e4f54f1106a412aa9fa2d3ca558b8b63f7d78bae660bec131dd"
+    },
+    {
+      "relative_path": ".claude/skills/modeler-decision-logger/SKILL.md",
+      "size_bytes": 3129,
+      "sha256": "70470d8a304ee9509552fd6199a8210730962bd73566a32ea86df834b927ec01"
+    },
+    {
+      "relative_path": ".claude/skills/paper-polisher/SKILL.md",
+      "size_bytes": 13872,
+      "sha256": "3a26bbf5662b6e886ef721dec3f29f08795cdc7fc7599466158f1f81e7a66e24"
+    },
+    {
+      "relative_path": ".claude/skills/paper-section-writer/SKILL.md",
+      "size_bytes": 2624,
+      "sha256": "b26a94513d39d2f785618dee938fb69304b9ec0e342c4333e8d78ecdd4710788"
+    },
+    {
+      "relative_path": ".claude/skills/problem-classifier/SKILL.md",
+      "size_bytes": 2452,
+      "sha256": "6de755f37026d717dc3fb6ed28d2dc934e223ba247b7dfd6714799eb0eddede2"
+    },
+    {
+      "relative_path": ".claude/skills/problem-classifier/references/task-type-guide.md",
+      "size_bytes": 1532,
+      "sha256": "157e951ba82fa2b86b86b14f0378c926acf31dee9980bf90f18ca9b21d1b79a3"
+    },
+    {
+      "relative_path": ".claude/skills/problem-parser/SKILL.md",
+      "size_bytes": 4615,
+      "sha256": "364e90e18138f1b21cb3c7582f7945a7728229b737dd82fdc062b6b7ccd61f3b"
+    },
+    {
+      "relative_path": ".claude/skills/python-code-reviewer/SKILL.md",
+      "size_bytes": 3493,
+      "sha256": "7c58ef7c797490a8ad9507e33f8955e1e588bdbb54f1fa3b6a29b8b95499b320"
+    },
+    {
+      "relative_path": ".claude/skills/python-model-code-generator/SKILL.md",
+      "size_bytes": 2786,
+      "sha256": "d2877a8b66da957b0f45bdd72cd70d9345b6d2b2fcd677c2176aba2b29c5e102"
+    },
+    {
+      "relative_path": ".claude/skills/quality-assurance-auditor/SKILL.md",
+      "size_bytes": 2316,
+      "sha256": "8f229dee8644a41b60d30dcad5c9a1042d1dd6c38a30facad07028a46f919218"
+    },
+    {
+      "relative_path": ".claude/skills/reference-manager/SKILL.md",
+      "size_bytes": 10607,
+      "sha256": "4068c04a9d06d5c61accbbc095e82119c36326b02d2c5023f2095d4840871656"
+    },
+    {
+      "relative_path": ".claude/skills/related-paper-analyzer/SKILL.md",
+      "size_bytes": 7255,
+      "sha256": "7cf4a52212ebb3e1fa66d8d9ee75f9ab8a04ba42f0e372e057eae95e116c3e27"
+    },
+    {
+      "relative_path": ".claude/skills/result-report-generator/SKILL.md",
+      "size_bytes": 2754,
+      "sha256": "8c2fe0f787789c6ddc1f42b0b58a8d781e74a99b5bf42c78409e4301151e0669"
+    },
+    {
+      "relative_path": ".claude/skills/robustness-checker/SKILL.md",
+      "size_bytes": 2353,
+      "sha256": "42052bcea0723adda0fdd2ce8bc19b83f33240594ff84849fce29d883095d223"
+    },
+    {
+      "relative_path": ".claude/skills/solution-package-builder/SKILL.md",
+      "size_bytes": 2953,
+      "sha256": "878d40b24398f396b21cf45d1caafe522ced6198e01389d19e7f2a4ebacc9aa0"
+    },
+    {
+      "relative_path": ".claude/skills/symbol-table-builder/SKILL.md",
+      "size_bytes": 1899,
+      "sha256": "365d6bde4e81c41effd9d7428fd6df2f0c90cbc3661ad67ef86b4ed1525870f2"
+    },
+    {
+      "relative_path": ".claude/skills/workflow-orchestrator/SKILL.md",
+      "size_bytes": 7965,
+      "sha256": "8ee02db6a30a7c8997450e409cb403998ec62fe0608e299eccd9ec8538e7cd8c"
+    },
+    {
+      "relative_path": ".codex/skills/code-reviewer/SKILL.md",
+      "size_bytes": 1089,
+      "sha256": "70662c010202e456401894058c1a407f6153b248b1a600dbd0ef5f9956b0e5c6"
+    },
+    {
+      "relative_path": ".codex/skills/completeness-auditor/SKILL.md",
+      "size_bytes": 2131,
+      "sha256": "033750f932d25247651258c25d9dd2840012aa62b05996fad1d58cd52a168807"
+    },
+    {
+      "relative_path": ".codex/skills/consistency-auditor/SKILL.md",
+      "size_bytes": 2265,
+      "sha256": "37f7e528822b1c468288ade5961edd0f436f5bff0545a891641ee0b051b6b3fc"
+    },
+    {
+      "relative_path": ".codex/skills/data-auditor-cleaner/SKILL.md",
+      "size_bytes": 4219,
+      "sha256": "541f1f22556069a81f8a983d60d6f10dcab4f259be38b4114da54d85a66ac749"
+    },
+    {
+      "relative_path": ".codex/skills/decision-prompt-builder/SKILL.md",
+      "size_bytes": 3570,
+      "sha256": "94c2b80edd3c2fc50eb0ad130f5dfd1a4e7ca71007bf922ff50c3e224a437c1c"
+    },
+    {
+      "relative_path": ".codex/skills/figure-table-planner/SKILL.md",
+      "size_bytes": 2492,
+      "sha256": "ea1dead8d5d448364a5ae6f0179668fb2a40f5a8178a7ffd9a223d1750d3b372"
+    },
+    {
+      "relative_path": ".codex/skills/final-method-explainer/SKILL.md",
+      "size_bytes": 2103,
+      "sha256": "04fe1af554ac6fb0db226622e7b75527c8fb53f528790be9e6db19c615edaca6"
+    },
+    {
+      "relative_path": ".codex/skills/math-figure-generator/SKILL.md",
+      "size_bytes": 2339,
+      "sha256": "75864b61cd4f03247b6b69305262f316b225f3ea559c7f30d32ff3c44296e35e"
+    },
+    {
+      "relative_path": ".codex/skills/math-figure-generator/references/chart-patterns.md",
+      "size_bytes": 17448,
+      "sha256": "184237f83440e8eb9637c5eb6ef1b0f1ef2c57882622c3afb59394b6669e1372"
+    },
+    {
+      "relative_path": ".codex/skills/math-figure-generator/references/color-systems.md",
+      "size_bytes": 4764,
+      "sha256": "55f77eff4ee7f5823fb777d226b201d609c85270a165d54fd4001598669f78f5"
+    },
+    {
+      "relative_path": ".codex/skills/math-figure-generator/references/layout-guide.md",
+      "size_bytes": 7137,
+      "sha256": "7924b89c02cf7cfc0994d0fc20927c42cd2a40b7d4e967df324efa5a25504177"
+    },
+    {
+      "relative_path": ".codex/skills/math-figure-generator/references/render-check.md",
+      "size_bytes": 730,
+      "sha256": "099c950ff5388471fb3c69899d0a5a13a89743800b7a814eeafe2aa9c8767af8"
+    },
+    {
+      "relative_path": ".codex/skills/matlab-code-reviewer/SKILL.md",
+      "size_bytes": 2806,
+      "sha256": "f4c363fb2141991b725698a6806ce6a42700c00411e49ac1aac46278fcae967d"
+    },
+    {
+      "relative_path": ".codex/skills/matlab-model-code-generator/SKILL.md",
+      "size_bytes": 2786,
+      "sha256": "b756cf931b992a2b3068a7bead61190121d45a1c9cd71030b0c2565d5155bf81"
+    },
+    {
+      "relative_path": ".codex/skills/method-selector/SKILL.md",
+      "size_bytes": 7683,
+      "sha256": "a20ccb644da9e141ab1574d6f4fb1aa7d2ea429cba361ca42022adef9910b27c"
+    },
+    {
+      "relative_path": ".codex/skills/method-selector/references/method-family-guide.md",
+      "size_bytes": 2209,
+      "sha256": "5d1e503d1b60a0a8cc8828b01d8b5778f47ccef0b9da3c72cb4a97fc58cb94c6"
+    },
+    {
+      "relative_path": ".codex/skills/method-selector/references/risk-probe-contract.md",
+      "size_bytes": 3070,
+      "sha256": "8e40dc5e359c61755334f3199da373f117521fef7562d13473b418f181221f97"
+    },
+    {
+      "relative_path": ".codex/skills/model-assumptions-builder/SKILL.md",
+      "size_bytes": 1987,
+      "sha256": "59ca7b43eef3b7c1fc1b56392bde48e9ba3531789302ff618c5a67144125aede"
+    },
+    {
+      "relative_path": ".codex/skills/model-code-analyzer/SKILL.md",
+      "size_bytes": 4655,
+      "sha256": "e76e2cb887ee2e4f54f1106a412aa9fa2d3ca558b8b63f7d78bae660bec131dd"
+    },
+    {
+      "relative_path": ".codex/skills/modeler-decision-logger/SKILL.md",
+      "size_bytes": 3129,
+      "sha256": "70470d8a304ee9509552fd6199a8210730962bd73566a32ea86df834b927ec01"
+    },
+    {
+      "relative_path": ".codex/skills/paper-polisher/SKILL.md",
+      "size_bytes": 13872,
+      "sha256": "3a26bbf5662b6e886ef721dec3f29f08795cdc7fc7599466158f1f81e7a66e24"
+    },
+    {
+      "relative_path": ".codex/skills/paper-section-writer/SKILL.md",
+      "size_bytes": 2624,
+      "sha256": "b26a94513d39d2f785618dee938fb69304b9ec0e342c4333e8d78ecdd4710788"
+    },
+    {
+      "relative_path": ".codex/skills/problem-classifier/SKILL.md",
+      "size_bytes": 2452,
+      "sha256": "6de755f37026d717dc3fb6ed28d2dc934e223ba247b7dfd6714799eb0eddede2"
+    },
+    {
+      "relative_path": ".codex/skills/problem-classifier/references/task-type-guide.md",
+      "size_bytes": 1532,
+      "sha256": "157e951ba82fa2b86b86b14f0378c926acf31dee9980bf90f18ca9b21d1b79a3"
+    },
+    {
+      "relative_path": ".codex/skills/problem-parser/SKILL.md",
+      "size_bytes": 4615,
+      "sha256": "364e90e18138f1b21cb3c7582f7945a7728229b737dd82fdc062b6b7ccd61f3b"
+    },
+    {
+      "relative_path": ".codex/skills/python-code-reviewer/SKILL.md",
+      "size_bytes": 3493,
+      "sha256": "7c58ef7c797490a8ad9507e33f8955e1e588bdbb54f1fa3b6a29b8b95499b320"
+    },
+    {
+      "relative_path": ".codex/skills/python-model-code-generator/SKILL.md",
+      "size_bytes": 2786,
+      "sha256": "d2877a8b66da957b0f45bdd72cd70d9345b6d2b2fcd677c2176aba2b29c5e102"
+    },
+    {
+      "relative_path": ".codex/skills/quality-assurance-auditor/SKILL.md",
+      "size_bytes": 2316,
+      "sha256": "8f229dee8644a41b60d30dcad5c9a1042d1dd6c38a30facad07028a46f919218"
+    },
+    {
+      "relative_path": ".codex/skills/reference-manager/SKILL.md",
+      "size_bytes": 10607,
+      "sha256": "4068c04a9d06d5c61accbbc095e82119c36326b02d2c5023f2095d4840871656"
+    },
+    {
+      "relative_path": ".codex/skills/related-paper-analyzer/SKILL.md",
+      "size_bytes": 7255,
+      "sha256": "7cf4a52212ebb3e1fa66d8d9ee75f9ab8a04ba42f0e372e057eae95e116c3e27"
+    },
+    {
+      "relative_path": ".codex/skills/result-report-generator/SKILL.md",
+      "size_bytes": 2754,
+      "sha256": "8c2fe0f787789c6ddc1f42b0b58a8d781e74a99b5bf42c78409e4301151e0669"
+    },
+    {
+      "relative_path": ".codex/skills/robustness-checker/SKILL.md",
+      "size_bytes": 2353,
+      "sha256": "42052bcea0723adda0fdd2ce8bc19b83f33240594ff84849fce29d883095d223"
+    },
+    {
+      "relative_path": ".codex/skills/solution-package-builder/SKILL.md",
+      "size_bytes": 2953,
+      "sha256": "878d40b24398f396b21cf45d1caafe522ced6198e01389d19e7f2a4ebacc9aa0"
+    },
+    {
+      "relative_path": ".codex/skills/symbol-table-builder/SKILL.md",
+      "size_bytes": 1899,
+      "sha256": "365d6bde4e81c41effd9d7428fd6df2f0c90cbc3661ad67ef86b4ed1525870f2"
+    },
+    {
+      "relative_path": ".codex/skills/workflow-orchestrator/SKILL.md",
+      "size_bytes": 7965,
+      "sha256": "8ee02db6a30a7c8997450e409cb403998ec62fe0608e299eccd9ec8538e7cd8c"
+    },
+    {
+      "relative_path": ".gitignore",
+      "size_bytes": 10,
+      "sha256": "cf237c7aff44efbe6e502e645c3e06da03a69d7bdeb43392108ef3348143417e"
+    },
+    {
+      "relative_path": "AGENTS.md",
+      "size_bytes": 11976,
+      "sha256": "9353450f545567941298594dd25babc48e989dc7af8613b2a8d551f316245054"
+    },
+    {
+      "relative_path": "CLAUDE.md",
+      "size_bytes": 2680,
+      "sha256": "d70e6963a312a9dd676fd9942d4ea0afc288c5f41bac8456e7f57f74cc14d960"
+    },
+    {
+      "relative_path": "CONTRIBUTING.md",
+      "size_bytes": 737,
+      "sha256": "16246348f134abb0bf284ebbc22b2ea9e815bbf58895c161668ff26b132974fe"
+    },
+    {
+      "relative_path": "Initial Prompt-zh.md",
+      "size_bytes": 5747,
+      "sha256": "f1762a113abf5a3a732bc2a6f27a372574dbe23f56d8a06b47a22ae14a0baf10"
+    },
+    {
+      "relative_path": "Initial Prompt.md",
+      "size_bytes": 6073,
+      "sha256": "190901dd5e055844045a757ad11a0a7b00bbe73232baeea2395d1142897cab25"
+    },
+    {
+      "relative_path": "LICENSE",
+      "size_bytes": 1069,
+      "sha256": "19bceccae3458e3997bfe6c143cb157a0962f165825af213cf47ddda93c3aa34"
+    },
+    {
+      "relative_path": "README-zh.md",
+      "size_bytes": 16604,
+      "sha256": "30b7a05fc3a0b1bce16709ca67797ed9fb9991fb592d7178de67e73a56705eae"
+    },
+    {
+      "relative_path": "README.md",
+      "size_bytes": 18980,
+      "sha256": "62afcedadbb7a76c7ef484801175b587dc084c95a6e3f050c0ff8258656c89eb"
+    },
+    {
+      "relative_path": "docs/assets/logo.svg",
+      "size_bytes": 2454,
+      "sha256": "60c33c0b3283b53dbc4cb3603a8fcc951202d92882d9af0b7afe0398952da6ca"
+    },
+    {
+      "relative_path": "docs/implementation-targets.md",
+      "size_bytes": 2214,
+      "sha256": "51b5a92368dca553bed9822bb8713fc5d126213847774aae2d1916dd0dec7fd2"
+    },
+    {
+      "relative_path": "docs/matlab-beita-tianyuan-guidelines.md",
+      "size_bytes": 4107,
+      "sha256": "549abf89f487f73ab23a90d36026e048c27411bacb3819a496d266ec97e8f1ef"
+    },
+    {
+      "relative_path": "examples/evaluation-problem/README.md",
+      "size_bytes": 474,
+      "sha256": "23e9ec9bbab4b3d08944bd6f8ed0177424609b2adb0a52dcbf88f141cd09d709"
+    },
+    {
+      "relative_path": "examples/hybrid-problem/README.md",
+      "size_bytes": 530,
+      "sha256": "83367a019d5dcb79b7dedd9fa2f9f87a427f8e466a211f3e95dbb66baed379ce"
+    },
+    {
+      "relative_path": "examples/optimization-problem/README.md",
+      "size_bytes": 515,
+      "sha256": "09305a18d7a86f3464781e82bd01489aab1e87b030573ab0b80ae298e424ad1c"
+    },
+    {
+      "relative_path": "examples/prediction-problem/README.md",
+      "size_bytes": 509,
+      "sha256": "e42791628511ed786ace56a1f13e4e84b7b03e4c59b7769c91d73f589f412f66"
+    },
+    {
+      "relative_path": "install.sh",
+      "size_bytes": 7488,
+      "sha256": "3b94e84531dfcc29f65ada2527de53c5a94e789722d98aef799344a6ac34e670"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/.claude-plugin/plugin.json",
+      "size_bytes": 631,
+      "sha256": "013b24ae4870fe2b1b0e8e75d7299b85dda9f36a6f8a3613a7921734acebb953"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/.codex-plugin/plugin.json",
+      "size_bytes": 1460,
+      "sha256": "506f089fe914671e583f553c92a0844b645f1f66c07eac1679521a9652aa5bf3"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/AGENTS.md",
+      "size_bytes": 11976,
+      "sha256": "9353450f545567941298594dd25babc48e989dc7af8613b2a8d551f316245054"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/LICENSE",
+      "size_bytes": 1069,
+      "sha256": "19bceccae3458e3997bfe6c143cb157a0962f165825af213cf47ddda93c3aa34"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/hooks/hooks.json",
+      "size_bytes": 378,
+      "sha256": "aee0ad1938f9598141179b4080414a8d0874af42efca4b31790760e265670f25"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/code-reviewer/SKILL.md",
+      "size_bytes": 1089,
+      "sha256": "70662c010202e456401894058c1a407f6153b248b1a600dbd0ef5f9956b0e5c6"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/completeness-auditor/SKILL.md",
+      "size_bytes": 2131,
+      "sha256": "033750f932d25247651258c25d9dd2840012aa62b05996fad1d58cd52a168807"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/consistency-auditor/SKILL.md",
+      "size_bytes": 2265,
+      "sha256": "37f7e528822b1c468288ade5961edd0f436f5bff0545a891641ee0b051b6b3fc"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/data-auditor-cleaner/SKILL.md",
+      "size_bytes": 4219,
+      "sha256": "541f1f22556069a81f8a983d60d6f10dcab4f259be38b4114da54d85a66ac749"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/decision-prompt-builder/SKILL.md",
+      "size_bytes": 3570,
+      "sha256": "94c2b80edd3c2fc50eb0ad130f5dfd1a4e7ca71007bf922ff50c3e224a437c1c"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/figure-table-planner/SKILL.md",
+      "size_bytes": 2492,
+      "sha256": "ea1dead8d5d448364a5ae6f0179668fb2a40f5a8178a7ffd9a223d1750d3b372"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/final-method-explainer/SKILL.md",
+      "size_bytes": 2103,
+      "sha256": "04fe1af554ac6fb0db226622e7b75527c8fb53f528790be9e6db19c615edaca6"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/math-figure-generator/SKILL.md",
+      "size_bytes": 2339,
+      "sha256": "75864b61cd4f03247b6b69305262f316b225f3ea559c7f30d32ff3c44296e35e"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/math-figure-generator/references/chart-patterns.md",
+      "size_bytes": 17448,
+      "sha256": "184237f83440e8eb9637c5eb6ef1b0f1ef2c57882622c3afb59394b6669e1372"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/math-figure-generator/references/color-systems.md",
+      "size_bytes": 4764,
+      "sha256": "55f77eff4ee7f5823fb777d226b201d609c85270a165d54fd4001598669f78f5"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/math-figure-generator/references/layout-guide.md",
+      "size_bytes": 7137,
+      "sha256": "7924b89c02cf7cfc0994d0fc20927c42cd2a40b7d4e967df324efa5a25504177"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/math-figure-generator/references/render-check.md",
+      "size_bytes": 730,
+      "sha256": "099c950ff5388471fb3c69899d0a5a13a89743800b7a814eeafe2aa9c8767af8"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/matlab-code-reviewer/SKILL.md",
+      "size_bytes": 2806,
+      "sha256": "f4c363fb2141991b725698a6806ce6a42700c00411e49ac1aac46278fcae967d"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/matlab-model-code-generator/SKILL.md",
+      "size_bytes": 2786,
+      "sha256": "b756cf931b992a2b3068a7bead61190121d45a1c9cd71030b0c2565d5155bf81"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/method-selector/SKILL.md",
+      "size_bytes": 7683,
+      "sha256": "a20ccb644da9e141ab1574d6f4fb1aa7d2ea429cba361ca42022adef9910b27c"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/method-selector/references/method-family-guide.md",
+      "size_bytes": 2209,
+      "sha256": "5d1e503d1b60a0a8cc8828b01d8b5778f47ccef0b9da3c72cb4a97fc58cb94c6"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/method-selector/references/risk-probe-contract.md",
+      "size_bytes": 3070,
+      "sha256": "8e40dc5e359c61755334f3199da373f117521fef7562d13473b418f181221f97"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/model-assumptions-builder/SKILL.md",
+      "size_bytes": 1987,
+      "sha256": "59ca7b43eef3b7c1fc1b56392bde48e9ba3531789302ff618c5a67144125aede"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/model-code-analyzer/SKILL.md",
+      "size_bytes": 4655,
+      "sha256": "e76e2cb887ee2e4f54f1106a412aa9fa2d3ca558b8b63f7d78bae660bec131dd"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/modeler-decision-logger/SKILL.md",
+      "size_bytes": 3129,
+      "sha256": "70470d8a304ee9509552fd6199a8210730962bd73566a32ea86df834b927ec01"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/paper-polisher/SKILL.md",
+      "size_bytes": 13872,
+      "sha256": "3a26bbf5662b6e886ef721dec3f29f08795cdc7fc7599466158f1f81e7a66e24"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/paper-section-writer/SKILL.md",
+      "size_bytes": 2624,
+      "sha256": "b26a94513d39d2f785618dee938fb69304b9ec0e342c4333e8d78ecdd4710788"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/problem-classifier/SKILL.md",
+      "size_bytes": 2452,
+      "sha256": "6de755f37026d717dc3fb6ed28d2dc934e223ba247b7dfd6714799eb0eddede2"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/problem-classifier/references/task-type-guide.md",
+      "size_bytes": 1532,
+      "sha256": "157e951ba82fa2b86b86b14f0378c926acf31dee9980bf90f18ca9b21d1b79a3"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/problem-parser/SKILL.md",
+      "size_bytes": 4615,
+      "sha256": "364e90e18138f1b21cb3c7582f7945a7728229b737dd82fdc062b6b7ccd61f3b"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/python-code-reviewer/SKILL.md",
+      "size_bytes": 3493,
+      "sha256": "7c58ef7c797490a8ad9507e33f8955e1e588bdbb54f1fa3b6a29b8b95499b320"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/python-model-code-generator/SKILL.md",
+      "size_bytes": 2786,
+      "sha256": "d2877a8b66da957b0f45bdd72cd70d9345b6d2b2fcd677c2176aba2b29c5e102"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/quality-assurance-auditor/SKILL.md",
+      "size_bytes": 2316,
+      "sha256": "8f229dee8644a41b60d30dcad5c9a1042d1dd6c38a30facad07028a46f919218"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/reference-manager/SKILL.md",
+      "size_bytes": 10607,
+      "sha256": "4068c04a9d06d5c61accbbc095e82119c36326b02d2c5023f2095d4840871656"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/related-paper-analyzer/SKILL.md",
+      "size_bytes": 7255,
+      "sha256": "7cf4a52212ebb3e1fa66d8d9ee75f9ab8a04ba42f0e372e057eae95e116c3e27"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/result-report-generator/SKILL.md",
+      "size_bytes": 2754,
+      "sha256": "8c2fe0f787789c6ddc1f42b0b58a8d781e74a99b5bf42c78409e4301151e0669"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/robustness-checker/SKILL.md",
+      "size_bytes": 2353,
+      "sha256": "42052bcea0723adda0fdd2ce8bc19b83f33240594ff84849fce29d883095d223"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/solution-package-builder/SKILL.md",
+      "size_bytes": 2953,
+      "sha256": "878d40b24398f396b21cf45d1caafe522ced6198e01389d19e7f2a4ebacc9aa0"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/symbol-table-builder/SKILL.md",
+      "size_bytes": 1899,
+      "sha256": "365d6bde4e81c41effd9d7428fd6df2f0c90cbc3661ad67ef86b4ed1525870f2"
+    },
+    {
+      "relative_path": "plugins/mathmodeling-skills/skills/workflow-orchestrator/SKILL.md",
+      "size_bytes": 7965,
+      "sha256": "8ee02db6a30a7c8997450e409cb403998ec62fe0608e299eccd9ec8538e7cd8c"
+    },
+    {
+      "relative_path": "scripts/sync-plugin.sh",
+      "size_bytes": 2111,
+      "sha256": "12137dc4fc07f7ff9bcba9f3e7ef35a14e669e3e5d20188c715e47a8a462c21c"
+    },
+    {
+      "relative_path": "skills-docs/design-principles.md",
+      "size_bytes": 4876,
+      "sha256": "838a42544da7eade6cca1d58e7d8811f1b385f13194887540fd9fd50586de3ff"
+    },
+    {
+      "relative_path": "skills-docs/figure-table-guidelines.md",
+      "size_bytes": 4169,
+      "sha256": "7f6e5a1a4da6df0a70ad48d81cc57557fb1af091b41bfc2755d5a402102099fc"
+    },
+    {
+      "relative_path": "skills-docs/method-selection-tree.md",
+      "size_bytes": 3249,
+      "sha256": "f639e63b195545adb5e1f6bf7f14fc3fa464029bb4522f86033d520699c44c8f"
+    },
+    {
+      "relative_path": "skills-docs/paper-writing-rules.md",
+      "size_bytes": 4413,
+      "sha256": "33053d877cec75b4ccdc5687de39d3872446302ce4e809353a4825aba91d5549"
+    },
+    {
+      "relative_path": "skills-docs/problem-taxonomy.md",
+      "size_bytes": 12055,
+      "sha256": "eb839637dbd86d206bf987b730028e840800d5add942ca67f9190006ca061d95"
+    },
+    {
+      "relative_path": "skills-docs/qa-checklist.md",
+      "size_bytes": 7268,
+      "sha256": "0c33a98cf54a81557d916b0f7dd6528617740b7bcaf9016973db05e391748d97"
+    },
+    {
+      "relative_path": "templates/data-report-template.md",
+      "size_bytes": 911,
+      "sha256": "6af740d8324e33018812484094ab02d7beb92548a715ffe03f3f7197cc5c65d8"
+    },
+    {
+      "relative_path": "templates/figure-plan.schema.json",
+      "size_bytes": 407,
+      "sha256": "f2aed9dc3cc25bbc24e63465d81a629cdd33c6baa2f47077b76cc3051684b003"
+    },
+    {
+      "relative_path": "templates/method-plan.schema.json",
+      "size_bytes": 4985,
+      "sha256": "c590ae317f445adf6ab8231a85ca34a8cfe61f6cc3a6775b0454d68d5869835c"
+    },
+    {
+      "relative_path": "templates/problem-classification.schema.json",
+      "size_bytes": 424,
+      "sha256": "5ecc7854e74df5436370dcdc5f0169a60d32925f096a69091da66bfc453d6a93"
+    },
+    {
+      "relative_path": "templates/problem-parse.schema.json",
+      "size_bytes": 470,
+      "sha256": "8fcdf0f71f1e4d5490f8acc350deac88294b2cc8e56c390883ceacd85bdf945f"
+    },
+    {
+      "relative_path": "templates/qa-report.schema.json",
+      "size_bytes": 3140,
+      "sha256": "0791ceeb63b461fba7956df2b43f1706efce775b993e3d31f3c9d2c9ebdbb3f5"
+    },
+    {
+      "relative_path": "templates/robustness-report-template.md",
+      "size_bytes": 897,
+      "sha256": "892e1ea15aea4615fdb00399964dc82e795b4b71a621d7dd0bf77242b35e785f"
+    },
+    {
+      "relative_path": "templates/skill-template.md",
+      "size_bytes": 979,
+      "sha256": "25b65bbb1f4a2119d70aecb529835fb158c0e959127d3701d80e5140c4cebf57"
+    }
+  ],
+  "evidence_refs": [
+    "access_log.jsonl#HASH_ONLY_BATCH",
+    "candidate_manifest.json#machine_manifest_sha256_actual",
+    "frozen_candidate_manifest.json#files"
+  ]
+}

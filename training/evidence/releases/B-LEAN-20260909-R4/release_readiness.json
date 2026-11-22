@@ -1,0 +1,10 @@
+{
+  "release_id": "B-LEAN-20260909-R4",
+  "status": "PASS_RELEASE_AUDIT",
+  "file_count": 145,
+  "changed_file_count": 27,
+  "content_fingerprint_sha256": "f438d278ab7f420b52cfe0a944f5e020f6434152d148a56f6219078e47640c0c",
+  "release_manifest_sha256": "5920a376b3495b945663b73a7754d6da486bd1dfc35eb6921f87238365bf66d8",
+  "formal_target_modified": false,
+  "next_action": "Build the exact R4 integration plan and written approval card, then stop."
+}

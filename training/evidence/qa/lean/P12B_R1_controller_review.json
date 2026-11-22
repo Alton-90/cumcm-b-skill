@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "review_id": "P12B-R1-CONTROLLER-20260907-185932",
+  "reviewed_at": "2026-09-07T18:59:32+08:00",
+  "phase": "P12B",
+  "round": 1,
+  "release_id": "B-LEAN-20260907-R1",
+  "verdict": "PASS_AT_WAITING_HUMAN",
+  "accepted_scope": "Exact capture of FRAMING-2025B-001=B, official-input-only structural identifiability analysis, and emission of FRAMING-2025B-002.",
+  "not_accepted_as": "BLIND_RUN_COMPLETE",
+  "scientific_review": {
+    "idealized_relation_checked": "q_10^2-q_15^2=d^2(sin^2(15deg)-sin^2(10deg)) under fixed absolute phase and interface terms",
+    "angular_separation_value": 0.03683360850073486,
+    "relation_algebraically_consistent": true,
+    "actual_observation_boundary": "The attachments contain reflectance intensity rather than absolute phase, while phase order, interface phase, and unrestricted n(sigma) remain unknown.",
+    "verdict_supported": "CONDITIONAL_NOT_IDENTIFIABLE",
+    "unique_physical_thickness_supported": false,
+    "finite_numeric_interval_supported_without_new_bounds": false,
+    "method_selection_performed": false
+  },
+  "independent_checks": {
+    "json_files": 16,
+    "json_parse_errors": 0,
+    "jsonl_files": 3,
+    "jsonl_parse_errors": 0,
+    "access_log_rows": 79,
+    "deny_term_body_rows": 0,
+    "candidate_files_rehashed": 145,
+    "candidate_hash_mismatches": 0,
+    "official_inputs_rehashed": 5,
+    "official_input_hash_mismatches": 0,
+    "formal_target_files": 145,
+    "formal_target_hash_mismatches": 0,
+    "blind_decision_records": 1,
+    "canonical_framing_records": 1,
+    "exact_user_utterance_in_both_ledgers": true,
+    "current_decision_id_matches_card": true,
+    "current_card_option_ids": ["A", "B", "C", "D"],
+    "methods_directory_absent": true,
+    "results_directory_absent": true
+  },
+  "terminal_state": {
+    "status": "WAITING_HUMAN",
+    "blind_run_completion": "NOT_COMPLETE_WAITING_HUMAN",
+    "completed_decision": "FRAMING-2025B-001=B",
+    "current_decision_id": "FRAMING-2025B-002",
+    "current_decision_status": "PENDING_HUMAN",
+    "p12b_checkpoint": "IDENTIFIABILITY_CHECK_COMPLETE_WAITING_HUMAN"
+  },
+  "warnings": [
+    "The structural verdict does not claim that every bounded or parametric dispersion model is unusable; it correctly states that uniqueness fails under the currently unrestricted information contract.",
+    "The first choice card remains an immutable pending-at-emission artifact; its resolution is recorded append-only in the two decision ledgers.",
+    "The blind audit ledger and contest-workspace framing ledger intentionally serve different scopes and cross-reference the same exact human utterance."
+  ],
+  "next_action": "Wait for the user's explicit answer to FRAMING-2025B-002. Do not select a dispersion family, add refractive-index bounds, run model code, or expand ALLOW before that answer is recorded verbatim.",
+  "evidence_refs": [
+    {
+      "source_path": "cumcm-b-skill/tests/holdout/2025B/B-LEAN-20260907-R1/human_decisions.jsonl",
+      "locator": "record_id=P12B-HD-001",
+      "source_role": "human_decision_audit_ledger"
+    },
+    {
+      "source_path": "cumcm-b-skill/tests/holdout/2025B/B-LEAN-20260907-R1/contest_workspace/planning/probes/joint_identifiability_check.json",
+      "locator": "$.idealized_phase_relation; $.actual_observation_limit; $.rank_and_branch_assessment; $.verdict",
+      "source_role": "blind_test_identifiability_evidence"
+    },
+    {
+      "source_path": "cumcm-b-skill/tests/holdout/2025B/B-LEAN-20260907-R1/contest_workspace/planning/second_human_choice_card.json",
+      "locator": "$.choice_card",
+      "source_role": "pending_human_decision"
+    },
+    {
+      "source_path": "cumcm-b-skill/tests/holdout/2025B/B-LEAN-20260907-R1/verification_report.json",
+      "locator": "$.decision_contract_checks; $.state_consistency_checks; $.candidate; $.official_inputs; $.access_control",
+      "source_role": "executor_verification"
+    },
+    {
+      "source_path": "cumcm-b-skill/planning/history/20260907_185932_P12B-R1-WAITING-HUMAN-BEFORE/backup_manifest.json",
+      "locator": "$.files",
+      "source_role": "versioned_before_state"
+    }
+  ]
+}

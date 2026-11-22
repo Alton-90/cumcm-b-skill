@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-09-07T22:02:54+08:00",
+  "phase": "P12B-R4",
+  "release_id": "B-LEAN-20260907-R1",
+  "verdict": "PASS_WITH_WARNINGS_AT_WAITING_HUMAN",
+  "controller_review_status": "ACCEPTED_G3_WITH_NUMERICAL_WARNINGS_WAITING_G4",
+  "resolved_decision": {
+    "decision_id": "Q1-PHASE-CONTRACT-2025B-001",
+    "choice": "B",
+    "blind_audit_record": "P12B-HD-004",
+    "q1_canonical_record": "Q1-DEC-002",
+    "exact_utterance_match": true,
+    "append_only_preserved": true
+  },
+  "execution_review": {
+    "main": "M1",
+    "usable_baseline": "B1",
+    "shared_contract": true,
+    "M1": {
+      "execution_status": "completed_nonconverged",
+      "optimizer_converged": false,
+      "iterations": 80,
+      "equal_weight_standardized_objective": 0.47768205454701185,
+      "conditional_thickness_um": 0.4480735758623095,
+      "jacobian_condition": 67339.84580312963,
+      "perturbation_relative_span": 3.6199064272137855
+    },
+    "B1": {
+      "execution_status": "completed_nonconverged",
+      "optimizer_converged": false,
+      "iterations": 80,
+      "equal_weight_standardized_objective": 0.9375066073538745,
+      "conditional_thickness_um": 0.04845625775995254,
+      "jacobian_condition": 719035.2609021153,
+      "perturbation_relative_span": 3.139042970859995
+    },
+    "interpretation": "M1 has the lower exploratory conditional objective, but neither fit converged and neither numerical thickness is an accepted physical estimate."
+  },
+  "controller_targeted_review": {
+    "router": "code-reviewer -> python-code-reviewer",
+    "finding": "The executor originally labelled finite but non-converged fits as success and omitted convergence from the choice card.",
+    "severity": "BLOCKING_FOR_UNQUALIFIED_RESULT_CARD",
+    "remediation": "Method status is now completed_nonconverged; iterations/convergence and optimizer warnings are present in metrics, run summary, review, manifest, state, and choice card.",
+    "affected_checks_rerun": [
+      "syntax",
+      "reproducibility",
+      "output_contract",
+      "numerical_status_disclosure"
+    ],
+    "canonical_review_verdict": "PASSED_WITH_WARNINGS",
+    "G3": "PASS_WITH_WARNINGS"
+  },
+  "fallback_review": {
+    "fallback_id": "F1",
+    "state": "TRIGGERED_NOT_ACTIVATED_WAITING_HUMAN",
+    "triggered_condition": "multiple_supported_phase_branches",
+    "branch_family": "Z x Z; countably infinite exact aliases",
+    "unique_physical_thickness_authorized": false,
+    "additional_instability": "Both solvers are non-converged and nuisance perturbations produce large conditional-thickness spans."
+  },
+  "recovery_cross_check": {
+    "task_title": "B题P12 | Q1实现与审查",
+    "thread_id": "<conversation-id>",
+    "model": "gpt-5.6-terra",
+    "write_root": "cumcm-b-skill/tests/holdout/2025B/B-LEAN-20260907-R1-round4-recovery",
+    "promotion_status": "NOT_PROMOTED_CONCURRENT_CANONICAL_COMPLETION",
+    "numerical_outputs_match_canonical": true,
+    "branch_table_sha256_match": true,
+    "note": "The recovery task reproduced the same numerical metrics and branch table but is not treated as an independent algorithm design because it could read the concurrently appearing canonical implementation."
+  },
+  "integrity_checks": {
+    "all_json_jsonl_parse": true,
+    "candidate_files_unchanged": "145/145",
+    "declared_candidate_hashes_match": "18/18",
+    "official_inputs_unchanged": "5/5",
+    "deny_body_access_count": 0,
+    "diagnostic_resolution_limit_preserved": true,
+    "final_result_frozen": false,
+    "blind_run_complete": false,
+    "verification_overall_pass_at_waiting_human_stop": true
+  },
+  "artifact_hashes": {
+    "run_q1_round1_py": "d1a78afa6493aa959e1cd6e2bc51f0a31ac8f057a6df2e410e40b2d20cbc62a9",
+    "fit_metrics_json": "f99c10b0033faa87b384eaa495ad58bd40bd48eeb21f1ebcd3e7909487e126e8",
+    "branch_profile_csv": "5fbd3c10cabadf7d70117a339abb0751bd6b7250fc39475ea7096b37d1cf8d06",
+    "python_review_json": "22d37262902cc9228fcf1d48420d6a3ea5e3546632837d247ea982465f939321",
+    "result_choice_card_json": "28a83537c078cb91949c06845074a07ea77f1077400857190ed662c286626af1"
+  },
+  "current_human_gate": {
+    "decision_id": "Q1-RESULT-STABILITY-2025B-001",
+    "status": "PENDING_HUMAN",
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "controller_advisory_recommendation": "A",
+    "recommendation_reason": "The predeclared F1 branch trigger is already met, and non-convergence plus large perturbation spans make a unique point estimate indefensible without new anchors."
+  },
+  "evidence_refs": [
+    "cumcm-b-skill/tests/holdout/2025B/B-LEAN-20260907-R1/verification_report.json",
+    "cumcm-b-skill/tests/holdout/2025B/B-LEAN-20260907-R1/contest_workspace/results/Q1/experiments/round1/run_summary.json",
+    "cumcm-b-skill/tests/holdout/2025B/B-LEAN-20260907-R1/contest_workspace/code/Q1/reviews/q1_python_review.json",
+    "cumcm-b-skill/tests/holdout/2025B/B-LEAN-20260907-R1/contest_workspace/methods/Q1/q1_result_stability_choice_card.json",
+    "cumcm-b-skill/tests/holdout/2025B/B-LEAN-20260907-R1-round4-recovery/promotion_manifest.json",
+    "cumcm-b-skill/planning/history/20260907_215630_P12B-R4-NONCONVERGENCE-REMEDIATION-BEFORE/backup_manifest.json"
+  ]
+}

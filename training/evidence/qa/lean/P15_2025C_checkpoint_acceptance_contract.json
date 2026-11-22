@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "contract_id": "P15-2025C-G2-CONTROLLER-ACCEPTANCE-001",
+  "fixed_before_executor_result": true,
+  "created_at": "2026-09-08T08:50:00+08:00",
+  "target_checkpoint": "WAITING_HUMAN_METHOD_CHOICE",
+  "hard_pass_conditions": {
+    "isolation": [
+      "deny_body_access_count == 0",
+      "baseline_release_file_count == 145",
+      "baseline_release_hash_mismatch_count == 0",
+      "official_input_count == 2",
+      "official_input_hash_mismatch_count == 0",
+      "network_access_count == 0"
+    ],
+    "artifact_integrity": [
+      "all JSON files parse",
+      "all non-empty JSONL lines parse",
+      "every factual problem claim resolves to a page or workbook locator",
+      "raw PDF and XLSX remain unchanged",
+      "all writes remain under the declared blind-test root"
+    ],
+    "workflow_semantics": [
+      "all subquestions map to required outputs and one primary task type",
+      "attachment fields are mapped to subquestions or explicitly unresolved",
+      "facts, observations, proposed relationships, assumptions, and human decisions remain distinct",
+      "a usable baseline completes the same real task as the main candidate",
+      "risk probes cover executability, representative data coverage, output degeneracy, perturbation sensitivity, scale, and applicable load-bearing assumptions",
+      "any method relying on local structure or a valid measurement range has a prospective analysis-domain eligibility rule fixed before execution, or is FAIL/BLOCKED",
+      "no merely disclosed ineligible observations are silently retained by a structure-dependent method"
+    ],
+    "human_boundary": [
+      "the durable method-choice card is PENDING_HUMAN and does not preselect an option",
+      "no controller-authored method choice is represented as human",
+      "no final model implementation, final result, freeze, external comparison, or paper artifact exists"
+    ]
+  },
+  "quality_review_questions": [
+    "Did R2 trigger the new analysis-domain contract only where applicable, without forcing it on full-domain methods?",
+    "Does the method screen expose a real decision surface rather than a padded menu?",
+    "Are any blockers caused by the problem itself, or by missing reusable Skill guidance?",
+    "Would a proposed Skill change alter observable behavior on a future unseen problem?",
+    "Can the same evidence be represented with fewer gates or artifacts without weakening safety?"
+  ],
+  "verdicts": {
+    "PASS_AT_WAITING_HUMAN": "All hard conditions pass and no blocking reusable-contract defect is found before the method gate.",
+    "PASS_WITH_GAP_AT_WAITING_HUMAN": "Isolation and human boundary pass, but a reproducible general Skill defect is evidenced and routed to P16.",
+    "FAIL": "Any isolation, identity, raw-data integrity, fabricated-human-decision, or premature-code condition fails."
+  },
+  "anti_overfit_rule": "Do not revise a Skill from a task-specific modeling difficulty, a preferred answer, or a threshold chosen after seeing favorable results. Require a prospective behavioral test for every accepted change."
+}

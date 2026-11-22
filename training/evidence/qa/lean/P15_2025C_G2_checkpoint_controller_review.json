@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "review_id": "P15-2025C-G2-CONTROLLER-REVIEW-001",
+  "contract_id": "P15-2025C-G2-CONTROLLER-ACCEPTANCE-001",
+  "reviewed_at": "2026-09-08T10:11:15.6040919+08:00",
+  "test_id": "2025C-R2-BLIND-001",
+  "baseline_release_id": "B-LEAN-20260908-R2",
+  "verdict": "PASS_AT_WAITING_HUMAN",
+  "mechanical_checks": {
+    "json_files": 16,
+    "json_parse_errors": 0,
+    "jsonl_files": 1,
+    "jsonl_nonempty_lines": 20,
+    "jsonl_parse_errors": 0,
+    "baseline_release_files_expected": 145,
+    "baseline_release_files_present": 145,
+    "baseline_release_hash_mismatches": 0,
+    "official_inputs_expected": 2,
+    "official_input_hash_mismatches": 0,
+    "deny_body_access_count": 0,
+    "network_access_count": 0,
+    "premature_code_result_freeze_or_paper_artifacts": 0
+  },
+  "semantic_checks": {
+    "problem_and_workbook_claims_have_locators": "PASS",
+    "four_subquestions_have_required_outputs_and_primary_types": "PASS",
+    "attachment_fields_are_mapped_or_explicitly_empty": "PASS",
+    "facts_observations_proposals_assumptions_and_human_choices_are_separated": "PASS",
+    "B1_completes_the_same_Q1_task_as_M1": "PASS",
+    "risk_probe_covers_required_named_dimensions": "PASS",
+    "analysis_domain_rule_is_prospective_and_not_outcome_selected": "PASS",
+    "ineligible_observations_are_not_silently_used_by_a_range_dependent_method": "PASS_NOT_APPLICABLE_TO_PRIMARY_FULL_DOMAIN_MODEL_AND_COVERED_BY_PREDECLARED_GC_SENSITIVITY",
+    "Q1_choice_card_is_pending_and_unselected": "PASS",
+    "controller_choice_misrepresented_as_human": "PASS_FALSE"
+  },
+  "quality_judgment": {
+    "R2_analysis_domain_contract_triggered_appropriately": true,
+    "method_screen_is_compact_and_role_based": true,
+    "confirmed_reusable_contract_gap_at_checkpoint": false,
+    "reason": "The frozen workflow surfaced repeated-subject dependence, censoring, prospective GC eligibility and the no-future-information boundary before implementation. Whether downstream code and review actually preserve those contracts remains a later blind-test observation, not a demonstrated checkpoint defect.",
+    "watch_items_for_downstream_test": [
+      "entity-level partition propagation",
+      "left/interval/right-censored event-time implementation",
+      "avoidance of repeated skill-loading overhead in isolated execution"
+    ]
+  },
+  "human_boundary": {
+    "decision_id": "Q1-METHOD-2025C-001",
+    "status": "PENDING_HUMAN",
+    "selected_option": null,
+    "controller_recommendation": "A",
+    "recommendation_is_not_a_selection": true,
+    "rationale": "A preserves the valid full-task B1 baseline and lets M1's limited curvature be judged transparently without inventing a weaker baseline. Its conditional status, small descriptive R-squared gain, GC sensitivity and non-causal scope must remain explicit."
+  },
+  "next_action": "Wait for the human's exact A/B/C/D answer to Q1-METHOD-2025C-001; do not generate model code before a human DECIDED ledger entry exists.",
+  "evidence_refs": [
+    "cumcm-b-skill/qa/lean/P15_2025C_checkpoint_acceptance_contract.json",
+    "cumcm-b-skill/tests/holdout/2025C/B-LEAN-20260908-R2/access_log.jsonl",
+    "cumcm-b-skill/tests/holdout/2025C/B-LEAN-20260908-R2/contest_workspace/planning/parse/problem_parse.json",
+    "cumcm-b-skill/tests/holdout/2025C/B-LEAN-20260908-R2/contest_workspace/workspace/data/attachment_structure_profile.json",
+    "cumcm-b-skill/tests/holdout/2025C/B-LEAN-20260908-R2/contest_workspace/methods/Q1/q1_method_card.md",
+    "cumcm-b-skill/tests/holdout/2025C/B-LEAN-20260908-R2/contest_workspace/methods/Q1/probes/risk_probe_summary.json",
+    "cumcm-b-skill/tests/holdout/2025C/B-LEAN-20260908-R2/contest_workspace/methods/Q1/q1_method_choice_card.json"
+  ]
+}

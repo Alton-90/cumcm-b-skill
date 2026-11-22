@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "plan_id": "P20-R4-FORMAL-INTEGRATION-PLAN-001",
+  "release_id": "B-LEAN-20260909-R4",
+  "parent_release": "B-LEAN-20260908-R2",
+  "status": "WAITING_EXACT_WRITTEN_APPROVAL",
+  "created_at": "2026-09-09T21:56:02.046779+08:00",
+  "release_manifest": {
+    "path": "cumcm-b-skill/releases/B-LEAN-20260909-R4/release_manifest.json",
+    "sha256": "5920a376b3495b945663b73a7754d6da486bd1dfc35eb6921f87238365bf66d8"
+  },
+  "full_release_diff": {
+    "path": "cumcm-b-skill/p20/full_release_diff.patch",
+    "sha256": "f642226454d4924949c5adbb7a806dd7939cbd7cf6f4997b5752ef2014e55cf9",
+    "changed_file_count": 27
+  },
+  "target_before": {
+    "path": "github下载的skill",
+    "release_id": "B-LEAN-20260908-R2",
+    "file_count": 145,
+    "content_fingerprint_sha256": "41335d2815d6ea0ca824c4c80a3a86fc50fb8219e73bba0f269dfe2c740d3fae"
+  },
+  "target_after_expected": {
+    "release_id": "B-LEAN-20260909-R4",
+    "file_count": 145,
+    "content_fingerprint_sha256": "3f2a6a2b795e4b12689796007e7f5724de06f5fa071e628dacf9ac15a1a0d425"
+  },
+  "affected_files": [
+    ".claude/skills/matlab-code-reviewer/SKILL.md",
+    ".claude/skills/matlab-model-code-generator/SKILL.md",
+    ".claude/skills/method-selector/SKILL.md",
+    ".claude/skills/model-code-analyzer/SKILL.md",
+    ".claude/skills/python-code-reviewer/SKILL.md",
+    ".claude/skills/python-model-code-generator/SKILL.md",
+    ".claude/skills/result-report-generator/SKILL.md",
+    ".claude/skills/robustness-checker/SKILL.md",
+    ".claude/skills/workflow-orchestrator/SKILL.md",
+    ".codex/skills/matlab-code-reviewer/SKILL.md",
+    ".codex/skills/matlab-model-code-generator/SKILL.md",
+    ".codex/skills/method-selector/SKILL.md",
+    ".codex/skills/model-code-analyzer/SKILL.md",
+    ".codex/skills/python-code-reviewer/SKILL.md",
+    ".codex/skills/python-model-code-generator/SKILL.md",
+    ".codex/skills/result-report-generator/SKILL.md",
+    ".codex/skills/robustness-checker/SKILL.md",
+    ".codex/skills/workflow-orchestrator/SKILL.md",
+    "plugins/mathmodeling-skills/skills/matlab-code-reviewer/SKILL.md",
+    "plugins/mathmodeling-skills/skills/matlab-model-code-generator/SKILL.md",
+    "plugins/mathmodeling-skills/skills/method-selector/SKILL.md",
+    "plugins/mathmodeling-skills/skills/model-code-analyzer/SKILL.md",
+    "plugins/mathmodeling-skills/skills/python-code-reviewer/SKILL.md",
+    "plugins/mathmodeling-skills/skills/python-model-code-generator/SKILL.md",
+    "plugins/mathmodeling-skills/skills/result-report-generator/SKILL.md",
+    "plugins/mathmodeling-skills/skills/robustness-checker/SKILL.md",
+    "plugins/mathmodeling-skills/skills/workflow-orchestrator/SKILL.md"
+  ],
+  "added_files": [],
+  "missing_files": [],
+  "preflight_checks": {
+    "release_manifest_exact": true,
+    "release_manifest_status_pass": true,
+    "release_repo_matches_manifest_145": true,
+    "parent_manifest_exact": true,
+    "parent_repo_matches_manifest_145": true,
+    "formal_target_matches_parent_R2_145": true,
+    "changed_files_27_no_added_missing": true,
+    "full_diff_roundtrip_matches_release": true,
+    "formal_target_write_count_zero": true
+  },
+  "execution_after_approval": [
+    "Reverify the exact release manifest, full diff, approval record, and unchanged R2 target.",
+    "Create a recoverable exact backup of the 27 affected target files under cumcm-b-skill/planning/history/.",
+    "Apply full_release_diff.patch with core.autocrlf=false to github下载的skill/.",
+    "Verify all 145 target files exactly match the R4 release manifest and all nine three-way Skill mirrors remain equal.",
+    "Run the compact R3-regression and R4 behavior suites against the formal target, then write the final integration report."
+  ],
+  "rollback": "Restore the 27 exact pre-write files from the timestamped backup if patch application or any post-write identity check fails.",
+  "authorization": {
+    "required": true,
+    "authority": "human_exact_written_approval",
+    "general_autonomy_is_insufficient": true,
+    "formal_target_modified": false
+  }
+}

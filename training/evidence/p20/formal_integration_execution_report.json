@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "release_id": "B-LEAN-20260909-R4",
+  "parent_release": "B-LEAN-20260908-R2",
+  "status": "PASS_FORMAL_INTEGRATION_COMPLETE",
+  "completed_at": "2026-09-10T14:24:25.090405+08:00",
+  "approval": {
+    "record": "cumcm-b-skill/p20/formal_integration_approval_record.json",
+    "record_sha256": "a96124ee933f8f8eb230068fd7520044116a623e5f40fa190ce008201785da59",
+    "exact_identity": {
+      "release_id": "B-LEAN-20260909-R4",
+      "release_manifest_sha256": "5920a376b3495b945663b73a7754d6da486bd1dfc35eb6921f87238365bf66d8",
+      "full_release_diff_sha256": "f642226454d4924949c5adbb7a806dd7939cbd7cf6f4997b5752ef2014e55cf9",
+      "integration_plan_sha256": "7da7c7ea9b99cd0e007adea43f05deedcab384891929db7937a6e862686aac87"
+    }
+  },
+  "prechecks": {
+    "approval_exact_human": true,
+    "approval_identity_exact": true,
+    "release_id_exact": true,
+    "release_manifest_sha256_exact": true,
+    "full_release_diff_sha256_exact": true,
+    "integration_plan_sha256_exact": true,
+    "parent_manifest_sha256_exact": true,
+    "release_manifest_pass": true,
+    "release_repo_exact_145": true,
+    "parent_repo_exact_145": true,
+    "formal_target_exact_parent_R2_145": true,
+    "write_scope_exact_27": true,
+    "no_added_or_missing_release_files": true,
+    "blind_workspace_still_frozen_94": true
+  },
+  "backup": {
+    "path": "planning/history/20260910_142422_P20-R4-TARGET-ROLLBACK",
+    "target_file_count": 27,
+    "manifest_sha256": "8ed9297c1c69b7b1ec6d5ef54dd61b33170a5789124d29cc0b6cdddc6a8c1907"
+  },
+  "checks": {
+    "backup_exact_27": true,
+    "direct_git_apply_check": {
+      "status": "UNAVAILABLE_ON_UNICODE_TARGET_PATH",
+      "returncode": 128,
+      "stderr": "fatal: failed to stat '                                                                                      <local-path>': Permission denied"
+    },
+    "patch_application": {
+      "method": "git_apply_in_ASCII_staging_then_exact_27_file_copy",
+      "status": "PASS",
+      "reason": "Git for Windows could not stat the Unicode formal-target path; the frozen patch was applied and identity-verified in an ASCII temporary tree before copying only its 27 approved outputs.",
+      "stage_git_apply_check_returncode": 0,
+      "stage_git_apply_returncode": 0
+    },
+    "target_exact_R4_release_145": true,
+    "target_fingerprint_sha256": "3f2a6a2b795e4b12689796007e7f5724de06f5fa071e628dacf9ac15a1a0d425",
+    "expected_target_fingerprint_sha256": "3f2a6a2b795e4b12689796007e7f5724de06f5fa071e628dacf9ac15a1a0d425",
+    "target_fingerprint_exact": true,
+    "nine_three_way_mirrors": {
+      "matlab-code-reviewer": {
+        "hashes": {
+          ".codex/skills": "d8a0c88838c6392bdfdfef62e1e62e80b1b332023d6df796399967cb985d4705",
+          ".claude/skills": "d8a0c88838c6392bdfdfef62e1e62e80b1b332023d6df796399967cb985d4705",
+          "plugins/mathmodeling-skills/skills": "d8a0c88838c6392bdfdfef62e1e62e80b1b332023d6df796399967cb985d4705"
+        },
+        "all_equal": true
+      },
+      "matlab-model-code-generator": {
+        "hashes": {
+          ".codex/skills": "3538e4e327ba22fc2c52bd3612f6183805c2802045b4cefaba6f25dc8db33c8f",
+          ".claude/skills": "3538e4e327ba22fc2c52bd3612f6183805c2802045b4cefaba6f25dc8db33c8f",
+          "plugins/mathmodeling-skills/skills": "3538e4e327ba22fc2c52bd3612f6183805c2802045b4cefaba6f25dc8db33c8f"
+        },
+        "all_equal": true
+      },
+      "method-selector": {
+        "hashes": {
+          ".codex/skills": "d7dbccee09f89c42a3322df7439c1ec84c406fbf4d62b5a63fb132f7ec29aab0",
+          ".claude/skills": "d7dbccee09f89c42a3322df7439c1ec84c406fbf4d62b5a63fb132f7ec29aab0",
+          "plugins/mathmodeling-skills/skills": "d7dbccee09f89c42a3322df7439c1ec84c406fbf4d62b5a63fb132f7ec29aab0"
+        },
+        "all_equal": true
+      },
+      "model-code-analyzer": {
+        "hashes": {
+          ".codex/skills": "52cbb6d54d8e9467c33875756b3f35b5c1915a7e0aad400ef4f608bfaa6cea14",
+          ".claude/skills": "52cbb6d54d8e9467c33875756b3f35b5c1915a7e0aad400ef4f608bfaa6cea14",
+          "plugins/mathmodeling-skills/skills": "52cbb6d54d8e9467c33875756b3f35b5c1915a7e0aad400ef4f608bfaa6cea14"
+        },
+        "all_equal": true
+      },
+      "python-code-reviewer": {
+        "hashes": {
+          ".codex/skills": "904adb96bff886a8a36d3a242f8aff17d49483018a24e6119af671ad84c4f5a8",
+          ".claude/skills": "904adb96bff886a8a36d3a242f8aff17d49483018a24e6119af671ad84c4f5a8",
+          "plugins/mathmodeling-skills/skills": "904adb96bff886a8a36d3a242f8aff17d49483018a24e6119af671ad84c4f5a8"
+        },
+        "all_equal": true
+      },
+      "python-model-code-generator": {
+        "hashes": {
+          ".codex/skills": "65841aaea4705ab09e33c5721a84666da500c5190d5ce742de1e6fd5893aebd7",
+          ".claude/skills": "65841aaea4705ab09e33c5721a84666da500c5190d5ce742de1e6fd5893aebd7",
+          "plugins/mathmodeling-skills/skills": "65841aaea4705ab09e33c5721a84666da500c5190d5ce742de1e6fd5893aebd7"
+        },
+        "all_equal": true
+      },
+      "result-report-generator": {
+        "hashes": {
+          ".codex/skills": "54df16decfb1841f093cab322cf869cfdb4ec404539835b0c88899c1f76198b4",
+          ".claude/skills": "54df16decfb1841f093cab322cf869cfdb4ec404539835b0c88899c1f76198b4",
+          "plugins/mathmodeling-skills/skills": "54df16decfb1841f093cab322cf869cfdb4ec404539835b0c88899c1f76198b4"
+        },
+        "all_equal": true
+      },
+      "robustness-checker": {
+        "hashes": {
+          ".codex/skills": "58ecac30eeda15682d64a00d77130fe38eb0e9a0d61b993118ce8fa468eea410",
+          ".claude/skills": "58ecac30eeda15682d64a00d77130fe38eb0e9a0d61b993118ce8fa468eea410",
+          "plugins/mathmodeling-skills/skills": "58ecac30eeda15682d64a00d77130fe38eb0e9a0d61b993118ce8fa468eea410"
+        },
+        "all_equal": true
+      },
+      "workflow-orchestrator": {
+        "hashes": {
+          ".codex/skills": "425b1a563a2a0c7c1bdba5d756a76fa276658df2b13b48a2856ab0c259d1399c",
+          ".claude/skills": "425b1a563a2a0c7c1bdba5d756a76fa276658df2b13b48a2856ab0c259d1399c",
+          "plugins/mathmodeling-skills/skills": "425b1a563a2a0c7c1bdba5d756a76fa276658df2b13b48a2856ab0c259d1399c"
+        },
+        "all_equal": true
+      }
+    },
+    "R4_behavior_suite": {
+      "status": "PASS",
+      "assertions": "54/54",
+      "output": "p20/formal_target_r4_behavior_results.json",
+      "sha256": "511975dbd3900820c1b501808a59e1ae01e756773938242a69ce8ac398d28686"
+    },
+    "R3_regression_suite": {
+      "status": "PASS",
+      "assertions": "56/56",
+      "output": "p20/formal_target_r3_regression_results.json",
+      "sha256": "281fcaf96503bf424d3c9d331a6582b2b59aecf17b06aa070ab71eff6b00fd4d"
+    },
+    "quick_validate_release_evidence": {
+      "status": "PASS_BY_EXACT_IDENTITY",
+      "assertions": "27/27",
+      "reason": "The formal target is byte-identical to the already validated 145-file R4 release; rerunning the same validator would add no discriminating evidence."
+    },
+    "blind_workspace_unchanged_after_integration": true,
+    "target_still_exact_after_behavior_suites": true
+  },
+  "formal_target": {
+    "path": "<local-path>",
+    "write_attempted": true,
+    "modified": true,
+    "current_release": "B-LEAN-20260909-R4",
+    "file_count": 145,
+    "matches_release": true
+  },
+  "rollback": {
+    "used": false,
+    "complete": null
+  },
+  "frozen_2025A_workspace_unchanged": true,
+  "error": null,
+  "evidence_refs": [
+    "formal_integration_approval_record.json",
+    "integration_plan.json",
+    "full_release_diff.patch",
+    "formal_target_r4_behavior_results.json",
+    "formal_target_r3_regression_results.json"
+  ]
+}

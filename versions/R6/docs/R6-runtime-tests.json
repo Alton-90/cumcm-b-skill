@@ -1,0 +1,118 @@
+{
+  "scope": "Synthetic integration/negative tests; not model or authentic-user verification",
+  "passed": 28,
+  "results": [
+    {
+      "name": "valid_G1_to_G4A",
+      "status": "PASS"
+    },
+    {
+      "name": "valid_freeze_and_G6",
+      "status": "PASS"
+    },
+    {
+      "name": "consistency_without_future_audits",
+      "status": "PASS"
+    },
+    {
+      "name": "completeness_without_QA",
+      "status": "PASS"
+    },
+    {
+      "name": "missing_baseline_output",
+      "status": "PASS"
+    },
+    {
+      "name": "self_asserted_PASS_ignored",
+      "status": "PASS"
+    },
+    {
+      "name": "missing_decision_source",
+      "status": "PASS"
+    },
+    {
+      "name": "stale_code_hash",
+      "status": "PASS"
+    },
+    {
+      "name": "stale_raw_source",
+      "status": "PASS"
+    },
+    {
+      "name": "legacy_schema_rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "unknown_field_rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "lean_G4A_not_G4B",
+      "status": "PASS"
+    },
+    {
+      "name": "evidence_only_not_completion",
+      "status": "PASS"
+    },
+    {
+      "name": "tampered_frozen_value",
+      "status": "PASS"
+    },
+    {
+      "name": "stale_paper_text",
+      "status": "PASS"
+    },
+    {
+      "name": "stale_robustness_selection",
+      "status": "PASS"
+    },
+    {
+      "name": "changed_output_obligations_block",
+      "status": "PASS"
+    },
+    {
+      "name": "audit_downstream_cycle_blocked",
+      "status": "PASS"
+    },
+    {
+      "name": "changed_question_scope_blocked",
+      "status": "PASS"
+    },
+    {
+      "name": "refreeze_requires_reason_preserves_history",
+      "status": "PASS"
+    },
+    {
+      "name": "path_escape_rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "duplicate_JSON_key",
+      "status": "PASS"
+    },
+    {
+      "name": "all_schema_meta_validation",
+      "status": "PASS"
+    },
+    {
+      "name": "CLI_exit_codes_and_output_schema",
+      "status": "PASS"
+    },
+    {
+      "name": "hash_detects_change_with_same_timestamp",
+      "status": "PASS"
+    },
+    {
+      "name": "judged_failure_G4A_without_false_freeze",
+      "status": "PASS"
+    },
+    {
+      "name": "freeze_staleness_workspace_CLI",
+      "status": "PASS"
+    },
+    {
+      "name": "false_user_quote_rejected",
+      "status": "PASS"
+    }
+  ]
+}

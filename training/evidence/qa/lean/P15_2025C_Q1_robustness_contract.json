@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "contract_id": "P15-2025C-Q1-ROBUSTNESS-001",
+  "fixed_before_run": true,
+  "created_at": "2026-09-08T10:53:58.3597978+08:00",
+  "decision_id": "Q1-RESULT-STABILITY-2025C-001",
+  "choice": "A",
+  "tested_claim": "The positive gestational-week and negative BMI associations do not depend on unequal visit frequency or any single woman.",
+  "perturbations": [
+    {
+      "id": "subject_equal_weighting",
+      "definition": "Within each frozen domain, assign every row weight 1 divided by that woman's row count, preserving the accepted design and scaling.",
+      "pass_rule": "Week and BMI coefficient signs match the accepted run for both M1 and B1 in both domains; all weighted designs remain full-rank."
+    },
+    {
+      "id": "leave_one_woman_out",
+      "definition": "Delete one entire woman at a time, retain the accepted domain-specific design scaling, and refit each approved model.",
+      "pass_rule": "Zero week or BMI sign reversals, zero rank-deficient fits, and exactly one successful refit per woman for both methods and both domains."
+    }
+  ],
+  "non_repetition": [
+    "Do not repeat the 999-sample cluster bootstrap.",
+    "Do not repeat the already-completed prospective GC-domain comparison.",
+    "Do not test dormant fallback methods."
+  ],
+  "hard_checks": [
+    "Accepted primary and sensitivity cohort counts match 1082/267 and 631/251.",
+    "Accepted Q1 method definitions and input hash remain unchanged.",
+    "Raw workbook hash is unchanged before and after the robustness run.",
+    "Observed values and predeclared pass rules are saved in robustness/Q1/q1_robustness_summary.json."
+  ],
+  "verdict_rule": "PASS only if every predeclared sign, rank, count and identity condition passes; otherwise CONDITIONAL or FAIL and return to human judgment without automatic fallback activation.",
+  "claim_boundary": "Passing supports only directional observational stability. It cannot establish causality, strong predictive power, stable nonlinear curvature, or an individual clinical recommendation."
+}

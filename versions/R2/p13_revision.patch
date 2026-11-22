@@ -1,0 +1,621 @@
+diff --git a/.claude/skills/problem-parser/SKILL.md b/.claude/skills/problem-parser/SKILL.md
+index 00905d1..c37a3aa 100644
+--- a/.claude/skills/problem-parser/SKILL.md
++++ b/.claude/skills/problem-parser/SKILL.md
+@@ -30,6 +30,7 @@ Produce a model-neutral problem contract. Do not start from favorite algorithms
+    - when decisions occur, what information is visible then, what future information is forbidden, and how state updates, when the question is dynamic or staged;
+    - each quantity's role as a hard constraint, optimization objective, or report-only measure, including direction, unit, aggregation, threshold, and any unresolved trade-off;
+    - typed cross-question dependencies: upstream Q, required artifact and state, identity/version/hash, freshness, and uncertainty compatibility.
++   - an `analysis_domain_contract` when a downstream calculation relies on local structure such as periodicity, stationarity, smoothness, or a valid measurement range: eligibility property, prospective inclusion/exclusion rule, decision time, evidence, and unresolved boundary choices. Record `NOT_APPLICABLE` for methods that use the full domain without such a requirement.
+    - uncertainty and ambiguity.
+ 4. Separate:
+    - statement facts;
+@@ -94,6 +95,14 @@ Produce a model-neutral problem contract. Do not start from favorite algorithms
+           "uncertainty_requirement": ""
+         }
+       ],
++      "analysis_domain_contract": {
++        "status": "NOT_APPLICABLE",
++        "required_property": "",
++        "prospective_rule": "",
++        "decision_time": "",
++        "evidence": [],
++        "unresolved_choices": []
++      },
+       "proposed_relationships": [],
+       "ambiguities": []
+     }
+@@ -111,6 +120,7 @@ Produce a model-neutral problem contract. Do not start from favorite algorithms
+ - Preserve units, time ranges, populations, and output formats.
+ - Keep the existing `dependencies` list for compatibility; use `cross_question_dependencies` only for real execution dependencies, not conceptual references.
+ - Do not treat information unavailable at a decision time as an input, or silently resolve an objective trade-off.
++- Do not treat disclosure of invalid, nonstationary, nonperiodic, saturated, or otherwise ineligible observations as sufficient when the planned calculation relies on the violated property. Preserve the affected domain and the still-unresolved eligibility rule explicitly.
+ - A proposed relationship must be labeled as proposed until human-confirmed or evidence-supported.
+ - Ask only about ambiguities that change the downstream problem.
+ 
+@@ -120,6 +130,7 @@ Produce a model-neutral problem contract. Do not start from favorite algorithms
+ - Constraints and dependencies are explicit.
+ - Dynamic contexts expose their information boundary and state update; static contexts remain compact.
+ - Objective roles and applicable upstream artifact identities are explicit before downstream use.
++- Structure-dependent calculations have a prospective analysis-domain contract or an explicit blocker; post-result band selection is not silently authorized.
+ - Missing attachments and ambiguities are visible.
+ - Facts, proposals, assumptions, and decisions are separated.
+ - Human-owned success criteria are confirmed or remain a blocker.
+diff --git a/.claude/skills/method-selector/SKILL.md b/.claude/skills/method-selector/SKILL.md
+index 54e05e2..4482105 100644
+--- a/.claude/skills/method-selector/SKILL.md
++++ b/.claude/skills/method-selector/SKILL.md
+@@ -52,6 +52,7 @@ If these are missing, return to the producer skill rather than guessing.
+    - Use the contract in `references/risk-probe-contract.md`.
+    - Select only relevant assumption checks.
+    - Always check output degeneracy or concentration with metrics appropriate to the output.
++   - When a method relies on periodicity, stationarity, smoothness, a valid sensor range, or another local-domain property, probe that property on the proposed analysis domain. Define the inclusion/exclusion rule prospectively from admissible evidence; never select the domain after seeing which band gives the preferred result.
+    - Bound probe runtime rather than source-line count.
+ 
+ 5. **Run the risk probe on the main candidate and usable baseline.**
+@@ -119,6 +120,8 @@ Do not maintain a separate iteration log for new work.
+ 
+ A method fails screening when a load-bearing assumption fails, the output degenerates, it cannot produce a legal result, or its cost violates the user's budget. A method does not fail merely because an irrelevant generic diagnostic is unavailable.
+ 
++It also fails when its load-bearing analysis-domain property is violated or unresolved. It may remain `CONDITIONAL` only when a prospective, evidence-backed domain rule and fallback are recorded before execution; merely warning about bad observations while still fitting them is not a mitigation.
++
+ It also fails when it requires forbidden future information, silently scalarizes an unapproved objective trade-off, or treats an infeasible output as eligible because another objective is better. A stated repair may support `CONDITIONAL` only when it removes that violation without making the decision for the human.
+ 
+ # Output and Handoff
+@@ -162,6 +165,7 @@ Migrate material evidence into the method card and probe summary. Do not require
+ - Shortlist contains a main candidate and a genuinely usable baseline.
+ - Optional fallback has a concrete trigger.
+ - Main and baseline have evidence-backed probe verdicts.
++- Any structure-dependent main/baseline has a shared, prospective analysis-domain rule with eligibility evidence, or is blocked.
+ - Output-degeneracy checks are present.
+ - Method card and probe summary exist.
+ - No per-skill pending decision file was created.
+diff --git a/.claude/skills/workflow-orchestrator/SKILL.md b/.claude/skills/workflow-orchestrator/SKILL.md
+index 80f80dc..867e814 100644
+--- a/.claude/skills/workflow-orchestrator/SKILL.md
++++ b/.claude/skills/workflow-orchestrator/SKILL.md
+@@ -85,6 +85,7 @@ Pass when:
+ - `qx_method_card.md` defines a main candidate and usable baseline;
+ - the baseline completes the real task with comparable output;
+ - `risk_probe_summary.json` covers applicable checks, including output degeneracy;
++- any load-bearing analysis-domain property is evidenced and its prospective inclusion/exclusion rule is fixed before execution;
+ - main and baseline verdicts are `PASS` or justified `CONDITIONAL`;
+ - any fallback has a concrete trigger.
+ 
+@@ -101,6 +102,7 @@ Pass when:
+ - approved main and baseline executed;
+ - latest `run_summary.json` is complete;
+ - language review contains passing named checks for syntax, input contract, method alignment, reproducibility, and output contract.
++- when the method is domain-sensitive, the run and review prove that the approved analysis-domain rule was applied unchanged; an unresolved or post-hoc domain selection blocks G3.
+ 
+ Accept legacy Markdown review artifacts during migration, but prefer JSON for new work.
+ 
+@@ -132,6 +134,7 @@ Choose one primary next action:
+ - missing framing → parser/classifier or human framing card;
+ - failed real dependency gate → the upstream artifact owner or a refresh/uncertainty-resolution action; keep unrelated Qx runnable;
+ - missing data profile → `data-auditor-cleaner`;
++- unresolved load-bearing analysis domain → the data profiler or method selector that owns the prospective eligibility rule;
+ - missing method card/probe → `method-selector`;
+ - missing human method choice → `decision-prompt-builder`;
+ - approved method without implementation plan → `model-code-analyzer`;
+@@ -206,6 +209,7 @@ Do not paste a full dashboard or large JSON structure unless the user asks.
+ - Dependency blocks are limited to declared real dependencies and explain artifact/status/identity/freshness/uncertainty failures.
+ - Lean requirements are not confused with submission requirements.
+ - Human decisions were not inferred from AI suggestions.
++- Structure-dependent execution is blocked until its analysis-domain eligibility and prospective selection rule are evidenced.
+ - Code generation, freeze, paper writing, and final assembly flags match the gates.
+ - Audit scope matches semantic impact.
+ - Manifest and reported next action agree.
+diff --git a/.claude/skills/model-code-analyzer/SKILL.md b/.claude/skills/model-code-analyzer/SKILL.md
+index 1082f91..410694c 100644
+--- a/.claude/skills/model-code-analyzer/SKILL.md
++++ b/.claude/skills/model-code-analyzer/SKILL.md
+@@ -27,6 +27,7 @@ Read legacy candidate/decision artifacts only when the new artifacts are absent.
+ 3. Record the fallback ID and trigger, but do not plan its full implementation unless the trigger is already evidenced and the human chose activation.
+ 4. Map mathematical definitions to inputs, processing steps, intermediate evidence, outputs, and validation checks.
+ 5. Carry the applicable information boundary, objective roles, hard constraints, and typed upstream artifact identities into one shared contract for main and baseline. Define a directly comparable metric/output contract only after feasibility is checked.
++   - If either method relies on local data properties, carry the approved `analysis_domain_contract` into the shared contract: exact prospective rule or mask derivation, evidence source, excluded-domain reporting, and a check that execution cannot choose a band from outcome quality. Main and baseline must share the rule unless the human-approved method definition explicitly requires otherwise.
+ 6. Define the round output:
+ 
+ ```text
+@@ -77,7 +78,8 @@ Require:
+     "objective_contract": {},
+     "unresolved_tradeoffs": [],
+     "shared_information_boundary": {},
+-    "upstream_artifact_contract": []
++    "upstream_artifact_contract": [],
++    "analysis_domain_contract": {"status": "NOT_APPLICABLE", "prospective_rule": "", "included": null, "excluded": null, "evidence": []}
+   },
+   "fallback_trigger": {
+     "fallback_id": null,
+@@ -98,6 +100,7 @@ Require:
+ - per-method computation steps;
+ - comparable outputs and metrics;
+ - shared information-boundary checks, objective values, constraint-violation reporting, and upstream artifact identity/version/hash/uncertainty for both main and baseline;
++- prospective analysis-domain rule/mask, eligibility evidence, included/excluded counts or ranges, and post-hoc-selection guard when applicable;
+ - risk-probe conditions that implementation must monitor;
+ - fallback trigger evaluation;
+ - paths, seed, dependencies, and expected runtime;
+@@ -111,6 +114,7 @@ Require:
+ - Do not implement a fallback before activation.
+ - Do not give main and baseline different information, objective, constraint, or upstream-artifact contracts.
+ - Stop when a required upstream artifact is missing, stale, identity-mismatched, or uncertainty-incompatible, or when a required objective trade-off remains unapproved.
++- Stop when a load-bearing analysis-domain property is unresolved, its rule was chosen after outcome inspection, or the plan only warns about ineligible observations while still using them.
+ - Do not require success logs.
+ - Do not create a README when the code plan already provides the same instructions.
+ - Stop if a human choice, required parameter, input field, or comparable baseline output is missing.
+@@ -121,5 +125,6 @@ Require:
+ - Outputs are directly comparable.
+ - Probe risks and fallback trigger are represented in `run_summary.json`.
+ - Both method records carry the same applicable contract evidence and report objective values and constraint violations separately.
++- Any applicable analysis-domain contract is prospective, executable, shared where required, and auditable in the run summary.
+ - Paths follow the experiment contract.
+ - Handoff targets the correct language generator.
+diff --git a/.claude/skills/python-code-reviewer/SKILL.md b/.claude/skills/python-code-reviewer/SKILL.md
+index c38e878..a8f07b2 100644
+--- a/.claude/skills/python-code-reviewer/SKILL.md
++++ b/.claude/skills/python-code-reviewer/SKILL.md
+@@ -15,7 +15,7 @@ description: Review, run, debug, and verify approved Python modeling code agains
+ 2. Inspect and run the code in the intended order.
+ 3. Evaluate required checks:
+    - `syntax`: imports, execution, exceptions, and obvious runtime faults.
+-   - `input_contract`: paths, fields, units, shapes, missing-data handling, raw-data protection, applicable information boundaries, and required upstream artifact identity/version/hash/freshness/uncertainty.
++   - `input_contract`: paths, fields, units, shapes, missing-data handling, raw-data protection, applicable information boundaries, required upstream artifact identity/version/hash/freshness/uncertainty, and any approved prospective analysis-domain rule/mask with included/excluded evidence.
+    - `method_alignment`: formulas, objectives, constraints, assumptions, main/baseline roles, and fallback scope match the approved plan; reject forbidden future information and unapproved objective scalarization.
+    - `reproducibility`: seed, deterministic setup, dependency/runtime record, and rerun consistency.
+    - `output_contract`: saved tables/metrics/figures, valid run summary, comparable main/baseline metrics, per-method objective values, constraint violations, degeneracy evidence, and fallback-trigger state. Any infeasible output fails even if its total objective is better.
+@@ -54,6 +54,7 @@ Statuses are `PASS`, `FAIL`, or `NOT_APPLICABLE` with a reason. `NOT_APPLICABLE`
+ - Do not approve a toy diagnostic reference as the official baseline.
+ - Do not silently change mathematical meaning.
+ - Fail the applicable check for lookahead, unapproved scalarization, an infeasible output, or a missing, stale, identity-mismatched, or uncertainty-incompatible required upstream artifact.
++- Fail `input_contract` when a structure-dependent calculation uses observations outside its evidenced eligible domain, changes the domain after seeing outcome quality, omits the approved mask/rule, or merely warns about ineligible observations while retaining them.
+ - Do not create success logs beyond the review JSON.
+ - Treat code newer than its review as requiring the affected checks to rerun, not necessarily the entire pipeline.
+ 
+@@ -63,4 +64,5 @@ Statuses are `PASS`, `FAIL`, or `NOT_APPLICABLE` with a reason. `NOT_APPLICABLE`
+ - Main and baseline are approved and comparable.
+ - Run summary and on-disk outputs agree.
+ - Static contract checks still run when execution cannot; never classify an unchecked violation as a pass.
++- Applicable analysis-domain selection is prospective and the run summary proves the exact rule used, including exclusions.
+ - Review verdict follows check statuses.
+diff --git a/.claude/skills/matlab-code-reviewer/SKILL.md b/.claude/skills/matlab-code-reviewer/SKILL.md
+index 2d5fe32..2db8454 100644
+--- a/.claude/skills/matlab-code-reviewer/SKILL.md
++++ b/.claude/skills/matlab-code-reviewer/SKILL.md
+@@ -15,7 +15,7 @@ description: Review, run, debug, and verify approved MATLAB or Beita Tianyuan mo
+ 2. Inspect and run the code when a compatible runtime is available.
+ 3. Evaluate:
+    - `syntax`
+-   - `input_contract`, including applicable information boundaries and required upstream artifact identity/version/hash/freshness/uncertainty;
++   - `input_contract`, including applicable information boundaries, required upstream artifact identity/version/hash/freshness/uncertainty, and any approved prospective analysis-domain rule/mask with included/excluded evidence;
+    - `method_alignment`, including forbidden future information and unapproved objective scalarization;
+    - `reproducibility`
+    - `output_contract`, including per-method objective values and constraint violations; an infeasible output fails even if its total objective is better.
+@@ -43,6 +43,7 @@ Required named checks use `PASS`, `FAIL`, or justified `NOT_APPLICABLE`; simple
+ - Do not approve unavailable toolbox dependencies without an explicit target exception.
+ - Do not change the mathematical model silently.
+ - Fail the applicable check for lookahead, unapproved scalarization, an infeasible output, or a missing, stale, identity-mismatched, or uncertainty-incompatible required upstream artifact.
++- Fail `input_contract` when a structure-dependent calculation uses observations outside its evidenced eligible domain, changes the domain after seeing outcome quality, omits the approved mask/rule, or merely warns about ineligible observations while retaining them.
+ - Do not require a duplicate Markdown review.
+ 
+ # Verification
+@@ -51,4 +52,5 @@ Required named checks use `PASS`, `FAIL`, or justified `NOT_APPLICABLE`; simple
+ - Compatibility constraints are checked.
+ - Run summary and outputs agree.
+ - Python and MATLAB/北太天元 apply the same information, objective, feasibility, and dependency semantics.
++- Python and MATLAB/北太天元 enforce the same prospective analysis-domain rule and exclusion evidence when applicable.
+ - Verdict follows required check statuses and runtime evidence.
+diff --git a/.codex/skills/problem-parser/SKILL.md b/.codex/skills/problem-parser/SKILL.md
+index 00905d1..c37a3aa 100644
+--- a/.codex/skills/problem-parser/SKILL.md
++++ b/.codex/skills/problem-parser/SKILL.md
+@@ -30,6 +30,7 @@ Produce a model-neutral problem contract. Do not start from favorite algorithms
+    - when decisions occur, what information is visible then, what future information is forbidden, and how state updates, when the question is dynamic or staged;
+    - each quantity's role as a hard constraint, optimization objective, or report-only measure, including direction, unit, aggregation, threshold, and any unresolved trade-off;
+    - typed cross-question dependencies: upstream Q, required artifact and state, identity/version/hash, freshness, and uncertainty compatibility.
++   - an `analysis_domain_contract` when a downstream calculation relies on local structure such as periodicity, stationarity, smoothness, or a valid measurement range: eligibility property, prospective inclusion/exclusion rule, decision time, evidence, and unresolved boundary choices. Record `NOT_APPLICABLE` for methods that use the full domain without such a requirement.
+    - uncertainty and ambiguity.
+ 4. Separate:
+    - statement facts;
+@@ -94,6 +95,14 @@ Produce a model-neutral problem contract. Do not start from favorite algorithms
+           "uncertainty_requirement": ""
+         }
+       ],
++      "analysis_domain_contract": {
++        "status": "NOT_APPLICABLE",
++        "required_property": "",
++        "prospective_rule": "",
++        "decision_time": "",
++        "evidence": [],
++        "unresolved_choices": []
++      },
+       "proposed_relationships": [],
+       "ambiguities": []
+     }
+@@ -111,6 +120,7 @@ Produce a model-neutral problem contract. Do not start from favorite algorithms
+ - Preserve units, time ranges, populations, and output formats.
+ - Keep the existing `dependencies` list for compatibility; use `cross_question_dependencies` only for real execution dependencies, not conceptual references.
+ - Do not treat information unavailable at a decision time as an input, or silently resolve an objective trade-off.
++- Do not treat disclosure of invalid, nonstationary, nonperiodic, saturated, or otherwise ineligible observations as sufficient when the planned calculation relies on the violated property. Preserve the affected domain and the still-unresolved eligibility rule explicitly.
+ - A proposed relationship must be labeled as proposed until human-confirmed or evidence-supported.
+ - Ask only about ambiguities that change the downstream problem.
+ 
+@@ -120,6 +130,7 @@ Produce a model-neutral problem contract. Do not start from favorite algorithms
+ - Constraints and dependencies are explicit.
+ - Dynamic contexts expose their information boundary and state update; static contexts remain compact.
+ - Objective roles and applicable upstream artifact identities are explicit before downstream use.
++- Structure-dependent calculations have a prospective analysis-domain contract or an explicit blocker; post-result band selection is not silently authorized.
+ - Missing attachments and ambiguities are visible.
+ - Facts, proposals, assumptions, and decisions are separated.
+ - Human-owned success criteria are confirmed or remain a blocker.
+diff --git a/.codex/skills/method-selector/SKILL.md b/.codex/skills/method-selector/SKILL.md
+index 54e05e2..4482105 100644
+--- a/.codex/skills/method-selector/SKILL.md
++++ b/.codex/skills/method-selector/SKILL.md
+@@ -52,6 +52,7 @@ If these are missing, return to the producer skill rather than guessing.
+    - Use the contract in `references/risk-probe-contract.md`.
+    - Select only relevant assumption checks.
+    - Always check output degeneracy or concentration with metrics appropriate to the output.
++   - When a method relies on periodicity, stationarity, smoothness, a valid sensor range, or another local-domain property, probe that property on the proposed analysis domain. Define the inclusion/exclusion rule prospectively from admissible evidence; never select the domain after seeing which band gives the preferred result.
+    - Bound probe runtime rather than source-line count.
+ 
+ 5. **Run the risk probe on the main candidate and usable baseline.**
+@@ -119,6 +120,8 @@ Do not maintain a separate iteration log for new work.
+ 
+ A method fails screening when a load-bearing assumption fails, the output degenerates, it cannot produce a legal result, or its cost violates the user's budget. A method does not fail merely because an irrelevant generic diagnostic is unavailable.
+ 
++It also fails when its load-bearing analysis-domain property is violated or unresolved. It may remain `CONDITIONAL` only when a prospective, evidence-backed domain rule and fallback are recorded before execution; merely warning about bad observations while still fitting them is not a mitigation.
++
+ It also fails when it requires forbidden future information, silently scalarizes an unapproved objective trade-off, or treats an infeasible output as eligible because another objective is better. A stated repair may support `CONDITIONAL` only when it removes that violation without making the decision for the human.
+ 
+ # Output and Handoff
+@@ -162,6 +165,7 @@ Migrate material evidence into the method card and probe summary. Do not require
+ - Shortlist contains a main candidate and a genuinely usable baseline.
+ - Optional fallback has a concrete trigger.
+ - Main and baseline have evidence-backed probe verdicts.
++- Any structure-dependent main/baseline has a shared, prospective analysis-domain rule with eligibility evidence, or is blocked.
+ - Output-degeneracy checks are present.
+ - Method card and probe summary exist.
+ - No per-skill pending decision file was created.
+diff --git a/.codex/skills/workflow-orchestrator/SKILL.md b/.codex/skills/workflow-orchestrator/SKILL.md
+index 80f80dc..867e814 100644
+--- a/.codex/skills/workflow-orchestrator/SKILL.md
++++ b/.codex/skills/workflow-orchestrator/SKILL.md
+@@ -85,6 +85,7 @@ Pass when:
+ - `qx_method_card.md` defines a main candidate and usable baseline;
+ - the baseline completes the real task with comparable output;
+ - `risk_probe_summary.json` covers applicable checks, including output degeneracy;
++- any load-bearing analysis-domain property is evidenced and its prospective inclusion/exclusion rule is fixed before execution;
+ - main and baseline verdicts are `PASS` or justified `CONDITIONAL`;
+ - any fallback has a concrete trigger.
+ 
+@@ -101,6 +102,7 @@ Pass when:
+ - approved main and baseline executed;
+ - latest `run_summary.json` is complete;
+ - language review contains passing named checks for syntax, input contract, method alignment, reproducibility, and output contract.
++- when the method is domain-sensitive, the run and review prove that the approved analysis-domain rule was applied unchanged; an unresolved or post-hoc domain selection blocks G3.
+ 
+ Accept legacy Markdown review artifacts during migration, but prefer JSON for new work.
+ 
+@@ -132,6 +134,7 @@ Choose one primary next action:
+ - missing framing → parser/classifier or human framing card;
+ - failed real dependency gate → the upstream artifact owner or a refresh/uncertainty-resolution action; keep unrelated Qx runnable;
+ - missing data profile → `data-auditor-cleaner`;
++- unresolved load-bearing analysis domain → the data profiler or method selector that owns the prospective eligibility rule;
+ - missing method card/probe → `method-selector`;
+ - missing human method choice → `decision-prompt-builder`;
+ - approved method without implementation plan → `model-code-analyzer`;
+@@ -206,6 +209,7 @@ Do not paste a full dashboard or large JSON structure unless the user asks.
+ - Dependency blocks are limited to declared real dependencies and explain artifact/status/identity/freshness/uncertainty failures.
+ - Lean requirements are not confused with submission requirements.
+ - Human decisions were not inferred from AI suggestions.
++- Structure-dependent execution is blocked until its analysis-domain eligibility and prospective selection rule are evidenced.
+ - Code generation, freeze, paper writing, and final assembly flags match the gates.
+ - Audit scope matches semantic impact.
+ - Manifest and reported next action agree.
+diff --git a/.codex/skills/model-code-analyzer/SKILL.md b/.codex/skills/model-code-analyzer/SKILL.md
+index 1082f91..410694c 100644
+--- a/.codex/skills/model-code-analyzer/SKILL.md
++++ b/.codex/skills/model-code-analyzer/SKILL.md
+@@ -27,6 +27,7 @@ Read legacy candidate/decision artifacts only when the new artifacts are absent.
+ 3. Record the fallback ID and trigger, but do not plan its full implementation unless the trigger is already evidenced and the human chose activation.
+ 4. Map mathematical definitions to inputs, processing steps, intermediate evidence, outputs, and validation checks.
+ 5. Carry the applicable information boundary, objective roles, hard constraints, and typed upstream artifact identities into one shared contract for main and baseline. Define a directly comparable metric/output contract only after feasibility is checked.
++   - If either method relies on local data properties, carry the approved `analysis_domain_contract` into the shared contract: exact prospective rule or mask derivation, evidence source, excluded-domain reporting, and a check that execution cannot choose a band from outcome quality. Main and baseline must share the rule unless the human-approved method definition explicitly requires otherwise.
+ 6. Define the round output:
+ 
+ ```text
+@@ -77,7 +78,8 @@ Require:
+     "objective_contract": {},
+     "unresolved_tradeoffs": [],
+     "shared_information_boundary": {},
+-    "upstream_artifact_contract": []
++    "upstream_artifact_contract": [],
++    "analysis_domain_contract": {"status": "NOT_APPLICABLE", "prospective_rule": "", "included": null, "excluded": null, "evidence": []}
+   },
+   "fallback_trigger": {
+     "fallback_id": null,
+@@ -98,6 +100,7 @@ Require:
+ - per-method computation steps;
+ - comparable outputs and metrics;
+ - shared information-boundary checks, objective values, constraint-violation reporting, and upstream artifact identity/version/hash/uncertainty for both main and baseline;
++- prospective analysis-domain rule/mask, eligibility evidence, included/excluded counts or ranges, and post-hoc-selection guard when applicable;
+ - risk-probe conditions that implementation must monitor;
+ - fallback trigger evaluation;
+ - paths, seed, dependencies, and expected runtime;
+@@ -111,6 +114,7 @@ Require:
+ - Do not implement a fallback before activation.
+ - Do not give main and baseline different information, objective, constraint, or upstream-artifact contracts.
+ - Stop when a required upstream artifact is missing, stale, identity-mismatched, or uncertainty-incompatible, or when a required objective trade-off remains unapproved.
++- Stop when a load-bearing analysis-domain property is unresolved, its rule was chosen after outcome inspection, or the plan only warns about ineligible observations while still using them.
+ - Do not require success logs.
+ - Do not create a README when the code plan already provides the same instructions.
+ - Stop if a human choice, required parameter, input field, or comparable baseline output is missing.
+@@ -121,5 +125,6 @@ Require:
+ - Outputs are directly comparable.
+ - Probe risks and fallback trigger are represented in `run_summary.json`.
+ - Both method records carry the same applicable contract evidence and report objective values and constraint violations separately.
++- Any applicable analysis-domain contract is prospective, executable, shared where required, and auditable in the run summary.
+ - Paths follow the experiment contract.
+ - Handoff targets the correct language generator.
+diff --git a/.codex/skills/python-code-reviewer/SKILL.md b/.codex/skills/python-code-reviewer/SKILL.md
+index c38e878..a8f07b2 100644
+--- a/.codex/skills/python-code-reviewer/SKILL.md
++++ b/.codex/skills/python-code-reviewer/SKILL.md
+@@ -15,7 +15,7 @@ description: Review, run, debug, and verify approved Python modeling code agains
+ 2. Inspect and run the code in the intended order.
+ 3. Evaluate required checks:
+    - `syntax`: imports, execution, exceptions, and obvious runtime faults.
+-   - `input_contract`: paths, fields, units, shapes, missing-data handling, raw-data protection, applicable information boundaries, and required upstream artifact identity/version/hash/freshness/uncertainty.
++   - `input_contract`: paths, fields, units, shapes, missing-data handling, raw-data protection, applicable information boundaries, required upstream artifact identity/version/hash/freshness/uncertainty, and any approved prospective analysis-domain rule/mask with included/excluded evidence.
+    - `method_alignment`: formulas, objectives, constraints, assumptions, main/baseline roles, and fallback scope match the approved plan; reject forbidden future information and unapproved objective scalarization.
+    - `reproducibility`: seed, deterministic setup, dependency/runtime record, and rerun consistency.
+    - `output_contract`: saved tables/metrics/figures, valid run summary, comparable main/baseline metrics, per-method objective values, constraint violations, degeneracy evidence, and fallback-trigger state. Any infeasible output fails even if its total objective is better.
+@@ -54,6 +54,7 @@ Statuses are `PASS`, `FAIL`, or `NOT_APPLICABLE` with a reason. `NOT_APPLICABLE`
+ - Do not approve a toy diagnostic reference as the official baseline.
+ - Do not silently change mathematical meaning.
+ - Fail the applicable check for lookahead, unapproved scalarization, an infeasible output, or a missing, stale, identity-mismatched, or uncertainty-incompatible required upstream artifact.
++- Fail `input_contract` when a structure-dependent calculation uses observations outside its evidenced eligible domain, changes the domain after seeing outcome quality, omits the approved mask/rule, or merely warns about ineligible observations while retaining them.
+ - Do not create success logs beyond the review JSON.
+ - Treat code newer than its review as requiring the affected checks to rerun, not necessarily the entire pipeline.
+ 
+@@ -63,4 +64,5 @@ Statuses are `PASS`, `FAIL`, or `NOT_APPLICABLE` with a reason. `NOT_APPLICABLE`
+ - Main and baseline are approved and comparable.
+ - Run summary and on-disk outputs agree.
+ - Static contract checks still run when execution cannot; never classify an unchecked violation as a pass.
++- Applicable analysis-domain selection is prospective and the run summary proves the exact rule used, including exclusions.
+ - Review verdict follows check statuses.
+diff --git a/.codex/skills/matlab-code-reviewer/SKILL.md b/.codex/skills/matlab-code-reviewer/SKILL.md
+index 2d5fe32..2db8454 100644
+--- a/.codex/skills/matlab-code-reviewer/SKILL.md
++++ b/.codex/skills/matlab-code-reviewer/SKILL.md
+@@ -15,7 +15,7 @@ description: Review, run, debug, and verify approved MATLAB or Beita Tianyuan mo
+ 2. Inspect and run the code when a compatible runtime is available.
+ 3. Evaluate:
+    - `syntax`
+-   - `input_contract`, including applicable information boundaries and required upstream artifact identity/version/hash/freshness/uncertainty;
++   - `input_contract`, including applicable information boundaries, required upstream artifact identity/version/hash/freshness/uncertainty, and any approved prospective analysis-domain rule/mask with included/excluded evidence;
+    - `method_alignment`, including forbidden future information and unapproved objective scalarization;
+    - `reproducibility`
+    - `output_contract`, including per-method objective values and constraint violations; an infeasible output fails even if its total objective is better.
+@@ -43,6 +43,7 @@ Required named checks use `PASS`, `FAIL`, or justified `NOT_APPLICABLE`; simple
+ - Do not approve unavailable toolbox dependencies without an explicit target exception.
+ - Do not change the mathematical model silently.
+ - Fail the applicable check for lookahead, unapproved scalarization, an infeasible output, or a missing, stale, identity-mismatched, or uncertainty-incompatible required upstream artifact.
++- Fail `input_contract` when a structure-dependent calculation uses observations outside its evidenced eligible domain, changes the domain after seeing outcome quality, omits the approved mask/rule, or merely warns about ineligible observations while retaining them.
+ - Do not require a duplicate Markdown review.
+ 
+ # Verification
+@@ -51,4 +52,5 @@ Required named checks use `PASS`, `FAIL`, or justified `NOT_APPLICABLE`; simple
+ - Compatibility constraints are checked.
+ - Run summary and outputs agree.
+ - Python and MATLAB/北太天元 apply the same information, objective, feasibility, and dependency semantics.
++- Python and MATLAB/北太天元 enforce the same prospective analysis-domain rule and exclusion evidence when applicable.
+ - Verdict follows required check statuses and runtime evidence.
+diff --git a/plugins/mathmodeling-skills/skills/problem-parser/SKILL.md b/plugins/mathmodeling-skills/skills/problem-parser/SKILL.md
+index 00905d1..c37a3aa 100644
+--- a/plugins/mathmodeling-skills/skills/problem-parser/SKILL.md
++++ b/plugins/mathmodeling-skills/skills/problem-parser/SKILL.md
+@@ -30,6 +30,7 @@ Produce a model-neutral problem contract. Do not start from favorite algorithms
+    - when decisions occur, what information is visible then, what future information is forbidden, and how state updates, when the question is dynamic or staged;
+    - each quantity's role as a hard constraint, optimization objective, or report-only measure, including direction, unit, aggregation, threshold, and any unresolved trade-off;
+    - typed cross-question dependencies: upstream Q, required artifact and state, identity/version/hash, freshness, and uncertainty compatibility.
++   - an `analysis_domain_contract` when a downstream calculation relies on local structure such as periodicity, stationarity, smoothness, or a valid measurement range: eligibility property, prospective inclusion/exclusion rule, decision time, evidence, and unresolved boundary choices. Record `NOT_APPLICABLE` for methods that use the full domain without such a requirement.
+    - uncertainty and ambiguity.
+ 4. Separate:
+    - statement facts;
+@@ -94,6 +95,14 @@ Produce a model-neutral problem contract. Do not start from favorite algorithms
+           "uncertainty_requirement": ""
+         }
+       ],
++      "analysis_domain_contract": {
++        "status": "NOT_APPLICABLE",
++        "required_property": "",
++        "prospective_rule": "",
++        "decision_time": "",
++        "evidence": [],
++        "unresolved_choices": []
++      },
+       "proposed_relationships": [],
+       "ambiguities": []
+     }
+@@ -111,6 +120,7 @@ Produce a model-neutral problem contract. Do not start from favorite algorithms
+ - Preserve units, time ranges, populations, and output formats.
+ - Keep the existing `dependencies` list for compatibility; use `cross_question_dependencies` only for real execution dependencies, not conceptual references.
+ - Do not treat information unavailable at a decision time as an input, or silently resolve an objective trade-off.
++- Do not treat disclosure of invalid, nonstationary, nonperiodic, saturated, or otherwise ineligible observations as sufficient when the planned calculation relies on the violated property. Preserve the affected domain and the still-unresolved eligibility rule explicitly.
+ - A proposed relationship must be labeled as proposed until human-confirmed or evidence-supported.
+ - Ask only about ambiguities that change the downstream problem.
+ 
+@@ -120,6 +130,7 @@ Produce a model-neutral problem contract. Do not start from favorite algorithms
+ - Constraints and dependencies are explicit.
+ - Dynamic contexts expose their information boundary and state update; static contexts remain compact.
+ - Objective roles and applicable upstream artifact identities are explicit before downstream use.
++- Structure-dependent calculations have a prospective analysis-domain contract or an explicit blocker; post-result band selection is not silently authorized.
+ - Missing attachments and ambiguities are visible.
+ - Facts, proposals, assumptions, and decisions are separated.
+ - Human-owned success criteria are confirmed or remain a blocker.
+diff --git a/plugins/mathmodeling-skills/skills/method-selector/SKILL.md b/plugins/mathmodeling-skills/skills/method-selector/SKILL.md
+index 54e05e2..4482105 100644
+--- a/plugins/mathmodeling-skills/skills/method-selector/SKILL.md
++++ b/plugins/mathmodeling-skills/skills/method-selector/SKILL.md
+@@ -52,6 +52,7 @@ If these are missing, return to the producer skill rather than guessing.
+    - Use the contract in `references/risk-probe-contract.md`.
+    - Select only relevant assumption checks.
+    - Always check output degeneracy or concentration with metrics appropriate to the output.
++   - When a method relies on periodicity, stationarity, smoothness, a valid sensor range, or another local-domain property, probe that property on the proposed analysis domain. Define the inclusion/exclusion rule prospectively from admissible evidence; never select the domain after seeing which band gives the preferred result.
+    - Bound probe runtime rather than source-line count.
+ 
+ 5. **Run the risk probe on the main candidate and usable baseline.**
+@@ -119,6 +120,8 @@ Do not maintain a separate iteration log for new work.
+ 
+ A method fails screening when a load-bearing assumption fails, the output degenerates, it cannot produce a legal result, or its cost violates the user's budget. A method does not fail merely because an irrelevant generic diagnostic is unavailable.
+ 
++It also fails when its load-bearing analysis-domain property is violated or unresolved. It may remain `CONDITIONAL` only when a prospective, evidence-backed domain rule and fallback are recorded before execution; merely warning about bad observations while still fitting them is not a mitigation.
++
+ It also fails when it requires forbidden future information, silently scalarizes an unapproved objective trade-off, or treats an infeasible output as eligible because another objective is better. A stated repair may support `CONDITIONAL` only when it removes that violation without making the decision for the human.
+ 
+ # Output and Handoff
+@@ -162,6 +165,7 @@ Migrate material evidence into the method card and probe summary. Do not require
+ - Shortlist contains a main candidate and a genuinely usable baseline.
+ - Optional fallback has a concrete trigger.
+ - Main and baseline have evidence-backed probe verdicts.
++- Any structure-dependent main/baseline has a shared, prospective analysis-domain rule with eligibility evidence, or is blocked.
+ - Output-degeneracy checks are present.
+ - Method card and probe summary exist.
+ - No per-skill pending decision file was created.
+diff --git a/plugins/mathmodeling-skills/skills/workflow-orchestrator/SKILL.md b/plugins/mathmodeling-skills/skills/workflow-orchestrator/SKILL.md
+index 80f80dc..867e814 100644
+--- a/plugins/mathmodeling-skills/skills/workflow-orchestrator/SKILL.md
++++ b/plugins/mathmodeling-skills/skills/workflow-orchestrator/SKILL.md
+@@ -85,6 +85,7 @@ Pass when:
+ - `qx_method_card.md` defines a main candidate and usable baseline;
+ - the baseline completes the real task with comparable output;
+ - `risk_probe_summary.json` covers applicable checks, including output degeneracy;
++- any load-bearing analysis-domain property is evidenced and its prospective inclusion/exclusion rule is fixed before execution;
+ - main and baseline verdicts are `PASS` or justified `CONDITIONAL`;
+ - any fallback has a concrete trigger.
+ 
+@@ -101,6 +102,7 @@ Pass when:
+ - approved main and baseline executed;
+ - latest `run_summary.json` is complete;
+ - language review contains passing named checks for syntax, input contract, method alignment, reproducibility, and output contract.
++- when the method is domain-sensitive, the run and review prove that the approved analysis-domain rule was applied unchanged; an unresolved or post-hoc domain selection blocks G3.
+ 
+ Accept legacy Markdown review artifacts during migration, but prefer JSON for new work.
+ 
+@@ -132,6 +134,7 @@ Choose one primary next action:
+ - missing framing → parser/classifier or human framing card;
+ - failed real dependency gate → the upstream artifact owner or a refresh/uncertainty-resolution action; keep unrelated Qx runnable;
+ - missing data profile → `data-auditor-cleaner`;
++- unresolved load-bearing analysis domain → the data profiler or method selector that owns the prospective eligibility rule;
+ - missing method card/probe → `method-selector`;
+ - missing human method choice → `decision-prompt-builder`;
+ - approved method without implementation plan → `model-code-analyzer`;
+@@ -206,6 +209,7 @@ Do not paste a full dashboard or large JSON structure unless the user asks.
+ - Dependency blocks are limited to declared real dependencies and explain artifact/status/identity/freshness/uncertainty failures.
+ - Lean requirements are not confused with submission requirements.
+ - Human decisions were not inferred from AI suggestions.
++- Structure-dependent execution is blocked until its analysis-domain eligibility and prospective selection rule are evidenced.
+ - Code generation, freeze, paper writing, and final assembly flags match the gates.
+ - Audit scope matches semantic impact.
+ - Manifest and reported next action agree.
+diff --git a/plugins/mathmodeling-skills/skills/model-code-analyzer/SKILL.md b/plugins/mathmodeling-skills/skills/model-code-analyzer/SKILL.md
+index 1082f91..410694c 100644
+--- a/plugins/mathmodeling-skills/skills/model-code-analyzer/SKILL.md
++++ b/plugins/mathmodeling-skills/skills/model-code-analyzer/SKILL.md
+@@ -27,6 +27,7 @@ Read legacy candidate/decision artifacts only when the new artifacts are absent.
+ 3. Record the fallback ID and trigger, but do not plan its full implementation unless the trigger is already evidenced and the human chose activation.
+ 4. Map mathematical definitions to inputs, processing steps, intermediate evidence, outputs, and validation checks.
+ 5. Carry the applicable information boundary, objective roles, hard constraints, and typed upstream artifact identities into one shared contract for main and baseline. Define a directly comparable metric/output contract only after feasibility is checked.
++   - If either method relies on local data properties, carry the approved `analysis_domain_contract` into the shared contract: exact prospective rule or mask derivation, evidence source, excluded-domain reporting, and a check that execution cannot choose a band from outcome quality. Main and baseline must share the rule unless the human-approved method definition explicitly requires otherwise.
+ 6. Define the round output:
+ 
+ ```text
+@@ -77,7 +78,8 @@ Require:
+     "objective_contract": {},
+     "unresolved_tradeoffs": [],
+     "shared_information_boundary": {},
+-    "upstream_artifact_contract": []
++    "upstream_artifact_contract": [],
++    "analysis_domain_contract": {"status": "NOT_APPLICABLE", "prospective_rule": "", "included": null, "excluded": null, "evidence": []}
+   },
+   "fallback_trigger": {
+     "fallback_id": null,
+@@ -98,6 +100,7 @@ Require:
+ - per-method computation steps;
+ - comparable outputs and metrics;
+ - shared information-boundary checks, objective values, constraint-violation reporting, and upstream artifact identity/version/hash/uncertainty for both main and baseline;
++- prospective analysis-domain rule/mask, eligibility evidence, included/excluded counts or ranges, and post-hoc-selection guard when applicable;
+ - risk-probe conditions that implementation must monitor;
+ - fallback trigger evaluation;
+ - paths, seed, dependencies, and expected runtime;
+@@ -111,6 +114,7 @@ Require:
+ - Do not implement a fallback before activation.
+ - Do not give main and baseline different information, objective, constraint, or upstream-artifact contracts.
+ - Stop when a required upstream artifact is missing, stale, identity-mismatched, or uncertainty-incompatible, or when a required objective trade-off remains unapproved.
++- Stop when a load-bearing analysis-domain property is unresolved, its rule was chosen after outcome inspection, or the plan only warns about ineligible observations while still using them.
+ - Do not require success logs.
+ - Do not create a README when the code plan already provides the same instructions.
+ - Stop if a human choice, required parameter, input field, or comparable baseline output is missing.
+@@ -121,5 +125,6 @@ Require:
+ - Outputs are directly comparable.
+ - Probe risks and fallback trigger are represented in `run_summary.json`.
+ - Both method records carry the same applicable contract evidence and report objective values and constraint violations separately.
++- Any applicable analysis-domain contract is prospective, executable, shared where required, and auditable in the run summary.
+ - Paths follow the experiment contract.
+ - Handoff targets the correct language generator.
+diff --git a/plugins/mathmodeling-skills/skills/python-code-reviewer/SKILL.md b/plugins/mathmodeling-skills/skills/python-code-reviewer/SKILL.md
+index c38e878..a8f07b2 100644
+--- a/plugins/mathmodeling-skills/skills/python-code-reviewer/SKILL.md
++++ b/plugins/mathmodeling-skills/skills/python-code-reviewer/SKILL.md
+@@ -15,7 +15,7 @@ description: Review, run, debug, and verify approved Python modeling code agains
+ 2. Inspect and run the code in the intended order.
+ 3. Evaluate required checks:
+    - `syntax`: imports, execution, exceptions, and obvious runtime faults.
+-   - `input_contract`: paths, fields, units, shapes, missing-data handling, raw-data protection, applicable information boundaries, and required upstream artifact identity/version/hash/freshness/uncertainty.
++   - `input_contract`: paths, fields, units, shapes, missing-data handling, raw-data protection, applicable information boundaries, required upstream artifact identity/version/hash/freshness/uncertainty, and any approved prospective analysis-domain rule/mask with included/excluded evidence.
+    - `method_alignment`: formulas, objectives, constraints, assumptions, main/baseline roles, and fallback scope match the approved plan; reject forbidden future information and unapproved objective scalarization.
+    - `reproducibility`: seed, deterministic setup, dependency/runtime record, and rerun consistency.
+    - `output_contract`: saved tables/metrics/figures, valid run summary, comparable main/baseline metrics, per-method objective values, constraint violations, degeneracy evidence, and fallback-trigger state. Any infeasible output fails even if its total objective is better.
+@@ -54,6 +54,7 @@ Statuses are `PASS`, `FAIL`, or `NOT_APPLICABLE` with a reason. `NOT_APPLICABLE`
+ - Do not approve a toy diagnostic reference as the official baseline.
+ - Do not silently change mathematical meaning.
+ - Fail the applicable check for lookahead, unapproved scalarization, an infeasible output, or a missing, stale, identity-mismatched, or uncertainty-incompatible required upstream artifact.
++- Fail `input_contract` when a structure-dependent calculation uses observations outside its evidenced eligible domain, changes the domain after seeing outcome quality, omits the approved mask/rule, or merely warns about ineligible observations while retaining them.
+ - Do not create success logs beyond the review JSON.
+ - Treat code newer than its review as requiring the affected checks to rerun, not necessarily the entire pipeline.
+ 
+@@ -63,4 +64,5 @@ Statuses are `PASS`, `FAIL`, or `NOT_APPLICABLE` with a reason. `NOT_APPLICABLE`
+ - Main and baseline are approved and comparable.
+ - Run summary and on-disk outputs agree.
+ - Static contract checks still run when execution cannot; never classify an unchecked violation as a pass.
++- Applicable analysis-domain selection is prospective and the run summary proves the exact rule used, including exclusions.
+ - Review verdict follows check statuses.
+diff --git a/plugins/mathmodeling-skills/skills/matlab-code-reviewer/SKILL.md b/plugins/mathmodeling-skills/skills/matlab-code-reviewer/SKILL.md
+index 2d5fe32..2db8454 100644
+--- a/plugins/mathmodeling-skills/skills/matlab-code-reviewer/SKILL.md
++++ b/plugins/mathmodeling-skills/skills/matlab-code-reviewer/SKILL.md
+@@ -15,7 +15,7 @@ description: Review, run, debug, and verify approved MATLAB or Beita Tianyuan mo
+ 2. Inspect and run the code when a compatible runtime is available.
+ 3. Evaluate:
+    - `syntax`
+-   - `input_contract`, including applicable information boundaries and required upstream artifact identity/version/hash/freshness/uncertainty;
++   - `input_contract`, including applicable information boundaries, required upstream artifact identity/version/hash/freshness/uncertainty, and any approved prospective analysis-domain rule/mask with included/excluded evidence;
+    - `method_alignment`, including forbidden future information and unapproved objective scalarization;
+    - `reproducibility`
+    - `output_contract`, including per-method objective values and constraint violations; an infeasible output fails even if its total objective is better.
+@@ -43,6 +43,7 @@ Required named checks use `PASS`, `FAIL`, or justified `NOT_APPLICABLE`; simple
+ - Do not approve unavailable toolbox dependencies without an explicit target exception.
+ - Do not change the mathematical model silently.
+ - Fail the applicable check for lookahead, unapproved scalarization, an infeasible output, or a missing, stale, identity-mismatched, or uncertainty-incompatible required upstream artifact.
++- Fail `input_contract` when a structure-dependent calculation uses observations outside its evidenced eligible domain, changes the domain after seeing outcome quality, omits the approved mask/rule, or merely warns about ineligible observations while retaining them.
+ - Do not require a duplicate Markdown review.
+ 
+ # Verification
+@@ -51,4 +52,5 @@ Required named checks use `PASS`, `FAIL`, or justified `NOT_APPLICABLE`; simple
+ - Compatibility constraints are checked.
+ - Run summary and outputs agree.
+ - Python and MATLAB/北太天元 apply the same information, objective, feasibility, and dependency semantics.
++- Python and MATLAB/北太天元 enforce the same prospective analysis-domain rule and exclusion evidence when applicable.
+ - Verdict follows required check statuses and runtime evidence.

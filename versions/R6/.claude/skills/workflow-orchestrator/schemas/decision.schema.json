@@ -1,0 +1,175 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "artifact_type": {
+      "const": "decision"
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "extensions": {
+      "type": "object"
+    },
+    "question_id": {
+      "type": "string",
+      "pattern": "^Q[0-9]+(?:[._-][A-Za-z0-9]+)*$"
+    },
+    "decision_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "decision_type": {
+      "enum": [
+        "framing",
+        "method_choice",
+        "fallback_activation",
+        "result_verdict",
+        "stability_verdict",
+        "claim_scope",
+        "package_signoff",
+        "submission_authorization",
+        "assumption_necessity",
+        "decision_stale"
+      ]
+    },
+    "status": {
+      "enum": [
+        "DECIDED",
+        "STALE"
+      ]
+    },
+    "decided_by": {
+      "enum": [
+        "human",
+        "agent_under_authorization"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "quote": {
+          "type": "string",
+          "minLength": 1
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "provenance": {
+          "enum": [
+            "user_message_export",
+            "user_supplied_record",
+            "legacy_unverified"
+          ]
+        }
+      },
+      "required": [
+        "path",
+        "sha256",
+        "quote",
+        "locator",
+        "provenance"
+      ],
+      "additionalProperties": false
+    },
+    "choice": {
+      "type": [
+        "string",
+        "array",
+        "object"
+      ]
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "decided_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "selected_methods": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "supersedes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "artifact_type",
+    "question_id",
+    "decision_id",
+    "decision_type",
+    "status",
+    "decided_by",
+    "source",
+    "choice",
+    "rationale",
+    "evidence_refs",
+    "decided_at"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mathmodel:r6:decision",
+  "title": "decision"
+}

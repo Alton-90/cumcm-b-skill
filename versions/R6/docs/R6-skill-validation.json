@@ -1,0 +1,145 @@
+{
+  "results": [
+    {
+      "skill": "code-reviewer",
+      "exit_code": 0,
+      "output": "Skill is valid!\n"
+    },
+    {
+      "skill": "completeness-auditor",
+      "exit_code": 0,
+      "output": "Skill is valid!\n"
+    },
+    {
+      "skill": "consistency-auditor",
+      "exit_code": 0,
+      "output": "Skill is valid!\n"
+    },
+    {
+      "skill": "data-auditor-cleaner",
+      "exit_code": 0,
+      "output": "Skill is valid!\n"
+    },
+    {
+      "skill": "decision-prompt-builder",
+      "exit_code": 0,
+      "output": "Skill is valid!\n"
+    },
+    {
+      "skill": "figure-table-planner",
+      "exit_code": 0,
+      "output": "Skill is valid!\n"
+    },
+    {
+      "skill": "final-method-explainer",
+      "exit_code": 0,
+      "output": "Skill is valid!\n"
+    },
+    {
+      "skill": "math-figure-generator",
+      "exit_code": 0,
+      "output": "Skill is valid!\n"
+    },
+    {
+      "skill": "matlab-code-reviewer",
+      "exit_code": 0,
+      "output": "Skill is valid!\n"
+    },
+    {
+      "skill": "matlab-model-code-generator",
+      "exit_code": 0,
+      "output": "Skill is valid!\n"
+    },
+    {
+      "skill": "method-selector",
+      "exit_code": 0,
+      "output": "Skill is valid!\n"
+    },
+    {
+      "skill": "model-assumptions-builder",
+      "exit_code": 0,
+      "output": "Skill is valid!\n"
+    },
+    {
+      "skill": "model-code-analyzer",
+      "exit_code": 0,
+      "output": "Skill is valid!\n"
+    },
+    {
+      "skill": "modeler-decision-logger",
+      "exit_code": 0,
+      "output": "Skill is valid!\n"
+    },
+    {
+      "skill": "paper-polisher",
+      "exit_code": 0,
+      "output": "Skill is valid!\n"
+    },
+    {
+      "skill": "paper-section-writer",
+      "exit_code": 0,
+      "output": "Skill is valid!\n"
+    },
+    {
+      "skill": "problem-classifier",
+      "exit_code": 0,
+      "output": "Skill is valid!\n"
+    },
+    {
+      "skill": "problem-parser",
+      "exit_code": 0,
+      "output": "Skill is valid!\n"
+    },
+    {
+      "skill": "python-code-reviewer",
+      "exit_code": 0,
+      "output": "Skill is valid!\n"
+    },
+    {
+      "skill": "python-model-code-generator",
+      "exit_code": 0,
+      "output": "Skill is valid!\n"
+    },
+    {
+      "skill": "quality-assurance-auditor",
+      "exit_code": 0,
+      "output": "Skill is valid!\n"
+    },
+    {
+      "skill": "reference-manager",
+      "exit_code": 0,
+      "output": "Skill is valid!\n"
+    },
+    {
+      "skill": "related-paper-analyzer",
+      "exit_code": 0,
+      "output": "Skill is valid!\n"
+    },
+    {
+      "skill": "result-report-generator",
+      "exit_code": 0,
+      "output": "Skill is valid!\n"
+    },
+    {
+      "skill": "robustness-checker",
+      "exit_code": 0,
+      "output": "Skill is valid!\n"
+    },
+    {
+      "skill": "solution-package-builder",
+      "exit_code": 0,
+      "output": "Skill is valid!\n"
+    },
+    {
+      "skill": "symbol-table-builder",
+      "exit_code": 0,
+      "output": "Skill is valid!\n"
+    },
+    {
+      "skill": "workflow-orchestrator",
+      "exit_code": 0,
+      "output": "Skill is valid!\n"
+    }
+  ],
+  "broken_links": []
+}

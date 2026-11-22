@@ -1,0 +1,142 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "artifact_type": {
+      "const": "method-card"
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "extensions": {
+      "type": "object"
+    },
+    "question_id": {
+      "type": "string",
+      "pattern": "^Q[0-9]+(?:[._-][A-Za-z0-9]+)*$"
+    },
+    "methods": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "method_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "enum": [
+              "main_candidate",
+              "usable_baseline",
+              "conditional_fallback",
+              "diagnostic_reference"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "required_outputs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "assumptions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "known_risks": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "fallback_trigger": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "method_id",
+          "role",
+          "name",
+          "required_outputs"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 2
+    },
+    "goal": {
+      "type": "string",
+      "minLength": 1
+    },
+    "baseline_validity": {
+      "type": "object",
+      "properties": {
+        "completes_task": {
+          "type": "boolean"
+        },
+        "comparable": {
+          "type": "boolean"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "completes_task",
+        "comparable",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "human_constraints": {
+      "type": "object"
+    },
+    "playbook_mapping": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "artifact_type",
+    "question_id",
+    "methods",
+    "goal",
+    "baseline_validity"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mathmodel:r6:method-card",
+  "title": "method-card"
+}

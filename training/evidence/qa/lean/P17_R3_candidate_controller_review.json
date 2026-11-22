@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "phase": "P17",
+  "review_id": "P17-R3-CANDIDATE-CONTROLLER-REVIEW-001",
+  "reviewed_at": "2026-09-08T16:57:51.5210998+08:00",
+  "candidate_id": "B-LEAN-20260908-R3-CANDIDATE",
+  "parent_release_id": "B-LEAN-20260908-R2",
+  "decision_id": "P16-REVISION-2025C-001",
+  "approved_change_bundles": ["CHG-B03", "CHG-B04"],
+  "change_impact": "CANONICAL_CANDIDATE_ONLY",
+  "verdict": "PASS_P17_CANDIDATE_FROZEN",
+  "scope": {
+    "candidate_repo": "cumcm-b-skill/candidates/B-LEAN-20260908-R3-CANDIDATE",
+    "file_count": 145,
+    "changed_file_count": 27,
+    "changed_unique_skills": 9,
+    "added_files": 0,
+    "missing_files": 0,
+    "formal_target_modified": false,
+    "frozen_2025C_workspace_modified": false
+  },
+  "candidate_identity": {
+    "content_fingerprint_sha256": "d5f0bebcd669c8634f5e6c4a45b47053b252a964a15e48ad39ada9b1ef906cd7",
+    "manifest_path": "cumcm-b-skill/p17/candidate_manifest.json",
+    "manifest_sha256": "6a6b4725e04cae1bb6627319a23a2b22c792c2639c85b3250b0f13a5b6d7620d",
+    "candidate_diff_path": "cumcm-b-skill/p17/candidate_diff.patch",
+    "candidate_diff_sha256": "7c59052cdc7dcdfd55b4a7b0994f7a5e00fce765258cad0ec475bbb85ec02c9f"
+  },
+  "checks": {
+    "parent_release_manifest_sha256_exact": "PASS",
+    "candidate_inventory_145_exact": "PASS",
+    "changed_files_exactly_expected_27": "PASS",
+    "nine_three_way_mirrors_byte_equal": "PASS",
+    "behavior_contract_assertions_56_of_56": "PASS",
+    "skill_creator_quick_validate_27_of_27_utf8": "PASS",
+    "answer_specific_added_line_scan_zero_hits": "PASS",
+    "candidate_diff_apply_check_and_roundtrip_145_exact": "PASS",
+    "frozen_2025C_manifest_sha256_unchanged": "PASS",
+    "formal_target_write_count": 0
+  },
+  "behavior_scope": {
+    "existing_contracts": "BT-01 through BT-08 retained",
+    "BT-09": "Rejects unexplained audited-to-used population loss and undeclared main/baseline population mismatch; accepts exact reason-coded reconciliation.",
+    "BT-10": "Rejects outer-label threshold tuning, group leakage, and hidden/mis-scored abstention; accepts group-safe training-only calibration with visible coverage/deferral.",
+    "model_execution": false,
+    "result_path": "cumcm-b-skill/p17/candidate_behavior_test_results.json",
+    "result_sha256": "281fcaf96503bf424d3c9d331a6582b2b59aecf17b06aa070ab71eff6b00fd4d"
+  },
+  "execution_disclosures": [
+    "The first behavior execution passed every assertion but retained the inherited P11 suite label; the controller corrected metadata only and accepted the second 56/56 output.",
+    "A default-locale quick_validate attempt was encoding-limited for 12 UTF-8 files; no Skill finding was inferred. One complete `python -X utf8` run then passed all 27 affected mirrors.",
+    "The first freeze-script execution failed because a false-valued `formal_target_modified` fact was mistakenly placed inside an all-true check map. The key was corrected to the positive invariant `formal_target_untouched`; the second freeze passed. Candidate bytes did not change between these two freeze executions.",
+    "No model was executed in P17; these are prospective structured-contract and packaging checks."
+  ],
+  "acceptance": {
+    "only_approved_bundles_implemented": true,
+    "no_answer_specific_number_or_method_mandate": true,
+    "observable_old_vs_new_behavior": true,
+    "candidate_frozen_before_forward_retest": true,
+    "ready_for_P18": true
+  },
+  "next_action": "Select one untouched official problem without reading its contents, bind it to this exact candidate manifest, execute one isolated forward blind retest, and freeze output before comparison. Formal integration remains unauthorized."
+}

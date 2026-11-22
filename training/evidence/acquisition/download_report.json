@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "phase": "P2",
+  "generated_at": "2026-09-04T19:50:09.4345469+08:00",
+  "scope": {
+    "issue_id": "P1-U001",
+    "source_id": "SRC-b4fce6295e11",
+    "year": 2019,
+    "source_title": "同心协力策略分析",
+    "target_page": 71,
+    "other_unverified_items_processed": false,
+    "P3_started": false
+  },
+  "precondition_verdict": "PASSED",
+  "acquisition_verdict": "RECOMMEND_ACCEPT",
+  "completed": [
+    "Validated the P1/P2 phase preconditions and the sole OPEN issue P1-U001.",
+    "Confirmed the explicit PAGE=71 mapping without numeric URL inference.",
+    "Confirmed the official article HTML directly references the exact static resource.",
+    "Downloaded one JPEG to the isolated staging directory and verified transport, signature, decode, dimensions, hash, adjacent-page non-duplication, and rendered identity.",
+    "Generated an acquisition provenance record; no download script was needed."
+  ],
+  "missing": [],
+  "blocked": [],
+  "warnings": [
+    "The official URL names a 385x215 derivative and the response is only 8,881 bytes; this is retained as a warning, not used as a rejection criterion. The decoded size is 382x215 and the rendered title slide is valid.",
+    "Git status could not be shown because neither the project root nor cumcm-b-skill contains a .git directory."
+  ],
+  "result": {
+    "file": "cumcm-b-skill/acquisition/staging/SRC-b4fce6295e11/page_071.jpeg",
+    "provenance": "cumcm-b-skill/acquisition/staging/SRC-b4fce6295e11/page_071.provenance.json",
+    "sha256": "3564b53ca41681200dc3136a3815dd76faa75463b87c6f6fda592dfece413961",
+    "content_type": "image/jpeg",
+    "detected_format": "JPEG",
+    "dimensions": "382x215",
+    "http_status": 200,
+    "redirect_count": 0,
+    "final_url": "https://dxs.moe.gov.cn/zx/upload/resources/image/2019/12/03/6873896_385x215.jpeg"
+  },
+  "scope_compliance": {
+    "downloads_outside_staging": false,
+    "protected_source_files_written": false,
+    "github_target_modified": false,
+    "holdout_locked_or_quarantined_content_read": false,
+    "other_P1_issues_processed": false,
+    "automatic_merge_into_corpus": false
+  },
+  "produced_files": [
+    "cumcm-b-skill/acquisition/p2_p1_u001_dry_run.json",
+    "cumcm-b-skill/acquisition/staging/SRC-b4fce6295e11/page_071.jpeg",
+    "cumcm-b-skill/acquisition/staging/SRC-b4fce6295e11/page_071.provenance.json",
+    "cumcm-b-skill/acquisition/download_report.json",
+    "cumcm-b-skill/acquisition/download_report.md"
+  ],
+  "next_step": "Human decides whether to accept the staged result. Do not merge it into CUMCM_B题skill训练宝 automatically, and do not start P3.",
+  "evidence_refs": [
+    {
+      "source_path": "cumcm-b-skill/planning/workflow_manifest.json",
+      "locator": "$.phases.P1.status; $.phases.P2.status before update",
+      "source_role": "derived_artifact",
+      "supports": "P1 was complete and P2 was pending before this run."
+    },
+    {
+      "source_path": "cumcm-b-skill/planning/corpus_manifest.json",
+      "locator": "$.unresolved_issues[?(@.issue_id=='P1-U001')]; $.sources[?(@.source_id=='SRC-b4fce6295e11')]",
+      "source_role": "derived_artifact",
+      "supports": "P1-U001 was OPEN, the source ID and 2019 expert-commentary identity match, page 71 was absent, and the source is NOT_HOLDOUT."
+    },
+    {
+      "source_path": "CUMCM_B题skill训练宝/专家评议/2019/同心协力策略分析/图片URL清单.txt",
+      "locator": "line 73; SHA-256 5ba31d7f68f02c07ef9c36becc12a9212998c7ab2f04f4518dc96338b10f800f",
+      "source_role": "expert_commentary",
+      "supports": "PAGE=71 is explicitly mapped to the downloaded official resource URL."
+    },
+    {
+      "source_path": "https://dxs.moe.gov.cn/zx/a/qkt_sxjm_sxjmstjp/191203/1520118.shtml",
+      "locator": "GET 200; final URL unchanged; exact resource appears once in an img src; no checked explicit download-prohibition phrase matched",
+      "source_role": "expert_commentary",
+      "supports": "The article is available on the official host, directly references the target resource, and did not expose an explicit prohibition in the checked HTML text."
+    },
+    {
+      "source_path": "cumcm-b-skill/acquisition/staging/SRC-b4fce6295e11/page_071.provenance.json",
+      "locator": "$.http_status; $.redirect_chain; $.file_signature; $.dimensions; $.validation_results; $.scope_compliance",
+      "source_role": "derived_artifact",
+      "supports": "Transport, final URL, signature, decode, dimensions, hash, duplication, rendered identity, and scope-compliance checks passed."
+    },
+    {
+      "source_path": "cumcm-b-skill/acquisition/p2_p1_u001_dry_run.json",
+      "locator": "$",
+      "source_role": "derived_artifact",
+      "supports": "The planned URL, output path, no-overwrite policy, network requirement, and preconditions were recorded before acquisition."
+    },
+    {
+      "source_path": "cumcm-b-skill/acquisition/download_report.json",
+      "locator": "$.scope_compliance; $.produced_files",
+      "source_role": "agent_inference",
+      "supports": "All write operations recorded by this run were confined to cumcm-b-skill; no protected corpus or target-repository write was performed."
+    }
+  ]
+}

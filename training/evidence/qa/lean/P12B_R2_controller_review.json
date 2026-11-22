@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "review_id": "P12B-R2-CONTROLLER-20260907-194044",
+  "reviewed_at": "2026-09-07T19:40:44+08:00",
+  "phase": "P12B",
+  "round": 2,
+  "release_id": "B-LEAN-20260907-R1",
+  "verdict": "PASS_AT_WAITING_HUMAN",
+  "accepted_scope": "Exact capture of FRAMING-2025B-002=C and Q1 G2 screening of a low-dimensional dispersion main candidate, comparable constant-index baseline, conditional partial-identification fallback, and risk evidence.",
+  "not_accepted_as": "G2_5_METHOD_CHOSEN_OR_BLIND_RUN_COMPLETE",
+  "method_screen": {
+    "main_candidate": "M1: shared thickness plus centered quadratic effective dispersion with explicit phase-branch profiling",
+    "usable_baseline": "B1: shared thickness plus constant effective index under the same two-angle branch and output contract",
+    "conditional_fallback": "F1: partial-identification/profile set when branch or profile stability fails",
+    "g2_status": "PASS_WITH_CONDITIONAL_METHODS_WAITING_HUMAN",
+    "g2_5_status": "NOT_PASSED",
+    "all_method_verdicts": "CONDITIONAL",
+    "final_model_executed": false,
+    "final_thickness_estimated": false
+  },
+  "targeted_quality_check": {
+    "issue": "A1 and A2 initially had exactly equal coarse-frequency aggregate summaries.",
+    "raw_reflectance_vectors_equal": false,
+    "raw_reflectance_max_absolute_difference": 16.126738579999998,
+    "raw_reflectance_mean_absolute_difference": 1.3922767805629936,
+    "raw_reflectance_correlation": 0.9986697662463419,
+    "all_probe_variants_choose_same_fft_bins": true,
+    "verdict": "DIAGNOSTIC_RESOLUTION_LIMIT",
+    "accepted_interpretation": "The aggregate equality is caused by coarse FFT-bin resolution and is not evidence that the raw spectra are equal or strongly consistent.",
+    "method_card_and_risk_summary_corrected": true
+  },
+  "independent_checks": {
+    "json_files": 19,
+    "json_parse_errors": 0,
+    "jsonl_files": 3,
+    "jsonl_parse_errors": 0,
+    "blind_decision_records": 2,
+    "canonical_framing_records": 2,
+    "second_user_utterance_exact_in_both": true,
+    "candidate_hash_mismatches": 0,
+    "official_input_hash_mismatches": 0,
+    "access_log_rows": 126,
+    "deny_term_body_rows": 0,
+    "current_decision_id_matches_card": true,
+    "current_card_option_ids": ["A", "B", "C", "D"],
+    "model_code_directory_absent": true,
+    "results_directory_absent": true,
+    "q1_decision_ledger_absent_before_human_choice": true
+  },
+  "terminal_state": {
+    "status": "WAITING_HUMAN",
+    "current_gate": "G2_SCREENED_WAITING_G2_5_HUMAN_METHOD_CHOICE",
+    "decision_id": "Q1-METHOD-2025B-001",
+    "decision_status": "PENDING_HUMAN",
+    "blind_run_completion": "NOT_COMPLETE_WAITING_HUMAN"
+  },
+  "warnings": [
+    "Generic full-rank Jacobians do not establish stable real-data identification; normalized condition numbers span roughly 126 to 3135 and all routes remain CONDITIONAL.",
+    "The coarse FFT probe is a screening diagnostic only; it cannot support final phase reconstruction, cross-angle equality, or a thickness claim.",
+    "M1 may collapse toward B1 or select different phase branches under small extraction changes; F1 must remain a concrete trigger rather than a decorative fallback."
+  ],
+  "next_action": "Wait for the user's explicit answer to Q1-METHOD-2025B-001. Append it verbatim to the blind audit ledger and methods/Q1/q1_decisions.jsonl before any model-code analysis or implementation.",
+  "evidence_refs": [
+    {
+      "source_path": "cumcm-b-skill/tests/holdout/2025B/B-LEAN-20260907-R1/contest_workspace/methods/Q1/q1_method_card.md",
+      "locator": "Shortlist; Baseline validity; Risk-probe summary; Targeted A1/A2 resolution audit; Fallback trigger",
+      "source_role": "blind_test_method_card"
+    },
+    {
+      "source_path": "cumcm-b-skill/tests/holdout/2025B/B-LEAN-20260907-R1/contest_workspace/methods/Q1/probes/risk_probe_summary.json",
+      "locator": "$.paired_angle_resolution_check; $.methods; $.fallback_trigger; $.g2_screening_status; $.g2_5_status",
+      "source_role": "blind_test_risk_evidence"
+    },
+    {
+      "source_path": "cumcm-b-skill/tests/holdout/2025B/B-LEAN-20260907-R1/contest_workspace/methods/Q1/q1_method_choice_card.json",
+      "locator": "$.choice_card",
+      "source_role": "pending_human_decision"
+    },
+    {
+      "source_path": "cumcm-b-skill/tests/holdout/2025B/B-LEAN-20260907-R1/verification_report.json",
+      "locator": "$.candidate; $.official_inputs; $.decision_contract_checks; $.state_consistency_checks; $.blind_run_complete",
+      "source_role": "executor_verification"
+    },
+    {
+      "source_path": "cumcm-b-skill/planning/history/20260907_194044_P12B-R2-WAITING-HUMAN-BEFORE/backup_manifest.json",
+      "locator": "$.files",
+      "source_role": "versioned_before_state"
+    }
+  ]
+}

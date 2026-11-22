@@ -1,0 +1,936 @@
+diff --git a/.claude/skills/problem-parser/SKILL.md b/.claude/skills/problem-parser/SKILL.md
+index fd05318..00905d1 100644
+--- a/.claude/skills/problem-parser/SKILL.md
++++ b/.claude/skills/problem-parser/SKILL.md
+@@ -27,13 +27,16 @@ Produce a model-neutral problem contract. Do not start from favorite algorithms
+    - required output and format;
+    - evaluation/success criteria;
+    - dependencies on other Qx;
++   - when decisions occur, what information is visible then, what future information is forbidden, and how state updates, when the question is dynamic or staged;
++   - each quantity's role as a hard constraint, optimization objective, or report-only measure, including direction, unit, aggregation, threshold, and any unresolved trade-off;
++   - typed cross-question dependencies: upstream Q, required artifact and state, identity/version/hash, freshness, and uncertainty compatibility.
+    - uncertainty and ambiguity.
+ 4. Separate:
+    - statement facts;
+    - observations from supplied data;
+    - proposed relationships;
+    - assumptions requiring human judgment.
+-5. If output form or success criteria are materially ambiguous, invoke one choice card. Do not choose the framing silently.
++5. If output form, success criteria, or a material objective trade-off is ambiguous, invoke one choice card. Do not choose the framing silently. For a simple static question, record `NOT_APPLICABLE` or compact empty values for the new fields and do not create a card merely because those fields exist.
+ 6. Save:
+    - `planning/parse/problem_parse.json`
+    - an optional concise `planning/parse/problem_parse.md` only when a human-readable view is useful.
+@@ -60,6 +63,37 @@ Produce a model-neutral problem contract. Do not start from favorite algorithms
+       "required_outputs": [],
+       "success_criteria": [],
+       "dependencies": [],
++      "decision_context": {
++        "status": "NOT_APPLICABLE",
++        "decision_order": [],
++        "decision_timepoints": [],
++        "visible_information": [],
++        "forbidden_future_information": [],
++        "state_update": ""
++      },
++      "objective_contract": {
++        "items": [
++          {
++            "id": "",
++            "role": "hard_constraint",
++            "direction": "",
++            "unit": "",
++            "aggregation": "",
++            "threshold": null
++          }
++        ],
++        "unresolved_tradeoffs": []
++      },
++      "cross_question_dependencies": [
++        {
++          "upstream_question": "Q1",
++          "required_artifact": "",
++          "required_status": "",
++          "version_or_hash": "",
++          "freshness_requirement": "",
++          "uncertainty_requirement": ""
++        }
++      ],
+       "proposed_relationships": [],
+       "ambiguities": []
+     }
+@@ -75,6 +109,8 @@ Produce a model-neutral problem contract. Do not start from favorite algorithms
+ - Do not name or recommend methods.
+ - Do not fabricate data, fields, equations, causal relationships, or evaluation criteria.
+ - Preserve units, time ranges, populations, and output formats.
++- Keep the existing `dependencies` list for compatibility; use `cross_question_dependencies` only for real execution dependencies, not conceptual references.
++- Do not treat information unavailable at a decision time as an input, or silently resolve an objective trade-off.
+ - A proposed relationship must be labeled as proposed until human-confirmed or evidence-supported.
+ - Ask only about ambiguities that change the downstream problem.
+ 
+@@ -82,6 +118,8 @@ Produce a model-neutral problem contract. Do not start from favorite algorithms
+ 
+ - Every subquestion maps to a required output.
+ - Constraints and dependencies are explicit.
++- Dynamic contexts expose their information boundary and state update; static contexts remain compact.
++- Objective roles and applicable upstream artifact identities are explicit before downstream use.
+ - Missing attachments and ambiguities are visible.
+ - Facts, proposals, assumptions, and decisions are separated.
+ - Human-owned success criteria are confirmed or remain a blocker.
+diff --git a/.claude/skills/method-selector/SKILL.md b/.claude/skills/method-selector/SKILL.md
+index 24c2991..54e05e2 100644
+--- a/.claude/skills/method-selector/SKILL.md
++++ b/.claude/skills/method-selector/SKILL.md
+@@ -35,7 +35,10 @@ If these are missing, return to the producer skill rather than guessing.
+    - Reuse answers already present in the decision ledger.
+ 
+ 2. **Derive method requirements.**
++   - Consume applicable `decision_context`, `objective_contract`, and typed cross-question dependencies from the problem parse.
+    - Start from required output, hard constraints, data characteristics, validation criteria, explanation burden, and experiment budget.
++   - Screen information availability at each decision time before scoring a method. A method that uses forbidden future information is `FAIL`; incomplete evidence may be `CONDITIONAL` only with a concrete boundary-respecting repair.
++   - Treat hard feasibility as prior to objective comparison. Do not scalarize objectives or resolve an unresolved trade-off unless the human has approved that choice.
+    - Identify the failure modes that would make a method unusable.
+ 
+ 3. **Create a role-based shortlist.**
+@@ -75,6 +78,12 @@ If these are missing, return to the producer skill rather than guessing.
+ 
+ ## Goal and success criteria
+ 
++## Contract compatibility
++- Information boundary and state update:
++- Objective roles, directions, units, aggregation, and thresholds:
++- Unresolved human trade-offs:
++- Required upstream artifacts, identity/freshness, and uncertainty:
++
+ ## Human constraints
+ - Output form:
+ - Priority:
+@@ -110,6 +119,8 @@ Do not maintain a separate iteration log for new work.
+ 
+ A method fails screening when a load-bearing assumption fails, the output degenerates, it cannot produce a legal result, or its cost violates the user's budget. A method does not fail merely because an irrelevant generic diagnostic is unavailable.
+ 
++It also fails when it requires forbidden future information, silently scalarizes an unapproved objective trade-off, or treats an infeasible output as eligible because another objective is better. A stated repair may support `CONDITIONAL` only when it removes that violation without making the decision for the human.
++
+ # Output and Handoff
+ 
+ After G2 screening:
+@@ -127,6 +138,8 @@ After G2 screening:
+ - Do not call a nonfunctional toy method a baseline.
+ - Do not fully implement all shortlisted methods.
+ - Do not select the method or write the human rationale.
++- Do not substitute a better total objective for hard-constraint feasibility.
++- Respect typed upstream dependencies and their uncertainty; do not offer a method that consumes an absent, stale, mismatched, or incompatible required artifact.
+ - Keep AI suggestions visibly separate from the human decision.
+ 
+ # Compatibility
+diff --git a/.claude/skills/workflow-orchestrator/SKILL.md b/.claude/skills/workflow-orchestrator/SKILL.md
+index c296be1..80f80dc 100644
+--- a/.claude/skills/workflow-orchestrator/SKILL.md
++++ b/.claude/skills/workflow-orchestrator/SKILL.md
+@@ -47,6 +47,7 @@ Maintain one compact JSON manifest per subquestion:
+     "risk_probe": "methods/Q1/probes/risk_probe_summary.json",
+     "latest_run": null
+   },
++  "dependency_gates": [],
+   "allowed": {
+     "code_generation": false,
+     "freeze": false,
+@@ -69,10 +70,14 @@ Update only fields affected by the current state change. Generate a human dashbo
+ 
+ Evaluate each Qx independently.
+ 
++Before evaluating a downstream gate, apply a dependency gate only when its parse declares a real `cross_question_dependencies` entry. For each required upstream artifact, verify existence, required status, identity/version/hash, freshness, and uncertainty compatibility. A missing, stale, identity-mismatched, or uncertainty-incompatible artifact blocks only that downstream Qx and names the failed condition. Do not turn conceptual references into gates; a Qx with no real dependency remains eligible to progress in parallel.
++
+ ## G1 — PROBLEM_FRAMED
+ 
+ Pass when parse, classification, data inventory, success criteria, and human framing exist. A placeholder in a human-owned field blocks the gate.
+ 
++For a real upstream dependency, do not pass the relevant downstream gate until its dependency gate passes.
++
+ ## G2 — METHOD_SCREENED
+ 
+ Pass when:
+@@ -125,6 +130,7 @@ Evaluate only in `submission`. Require passing consistency, completeness, and QA
+ Choose one primary next action:
+ 
+ - missing framing → parser/classifier or human framing card;
++- failed real dependency gate → the upstream artifact owner or a refresh/uncertainty-resolution action; keep unrelated Qx runnable;
+ - missing data profile → `data-auditor-cleaner`;
+ - missing method card/probe → `method-selector`;
+ - missing human method choice → `decision-prompt-builder`;
+@@ -197,6 +203,7 @@ Do not paste a full dashboard or large JSON structure unless the user asks.
+ # Verification
+ 
+ - State is derived from current canonical artifacts.
++- Dependency blocks are limited to declared real dependencies and explain artifact/status/identity/freshness/uncertainty failures.
+ - Lean requirements are not confused with submission requirements.
+ - Human decisions were not inferred from AI suggestions.
+ - Code generation, freeze, paper writing, and final assembly flags match the gates.
+diff --git a/.claude/skills/model-code-analyzer/SKILL.md b/.claude/skills/model-code-analyzer/SKILL.md
+index 6a91196..1082f91 100644
+--- a/.claude/skills/model-code-analyzer/SKILL.md
++++ b/.claude/skills/model-code-analyzer/SKILL.md
+@@ -26,7 +26,7 @@ Read legacy candidate/decision artifacts only when the new artifacts are absent.
+    - shared helpers and comparison logic.
+ 3. Record the fallback ID and trigger, but do not plan its full implementation unless the trigger is already evidenced and the human chose activation.
+ 4. Map mathematical definitions to inputs, processing steps, intermediate evidence, outputs, and validation checks.
+-5. Define a directly comparable metric/output contract for main and baseline.
++5. Carry the applicable information boundary, objective roles, hard constraints, and typed upstream artifact identities into one shared contract for main and baseline. Define a directly comparable metric/output contract only after feasibility is checked.
+ 6. Define the round output:
+ 
+ ```text
+@@ -64,11 +64,21 @@ Require:
+       "output_files": [],
+       "figure_files": [],
+       "metrics_summary": {},
++      "information_boundary_check": {"status": "NOT_APPLICABLE", "evidence": []},
++      "objective_values": [],
++      "constraint_violations": [],
++      "upstream_artifacts": [],
+       "warnings": [],
+       "errors": []
+     }
+   ],
+   "comparison": {},
++  "contract_evidence": {
++    "objective_contract": {},
++    "unresolved_tradeoffs": [],
++    "shared_information_boundary": {},
++    "upstream_artifact_contract": []
++  },
+   "fallback_trigger": {
+     "fallback_id": null,
+     "condition": null,
+@@ -87,6 +97,7 @@ Require:
+ - input fields and units;
+ - per-method computation steps;
+ - comparable outputs and metrics;
++- shared information-boundary checks, objective values, constraint-violation reporting, and upstream artifact identity/version/hash/uncertainty for both main and baseline;
+ - risk-probe conditions that implementation must monitor;
+ - fallback trigger evaluation;
+ - paths, seed, dependencies, and expected runtime;
+@@ -98,6 +109,8 @@ Require:
+ - Do not add candidates or change model meaning.
+ - Do not plan a diagnostic reference as the official baseline.
+ - Do not implement a fallback before activation.
++- Do not give main and baseline different information, objective, constraint, or upstream-artifact contracts.
++- Stop when a required upstream artifact is missing, stale, identity-mismatched, or uncertainty-incompatible, or when a required objective trade-off remains unapproved.
+ - Do not require success logs.
+ - Do not create a README when the code plan already provides the same instructions.
+ - Stop if a human choice, required parameter, input field, or comparable baseline output is missing.
+@@ -107,5 +120,6 @@ Require:
+ - Plan scope is exactly main plus usable baseline unless fallback activation is recorded.
+ - Outputs are directly comparable.
+ - Probe risks and fallback trigger are represented in `run_summary.json`.
++- Both method records carry the same applicable contract evidence and report objective values and constraint violations separately.
+ - Paths follow the experiment contract.
+ - Handoff targets the correct language generator.
+diff --git a/.claude/skills/python-code-reviewer/SKILL.md b/.claude/skills/python-code-reviewer/SKILL.md
+index f7038c7..c38e878 100644
+--- a/.claude/skills/python-code-reviewer/SKILL.md
++++ b/.claude/skills/python-code-reviewer/SKILL.md
+@@ -15,10 +15,10 @@ description: Review, run, debug, and verify approved Python modeling code agains
+ 2. Inspect and run the code in the intended order.
+ 3. Evaluate required checks:
+    - `syntax`: imports, execution, exceptions, and obvious runtime faults.
+-   - `input_contract`: paths, fields, units, shapes, missing-data handling, and raw-data protection.
+-   - `method_alignment`: formulas, objectives, constraints, assumptions, main/baseline roles, and fallback scope match the approved plan.
++   - `input_contract`: paths, fields, units, shapes, missing-data handling, raw-data protection, applicable information boundaries, and required upstream artifact identity/version/hash/freshness/uncertainty.
++   - `method_alignment`: formulas, objectives, constraints, assumptions, main/baseline roles, and fallback scope match the approved plan; reject forbidden future information and unapproved objective scalarization.
+    - `reproducibility`: seed, deterministic setup, dependency/runtime record, and rerun consistency.
+-   - `output_contract`: saved tables/metrics/figures, valid run summary, comparable main/baseline metrics, degeneracy evidence, and fallback-trigger state.
++   - `output_contract`: saved tables/metrics/figures, valid run summary, comparable main/baseline metrics, per-method objective values, constraint violations, degeneracy evidence, and fallback-trigger state. Any infeasible output fails even if its total objective is better.
+ 4. Add risk-specific checks only when relevant, such as leakage, constraint feasibility, numerical stability, or scale.
+ 5. If asked to fix findings, make minimal changes, rerun affected checks, and record the repair. Otherwise report findings without changing code.
+ 6. Save `code/Qx/reviews/qx_python_review.json`.
+@@ -45,7 +45,7 @@ description: Review, run, debug, and verify approved Python modeling code agains
+ }
+ ```
+ 
+-Statuses are `PASS`, `FAIL`, or `NOT_APPLICABLE` with a reason. Any required `FAIL` blocks G3.
++Statuses are `PASS`, `FAIL`, or `NOT_APPLICABLE` with a reason. `NOT_APPLICABLE` is valid for genuinely static/no-dependency contract fields. Any required `FAIL` blocks G3; a better aggregate objective never overrides a failed named check.
+ 
+ # Rules
+ 
+@@ -53,6 +53,7 @@ Statuses are `PASS`, `FAIL`, or `NOT_APPLICABLE` with a reason. Any required `FA
+ - Do not fabricate execution or outputs.
+ - Do not approve a toy diagnostic reference as the official baseline.
+ - Do not silently change mathematical meaning.
++- Fail the applicable check for lookahead, unapproved scalarization, an infeasible output, or a missing, stale, identity-mismatched, or uncertainty-incompatible required upstream artifact.
+ - Do not create success logs beyond the review JSON.
+ - Treat code newer than its review as requiring the affected checks to rerun, not necessarily the entire pipeline.
+ 
+@@ -61,4 +62,5 @@ Statuses are `PASS`, `FAIL`, or `NOT_APPLICABLE` with a reason. Any required `FA
+ - Every required named check has concrete evidence.
+ - Main and baseline are approved and comparable.
+ - Run summary and on-disk outputs agree.
++- Static contract checks still run when execution cannot; never classify an unchecked violation as a pass.
+ - Review verdict follows check statuses.
+diff --git a/.claude/skills/matlab-code-reviewer/SKILL.md b/.claude/skills/matlab-code-reviewer/SKILL.md
+index 51b3ded..2d5fe32 100644
+--- a/.claude/skills/matlab-code-reviewer/SKILL.md
++++ b/.claude/skills/matlab-code-reviewer/SKILL.md
+@@ -15,13 +15,13 @@ description: Review, run, debug, and verify approved MATLAB or Beita Tianyuan mo
+ 2. Inspect and run the code when a compatible runtime is available.
+ 3. Evaluate:
+    - `syntax`
+-   - `input_contract`
+-   - `method_alignment`
++   - `input_contract`, including applicable information boundaries and required upstream artifact identity/version/hash/freshness/uncertainty;
++   - `method_alignment`, including forbidden future information and unapproved objective scalarization;
+    - `reproducibility`
+-   - `output_contract`
++   - `output_contract`, including per-method objective values and constraint violations; an infeasible output fails even if its total objective is better.
+ 4. Include compatibility evidence for toolbox usage, `jsonencode`, file I/O, plotting/export, and 北太天元 constraints.
+ 5. Add only relevant numerical, feasibility, leakage, or scale checks.
+-6. If runtime is unavailable, use `NOT_RUN` rather than claiming execution success.
++6. If runtime is unavailable, use `NOT_RUN` only for runtime-dependent items rather than claiming execution success; still perform static contract checks.
+ 7. If asked to fix findings, patch minimally and rerun affected checks.
+ 8. Save `code/matlab/Qx/reviews/qx_matlab_review.json`.
+ 
+@@ -34,7 +34,7 @@ Use the same schema as `python-code-reviewer`, with:
+ - `compatibility_target`
+ - optional `compatibility` check
+ 
+-Required named checks use `PASS`, `FAIL`, or justified `NOT_APPLICABLE`. Runtime-dependent checks use `NOT_RUN` when execution was impossible; this blocks G3 until executed.
++Required named checks use `PASS`, `FAIL`, or justified `NOT_APPLICABLE`; simple static/no-dependency fields may be `NOT_APPLICABLE` without penalty. Runtime-dependent checks use `NOT_RUN` when execution was impossible; this blocks G3 until executed. A better aggregate objective never overrides a failed named check.
+ 
+ # Rules
+ 
+@@ -42,6 +42,7 @@ Required named checks use `PASS`, `FAIL`, or justified `NOT_APPLICABLE`. Runtime
+ - Do not fabricate MATLAB/北太天元 execution.
+ - Do not approve unavailable toolbox dependencies without an explicit target exception.
+ - Do not change the mathematical model silently.
++- Fail the applicable check for lookahead, unapproved scalarization, an infeasible output, or a missing, stale, identity-mismatched, or uncertainty-incompatible required upstream artifact.
+ - Do not require a duplicate Markdown review.
+ 
+ # Verification
+@@ -49,4 +50,5 @@ Required named checks use `PASS`, `FAIL`, or justified `NOT_APPLICABLE`. Runtime
+ - Approved main and baseline scope is enforced.
+ - Compatibility constraints are checked.
+ - Run summary and outputs agree.
++- Python and MATLAB/北太天元 apply the same information, objective, feasibility, and dependency semantics.
+ - Verdict follows required check statuses and runtime evidence.
+diff --git a/.codex/skills/problem-parser/SKILL.md b/.codex/skills/problem-parser/SKILL.md
+index fd05318..00905d1 100644
+--- a/.codex/skills/problem-parser/SKILL.md
++++ b/.codex/skills/problem-parser/SKILL.md
+@@ -27,13 +27,16 @@ Produce a model-neutral problem contract. Do not start from favorite algorithms
+    - required output and format;
+    - evaluation/success criteria;
+    - dependencies on other Qx;
++   - when decisions occur, what information is visible then, what future information is forbidden, and how state updates, when the question is dynamic or staged;
++   - each quantity's role as a hard constraint, optimization objective, or report-only measure, including direction, unit, aggregation, threshold, and any unresolved trade-off;
++   - typed cross-question dependencies: upstream Q, required artifact and state, identity/version/hash, freshness, and uncertainty compatibility.
+    - uncertainty and ambiguity.
+ 4. Separate:
+    - statement facts;
+    - observations from supplied data;
+    - proposed relationships;
+    - assumptions requiring human judgment.
+-5. If output form or success criteria are materially ambiguous, invoke one choice card. Do not choose the framing silently.
++5. If output form, success criteria, or a material objective trade-off is ambiguous, invoke one choice card. Do not choose the framing silently. For a simple static question, record `NOT_APPLICABLE` or compact empty values for the new fields and do not create a card merely because those fields exist.
+ 6. Save:
+    - `planning/parse/problem_parse.json`
+    - an optional concise `planning/parse/problem_parse.md` only when a human-readable view is useful.
+@@ -60,6 +63,37 @@ Produce a model-neutral problem contract. Do not start from favorite algorithms
+       "required_outputs": [],
+       "success_criteria": [],
+       "dependencies": [],
++      "decision_context": {
++        "status": "NOT_APPLICABLE",
++        "decision_order": [],
++        "decision_timepoints": [],
++        "visible_information": [],
++        "forbidden_future_information": [],
++        "state_update": ""
++      },
++      "objective_contract": {
++        "items": [
++          {
++            "id": "",
++            "role": "hard_constraint",
++            "direction": "",
++            "unit": "",
++            "aggregation": "",
++            "threshold": null
++          }
++        ],
++        "unresolved_tradeoffs": []
++      },
++      "cross_question_dependencies": [
++        {
++          "upstream_question": "Q1",
++          "required_artifact": "",
++          "required_status": "",
++          "version_or_hash": "",
++          "freshness_requirement": "",
++          "uncertainty_requirement": ""
++        }
++      ],
+       "proposed_relationships": [],
+       "ambiguities": []
+     }
+@@ -75,6 +109,8 @@ Produce a model-neutral problem contract. Do not start from favorite algorithms
+ - Do not name or recommend methods.
+ - Do not fabricate data, fields, equations, causal relationships, or evaluation criteria.
+ - Preserve units, time ranges, populations, and output formats.
++- Keep the existing `dependencies` list for compatibility; use `cross_question_dependencies` only for real execution dependencies, not conceptual references.
++- Do not treat information unavailable at a decision time as an input, or silently resolve an objective trade-off.
+ - A proposed relationship must be labeled as proposed until human-confirmed or evidence-supported.
+ - Ask only about ambiguities that change the downstream problem.
+ 
+@@ -82,6 +118,8 @@ Produce a model-neutral problem contract. Do not start from favorite algorithms
+ 
+ - Every subquestion maps to a required output.
+ - Constraints and dependencies are explicit.
++- Dynamic contexts expose their information boundary and state update; static contexts remain compact.
++- Objective roles and applicable upstream artifact identities are explicit before downstream use.
+ - Missing attachments and ambiguities are visible.
+ - Facts, proposals, assumptions, and decisions are separated.
+ - Human-owned success criteria are confirmed or remain a blocker.
+diff --git a/.codex/skills/method-selector/SKILL.md b/.codex/skills/method-selector/SKILL.md
+index 24c2991..54e05e2 100644
+--- a/.codex/skills/method-selector/SKILL.md
++++ b/.codex/skills/method-selector/SKILL.md
+@@ -35,7 +35,10 @@ If these are missing, return to the producer skill rather than guessing.
+    - Reuse answers already present in the decision ledger.
+ 
+ 2. **Derive method requirements.**
++   - Consume applicable `decision_context`, `objective_contract`, and typed cross-question dependencies from the problem parse.
+    - Start from required output, hard constraints, data characteristics, validation criteria, explanation burden, and experiment budget.
++   - Screen information availability at each decision time before scoring a method. A method that uses forbidden future information is `FAIL`; incomplete evidence may be `CONDITIONAL` only with a concrete boundary-respecting repair.
++   - Treat hard feasibility as prior to objective comparison. Do not scalarize objectives or resolve an unresolved trade-off unless the human has approved that choice.
+    - Identify the failure modes that would make a method unusable.
+ 
+ 3. **Create a role-based shortlist.**
+@@ -75,6 +78,12 @@ If these are missing, return to the producer skill rather than guessing.
+ 
+ ## Goal and success criteria
+ 
++## Contract compatibility
++- Information boundary and state update:
++- Objective roles, directions, units, aggregation, and thresholds:
++- Unresolved human trade-offs:
++- Required upstream artifacts, identity/freshness, and uncertainty:
++
+ ## Human constraints
+ - Output form:
+ - Priority:
+@@ -110,6 +119,8 @@ Do not maintain a separate iteration log for new work.
+ 
+ A method fails screening when a load-bearing assumption fails, the output degenerates, it cannot produce a legal result, or its cost violates the user's budget. A method does not fail merely because an irrelevant generic diagnostic is unavailable.
+ 
++It also fails when it requires forbidden future information, silently scalarizes an unapproved objective trade-off, or treats an infeasible output as eligible because another objective is better. A stated repair may support `CONDITIONAL` only when it removes that violation without making the decision for the human.
++
+ # Output and Handoff
+ 
+ After G2 screening:
+@@ -127,6 +138,8 @@ After G2 screening:
+ - Do not call a nonfunctional toy method a baseline.
+ - Do not fully implement all shortlisted methods.
+ - Do not select the method or write the human rationale.
++- Do not substitute a better total objective for hard-constraint feasibility.
++- Respect typed upstream dependencies and their uncertainty; do not offer a method that consumes an absent, stale, mismatched, or incompatible required artifact.
+ - Keep AI suggestions visibly separate from the human decision.
+ 
+ # Compatibility
+diff --git a/.codex/skills/workflow-orchestrator/SKILL.md b/.codex/skills/workflow-orchestrator/SKILL.md
+index c296be1..80f80dc 100644
+--- a/.codex/skills/workflow-orchestrator/SKILL.md
++++ b/.codex/skills/workflow-orchestrator/SKILL.md
+@@ -47,6 +47,7 @@ Maintain one compact JSON manifest per subquestion:
+     "risk_probe": "methods/Q1/probes/risk_probe_summary.json",
+     "latest_run": null
+   },
++  "dependency_gates": [],
+   "allowed": {
+     "code_generation": false,
+     "freeze": false,
+@@ -69,10 +70,14 @@ Update only fields affected by the current state change. Generate a human dashbo
+ 
+ Evaluate each Qx independently.
+ 
++Before evaluating a downstream gate, apply a dependency gate only when its parse declares a real `cross_question_dependencies` entry. For each required upstream artifact, verify existence, required status, identity/version/hash, freshness, and uncertainty compatibility. A missing, stale, identity-mismatched, or uncertainty-incompatible artifact blocks only that downstream Qx and names the failed condition. Do not turn conceptual references into gates; a Qx with no real dependency remains eligible to progress in parallel.
++
+ ## G1 — PROBLEM_FRAMED
+ 
+ Pass when parse, classification, data inventory, success criteria, and human framing exist. A placeholder in a human-owned field blocks the gate.
+ 
++For a real upstream dependency, do not pass the relevant downstream gate until its dependency gate passes.
++
+ ## G2 — METHOD_SCREENED
+ 
+ Pass when:
+@@ -125,6 +130,7 @@ Evaluate only in `submission`. Require passing consistency, completeness, and QA
+ Choose one primary next action:
+ 
+ - missing framing → parser/classifier or human framing card;
++- failed real dependency gate → the upstream artifact owner or a refresh/uncertainty-resolution action; keep unrelated Qx runnable;
+ - missing data profile → `data-auditor-cleaner`;
+ - missing method card/probe → `method-selector`;
+ - missing human method choice → `decision-prompt-builder`;
+@@ -197,6 +203,7 @@ Do not paste a full dashboard or large JSON structure unless the user asks.
+ # Verification
+ 
+ - State is derived from current canonical artifacts.
++- Dependency blocks are limited to declared real dependencies and explain artifact/status/identity/freshness/uncertainty failures.
+ - Lean requirements are not confused with submission requirements.
+ - Human decisions were not inferred from AI suggestions.
+ - Code generation, freeze, paper writing, and final assembly flags match the gates.
+diff --git a/.codex/skills/model-code-analyzer/SKILL.md b/.codex/skills/model-code-analyzer/SKILL.md
+index 6a91196..1082f91 100644
+--- a/.codex/skills/model-code-analyzer/SKILL.md
++++ b/.codex/skills/model-code-analyzer/SKILL.md
+@@ -26,7 +26,7 @@ Read legacy candidate/decision artifacts only when the new artifacts are absent.
+    - shared helpers and comparison logic.
+ 3. Record the fallback ID and trigger, but do not plan its full implementation unless the trigger is already evidenced and the human chose activation.
+ 4. Map mathematical definitions to inputs, processing steps, intermediate evidence, outputs, and validation checks.
+-5. Define a directly comparable metric/output contract for main and baseline.
++5. Carry the applicable information boundary, objective roles, hard constraints, and typed upstream artifact identities into one shared contract for main and baseline. Define a directly comparable metric/output contract only after feasibility is checked.
+ 6. Define the round output:
+ 
+ ```text
+@@ -64,11 +64,21 @@ Require:
+       "output_files": [],
+       "figure_files": [],
+       "metrics_summary": {},
++      "information_boundary_check": {"status": "NOT_APPLICABLE", "evidence": []},
++      "objective_values": [],
++      "constraint_violations": [],
++      "upstream_artifacts": [],
+       "warnings": [],
+       "errors": []
+     }
+   ],
+   "comparison": {},
++  "contract_evidence": {
++    "objective_contract": {},
++    "unresolved_tradeoffs": [],
++    "shared_information_boundary": {},
++    "upstream_artifact_contract": []
++  },
+   "fallback_trigger": {
+     "fallback_id": null,
+     "condition": null,
+@@ -87,6 +97,7 @@ Require:
+ - input fields and units;
+ - per-method computation steps;
+ - comparable outputs and metrics;
++- shared information-boundary checks, objective values, constraint-violation reporting, and upstream artifact identity/version/hash/uncertainty for both main and baseline;
+ - risk-probe conditions that implementation must monitor;
+ - fallback trigger evaluation;
+ - paths, seed, dependencies, and expected runtime;
+@@ -98,6 +109,8 @@ Require:
+ - Do not add candidates or change model meaning.
+ - Do not plan a diagnostic reference as the official baseline.
+ - Do not implement a fallback before activation.
++- Do not give main and baseline different information, objective, constraint, or upstream-artifact contracts.
++- Stop when a required upstream artifact is missing, stale, identity-mismatched, or uncertainty-incompatible, or when a required objective trade-off remains unapproved.
+ - Do not require success logs.
+ - Do not create a README when the code plan already provides the same instructions.
+ - Stop if a human choice, required parameter, input field, or comparable baseline output is missing.
+@@ -107,5 +120,6 @@ Require:
+ - Plan scope is exactly main plus usable baseline unless fallback activation is recorded.
+ - Outputs are directly comparable.
+ - Probe risks and fallback trigger are represented in `run_summary.json`.
++- Both method records carry the same applicable contract evidence and report objective values and constraint violations separately.
+ - Paths follow the experiment contract.
+ - Handoff targets the correct language generator.
+diff --git a/.codex/skills/python-code-reviewer/SKILL.md b/.codex/skills/python-code-reviewer/SKILL.md
+index f7038c7..c38e878 100644
+--- a/.codex/skills/python-code-reviewer/SKILL.md
++++ b/.codex/skills/python-code-reviewer/SKILL.md
+@@ -15,10 +15,10 @@ description: Review, run, debug, and verify approved Python modeling code agains
+ 2. Inspect and run the code in the intended order.
+ 3. Evaluate required checks:
+    - `syntax`: imports, execution, exceptions, and obvious runtime faults.
+-   - `input_contract`: paths, fields, units, shapes, missing-data handling, and raw-data protection.
+-   - `method_alignment`: formulas, objectives, constraints, assumptions, main/baseline roles, and fallback scope match the approved plan.
++   - `input_contract`: paths, fields, units, shapes, missing-data handling, raw-data protection, applicable information boundaries, and required upstream artifact identity/version/hash/freshness/uncertainty.
++   - `method_alignment`: formulas, objectives, constraints, assumptions, main/baseline roles, and fallback scope match the approved plan; reject forbidden future information and unapproved objective scalarization.
+    - `reproducibility`: seed, deterministic setup, dependency/runtime record, and rerun consistency.
+-   - `output_contract`: saved tables/metrics/figures, valid run summary, comparable main/baseline metrics, degeneracy evidence, and fallback-trigger state.
++   - `output_contract`: saved tables/metrics/figures, valid run summary, comparable main/baseline metrics, per-method objective values, constraint violations, degeneracy evidence, and fallback-trigger state. Any infeasible output fails even if its total objective is better.
+ 4. Add risk-specific checks only when relevant, such as leakage, constraint feasibility, numerical stability, or scale.
+ 5. If asked to fix findings, make minimal changes, rerun affected checks, and record the repair. Otherwise report findings without changing code.
+ 6. Save `code/Qx/reviews/qx_python_review.json`.
+@@ -45,7 +45,7 @@ description: Review, run, debug, and verify approved Python modeling code agains
+ }
+ ```
+ 
+-Statuses are `PASS`, `FAIL`, or `NOT_APPLICABLE` with a reason. Any required `FAIL` blocks G3.
++Statuses are `PASS`, `FAIL`, or `NOT_APPLICABLE` with a reason. `NOT_APPLICABLE` is valid for genuinely static/no-dependency contract fields. Any required `FAIL` blocks G3; a better aggregate objective never overrides a failed named check.
+ 
+ # Rules
+ 
+@@ -53,6 +53,7 @@ Statuses are `PASS`, `FAIL`, or `NOT_APPLICABLE` with a reason. Any required `FA
+ - Do not fabricate execution or outputs.
+ - Do not approve a toy diagnostic reference as the official baseline.
+ - Do not silently change mathematical meaning.
++- Fail the applicable check for lookahead, unapproved scalarization, an infeasible output, or a missing, stale, identity-mismatched, or uncertainty-incompatible required upstream artifact.
+ - Do not create success logs beyond the review JSON.
+ - Treat code newer than its review as requiring the affected checks to rerun, not necessarily the entire pipeline.
+ 
+@@ -61,4 +62,5 @@ Statuses are `PASS`, `FAIL`, or `NOT_APPLICABLE` with a reason. Any required `FA
+ - Every required named check has concrete evidence.
+ - Main and baseline are approved and comparable.
+ - Run summary and on-disk outputs agree.
++- Static contract checks still run when execution cannot; never classify an unchecked violation as a pass.
+ - Review verdict follows check statuses.
+diff --git a/.codex/skills/matlab-code-reviewer/SKILL.md b/.codex/skills/matlab-code-reviewer/SKILL.md
+index 51b3ded..2d5fe32 100644
+--- a/.codex/skills/matlab-code-reviewer/SKILL.md
++++ b/.codex/skills/matlab-code-reviewer/SKILL.md
+@@ -15,13 +15,13 @@ description: Review, run, debug, and verify approved MATLAB or Beita Tianyuan mo
+ 2. Inspect and run the code when a compatible runtime is available.
+ 3. Evaluate:
+    - `syntax`
+-   - `input_contract`
+-   - `method_alignment`
++   - `input_contract`, including applicable information boundaries and required upstream artifact identity/version/hash/freshness/uncertainty;
++   - `method_alignment`, including forbidden future information and unapproved objective scalarization;
+    - `reproducibility`
+-   - `output_contract`
++   - `output_contract`, including per-method objective values and constraint violations; an infeasible output fails even if its total objective is better.
+ 4. Include compatibility evidence for toolbox usage, `jsonencode`, file I/O, plotting/export, and 北太天元 constraints.
+ 5. Add only relevant numerical, feasibility, leakage, or scale checks.
+-6. If runtime is unavailable, use `NOT_RUN` rather than claiming execution success.
++6. If runtime is unavailable, use `NOT_RUN` only for runtime-dependent items rather than claiming execution success; still perform static contract checks.
+ 7. If asked to fix findings, patch minimally and rerun affected checks.
+ 8. Save `code/matlab/Qx/reviews/qx_matlab_review.json`.
+ 
+@@ -34,7 +34,7 @@ Use the same schema as `python-code-reviewer`, with:
+ - `compatibility_target`
+ - optional `compatibility` check
+ 
+-Required named checks use `PASS`, `FAIL`, or justified `NOT_APPLICABLE`. Runtime-dependent checks use `NOT_RUN` when execution was impossible; this blocks G3 until executed.
++Required named checks use `PASS`, `FAIL`, or justified `NOT_APPLICABLE`; simple static/no-dependency fields may be `NOT_APPLICABLE` without penalty. Runtime-dependent checks use `NOT_RUN` when execution was impossible; this blocks G3 until executed. A better aggregate objective never overrides a failed named check.
+ 
+ # Rules
+ 
+@@ -42,6 +42,7 @@ Required named checks use `PASS`, `FAIL`, or justified `NOT_APPLICABLE`. Runtime
+ - Do not fabricate MATLAB/北太天元 execution.
+ - Do not approve unavailable toolbox dependencies without an explicit target exception.
+ - Do not change the mathematical model silently.
++- Fail the applicable check for lookahead, unapproved scalarization, an infeasible output, or a missing, stale, identity-mismatched, or uncertainty-incompatible required upstream artifact.
+ - Do not require a duplicate Markdown review.
+ 
+ # Verification
+@@ -49,4 +50,5 @@ Required named checks use `PASS`, `FAIL`, or justified `NOT_APPLICABLE`. Runtime
+ - Approved main and baseline scope is enforced.
+ - Compatibility constraints are checked.
+ - Run summary and outputs agree.
++- Python and MATLAB/北太天元 apply the same information, objective, feasibility, and dependency semantics.
+ - Verdict follows required check statuses and runtime evidence.
+diff --git a/plugins/mathmodeling-skills/skills/problem-parser/SKILL.md b/plugins/mathmodeling-skills/skills/problem-parser/SKILL.md
+index fd05318..00905d1 100644
+--- a/plugins/mathmodeling-skills/skills/problem-parser/SKILL.md
++++ b/plugins/mathmodeling-skills/skills/problem-parser/SKILL.md
+@@ -27,13 +27,16 @@ Produce a model-neutral problem contract. Do not start from favorite algorithms
+    - required output and format;
+    - evaluation/success criteria;
+    - dependencies on other Qx;
++   - when decisions occur, what information is visible then, what future information is forbidden, and how state updates, when the question is dynamic or staged;
++   - each quantity's role as a hard constraint, optimization objective, or report-only measure, including direction, unit, aggregation, threshold, and any unresolved trade-off;
++   - typed cross-question dependencies: upstream Q, required artifact and state, identity/version/hash, freshness, and uncertainty compatibility.
+    - uncertainty and ambiguity.
+ 4. Separate:
+    - statement facts;
+    - observations from supplied data;
+    - proposed relationships;
+    - assumptions requiring human judgment.
+-5. If output form or success criteria are materially ambiguous, invoke one choice card. Do not choose the framing silently.
++5. If output form, success criteria, or a material objective trade-off is ambiguous, invoke one choice card. Do not choose the framing silently. For a simple static question, record `NOT_APPLICABLE` or compact empty values for the new fields and do not create a card merely because those fields exist.
+ 6. Save:
+    - `planning/parse/problem_parse.json`
+    - an optional concise `planning/parse/problem_parse.md` only when a human-readable view is useful.
+@@ -60,6 +63,37 @@ Produce a model-neutral problem contract. Do not start from favorite algorithms
+       "required_outputs": [],
+       "success_criteria": [],
+       "dependencies": [],
++      "decision_context": {
++        "status": "NOT_APPLICABLE",
++        "decision_order": [],
++        "decision_timepoints": [],
++        "visible_information": [],
++        "forbidden_future_information": [],
++        "state_update": ""
++      },
++      "objective_contract": {
++        "items": [
++          {
++            "id": "",
++            "role": "hard_constraint",
++            "direction": "",
++            "unit": "",
++            "aggregation": "",
++            "threshold": null
++          }
++        ],
++        "unresolved_tradeoffs": []
++      },
++      "cross_question_dependencies": [
++        {
++          "upstream_question": "Q1",
++          "required_artifact": "",
++          "required_status": "",
++          "version_or_hash": "",
++          "freshness_requirement": "",
++          "uncertainty_requirement": ""
++        }
++      ],
+       "proposed_relationships": [],
+       "ambiguities": []
+     }
+@@ -75,6 +109,8 @@ Produce a model-neutral problem contract. Do not start from favorite algorithms
+ - Do not name or recommend methods.
+ - Do not fabricate data, fields, equations, causal relationships, or evaluation criteria.
+ - Preserve units, time ranges, populations, and output formats.
++- Keep the existing `dependencies` list for compatibility; use `cross_question_dependencies` only for real execution dependencies, not conceptual references.
++- Do not treat information unavailable at a decision time as an input, or silently resolve an objective trade-off.
+ - A proposed relationship must be labeled as proposed until human-confirmed or evidence-supported.
+ - Ask only about ambiguities that change the downstream problem.
+ 
+@@ -82,6 +118,8 @@ Produce a model-neutral problem contract. Do not start from favorite algorithms
+ 
+ - Every subquestion maps to a required output.
+ - Constraints and dependencies are explicit.
++- Dynamic contexts expose their information boundary and state update; static contexts remain compact.
++- Objective roles and applicable upstream artifact identities are explicit before downstream use.
+ - Missing attachments and ambiguities are visible.
+ - Facts, proposals, assumptions, and decisions are separated.
+ - Human-owned success criteria are confirmed or remain a blocker.
+diff --git a/plugins/mathmodeling-skills/skills/method-selector/SKILL.md b/plugins/mathmodeling-skills/skills/method-selector/SKILL.md
+index 24c2991..54e05e2 100644
+--- a/plugins/mathmodeling-skills/skills/method-selector/SKILL.md
++++ b/plugins/mathmodeling-skills/skills/method-selector/SKILL.md
+@@ -35,7 +35,10 @@ If these are missing, return to the producer skill rather than guessing.
+    - Reuse answers already present in the decision ledger.
+ 
+ 2. **Derive method requirements.**
++   - Consume applicable `decision_context`, `objective_contract`, and typed cross-question dependencies from the problem parse.
+    - Start from required output, hard constraints, data characteristics, validation criteria, explanation burden, and experiment budget.
++   - Screen information availability at each decision time before scoring a method. A method that uses forbidden future information is `FAIL`; incomplete evidence may be `CONDITIONAL` only with a concrete boundary-respecting repair.
++   - Treat hard feasibility as prior to objective comparison. Do not scalarize objectives or resolve an unresolved trade-off unless the human has approved that choice.
+    - Identify the failure modes that would make a method unusable.
+ 
+ 3. **Create a role-based shortlist.**
+@@ -75,6 +78,12 @@ If these are missing, return to the producer skill rather than guessing.
+ 
+ ## Goal and success criteria
+ 
++## Contract compatibility
++- Information boundary and state update:
++- Objective roles, directions, units, aggregation, and thresholds:
++- Unresolved human trade-offs:
++- Required upstream artifacts, identity/freshness, and uncertainty:
++
+ ## Human constraints
+ - Output form:
+ - Priority:
+@@ -110,6 +119,8 @@ Do not maintain a separate iteration log for new work.
+ 
+ A method fails screening when a load-bearing assumption fails, the output degenerates, it cannot produce a legal result, or its cost violates the user's budget. A method does not fail merely because an irrelevant generic diagnostic is unavailable.
+ 
++It also fails when it requires forbidden future information, silently scalarizes an unapproved objective trade-off, or treats an infeasible output as eligible because another objective is better. A stated repair may support `CONDITIONAL` only when it removes that violation without making the decision for the human.
++
+ # Output and Handoff
+ 
+ After G2 screening:
+@@ -127,6 +138,8 @@ After G2 screening:
+ - Do not call a nonfunctional toy method a baseline.
+ - Do not fully implement all shortlisted methods.
+ - Do not select the method or write the human rationale.
++- Do not substitute a better total objective for hard-constraint feasibility.
++- Respect typed upstream dependencies and their uncertainty; do not offer a method that consumes an absent, stale, mismatched, or incompatible required artifact.
+ - Keep AI suggestions visibly separate from the human decision.
+ 
+ # Compatibility
+diff --git a/plugins/mathmodeling-skills/skills/workflow-orchestrator/SKILL.md b/plugins/mathmodeling-skills/skills/workflow-orchestrator/SKILL.md
+index c296be1..80f80dc 100644
+--- a/plugins/mathmodeling-skills/skills/workflow-orchestrator/SKILL.md
++++ b/plugins/mathmodeling-skills/skills/workflow-orchestrator/SKILL.md
+@@ -47,6 +47,7 @@ Maintain one compact JSON manifest per subquestion:
+     "risk_probe": "methods/Q1/probes/risk_probe_summary.json",
+     "latest_run": null
+   },
++  "dependency_gates": [],
+   "allowed": {
+     "code_generation": false,
+     "freeze": false,
+@@ -69,10 +70,14 @@ Update only fields affected by the current state change. Generate a human dashbo
+ 
+ Evaluate each Qx independently.
+ 
++Before evaluating a downstream gate, apply a dependency gate only when its parse declares a real `cross_question_dependencies` entry. For each required upstream artifact, verify existence, required status, identity/version/hash, freshness, and uncertainty compatibility. A missing, stale, identity-mismatched, or uncertainty-incompatible artifact blocks only that downstream Qx and names the failed condition. Do not turn conceptual references into gates; a Qx with no real dependency remains eligible to progress in parallel.
++
+ ## G1 — PROBLEM_FRAMED
+ 
+ Pass when parse, classification, data inventory, success criteria, and human framing exist. A placeholder in a human-owned field blocks the gate.
+ 
++For a real upstream dependency, do not pass the relevant downstream gate until its dependency gate passes.
++
+ ## G2 — METHOD_SCREENED
+ 
+ Pass when:
+@@ -125,6 +130,7 @@ Evaluate only in `submission`. Require passing consistency, completeness, and QA
+ Choose one primary next action:
+ 
+ - missing framing → parser/classifier or human framing card;
++- failed real dependency gate → the upstream artifact owner or a refresh/uncertainty-resolution action; keep unrelated Qx runnable;
+ - missing data profile → `data-auditor-cleaner`;
+ - missing method card/probe → `method-selector`;
+ - missing human method choice → `decision-prompt-builder`;
+@@ -197,6 +203,7 @@ Do not paste a full dashboard or large JSON structure unless the user asks.
+ # Verification
+ 
+ - State is derived from current canonical artifacts.
++- Dependency blocks are limited to declared real dependencies and explain artifact/status/identity/freshness/uncertainty failures.
+ - Lean requirements are not confused with submission requirements.
+ - Human decisions were not inferred from AI suggestions.
+ - Code generation, freeze, paper writing, and final assembly flags match the gates.
+diff --git a/plugins/mathmodeling-skills/skills/model-code-analyzer/SKILL.md b/plugins/mathmodeling-skills/skills/model-code-analyzer/SKILL.md
+index 6a91196..1082f91 100644
+--- a/plugins/mathmodeling-skills/skills/model-code-analyzer/SKILL.md
++++ b/plugins/mathmodeling-skills/skills/model-code-analyzer/SKILL.md
+@@ -26,7 +26,7 @@ Read legacy candidate/decision artifacts only when the new artifacts are absent.
+    - shared helpers and comparison logic.
+ 3. Record the fallback ID and trigger, but do not plan its full implementation unless the trigger is already evidenced and the human chose activation.
+ 4. Map mathematical definitions to inputs, processing steps, intermediate evidence, outputs, and validation checks.
+-5. Define a directly comparable metric/output contract for main and baseline.
++5. Carry the applicable information boundary, objective roles, hard constraints, and typed upstream artifact identities into one shared contract for main and baseline. Define a directly comparable metric/output contract only after feasibility is checked.
+ 6. Define the round output:
+ 
+ ```text
+@@ -64,11 +64,21 @@ Require:
+       "output_files": [],
+       "figure_files": [],
+       "metrics_summary": {},
++      "information_boundary_check": {"status": "NOT_APPLICABLE", "evidence": []},
++      "objective_values": [],
++      "constraint_violations": [],
++      "upstream_artifacts": [],
+       "warnings": [],
+       "errors": []
+     }
+   ],
+   "comparison": {},
++  "contract_evidence": {
++    "objective_contract": {},
++    "unresolved_tradeoffs": [],
++    "shared_information_boundary": {},
++    "upstream_artifact_contract": []
++  },
+   "fallback_trigger": {
+     "fallback_id": null,
+     "condition": null,
+@@ -87,6 +97,7 @@ Require:
+ - input fields and units;
+ - per-method computation steps;
+ - comparable outputs and metrics;
++- shared information-boundary checks, objective values, constraint-violation reporting, and upstream artifact identity/version/hash/uncertainty for both main and baseline;
+ - risk-probe conditions that implementation must monitor;
+ - fallback trigger evaluation;
+ - paths, seed, dependencies, and expected runtime;
+@@ -98,6 +109,8 @@ Require:
+ - Do not add candidates or change model meaning.
+ - Do not plan a diagnostic reference as the official baseline.
+ - Do not implement a fallback before activation.
++- Do not give main and baseline different information, objective, constraint, or upstream-artifact contracts.
++- Stop when a required upstream artifact is missing, stale, identity-mismatched, or uncertainty-incompatible, or when a required objective trade-off remains unapproved.
+ - Do not require success logs.
+ - Do not create a README when the code plan already provides the same instructions.
+ - Stop if a human choice, required parameter, input field, or comparable baseline output is missing.
+@@ -107,5 +120,6 @@ Require:
+ - Plan scope is exactly main plus usable baseline unless fallback activation is recorded.
+ - Outputs are directly comparable.
+ - Probe risks and fallback trigger are represented in `run_summary.json`.
++- Both method records carry the same applicable contract evidence and report objective values and constraint violations separately.
+ - Paths follow the experiment contract.
+ - Handoff targets the correct language generator.
+diff --git a/plugins/mathmodeling-skills/skills/python-code-reviewer/SKILL.md b/plugins/mathmodeling-skills/skills/python-code-reviewer/SKILL.md
+index f7038c7..c38e878 100644
+--- a/plugins/mathmodeling-skills/skills/python-code-reviewer/SKILL.md
++++ b/plugins/mathmodeling-skills/skills/python-code-reviewer/SKILL.md
+@@ -15,10 +15,10 @@ description: Review, run, debug, and verify approved Python modeling code agains
+ 2. Inspect and run the code in the intended order.
+ 3. Evaluate required checks:
+    - `syntax`: imports, execution, exceptions, and obvious runtime faults.
+-   - `input_contract`: paths, fields, units, shapes, missing-data handling, and raw-data protection.
+-   - `method_alignment`: formulas, objectives, constraints, assumptions, main/baseline roles, and fallback scope match the approved plan.
++   - `input_contract`: paths, fields, units, shapes, missing-data handling, raw-data protection, applicable information boundaries, and required upstream artifact identity/version/hash/freshness/uncertainty.
++   - `method_alignment`: formulas, objectives, constraints, assumptions, main/baseline roles, and fallback scope match the approved plan; reject forbidden future information and unapproved objective scalarization.
+    - `reproducibility`: seed, deterministic setup, dependency/runtime record, and rerun consistency.
+-   - `output_contract`: saved tables/metrics/figures, valid run summary, comparable main/baseline metrics, degeneracy evidence, and fallback-trigger state.
++   - `output_contract`: saved tables/metrics/figures, valid run summary, comparable main/baseline metrics, per-method objective values, constraint violations, degeneracy evidence, and fallback-trigger state. Any infeasible output fails even if its total objective is better.
+ 4. Add risk-specific checks only when relevant, such as leakage, constraint feasibility, numerical stability, or scale.
+ 5. If asked to fix findings, make minimal changes, rerun affected checks, and record the repair. Otherwise report findings without changing code.
+ 6. Save `code/Qx/reviews/qx_python_review.json`.
+@@ -45,7 +45,7 @@ description: Review, run, debug, and verify approved Python modeling code agains
+ }
+ ```
+ 
+-Statuses are `PASS`, `FAIL`, or `NOT_APPLICABLE` with a reason. Any required `FAIL` blocks G3.
++Statuses are `PASS`, `FAIL`, or `NOT_APPLICABLE` with a reason. `NOT_APPLICABLE` is valid for genuinely static/no-dependency contract fields. Any required `FAIL` blocks G3; a better aggregate objective never overrides a failed named check.
+ 
+ # Rules
+ 
+@@ -53,6 +53,7 @@ Statuses are `PASS`, `FAIL`, or `NOT_APPLICABLE` with a reason. Any required `FA
+ - Do not fabricate execution or outputs.
+ - Do not approve a toy diagnostic reference as the official baseline.
+ - Do not silently change mathematical meaning.
++- Fail the applicable check for lookahead, unapproved scalarization, an infeasible output, or a missing, stale, identity-mismatched, or uncertainty-incompatible required upstream artifact.
+ - Do not create success logs beyond the review JSON.
+ - Treat code newer than its review as requiring the affected checks to rerun, not necessarily the entire pipeline.
+ 
+@@ -61,4 +62,5 @@ Statuses are `PASS`, `FAIL`, or `NOT_APPLICABLE` with a reason. Any required `FA
+ - Every required named check has concrete evidence.
+ - Main and baseline are approved and comparable.
+ - Run summary and on-disk outputs agree.
++- Static contract checks still run when execution cannot; never classify an unchecked violation as a pass.
+ - Review verdict follows check statuses.
+diff --git a/plugins/mathmodeling-skills/skills/matlab-code-reviewer/SKILL.md b/plugins/mathmodeling-skills/skills/matlab-code-reviewer/SKILL.md
+index 51b3ded..2d5fe32 100644
+--- a/plugins/mathmodeling-skills/skills/matlab-code-reviewer/SKILL.md
++++ b/plugins/mathmodeling-skills/skills/matlab-code-reviewer/SKILL.md
+@@ -15,13 +15,13 @@ description: Review, run, debug, and verify approved MATLAB or Beita Tianyuan mo
+ 2. Inspect and run the code when a compatible runtime is available.
+ 3. Evaluate:
+    - `syntax`
+-   - `input_contract`
+-   - `method_alignment`
++   - `input_contract`, including applicable information boundaries and required upstream artifact identity/version/hash/freshness/uncertainty;
++   - `method_alignment`, including forbidden future information and unapproved objective scalarization;
+    - `reproducibility`
+-   - `output_contract`
++   - `output_contract`, including per-method objective values and constraint violations; an infeasible output fails even if its total objective is better.
+ 4. Include compatibility evidence for toolbox usage, `jsonencode`, file I/O, plotting/export, and 北太天元 constraints.
+ 5. Add only relevant numerical, feasibility, leakage, or scale checks.
+-6. If runtime is unavailable, use `NOT_RUN` rather than claiming execution success.
++6. If runtime is unavailable, use `NOT_RUN` only for runtime-dependent items rather than claiming execution success; still perform static contract checks.
+ 7. If asked to fix findings, patch minimally and rerun affected checks.
+ 8. Save `code/matlab/Qx/reviews/qx_matlab_review.json`.
+ 
+@@ -34,7 +34,7 @@ Use the same schema as `python-code-reviewer`, with:
+ - `compatibility_target`
+ - optional `compatibility` check
+ 
+-Required named checks use `PASS`, `FAIL`, or justified `NOT_APPLICABLE`. Runtime-dependent checks use `NOT_RUN` when execution was impossible; this blocks G3 until executed.
++Required named checks use `PASS`, `FAIL`, or justified `NOT_APPLICABLE`; simple static/no-dependency fields may be `NOT_APPLICABLE` without penalty. Runtime-dependent checks use `NOT_RUN` when execution was impossible; this blocks G3 until executed. A better aggregate objective never overrides a failed named check.
+ 
+ # Rules
+ 
+@@ -42,6 +42,7 @@ Required named checks use `PASS`, `FAIL`, or justified `NOT_APPLICABLE`. Runtime
+ - Do not fabricate MATLAB/北太天元 execution.
+ - Do not approve unavailable toolbox dependencies without an explicit target exception.
+ - Do not change the mathematical model silently.
++- Fail the applicable check for lookahead, unapproved scalarization, an infeasible output, or a missing, stale, identity-mismatched, or uncertainty-incompatible required upstream artifact.
+ - Do not require a duplicate Markdown review.
+ 
+ # Verification
+@@ -49,4 +50,5 @@ Required named checks use `PASS`, `FAIL`, or justified `NOT_APPLICABLE`. Runtime
+ - Approved main and baseline scope is enforced.
+ - Compatibility constraints are checked.
+ - Run summary and outputs agree.
++- Python and MATLAB/北太天元 apply the same information, objective, feasibility, and dependency semantics.
+ - Verdict follows required check statuses and runtime evidence.

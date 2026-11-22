@@ -1,0 +1,295 @@
+{
+  "suite": "P17 R3 candidate contract behavior",
+  "approved_bundles": [
+    "CHG-B03",
+    "CHG-B04"
+  ],
+  "model_execution": "NOT_RUN: structured contract fixtures only",
+  "assertion_count": 56,
+  "results": [
+    {
+      "id": "BT-01",
+      "status": "PASS",
+      "detail": "FAIL"
+    },
+    {
+      "id": "BT-02",
+      "status": "PASS",
+      "detail": "PASSED"
+    },
+    {
+      "id": "BT-03",
+      "status": "PASS",
+      "detail": [
+        "FAIL",
+        "FAIL"
+      ]
+    },
+    {
+      "id": "BT-04-downstream",
+      "status": "PASS",
+      "detail": "BLOCKED"
+    },
+    {
+      "id": "BT-04-independent",
+      "status": "PASS",
+      "detail": "PASS"
+    },
+    {
+      "id": "BT-09-silent-loss",
+      "status": "PASS",
+      "detail": "FAIL"
+    },
+    {
+      "id": "BT-09-reconciled",
+      "status": "PASS",
+      "detail": "PASS"
+    },
+    {
+      "id": "BT-09-main-baseline-mismatch",
+      "status": "PASS",
+      "detail": "FAIL"
+    },
+    {
+      "id": "BT-10-outer-tuned",
+      "status": "PASS",
+      "detail": "FAIL"
+    },
+    {
+      "id": "BT-10-group-leak",
+      "status": "PASS",
+      "detail": "FAIL"
+    },
+    {
+      "id": "BT-10-hidden-abstention",
+      "status": "PASS",
+      "detail": "FAIL"
+    },
+    {
+      "id": "BT-10-legal-triage",
+      "status": "PASS",
+      "detail": "PASSED"
+    },
+    {
+      "id": "BT-05-lookahead",
+      "status": "PASS",
+      "detail": "FAIL"
+    },
+    {
+      "id": "BT-05-scalarization",
+      "status": "PASS",
+      "detail": "FAIL"
+    },
+    {
+      "id": "BT-05-infeasible",
+      "status": "PASS",
+      "detail": "FAIL"
+    },
+    {
+      "id": "BT-06-lookahead",
+      "status": "PASS",
+      "detail": "FAIL"
+    },
+    {
+      "id": "BT-06-scalarization",
+      "status": "PASS",
+      "detail": "FAIL"
+    },
+    {
+      "id": "BT-06-infeasible",
+      "status": "PASS",
+      "detail": "FAIL"
+    },
+    {
+      "id": "BT-06-runtime",
+      "status": "PASS",
+      "detail": "NOT_RUN"
+    },
+    {
+      "id": "BT-07",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-08-valid-domain",
+      "status": "PASS",
+      "detail": "PASS"
+    },
+    {
+      "id": "BT-08-unresolved-domain",
+      "status": "PASS",
+      "detail": "FAIL"
+    },
+    {
+      "id": "BT-08-posthoc-domain",
+      "status": "PASS",
+      "detail": "FAIL"
+    },
+    {
+      "id": "BT-01-skill:problem-parser:# Workflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-01-skill:method-selector:# Workflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-02-skill:problem-parser:# Workflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-02-skill:python-code-reviewer:# Review Schema",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-03-skill:problem-parser:# JSON Contract",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-03-skill:method-selector:# Workflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-03-skill:python-code-reviewer:# Workflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-04-skill:workflow-orchestrator:# Gate Evaluation",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-04-skill:workflow-orchestrator:# Gate Evaluation",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-05-skill:python-code-reviewer:# Rules",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-06-skill:matlab-code-reviewer:# Workflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-06-skill:matlab-code-reviewer:# Verification",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-07-skill:model-code-analyzer:# Rules",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-07-skill:model-code-analyzer:# Run Summary Contract",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-08-skill:problem-parser:# JSON Contract",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-08-skill:method-selector:# Probe Verdicts",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-08-skill:workflow-orchestrator:## G3",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-08-skill:model-code-analyzer:# Rules",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-08-skill:python-code-reviewer:# Rules",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-08-skill:matlab-code-reviewer:# Rules",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-09-skill:model-code-analyzer:# Workflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-09-skill:python-model-code-generator:# Workflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-09-skill:matlab-model-code-generator:# Workflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-09-skill:python-code-reviewer:# Rules",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-09-skill:matlab-code-reviewer:# Rules",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-09-skill:workflow-orchestrator:# Routing",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-10-skill:method-selector:# Workflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-10-skill:model-code-analyzer:# Workflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-10-skill:python-code-reviewer:# Workflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-10-skill:matlab-code-reviewer:# Workflow",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-10-skill:robustness-checker:# Rules",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-10-skill:result-report-generator:# Rules",
+      "status": "PASS",
+      "detail": true
+    },
+    {
+      "id": "BT-10-skill:workflow-orchestrator:## G3",
+      "status": "PASS",
+      "detail": true
+    }
+  ],
+  "overall": "PASS"
+}

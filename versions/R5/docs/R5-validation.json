@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "passed": 17,
+  "checks": [
+    "greedy_trap_first_action",
+    "two_step_real_reward",
+    "heuristic_has_no_optimality_guarantee",
+    "dead_end_infeasible",
+    "reflection_known_solution",
+    "reflection_both_residuals",
+    "rotation_translation_invariance",
+    "tangent_single_solution",
+    "coincident_rejected",
+    "invalid_common_point_rejected",
+    "renewal_known_value",
+    "renewal_series_with_tail_bound",
+    "renewal_no_repeat",
+    "nonabsorbing_rejected",
+    "experiment_discriminates_models",
+    "raw_spread_not_enough",
+    "zero_noise_rejected"
+  ],
+  "scope": "synthetic mechanism and counterexample tests; no full contest or agent evaluation"
+}

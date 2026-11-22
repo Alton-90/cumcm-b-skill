@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "contract_id": "P15-2025C-Q4-F4-ROBUSTNESS-001",
+  "declared_at": "2026-09-08T15:35:24.0706745+08:00",
+  "declared_before_f4_execution": true,
+  "activation_decision": {
+    "decision_id": "Q4-ROBUSTNESS-FALLBACK-2025C-001",
+    "choice": "A",
+    "decided_by": "human"
+  },
+  "tested_claim": "The active M4+F4 threshold-envelope triage converts split-sensitive binary decisions into an explicit retest state while retaining split-stable woman-weighted safety sensitivity and a useful definitive-negative advantage over B4+F4.",
+  "fixed_design": {
+    "canonical_outer_seed": 20250908,
+    "alternate_outer_seeds": [
+      20250817,
+      20250829,
+      20250911,
+      20250923,
+      20251007,
+      20251019,
+      20251103
+    ],
+    "calibration_seeds": [
+      20250817,
+      20250829,
+      20250911,
+      20250923,
+      20251007,
+      20251019,
+      20251103
+    ],
+    "outer_folds": 5,
+    "inner_folds": 4,
+    "inner_sensitivity_target": 0.9,
+    "threshold_choice_secondary_objective": "maximize woman-weighted specificity",
+    "triage_rule": {
+      "not_flagged": "score < minimum inner-calibration threshold",
+      "abnormal": "score >= maximum inner-calibration threshold",
+      "indeterminate_retest": "otherwise"
+    },
+    "models": {
+      "main": {
+        "id": "M4_F4",
+        "score_model": "M4",
+        "ridge": 0.08
+      },
+      "usable_baseline": {
+        "id": "B4_F4",
+        "score_model": "B4",
+        "ridge": 0.02
+      }
+    },
+    "weighting": "Each woman has equal total weight within fitting and evaluation.",
+    "information_boundary": "All thresholds use only the corresponding outer-training women; every outer-test woman is untouched until final scoring."
+  },
+  "metrics": {
+    "safety_sensitivity": "weighted fraction of positive records assigned abnormal or indeterminate_retest",
+    "definitive_negative_specificity": "weighted fraction of negative records assigned not_flagged",
+    "direct_abnormal_sensitivity": "weighted fraction of positive records assigned abnormal",
+    "direct_abnormal_specificity": "weighted fraction of negative records not assigned abnormal",
+    "indeterminate_fraction": "woman-weighted fraction assigned indeterminate_retest",
+    "definitive_coverage": "one minus indeterminate_fraction"
+  },
+  "pass_rule": {
+    "all_fits_converged": true,
+    "input_hash_unchanged": true,
+    "canonical_M4_F4_safety_sensitivity": ">=0.90",
+    "canonical_M4_F4_all_three_states_nonempty": true,
+    "canonical_official_GC_M4_F4_safety_sensitivity": ">=0.85",
+    "alternate_seed_M4_F4_safety_feasible_count": ">=6/7",
+    "alternate_seed_M4_F4_three_state_nondegenerate_count": ">=6/7",
+    "paired_definitive_negative_specificity_dominance_M4_F4_over_B4_F4": ">=6/7",
+    "median_definitive_negative_specificity_gain": ">0.10"
+  },
+  "fail_floor": {
+    "all_fits_converged": false,
+    "input_hash_unchanged": false,
+    "canonical_M4_F4_safety_sensitivity": "<0.90",
+    "alternate_seed_M4_F4_safety_feasible_count": "<5/7",
+    "alternate_seed_M4_F4_three_state_nondegenerate_count": "<5/7",
+    "paired_definitive_negative_specificity_dominance_M4_F4_over_B4_F4": "<5/7",
+    "median_definitive_negative_specificity_gain": "<=0"
+  },
+  "conditional_rule": "Any result between the PASS rule and FAIL floor is CONDITIONAL and opens one human result/claim card.",
+  "pass_consequence": "PASS closes Q4 in lean mode under the already-recorded human F4 activation and permits blind-output freeze; FAIL or CONDITIONAL stops at one new human gate.",
+  "claim_boundaries": [
+    "No per-fold, per-woman, clinical, or external-population 90% guarantee is claimed.",
+    "No retest-capacity ceiling is invented because the human selected F4 without specifying one; the observed indeterminate fraction must be reported.",
+    "The 2025C answer/comparison holdout and network remain sealed until the blind output is frozen."
+  ]
+}

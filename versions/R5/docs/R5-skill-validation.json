@@ -1,0 +1,37 @@
+[
+  {
+    "skill": "method-selector",
+    "exit_code": 0,
+    "output": "Skill is valid!\n"
+  },
+  {
+    "skill": "model-code-analyzer",
+    "exit_code": 0,
+    "output": "Skill is valid!\n"
+  },
+  {
+    "skill": "python-model-code-generator",
+    "exit_code": 0,
+    "output": "Skill is valid!\n"
+  },
+  {
+    "skill": "matlab-model-code-generator",
+    "exit_code": 0,
+    "output": "Skill is valid!\n"
+  },
+  {
+    "skill": "python-code-reviewer",
+    "exit_code": 0,
+    "output": "Skill is valid!\n"
+  },
+  {
+    "skill": "matlab-code-reviewer",
+    "exit_code": 0,
+    "output": "Skill is valid!\n"
+  },
+  {
+    "skill": "robustness-checker",
+    "exit_code": 0,
+    "output": "Skill is valid!\n"
+  }
+]

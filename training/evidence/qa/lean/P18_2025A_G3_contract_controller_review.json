@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "review_id": "P18-2025A-G3-CONTRACT-CONTROLLER-REVIEW-001",
+  "reviewed_at": "2026-09-08T19:27:28.6657477+08:00",
+  "test_id": "2025A-R3-FORWARD-001",
+  "source_contract": "cumcm-b-skill/tests/holdout/2025A/B-LEAN-20260908-R3-CANDIDATE/contest_workspace/code/shared/shared_code_experiment_contract.md",
+  "verdict": "PASS_WITH_BINDING_REPORTING_CLARIFICATION",
+  "authorized_to_implement": true,
+  "checks": {
+    "approved_methods_only": "PASS: M1 and B1 only; F1 is dormant and trigger-bound.",
+    "authoritative_geometry": "PASS: all primary values use human-selected full-cylinder criterion B.",
+    "three_state_certificate": "PASS: unresolved mesh cases require refinement or local maximization.",
+    "time_measurement": "PASS: final intervals require brackets and <=0.01 s boundary refinement; grid-count times step is prohibited.",
+    "cross_question_reuse": "PASS: one engine serves Q1-Q5 while preserving fixed UAV trajectories, release spacing, per-missile unions, and the Q5 summed objective.",
+    "baseline_comparability": "PASS: B1 completes the same task and is rescored with the same resolved B evaluator.",
+    "holdout_boundary": "PASS: answers, comparison sources, and network remain sealed."
+  },
+  "binding_clarification": {
+    "criterion_A": "For a fixed feasible strategy, criterion A is a relaxation and its duration is an upper duration relative to B. A heuristic A search is not a certified global upper bound on the unknown B optimum unless global certification is separately proved; otherwise report it as an optimistic criterion-relaxation sensitivity.",
+    "template_rule": "No A value may enter the official result templates or replace a B-primary duration."
+  },
+  "next_action": "Implement the frozen contract and run the staged Q1-to-Q5 workflow once, with only targeted debugging or verification reruns."
+}

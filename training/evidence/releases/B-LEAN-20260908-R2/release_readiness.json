@@ -1,0 +1,9 @@
+{
+  "release_id": "B-LEAN-20260908-R2",
+  "status": "PASS_RELEASE_AUDIT",
+  "file_count": 145,
+  "changed_file_count": 18,
+  "release_manifest_sha256": "6606db913d21e1edec8d5c147c48bb9a61d0fd3e5bf61af3b7b7a464cac1e1b5",
+  "formal_target_modified": false,
+  "next_action": "P14A exact integration plan and approval card"
+}

@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "review_id": "P20-R4-RELEASE-CONTROLLER-REVIEW-001",
+  "reviewed_at": "2026-09-09T21:56:28.7186238+08:00",
+  "release_id": "B-LEAN-20260909-R4",
+  "verdict": "PASS_WAITING_EXACT_HUMAN_APPROVAL",
+  "release_manifest_sha256": "5920a376b3495b945663b73a7754d6da486bd1dfc35eb6921f87238365bf66d8",
+  "full_release_diff_sha256": "f642226454d4924949c5adbb7a806dd7939cbd7cf6f4997b5752ef2014e55cf9",
+  "integration_plan_sha256": "7da7c7ea9b99cd0e007adea43f05deedcab384891929db7937a6e862686aac87",
+  "checks": {
+    "release_audit_pass": true,
+    "release_repo_145_files": true,
+    "full_R2_to_R4_diff_27_files": true,
+    "three_way_mirrors_equal_for_nine_affected_skills": true,
+    "r4_behavior_54_of_54_pass": true,
+    "r3_regression_56_of_56_pass": true,
+    "quick_validate_27_of_27_pass": true,
+    "diff_roundtrip_matches_release": true,
+    "answer_specific_additions_zero": true,
+    "frozen_2025A_workspace_unchanged": true,
+    "formal_target_still_exact_R2": true,
+    "formal_target_write_count": 0
+  },
+  "approved_change_bundles": ["CHG-B03", "CHG-B04", "CHG-B05", "CHG-B06"],
+  "formal_target_write_authorized": false,
+  "blocker": "P20-R4-FORMAL-INTEGRATION-APPROVAL-001 requires a new exact written approval; the earlier R2 approval and general autonomy do not authorize R4 publication.",
+  "next_action": "Stop immediately and wait for exact written R4 approval."
+}
