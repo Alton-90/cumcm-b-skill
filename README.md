@@ -1,32 +1,48 @@
-# 数学建模 B 题 Skill 与强化训练
+# 国赛 B 题数学建模 Skill
 
-一套面向国赛 B 题的团队数学建模工作流，覆盖拆题、方法比较、代码审查、稳健性检查和结果冻结。这里收录我们从历年题目中归纳规则、用留出题做盲测，再按失败证据修订 Skill 的全过程。
+这套 Skill 用于团队建模。它把拆题、数据核查、方法比较、Python 或 MATLAB 实现、稳健性检查和论文写作串在一个工作区里。选择主方案时，要先写清可用信息、硬约束和比较对象。论文定稿时，要能查到每个数字来自哪次运行。
 
-2026 年国赛 B 题，两支队伍使用了同一套 Skill。我们队获上海赛区三等奖，使用同一套 Skill 的同学队获全国二等奖。留存的同学分享包为 R4。两队具体的赛时运行配置未做独立核验，获奖按队伍反馈记录。
+2026 年国赛 B 题，我们队和另一支同学队使用了同一套 Skill，分别获得上海赛区三等奖、全国二等奖。留存的同学分享文件是 R4。获奖和使用情况由队伍提供。 [我们队的 B 题论文与代码](https://github.com/Alton-90/cumcm-2026-problem-b)
 
-## 从这里开始
+## 使用哪个版本
 
-| 我想看 | 入口 |
+| 版本 | 用途 |
 | --- | --- |
-| 训练是怎么做的 | [训练过程与迭代记录](training/README.md) |
-| 赛题、优秀论文和专家讲评 | [训练资料入口](training/corpus/README.md) · [68 条来源目录](training/corpus/catalog.csv) |
-| 盲测后改了哪些规则 | [三轮盲测复盘](training/holdout.md) · [阶段证据](training/evidence) |
-| 自己跑一次 | [练习与复验](training/practice.md) |
-| 和队友共用一版 | [R4 同学分享包](packages/B-LEAN-20260909-R4.zip) · [R6 门控强化包](packages/B-LEAN-20260910-R6.zip) |
+| [R4 同学分享包](packages/B-LEAN-20260909-R4.zip) | 查看当时用于团队协作的版本，以及盲测后写入的输入、约束和结果核对规则。 |
+| [R5 解法强化包](packages/B-LEAN-20260910-R5.zip) | 查阅有条件的解法设计，例如哪些状态可以合并，以及怎样设计追加实验来区分两个模型。 |
+| [R6 流程校验包](packages/B-LEAN-20260910-R6.zip) | 在新项目中使用结构化产物、结果冻结和依赖过期检查。 |
 
-## 版本
+各队使用独立工作区，队内先统一版本。解压后从版本里的 `README-zh.md` 和 `Initial Prompt-zh.md` 开始。以 R6 为例，在解压目录中运行以下命令，将项目文件安装到已建立的比赛目录。
 
-| 版本 | 主要变化 |
+```bash
+bash install.sh --mode project --target codex --project-dir /path/to/contest
+```
+
+如果使用 Claude Code、插件模式或已有工作区，参阅 [R6 安装说明](versions/R6/README-zh.md#安装)及[迁移说明](versions/R6/docs/R6-review-zh.md)。发布包的哈希值用于核对队友拿到的是否为同一版。 [SHA-256 校验值](SHA256SUMS)
+
+## 开发过程
+
+初版先从 2018、2020–2024 年的 B 题和 19 篇训练论文提炼可迁移的做法。2025 年赛题作为留出题。每轮先用固定版本做题并冻结结果，随后回看失败发生在题意、数据、方法还是验证环节，再决定需要修改哪些 Skill。
+
+| 版本 | 该轮解决的问题 |
 | --- | --- |
-| [R1 候选](versions/R1) | 在拆题、方法和代码之间传递信息边界、目标角色、硬约束与上游产物。 |
-| [R2 发布](versions/R2) | 2025 B 盲测后，把有效分析域及其事前判据加入方法和代码审查。 |
-| [R3 候选](versions/R3-candidate) | 2025 C 盲测后，加入数据对账、基线公平比较、跨切分稳定性与弃判口径。 |
-| [R4 分享版](versions/R4) | 2025 A 盲测后，检查筛选是否丢失可行方案，把稳定性证据绑定到实际选中结果。 |
-| [R5 解法强化](versions/R5) | 给常见问题结构补充条件化的求解与验证路线。 |
-| [R6 门控强化](versions/R6) | 增加版本化 Schema、机械门控、结果冻结和依赖过期检查。 |
+| [R1 候选](versions/R1) | 拆题结果须写清每个时点能获得哪些信息、硬约束是什么、下游程序要读取哪些产物。代码审查按同一份约定检查。 |
+| [R2 发布](versions/R2) | 2025 B 盲测标记了异常谱段，拟合仍读入整个区间。R2 要求在选方法前说明分析域及排除依据，并核对代码实际读取的范围。 |
+| [R3 候选](versions/R3-candidate) | 2025 C 盲测发现解析时丢失了有效记录，阈值在一些切分上也失去稳定性。R3 增加逐步样本对账、训练内校准、分组复核和弃判覆盖率。 |
+| [R4 发布](versions/R4) | 2025 A 盲测暴露了候选筛选和定稿证据之间的断点。R4 要求保留可能可行的方案，并把约束与稳定性证据对应到实际导出的候选。 |
+| [R5 强化](versions/R5) | 为调度、实验、定位、覆盖等问题补写方法选择的适用条件、最小验证和反例。 |
+| [R6 强化](versions/R6) | 统一需要程序读取的文件格式，让校验脚本重新检查上游文件、选中方案与论文数字，并区分结果已审阅与可定稿。 |
 
-选择版本后，在同一队的独立工作区使用该版本。从版本内的 `README-zh.md` 或 `repo/README-zh.md` 开始，再看中文开场提示词。R6 使用新的产物契约，迁移旧工作区时可先读 [R6 变更说明](versions/R6/docs/R6-review-zh.md)。
+开发记录附有各轮的冻结证据、改动决定和测试结果。R4 的 54 条行为检查、56 条回归检查，以及 R6 的 28 项合成测试均有记录。 [详细开发记录](training/README.md) · [三轮盲测](training/holdout.md) · [复验步骤](training/practice.md)
 
-[发布包校验值](SHA256SUMS) · [2026 国赛 B 题参赛归档](https://github.com/Alton-90/cumcm-2026-problem-b) · [华数杯初版 Skill](https://github.com/Alton-90/huashu-modeling-skills)
+## 训练资料
 
-本项目基于 Zhijun Zhang 的 [MathModeling-skills](https://github.com/zhnnky329/MathModeling-skills)。各版本保留上游说明和 MIT 许可。训练来源见[资料索引](training/corpus/README.md)。
+- [语料目录](training/corpus/catalog.csv)记录 68 项来源及官方入口，包括赛题、附件、优秀论文和讲评。
+- [19 篇论文对照矩阵](training/evidence/analysis/lean/b_training_source_matrix.json)记载方法、使用条件、验证方式和能迁移的做法。
+- [建模任务拆解](training/evidence/analysis/lean/b_training_problem_contracts.json)、[训练综合笔记](training/evidence/analysis/lean/b_training_synthesis.md)和[合成练习数据](training/fixtures/decision-cases.csv)可直接查阅。
+
+第三方原文与附件从发布方页面获取，资料页标明了来源和链接粒度。 [资料说明](training/corpus/README.md)
+
+## 许可
+
+本项目的 Skill、工作流代码与原创合成练习采用 [MIT 许可证](LICENSE)。各版本保留 Zhijun Zhang 的 [MathModeling-skills](https://github.com/zhnnky329/MathModeling-skills) 署名与上游许可。第三方赛题、论文、讲评与数据的权利以来源说明为准。

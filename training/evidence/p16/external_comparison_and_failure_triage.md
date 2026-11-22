@@ -38,4 +38,4 @@ Each proposed repair must satisfy all four iteration criteria: it changes a mode
 
 ## P16 decision
 
-Accept exactly the two coherent bundles above, the maximum allowed by the iteration plan. This is a controller decision under the user's standing authorization — `所有的决定你尽量自己解决，我先睡觉了。` and `可以开始盲测什么的，我的额度够用，你作为总指挥，放手去做` — not a fabricated per-bundle human reply. P17 may create a separate candidate from immutable release `B-LEAN-20260908-R2`; the formal target remains read-only.
+Accept exactly the two coherent bundles above, the maximum allowed by the iteration plan. This is a controller decision under the user's standing authorization. No separate per-bundle decision was recorded. P17 may create a separate candidate from immutable release `B-LEAN-20260908-R2`; the formal target remains read-only.
